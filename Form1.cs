@@ -1,6 +1,6 @@
-﻿
-using System;
+﻿using System;
 using System.Diagnostics;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace StudyPlan
@@ -31,12 +31,13 @@ namespace StudyPlan
          */
         private void FillCourseCb()
         {
+            courseCb.DataSource = null;
             courseCb.Items.Clear();
-            courseCb.Items.Add("---Оберіть---");
-            for (int i=1; i<5;i++)
-            {
-                courseCb.Items.Add(i.ToString());
-            }
+            db.Cources.Insert(0, new Item(0, "---Оберіть---"));
+            courseCb.DisplayMember = "Description";
+            courseCb.ValueMember = "Id";
+            db.GetCources();
+            courseCb.DataSource = db.Cources.OrderBy(u => u.Description).ToList();
             courseCb.SelectedIndex = 0;
             courseCb.Enabled = true;
             courseLb.Enabled = true;
@@ -225,8 +226,8 @@ namespace StudyPlan
                 editBt.Enabled = true;
                 previewBt.Enabled = true;
                 removeBt.Enabled = true;
-                workProgram.Link = linkTb.Text;
-                db.UpdateStudyPlan(workProgram.Id, linkTb.Text);
+                plan.Link = linkTb.Text;
+                db.UpdateStudyPlan(plan.Id, linkTb.Text);
                 return;
             }
 
@@ -240,7 +241,7 @@ namespace StudyPlan
                 editBt.Enabled = true;
                 previewBt.Enabled = false;
                 removeBt.Enabled = false;
-                workProgram.Link = link;
+                plan.Link = link;
                 return;
             }
 
@@ -254,7 +255,7 @@ namespace StudyPlan
                 editBt.Enabled = true;
                 previewBt.Enabled = false;
                 removeBt.Enabled = false;
-                workProgram.Link = "";
+                plan.Link = "";
                 return;
             }
             else
@@ -263,7 +264,7 @@ namespace StudyPlan
                 linkLb.Enabled = true;
                 linkTb.ReadOnly = true;
                 linkTb.Text = link;
-                workProgram.Link = link;
+                plan.Link = link;
                 editBt.Text = "Внести зміни";
                 editBt.Enabled = true;
                 previewBt.Enabled = true;
@@ -369,10 +370,10 @@ namespace StudyPlan
 
                 if (linkTb.Text == "")
                 {
-                    if (workProgram != null)
+                    if (plan != null)
                     {
                         editBt.Text = "Внести зміни";
-                        ChangeEditPlanCtrls(false, workProgram.Link);
+                        ChangeEditPlanCtrls(false, plan.Link);
                     }
                 }
             }
@@ -383,7 +384,7 @@ namespace StudyPlan
          */
         private void PreviewBt_Click(object sender, EventArgs e)
         {
-            OpenUrl(workProgram.Link);
+            OpenUrl(plan.Link);
         }
 
         /*
@@ -403,7 +404,7 @@ namespace StudyPlan
 
             if (dr == DialogResult.Yes)
             {
-                db.UpdateStudyPlan(workProgram.Id, "");
+                db.UpdateStudyPlan(plan.Id, "");
                 ChangeEditPlanCtrls(false);
             }
         }

@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace StudyPlan
 {
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {
         private readonly Database db;
         private readonly SearchData searchData;
@@ -23,7 +23,7 @@ namespace StudyPlan
         public List<Item> Cources { get => cources; set => cources = value; }
         public Plan Plan { get => plan; set => plan = value; }
 
-        public Form1()
+        public MainForm()
         {
             db = new Database();
             searchData = new SearchData();
@@ -418,6 +418,24 @@ namespace StudyPlan
                 db.UpdateStudyPlan(Plan.Id, "");
                 ChangeEditPlanCtrls(false);
             }
+        }
+
+        private void дисципліниToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            DisciplineForm disciplineForm = new DisciplineForm();
+            disciplineForm.ShowDialog();
+        }
+
+        private void групиToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            GroupForm groupForm = new GroupForm();
+            groupForm.ShowDialog();
+        }
+
+        private void базиВступуToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            EntryBaseForm entryBaseForm = new EntryBaseForm();
+            entryBaseForm.ShowDialog();
         }
     }
 }

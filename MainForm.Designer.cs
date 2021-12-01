@@ -2,7 +2,7 @@
 
 namespace StudyPlan
 {
-    partial class Form1
+    partial class MainForm
     {
         /// <summary>
         /// Обязательная переменная конструктора.
@@ -30,7 +30,6 @@ namespace StudyPlan
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.entryBaseCb = new System.Windows.Forms.ComboBox();
             this.courseCb = new System.Windows.Forms.ComboBox();
             this.entryBaseLb = new System.Windows.Forms.Label();
@@ -46,6 +45,18 @@ namespace StudyPlan
             this.previewBt = new System.Windows.Forms.Button();
             this.editBt = new System.Windows.Forms.Button();
             this.removeBt = new System.Windows.Forms.Button();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.FileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ExitToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.EditToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.DisciplinesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.EntryBasesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.GroupsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.StudyPlansToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.WorkProgramsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.SpecialityToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.educationLevelsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // entryBaseCb
@@ -53,7 +64,7 @@ namespace StudyPlan
             this.entryBaseCb.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.entryBaseCb.Enabled = false;
             this.entryBaseCb.FormattingEnabled = true;
-            this.entryBaseCb.Location = new System.Drawing.Point(10, 81);
+            this.entryBaseCb.Location = new System.Drawing.Point(10, 96);
             this.entryBaseCb.Name = "entryBaseCb";
             this.entryBaseCb.Size = new System.Drawing.Size(174, 21);
             this.entryBaseCb.TabIndex = 0;
@@ -64,13 +75,7 @@ namespace StudyPlan
             this.courseCb.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.courseCb.Enabled = false;
             this.courseCb.FormattingEnabled = true;
-            this.courseCb.Items.AddRange(new object[] {
-            "---Оберіть---",
-            "1",
-            "2",
-            "3",
-            "4"});
-            this.courseCb.Location = new System.Drawing.Point(10, 36);
+            this.courseCb.Location = new System.Drawing.Point(10, 51);
             this.courseCb.Name = "courseCb";
             this.courseCb.Size = new System.Drawing.Size(174, 21);
             this.courseCb.TabIndex = 2;
@@ -80,7 +85,7 @@ namespace StudyPlan
             // 
             this.entryBaseLb.AutoSize = true;
             this.entryBaseLb.Enabled = false;
-            this.entryBaseLb.Location = new System.Drawing.Point(10, 65);
+            this.entryBaseLb.Location = new System.Drawing.Point(10, 80);
             this.entryBaseLb.Name = "entryBaseLb";
             this.entryBaseLb.Size = new System.Drawing.Size(68, 13);
             this.entryBaseLb.TabIndex = 3;
@@ -90,7 +95,7 @@ namespace StudyPlan
             // 
             this.courseLb.AutoSize = true;
             this.courseLb.Enabled = false;
-            this.courseLb.Location = new System.Drawing.Point(10, 20);
+            this.courseLb.Location = new System.Drawing.Point(10, 35);
             this.courseLb.Name = "courseLb";
             this.courseLb.Size = new System.Drawing.Size(81, 13);
             this.courseLb.TabIndex = 5;
@@ -101,7 +106,7 @@ namespace StudyPlan
             this.groupCb.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.groupCb.Enabled = false;
             this.groupCb.FormattingEnabled = true;
-            this.groupCb.Location = new System.Drawing.Point(195, 36);
+            this.groupCb.Location = new System.Drawing.Point(195, 51);
             this.groupCb.Name = "groupCb";
             this.groupCb.Size = new System.Drawing.Size(174, 21);
             this.groupCb.TabIndex = 8;
@@ -111,7 +116,7 @@ namespace StudyPlan
             // 
             this.groupLb.AutoSize = true;
             this.groupLb.Enabled = false;
-            this.groupLb.Location = new System.Drawing.Point(195, 20);
+            this.groupLb.Location = new System.Drawing.Point(195, 35);
             this.groupLb.Name = "groupLb";
             this.groupLb.Size = new System.Drawing.Size(36, 13);
             this.groupLb.TabIndex = 9;
@@ -122,11 +127,7 @@ namespace StudyPlan
             this.semesterCb.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.semesterCb.Enabled = false;
             this.semesterCb.FormattingEnabled = true;
-            this.semesterCb.Items.AddRange(new object[] {
-            "---Оберіть---",
-            "1",
-            "2"});
-            this.semesterCb.Location = new System.Drawing.Point(195, 81);
+            this.semesterCb.Location = new System.Drawing.Point(195, 96);
             this.semesterCb.Name = "semesterCb";
             this.semesterCb.Size = new System.Drawing.Size(174, 21);
             this.semesterCb.TabIndex = 7;
@@ -136,7 +137,7 @@ namespace StudyPlan
             // 
             this.semesterLb.AutoSize = true;
             this.semesterLb.Enabled = false;
-            this.semesterLb.Location = new System.Drawing.Point(195, 65);
+            this.semesterLb.Location = new System.Drawing.Point(195, 80);
             this.semesterLb.Name = "semesterLb";
             this.semesterLb.Size = new System.Drawing.Size(51, 13);
             this.semesterLb.TabIndex = 6;
@@ -147,7 +148,7 @@ namespace StudyPlan
             this.disciplineCb.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.disciplineCb.Enabled = false;
             this.disciplineCb.FormattingEnabled = true;
-            this.disciplineCb.Location = new System.Drawing.Point(10, 127);
+            this.disciplineCb.Location = new System.Drawing.Point(10, 142);
             this.disciplineCb.Name = "disciplineCb";
             this.disciplineCb.Size = new System.Drawing.Size(359, 21);
             this.disciplineCb.TabIndex = 10;
@@ -157,7 +158,7 @@ namespace StudyPlan
             // 
             this.disciplineLb.AutoSize = true;
             this.disciplineLb.Enabled = false;
-            this.disciplineLb.Location = new System.Drawing.Point(10, 111);
+            this.disciplineLb.Location = new System.Drawing.Point(10, 126);
             this.disciplineLb.Name = "disciplineLb";
             this.disciplineLb.Size = new System.Drawing.Size(66, 13);
             this.disciplineLb.TabIndex = 11;
@@ -216,11 +217,95 @@ namespace StudyPlan
             this.removeBt.UseVisualStyleBackColor = true;
             this.removeBt.Click += new System.EventHandler(this.RemoveBt_Click);
             // 
-            // Form1
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.FileToolStripMenuItem,
+            this.EditToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(381, 24);
+            this.menuStrip1.TabIndex = 17;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // FileToolStripMenuItem
+            // 
+            this.FileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ExitToolStripMenuItem1});
+            this.FileToolStripMenuItem.Name = "FileToolStripMenuItem";
+            this.FileToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
+            this.FileToolStripMenuItem.Text = "Файл";
+            // 
+            // ExitToolStripMenuItem1
+            // 
+            this.ExitToolStripMenuItem1.Name = "ExitToolStripMenuItem1";
+            this.ExitToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.ExitToolStripMenuItem1.Text = "Вихід";
+            // 
+            // EditToolStripMenuItem
+            // 
+            this.EditToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.DisciplinesToolStripMenuItem1,
+            this.EntryBasesToolStripMenuItem1,
+            this.GroupsToolStripMenuItem1,
+            this.StudyPlansToolStripMenuItem1,
+            this.WorkProgramsToolStripMenuItem,
+            this.SpecialityToolStripMenuItem,
+            this.educationLevelsToolStripMenuItem});
+            this.EditToolStripMenuItem.Name = "EditToolStripMenuItem";
+            this.EditToolStripMenuItem.Size = new System.Drawing.Size(87, 20);
+            this.EditToolStripMenuItem.Text = "Редагування";
+            // 
+            // DisciplinesToolStripMenuItem1
+            // 
+            this.DisciplinesToolStripMenuItem1.Name = "DisciplinesToolStripMenuItem1";
+            this.DisciplinesToolStripMenuItem1.Size = new System.Drawing.Size(236, 22);
+            this.DisciplinesToolStripMenuItem1.Text = "Дисципліни";
+            this.DisciplinesToolStripMenuItem1.Click += new System.EventHandler(this.дисципліниToolStripMenuItem1_Click);
+            // 
+            // EntryBasesToolStripMenuItem1
+            // 
+            this.EntryBasesToolStripMenuItem1.Name = "EntryBasesToolStripMenuItem1";
+            this.EntryBasesToolStripMenuItem1.Size = new System.Drawing.Size(236, 22);
+            this.EntryBasesToolStripMenuItem1.Text = "Бази вступу";
+            this.EntryBasesToolStripMenuItem1.Click += new System.EventHandler(this.базиВступуToolStripMenuItem1_Click);
+            // 
+            // GroupsToolStripMenuItem1
+            // 
+            this.GroupsToolStripMenuItem1.Name = "GroupsToolStripMenuItem1";
+            this.GroupsToolStripMenuItem1.Size = new System.Drawing.Size(236, 22);
+            this.GroupsToolStripMenuItem1.Text = "Групи";
+            this.GroupsToolStripMenuItem1.Click += new System.EventHandler(this.групиToolStripMenuItem1_Click);
+            // 
+            // StudyPlansToolStripMenuItem1
+            // 
+            this.StudyPlansToolStripMenuItem1.Name = "StudyPlansToolStripMenuItem1";
+            this.StudyPlansToolStripMenuItem1.Size = new System.Drawing.Size(236, 22);
+            this.StudyPlansToolStripMenuItem1.Text = "Навчальні плани";
+            // 
+            // WorkProgramsToolStripMenuItem
+            // 
+            this.WorkProgramsToolStripMenuItem.Name = "WorkProgramsToolStripMenuItem";
+            this.WorkProgramsToolStripMenuItem.Size = new System.Drawing.Size(236, 22);
+            this.WorkProgramsToolStripMenuItem.Text = "Робочі програми";
+            // 
+            // SpecialityToolStripMenuItem
+            // 
+            this.SpecialityToolStripMenuItem.Name = "SpecialityToolStripMenuItem";
+            this.SpecialityToolStripMenuItem.Size = new System.Drawing.Size(236, 22);
+            this.SpecialityToolStripMenuItem.Text = "Освітні професійні програми";
+            // 
+            // educationLevelsToolStripMenuItem
+            // 
+            this.educationLevelsToolStripMenuItem.Name = "educationLevelsToolStripMenuItem";
+            this.educationLevelsToolStripMenuItem.Size = new System.Drawing.Size(236, 22);
+            this.educationLevelsToolStripMenuItem.Text = "Освітні рівні";
+            // 
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(381, 289);
+            this.ClientSize = new System.Drawing.Size(381, 277);
             this.Controls.Add(this.removeBt);
             this.Controls.Add(this.editBt);
             this.Controls.Add(this.previewBt);
@@ -236,9 +321,12 @@ namespace StudyPlan
             this.Controls.Add(this.entryBaseLb);
             this.Controls.Add(this.courseCb);
             this.Controls.Add(this.entryBaseCb);
-            this.Name = "Form1";
+            this.Controls.Add(this.menuStrip1);
+            this.Name = "MainForm";
             this.Text = "Навчальний план";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -261,6 +349,17 @@ namespace StudyPlan
         private Button previewBt;
         private Button editBt;
         private Button removeBt;
+        private MenuStrip menuStrip1;
+        private ToolStripMenuItem FileToolStripMenuItem;
+        private ToolStripMenuItem ExitToolStripMenuItem1;
+        private ToolStripMenuItem EditToolStripMenuItem;
+        private ToolStripMenuItem DisciplinesToolStripMenuItem1;
+        private ToolStripMenuItem EntryBasesToolStripMenuItem1;
+        private ToolStripMenuItem GroupsToolStripMenuItem1;
+        private ToolStripMenuItem StudyPlansToolStripMenuItem1;
+        private ToolStripMenuItem WorkProgramsToolStripMenuItem;
+        private ToolStripMenuItem SpecialityToolStripMenuItem;
+        private ToolStripMenuItem educationLevelsToolStripMenuItem;
     }
 }
 

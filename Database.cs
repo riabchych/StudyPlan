@@ -13,6 +13,8 @@ namespace StudyPlan
     public class Database
     {
         private string _cnnString;
+        public string CnnString { get => _cnnString; set => _cnnString = value; }
+
 
         /*
          * Конструктор з параметрами
@@ -164,7 +166,7 @@ WHERE ((([Навчальні плани].[Рік вступу])={entryYear}) AND
         }
 
         /*
-         * Метод отримання списку груп за номером курсу
+         * Метод отримання списку груп за роком вступу
          */
         public List<Group> GetGroups(int entryYear)
         {
@@ -303,7 +305,7 @@ WHERE((([Облік робочих програм].[ID навчального п
         }
 
         /*
-         * Метод зміни навчального плану за ідентифікатом
+         * Метод зміни навчального плану за ідентифікатором
          */
         public void UpdateStudyPlan(int id, string link)
         {
@@ -311,7 +313,7 @@ WHERE((([Облік робочих програм].[ID навчального п
             {
                 using (OleDbCommand command = new OleDbCommand())
                 {
-                    string commText = $"UPDATE [Навчальний план] SET [Посилання]='{link}' WHERE [ID]={id}";
+                    string commText = $"UPDATE [Навчальний план] SET [Посилання на навчальний план]='{link}' WHERE [ID]={id}";
                     command.CommandType = CommandType.Text;
                     command.CommandText = commText;
                     command.Connection = connection;
@@ -331,7 +333,5 @@ WHERE((([Облік робочих програм].[ID навчального п
                 }
             }
         }
-
-        public string CnnString { get => _cnnString; set => _cnnString = value; }
     }
 }

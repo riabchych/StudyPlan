@@ -173,9 +173,9 @@ WHERE ((([Навчальні плани].[Рік вступу])={entryYear}) AND
             using (OleDbConnection connection = new OleDbConnection(CnnString))
             {
                 OleDbCommand command = new OleDbCommand();
-                string commText = $@"SELECT DISTINCT Групи.*
-FROM [Навчальні плани] INNER JOIN Групи ON [Навчальні плани].ID = Групи.[Навчальний план]
-WHERE [Навчальні плани].[Рік вступу]={entryYear}";
+                string commText = $@"SELECT DISTINCT [Групи].[ID], [Групи].[Навчальний план], [Назви груп].[Назва групи]
+FROM [Назви груп] INNER JOIN ([Навчальні плани] INNER JOIN Групи ON [Навчальні плани].ID = Групи.[Навчальний план]) ON [Назви груп].ID = Групи.[Назва групи]
+WHERE ((([Навчальні плани].[Рік вступу])={entryYear}))";
                 command.CommandText = commText;
                 command.Connection = connection;
                 try

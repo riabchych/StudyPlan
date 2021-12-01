@@ -12,21 +12,14 @@ namespace StudyPlan
      */
     public class Database
     {
-        private List<Plan> _plans;
-        private List<WorkProgram> _workPrograms;
-        private List<Item> _cources;
         private string _cnnString;
 
         /*
          * Конструктор з параметрами
          */
-        public Database(List<Plan> plans, List<WorkProgram> workPrograms,
-            string cnnString, List<Item> cources)
+        public Database(string cnnString)
         {
-            _plans = plans;
-            _workPrograms = workPrograms;
             _cnnString = cnnString;
-            _cources = cources;
         }
 
         /*
@@ -34,9 +27,6 @@ namespace StudyPlan
          */
         public Database()
         {
-            _plans = new List<Plan>();
-            _workPrograms = new List<WorkProgram>();
-            _cources = new List<Item>();
             _cnnString = $@"Provider=Microsoft.ACE.OLEDB.12.0;
                             Data Source={Properties.Settings.Default.StudyPlanDbConnectionString}; 
                             Persist Security Info=False;";
@@ -133,7 +123,7 @@ WHERE ((([Навчальні плани].[Рік вступу])={entryYear}) AND
         }
 
         /*
-         * Метод отримання списку семестрів за роком вступу, ідентификітором групи та ідентификітором бази вступу
+         * Метод отримання списку семестрів за роком вступу, ідентифікаторами групи та бази вступу
          */
         public List<int> GetSemesters(int entryYear, int groupId, int entryBase)
         {
@@ -160,7 +150,6 @@ WHERE ((([Навчальні плани].[Рік вступу])={entryYear}) AND
                             return semesters;
                         }
                     }
-
                 }
                 catch (Exception ex)
                 {
@@ -225,7 +214,7 @@ WHERE [Навчальні плани].[Рік вступу]={entryYear}";
         /*
          * Метод отримання списку курсів 
          */
-        public void GetCources()
+        public List<Item> GetCources()
         {
             using (OleDbConnection connection = new OleDbConnection(CnnString))
             {
@@ -242,12 +231,15 @@ WHERE [Навчальні плани].[Рік вступу]={entryYear}";
                     {
                         if (reader.HasRows)
                         {
-                            Cources.Clear();
+                            List<Item> cources = new List<Item>();
                             while (reader.Read())
                             {
-                                Item cource = new Item(reader.GetInt32(reader.GetOrdinal("Рік вступу")), reader.GetInt32(reader.GetOrdinal("Курс")).ToString());
-                                Cources.Add(cource);
+                                Item cource = new Item(
+                                    reader.GetInt32(reader.GetOrdinal("Рік вступу")), 
+                                    reader.GetInt32(reader.GetOrdinal("Курс")).ToString());
+                                cources.Add(cource);
                             }
+                            return cources;
                         }
                     }
                 }
@@ -259,12 +251,13 @@ WHERE [Навчальні плани].[Рік вступу]={entryYear}";
                 {
                     connection.Close();
                 }
+                return null;
             }
         }
 
         /*
-         * Метод отримання дисципліни за роком вступу, ідентифікатором групи,
-         * ыдентифыкаторм бази вступу та ідентифікатором робочої програми
+         * Метод отримання дисципліни за ідентифікатором навчального плану
+         * та семестром
          */
         public List<Discipline> GetDisciplines(int planId, int semester)
         {
@@ -318,7 +311,7 @@ WHERE((([Облік робочих програм].[ID навчального п
             {
                 using (OleDbCommand command = new OleDbCommand())
                 {
-                    string commText = $"UPDATE [Навчальний план] SET [Посилання]='{link}'  WHERE [ID]={id}";
+                    string commText = $"UPDATE [Навчальний план] SET [Посилання]='{link}' WHERE [ID]={id}";
                     command.CommandType = CommandType.Text;
                     command.CommandText = commText;
                     command.Connection = connection;
@@ -339,9 +332,6 @@ WHERE((([Облік робочих програм].[ID навчального п
             }
         }
 
-        public List<Plan> Plans { get => _plans; set => _plans = value; }
         public string CnnString { get => _cnnString; set => _cnnString = value; }
-        public List<WorkProgram> WorkPrograms { get => _workPrograms; set => _workPrograms = value; }
-        public List<Item> Cources { get => _cources; set => _cources = value; }
     }
 }

@@ -14,25 +14,28 @@ namespace StudyPlan
         private List<Group> groups;
         private List<int> semesters;
         private List<Discipline> disciplines;
-        private WorkProgram workProgram;
+        private List<Item> cources;
         private Plan plan;
+        public List<EntryBase> EntryBases { get => entryBases; set => entryBases = value; }
+        public List<Group> Groups { get => groups; set => groups = value; }
+        public List<int> Semesters { get => semesters; set => semesters = value; }
+        public List<Discipline> Disciplines { get => disciplines; set => disciplines = value; }
+        public List<Item> Cources { get => cources; set => cources = value; }
+        public Plan Plan { get => plan; set => plan = value; }
 
         public Form1()
         {
-
             db = new Database();
             searchData = new SearchData();
-            workProgram = new WorkProgram();
-            entryBases = new List<EntryBase>();
-            groups = new List<Group>();
-            semesters = new List<int>();
-            disciplines = new List<Discipline>();
-            plan = new Plan();
             InitializeComponent();
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-            FillCourseCb();
+            Cources = db.GetCources();
+            if (Cources != null && Cources.Count > 0)
+            {
+                FillCourseCb();
+            }
         }
 
         /*
@@ -44,10 +47,9 @@ namespace StudyPlan
             courseCb.Items.Clear();
             courseCb.DisplayMember = "Description";
             courseCb.ValueMember = "Id";
-            db.GetCources();
-            db.Cources = db.Cources.OrderBy(u => u.Description).ToList();
-            db.Cources.Insert(0, new Item(0, "---Оберіть---"));
-            courseCb.DataSource = db.Cources;
+            Cources = Cources.OrderBy(u => u.Description).ToList();
+            Cources.Insert(0, new Item(0, "---Оберіть---"));
+            courseCb.DataSource = Cources;
             courseCb.SelectedIndex = 0;
             courseCb.Enabled = true;
             courseLb.Enabled = true;
@@ -62,8 +64,8 @@ namespace StudyPlan
             entryBaseCb.Items.Clear();
             entryBaseCb.DisplayMember = "Name";
             entryBaseCb.ValueMember = "Id";
-            entryBases.Insert(0, new EntryBase(0, "---Оберіть---"));
-            entryBaseCb.DataSource = entryBases;
+            EntryBases.Insert(0, new EntryBase(0, "---Оберіть---"));
+            entryBaseCb.DataSource = EntryBases;
             entryBaseCb.SelectedIndex = 0;
             entryBaseLb.Enabled = true;
             entryBaseCb.Enabled = true;
@@ -77,7 +79,7 @@ namespace StudyPlan
             semesterCb.DataSource = null;
             semesterCb.Items.Clear();
             semesterCb.Items.Add("---Оберіть---");
-            foreach (int semester in semesters)
+            foreach (int semester in Semesters)
             {
                 semesterCb.Items.Add(semester);
             }
@@ -93,10 +95,10 @@ namespace StudyPlan
         {
             groupCb.DataSource = null;
             groupCb.Items.Clear();
-            groups.Insert(0, new Group() { Id = 0, Name = "---Оберіть---" });
+            Groups.Insert(0, new Group() { Id = 0, Name = "---Оберіть---" });
             groupCb.DisplayMember = "Name";
             groupCb.ValueMember = "Id";
-            groupCb.DataSource = groups;
+            groupCb.DataSource = Groups;
             groupCb.SelectedIndex = 0;
             groupLb.Enabled = true;
             groupCb.Enabled = true;
@@ -109,10 +111,10 @@ namespace StudyPlan
         {
             disciplineCb.DataSource = null;
             disciplineCb.Items.Clear();
-            disciplines.Insert(0, new Discipline() { Id = 0, Name = "---Оберіть---" });
+            Disciplines.Insert(0, new Discipline() { Id = 0, Name = "---Оберіть---" });
             disciplineCb.DisplayMember = "Name";
             disciplineCb.ValueMember = "Id";
-            disciplineCb.DataSource = disciplines;
+            disciplineCb.DataSource = Disciplines;
             disciplineCb.SelectedIndex = 0;
             disciplineLb.Enabled = true;
             disciplineCb.Enabled = true;
@@ -217,7 +219,6 @@ namespace StudyPlan
         private static void OpenUrl(string url)
         {
             DialogResult dr = MessageBox.Show("Ви дійсно бажаєте перейти за посиланням в браузері?", "Навчальний план", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
             if (dr == DialogResult.Yes)
             {
                 Process.Start(url);
@@ -239,8 +240,8 @@ namespace StudyPlan
                 editBt.Enabled = true;
                 previewBt.Enabled = true;
                 removeBt.Enabled = true;
-                plan.Link = linkTb.Text;
-                db.UpdateStudyPlan(plan.Id, linkTb.Text);
+                Plan.Link = linkTb.Text;
+                db.UpdateStudyPlan(Plan.Id, linkTb.Text);
                 return;
             }
 
@@ -254,7 +255,7 @@ namespace StudyPlan
                 editBt.Enabled = true;
                 previewBt.Enabled = false;
                 removeBt.Enabled = false;
-                plan.Link = link;
+                Plan.Link = link;
                 return;
             }
 
@@ -268,7 +269,7 @@ namespace StudyPlan
                 editBt.Enabled = true;
                 previewBt.Enabled = false;
                 removeBt.Enabled = false;
-                plan.Link = "";
+                Plan.Link = "";
                 return;
             }
             else
@@ -277,7 +278,7 @@ namespace StudyPlan
                 linkLb.Enabled = true;
                 linkTb.ReadOnly = true;
                 linkTb.Text = link;
-                plan.Link = link;
+                Plan.Link = link;
                 editBt.Text = "Внести зміни";
                 editBt.Enabled = true;
                 previewBt.Enabled = true;
@@ -298,8 +299,8 @@ namespace StudyPlan
                 searchData.EntryYear = courseCb.SelectedValue == null ? 0 : int.Parse(courseCb.SelectedValue.ToString());
                 if (courseCb.Items.Count > 1 && searchData.EntryYear > 0)
                 {
-                    groups = db.GetGroups(searchData.EntryYear);
-                    if (groups != null && groups.Count > 0)
+                    Groups = db.GetGroups(searchData.EntryYear);
+                    if (Groups != null && Groups.Count > 0)
                     {
                         FillGroupCb();
                     }
@@ -317,10 +318,10 @@ namespace StudyPlan
             if (groupCb.SelectedIndex > 0)
             {
                 searchData.Group = groupCb.SelectedValue == null ? 0 : (int)groupCb.SelectedValue;
-                entryBases = db.GetEntryBases(searchData.Group, searchData.EntryYear);
-                if (entryBases != null && entryBases.Count > 0)
+                EntryBases = db.GetEntryBases(searchData.Group, searchData.EntryYear);
+                if (EntryBases != null && EntryBases.Count > 0)
                 {
-                    searchData.Plan = groups.Find(item => item.Id == searchData.Group).Plan;
+                    searchData.Plan = Groups.Find(item => item.Id == searchData.Group).Plan;
                     FillEntryBaseCb();
                 }
             }
@@ -336,8 +337,8 @@ namespace StudyPlan
             if (entryBaseCb.SelectedIndex > 0)
             {
                 searchData.EntryBase = entryBaseCb.SelectedValue == null ? 0 : (int)entryBaseCb.SelectedValue;
-                semesters = db.GetSemesters(searchData.EntryYear, searchData.Group, searchData.EntryBase);
-                if (semesters != null && semesters.Count > 0)
+                Semesters = db.GetSemesters(searchData.EntryYear, searchData.Group, searchData.EntryBase);
+                if (Semesters != null && Semesters.Count > 0)
                 {
                     FillSemesterCb();
                 }
@@ -353,8 +354,8 @@ namespace StudyPlan
             if (semesterCb.SelectedIndex > 0)
             {
                 searchData.Semester = semesterCb.SelectedItem == null ? 0 : int.Parse(semesterCb.SelectedItem.ToString());
-                disciplines = db.GetDisciplines(searchData.Plan, searchData.Semester);
-                if (disciplines != null && disciplines.Count > 0)
+                Disciplines = db.GetDisciplines(searchData.Plan, searchData.Semester);
+                if (Disciplines != null && Disciplines.Count > 0)
                 {
                     FillDisciplineCb();
                 }
@@ -371,13 +372,13 @@ namespace StudyPlan
             if (disciplineCb.SelectedIndex > 0)
             {
                 searchData.Discipline = disciplineCb.SelectedValue == null ? 0 : (int)disciplineCb.SelectedValue;
-                plan = db.GetPlan(searchData.Plan);
+                Plan = db.GetPlan(searchData.Plan);
                 if (linkTb.Text == "")
                 {
-                    if (plan != null)
+                    if (Plan != null)
                     {
                         editBt.Text = "Внести зміни";
-                        ChangeEditPlanCtrls(false, plan.Link);
+                        ChangeEditPlanCtrls(false, Plan.Link);
                     }
                 }
             }
@@ -388,7 +389,7 @@ namespace StudyPlan
          */
         private void PreviewBt_Click(object sender, EventArgs e)
         {
-            OpenUrl(plan.Link);
+            OpenUrl(Plan.Link);
         }
 
         /*
@@ -408,7 +409,7 @@ namespace StudyPlan
 
             if (dr == DialogResult.Yes)
             {
-                db.UpdateStudyPlan(plan.Id, "");
+                db.UpdateStudyPlan(Plan.Id, "");
                 ChangeEditPlanCtrls(false);
             }
         }

@@ -14,7 +14,6 @@ namespace StudyPlan
     {
         private List<Plan> _plans;
         private List<WorkProgram> _workPrograms;
-        private List<Discipline> _disciplines;
         private List<Item> _cources;
         private string _cnnString;
 
@@ -22,11 +21,10 @@ namespace StudyPlan
          * Конструктор з параметрами
          */
         public Database(List<Plan> plans, List<WorkProgram> workPrograms,
-            List<Discipline> disciplines, string cnnString, List<Item> cources)
+            string cnnString, List<Item> cources)
         {
             _plans = plans;
             _workPrograms = workPrograms;
-            _disciplines = disciplines;
             _cnnString = cnnString;
             _cources = cources;
         }
@@ -38,7 +36,6 @@ namespace StudyPlan
         {
             _plans = new List<Plan>();
             _workPrograms = new List<WorkProgram>();
-            _disciplines = new List<Discipline>();
             _cources = new List<Item>();
             _cnnString = $@"Provider=Microsoft.ACE.OLEDB.12.0;
                             Data Source={Properties.Settings.Default.StudyPlanDbConnectionString}; 
@@ -70,8 +67,8 @@ WHERE ((([Навчальні плани].[Рік вступу])={entryYear}) AND
                             {
                                 EntryBase entryBase = new EntryBase
                                 {
-                                    Id = (int)reader["ID"],
-                                    Name = (string)reader["Назва"]
+                                    Id = reader.GetInt32(reader.GetOrdinal("ID")),
+                                    Name = reader.GetString(reader.GetOrdinal("Назва"))
                                 };
                                 entryBases.Add(entryBase);
                             }
@@ -102,7 +99,6 @@ WHERE ((([Навчальні плани].[Рік вступу])={entryYear}) AND
                 string commText = $"SELECT * FROM [Навчальні плани] WHERE [ID]={id}";
                 command.CommandText = commText;
                 command.Connection = connection;
-                Plan plan = new Plan();
                 try
                 {
                     connection.Open();
@@ -111,13 +107,15 @@ WHERE ((([Навчальні плани].[Рік вступу])={entryYear}) AND
                         if (reader.HasRows)
                         {
                             reader.Read();
-                            plan.Id = (int)reader["ID"];
-                            plan.EntryYear = (string)reader["Рік вступу"];
-                            plan.EntryBase = (int)reader["База вступу"];
-                            plan.Program = (int)reader["Робоча програма"];
-                            plan.Link = (string)reader["Посилання"];
-                            plan.Speciality = (int)reader["Освітня професійна програма"];
-                            plan.EducationLevel = (int)reader["Освітній рівень"];
+                            Plan plan = new Plan
+                            {
+                                Id = (int)reader["ID"],
+                                EntryYear = reader.GetInt32(reader.GetOrdinal("Рік вступу")),
+                                EntryBase = reader.GetInt32(reader.GetOrdinal("База вступу")),
+                                Link = reader.GetString(reader.GetOrdinal("Посилання на навчальний план")),
+                                Speciality = reader.GetInt32(reader.GetOrdinal("Освітня професійна програма")),
+                                EducationLevel = reader.GetInt32(reader.GetOrdinal("Освітній рівень"))
+                            };
                             return plan;
                         }
                     }
@@ -130,7 +128,7 @@ WHERE ((([Навчальні плани].[Рік вступу])={entryYear}) AND
                 {
                     connection.Close();
                 }
-                return plan;
+                return null;
             }
         }
 
@@ -157,7 +155,7 @@ WHERE ((([Навчальні плани].[Рік вступу])={entryYear}) AND
                             List<int> semesters = new List<int>();
                             while (reader.Read())
                             {
-                                semesters.Add(int.Parse((string)reader["Семестр"]));
+                                semesters.Add(reader.GetInt32(reader.GetOrdinal("Семестр")));
                             }
                             return semesters;
                         }
@@ -202,13 +200,12 @@ WHERE [Навчальні плани].[Рік вступу]={entryYear}";
                             {
                                 Group group = new Group
                                 {
-                                    Id = (int)reader["ID"],
-                                    Plan = (int)reader["Навчальний план"],
-                                    Name = (string)reader["Назва групи"]
+                                    Id = reader.GetInt32(reader.GetOrdinal("ID")),
+                                    Plan = reader.GetInt32(reader.GetOrdinal("Навчальний план")),
+                                    Name = reader.GetString(reader.GetOrdinal("Назва групи"))
                                 };
                                 groups.Add(group);
                             }
-
                             return groups;
                         }
                     }
@@ -248,7 +245,7 @@ WHERE [Навчальні плани].[Рік вступу]={entryYear}";
                             Cources.Clear();
                             while (reader.Read())
                             {
-                                Item cource = new Item((int)reader["Рік вступу"], reader["Курс"].ToString());
+                                Item cource = new Item(reader.GetInt32(reader.GetOrdinal("Рік вступу")), reader.GetInt32(reader.GetOrdinal("Курс")).ToString());
                                 Cources.Add(cource);
                             }
                         }
@@ -266,14 +263,17 @@ WHERE [Навчальні плани].[Рік вступу]={entryYear}";
         }
 
         /*
-         * Метод отримання дисципліни за ідентифікатом
+         * Метод отримання дисципліни за роком вступу, ідентифікатором групи,
+         * ыдентифыкаторм бази вступу та ідентифікатором робочої програми
          */
-        public void GetDisciplines(int id)
+        public List<Discipline> GetDisciplines(int planId, int semester)
         {
             using (OleDbConnection connection = new OleDbConnection(CnnString))
             {
                 OleDbCommand command = new OleDbCommand();
-                string commText = $"SELECT [ID],[Назва дисципліни] FROM [Дисципліни] WHERE [ID]={id}";
+                string commText = $@"SELECT DISTINCT Дисципліни.*
+FROM Дисципліни INNER JOIN([Робочі програми] INNER JOIN [Облік робочих програм] ON[Робочі програми].ID = [Облік робочих програм].[ID робочої програми]) ON Дисципліни.ID = [Робочі програми].Дисципліна
+WHERE((([Облік робочих програм].[ID навчального плану]) = {planId}) AND(([Робочі програми].Семестр) = {semester}))";
                 command.CommandText = commText;
                 command.Connection = connection;
                 try
@@ -283,14 +283,17 @@ WHERE [Навчальні плани].[Рік вступу]={entryYear}";
                     {
                         if (reader.HasRows)
                         {
-                            Disciplines.Clear();
+                            List<Discipline> disciplines = new List<Discipline>();
                             while (reader.Read())
                             {
-                                Discipline discipline = new Discipline();
-                                discipline.Id = (int)reader["ID"];
-                                discipline.Name = (string)reader["Назва дисципліни"];
-                                Disciplines.Add(discipline);
+                                Discipline discipline = new Discipline
+                                {
+                                    Id = reader.GetInt32(reader.GetOrdinal("ID")),
+                                    Name = reader.GetString(reader.GetOrdinal("Назва дисципліни"))
+                                };
+                                disciplines.Add(discipline);
                             }
+                            return disciplines;
                         }
                     }
                 }
@@ -302,6 +305,7 @@ WHERE [Навчальні плани].[Рік вступу]={entryYear}";
                 {
                     connection.Close();
                 }
+                return null;
             }
         }
 
@@ -338,7 +342,6 @@ WHERE [Навчальні плани].[Рік вступу]={entryYear}";
         public List<Plan> Plans { get => _plans; set => _plans = value; }
         public string CnnString { get => _cnnString; set => _cnnString = value; }
         public List<WorkProgram> WorkPrograms { get => _workPrograms; set => _workPrograms = value; }
-        public List<Discipline> Disciplines { get => _disciplines; set => _disciplines = value; }
         public List<Item> Cources { get => _cources; set => _cources = value; }
     }
 }

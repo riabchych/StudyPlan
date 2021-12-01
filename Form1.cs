@@ -13,8 +13,7 @@ namespace StudyPlan
         private List<EntryBase> entryBases;
         private List<Group> groups;
         private List<int> semesters;
-
-
+        private List<Discipline> disciplines;
         private WorkProgram workProgram;
         private Plan plan;
 
@@ -27,6 +26,7 @@ namespace StudyPlan
             entryBases = new List<EntryBase>();
             groups = new List<Group>();
             semesters = new List<int>();
+            disciplines = new List<Discipline>();
             plan = new Plan();
             InitializeComponent();
         }
@@ -109,10 +109,10 @@ namespace StudyPlan
         {
             disciplineCb.DataSource = null;
             disciplineCb.Items.Clear();
-            db.Disciplines.Insert(0, new Discipline() { Id = 0, Name = "---Оберіть---" });
+            disciplines.Insert(0, new Discipline() { Id = 0, Name = "---Оберіть---" });
             disciplineCb.DisplayMember = "Name";
             disciplineCb.ValueMember = "Id";
-            disciplineCb.DataSource = db.Disciplines;
+            disciplineCb.DataSource = disciplines;
             disciplineCb.SelectedIndex = 0;
             disciplineLb.Enabled = true;
             disciplineCb.Enabled = true;
@@ -320,6 +320,7 @@ namespace StudyPlan
                 entryBases = db.GetEntryBases(searchData.Group, searchData.EntryYear);
                 if (entryBases != null && entryBases.Count > 0)
                 {
+                    searchData.Plan = groups.Find(item => item.Id == searchData.Group).Plan;
                     FillEntryBaseCb();
                 }
             }
@@ -332,12 +333,10 @@ namespace StudyPlan
         private void EntryBaseCb_SelectedValueChanged(object sender, EventArgs e)
         {
             DisableControls(2);
-
             if (entryBaseCb.SelectedIndex > 0)
             {
                 searchData.EntryBase = entryBaseCb.SelectedValue == null ? 0 : (int)entryBaseCb.SelectedValue;
                 semesters = db.GetSemesters(searchData.EntryYear, searchData.Group, searchData.EntryBase);
-
                 if (semesters != null && semesters.Count > 0)
                 {
                     FillSemesterCb();
@@ -351,17 +350,15 @@ namespace StudyPlan
         private void SemesterCb_SelectedValueChanged(object sender, EventArgs e)
         {
             DisableControls(3);
-
             if (semesterCb.SelectedIndex > 0)
             {
-                searchData.Semester = semesterCb.SelectedItem == null ? 0 : int.Parse((string)semesterCb.SelectedItem);
-                if (semesterCb.Items.Count > 1)
+                searchData.Semester = semesterCb.SelectedItem == null ? 0 : int.Parse(semesterCb.SelectedItem.ToString());
+                disciplines = db.GetDisciplines(searchData.Plan, searchData.Semester);
+                if (disciplines != null && disciplines.Count > 0)
                 {
-                    db.GetDisciplines(workProgram.Discipline);
                     FillDisciplineCb();
                 }
             }
-
         }
 
         /*
@@ -374,7 +371,7 @@ namespace StudyPlan
             if (disciplineCb.SelectedIndex > 0)
             {
                 searchData.Discipline = disciplineCb.SelectedValue == null ? 0 : (int)disciplineCb.SelectedValue;
-
+                plan = db.GetPlan(searchData.Plan);
                 if (linkTb.Text == "")
                 {
                     if (plan != null)

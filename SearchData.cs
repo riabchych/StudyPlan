@@ -10,6 +10,7 @@
         private int _entryBase;
         private int _semester;
         private int _entryYear;
+        private int _plan;
         private int _discipline;
 
         public SearchData()
@@ -18,6 +19,7 @@
             _entryBase = 0;
             _semester = 0;
             _entryYear = 0;
+            _plan = 0;
             _discipline = 0;
         }
 
@@ -25,6 +27,7 @@
         public int EntryBase { get => _entryBase; set => _entryBase = value; }
         public int Semester { get => _semester; set => _semester = value; }
         public int EntryYear { get => _entryYear; set => _entryYear = value; }
+        public int Plan { get => _plan; set => _plan = value; }
         public int Discipline { get => _discipline; set => _discipline = value; }
     }
 }

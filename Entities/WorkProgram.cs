@@ -7,14 +7,14 @@
     {
         private int _id;
         private int _discipline;
-        private string _semester;
+        private int _semester;
         public WorkProgram()
         {
             _id = 0;
             _discipline = 0;
-            _semester = "";
+            _semester = 0;
         }
-        public WorkProgram(int id, int discipline, string semester)
+        public WorkProgram(int id, int discipline, int semester)
         {
             _id = id;
             _discipline = discipline;
@@ -22,6 +22,6 @@
         }
         public int Id { get => _id; set => _id = value; }
         public int Discipline { get => _discipline; set => _discipline = value; }
-        public string Semester { get => _semester; set => _semester = value; }
+        public int Semester { get => _semester; set => _semester = value; }
     }
 }

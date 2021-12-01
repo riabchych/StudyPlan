@@ -114,7 +114,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SearchData.cs" />
     <Compile Include="Entities\Speciality.cs" />
-    <Compile Include="Entities\WorkProgram.cs" />
     <Compile Include="StudyPlanDbDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

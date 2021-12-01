@@ -31,8 +31,8 @@
             this.components = new System.ComponentModel.Container();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.iDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.навчальнийПланDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.назваГрупиDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.studyPlanDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.groupNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.studyPlanDbDataSet = new StudyPlan.StudyPlanDbDataSet();
             this.saveButton = new System.Windows.Forms.Button();
@@ -50,8 +50,8 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.iDDataGridViewTextBoxColumn,
-            this.навчальнийПланDataGridViewTextBoxColumn,
-            this.назваГрупиDataGridViewTextBoxColumn});
+            this.studyPlanDataGridViewTextBoxColumn,
+            this.groupNameDataGridViewTextBoxColumn});
             this.dataGridView1.DataSource = this.groupsBindingSource;
             this.dataGridView1.Location = new System.Drawing.Point(12, 12);
             this.dataGridView1.Name = "dataGridView1";
@@ -64,17 +64,17 @@
             this.iDDataGridViewTextBoxColumn.HeaderText = "ID";
             this.iDDataGridViewTextBoxColumn.Name = "iDDataGridViewTextBoxColumn";
             // 
-            // навчальнийПланDataGridViewTextBoxColumn
+            // studyPlanDataGridViewTextBoxColumn
             // 
-            this.навчальнийПланDataGridViewTextBoxColumn.DataPropertyName = "Навчальний план";
-            this.навчальнийПланDataGridViewTextBoxColumn.HeaderText = "Навчальний план";
-            this.навчальнийПланDataGridViewTextBoxColumn.Name = "навчальнийПланDataGridViewTextBoxColumn";
+            this.studyPlanDataGridViewTextBoxColumn.DataPropertyName = "Навчальний план";
+            this.studyPlanDataGridViewTextBoxColumn.HeaderText = "Навчальний план";
+            this.studyPlanDataGridViewTextBoxColumn.Name = "studyPlanDataGridViewTextBoxColumn";
             // 
-            // назваГрупиDataGridViewTextBoxColumn
+            // groupNameDataGridViewTextBoxColumn
             // 
-            this.назваГрупиDataGridViewTextBoxColumn.DataPropertyName = "Назва групи";
-            this.назваГрупиDataGridViewTextBoxColumn.HeaderText = "Назва групи";
-            this.назваГрупиDataGridViewTextBoxColumn.Name = "назваГрупиDataGridViewTextBoxColumn";
+            this.groupNameDataGridViewTextBoxColumn.DataPropertyName = "Назва групи";
+            this.groupNameDataGridViewTextBoxColumn.HeaderText = "Назва групи";
+            this.groupNameDataGridViewTextBoxColumn.Name = "groupNameDataGridViewTextBoxColumn";
             // 
             // groupsBindingSource
             // 
@@ -140,7 +140,7 @@
         private StudyPlanDbDataSetTableAdapters.GroupsTableAdapter groupsTableAdapter;
         private StudyPlanDbDataSetTableAdapters.TableAdapterManager tableAdapterManager;
         private System.Windows.Forms.DataGridViewTextBoxColumn iDDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn навчальнийПланDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn назваГрупиDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn studyPlanDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn groupNameDataGridViewTextBoxColumn;
     }
 }

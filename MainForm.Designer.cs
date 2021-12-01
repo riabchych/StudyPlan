@@ -45,18 +45,18 @@ namespace StudyPlan
             this.previewBt = new System.Windows.Forms.Button();
             this.editBt = new System.Windows.Forms.Button();
             this.removeBt = new System.Windows.Forms.Button();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.FileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ExitToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.EditToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.DisciplinesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.EntryBasesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.GroupsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.StudyPlansToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.WorkProgramsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.SpecialityToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStrip = new System.Windows.Forms.MenuStrip();
+            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.disciplinesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.entryBasesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.groupsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.studyPlansToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.workProgramsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.specialityToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.educationLevelsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuStrip1.SuspendLayout();
+            this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // entryBaseCb
@@ -217,83 +217,83 @@ namespace StudyPlan
             this.removeBt.UseVisualStyleBackColor = true;
             this.removeBt.Click += new System.EventHandler(this.RemoveBt_Click);
             // 
-            // menuStrip1
+            // menuStrip
             // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.FileToolStripMenuItem,
-            this.EditToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(381, 24);
-            this.menuStrip1.TabIndex = 17;
-            this.menuStrip1.Text = "menuStrip1";
+            this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fileToolStripMenuItem,
+            this.editToolStripMenuItem});
+            this.menuStrip.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip.Name = "menuStrip";
+            this.menuStrip.Size = new System.Drawing.Size(381, 24);
+            this.menuStrip.TabIndex = 17;
+            this.menuStrip.Text = "menuStrip";
             // 
-            // FileToolStripMenuItem
+            // fileToolStripMenuItem
             // 
-            this.FileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ExitToolStripMenuItem1});
-            this.FileToolStripMenuItem.Name = "FileToolStripMenuItem";
-            this.FileToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
-            this.FileToolStripMenuItem.Text = "Файл";
+            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.exitToolStripMenuItem});
+            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
+            this.fileToolStripMenuItem.Text = "Файл";
             // 
-            // ExitToolStripMenuItem1
+            // exitToolStripMenuItem
             // 
-            this.ExitToolStripMenuItem1.Name = "ExitToolStripMenuItem1";
-            this.ExitToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
-            this.ExitToolStripMenuItem1.Text = "Вихід";
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exitToolStripMenuItem.Text = "Вихід";
             // 
-            // EditToolStripMenuItem
+            // editToolStripMenuItem
             // 
-            this.EditToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.DisciplinesToolStripMenuItem1,
-            this.EntryBasesToolStripMenuItem1,
-            this.GroupsToolStripMenuItem1,
-            this.StudyPlansToolStripMenuItem1,
-            this.WorkProgramsToolStripMenuItem,
-            this.SpecialityToolStripMenuItem,
+            this.editToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.disciplinesToolStripMenuItem,
+            this.entryBasesToolStripMenuItem,
+            this.groupsToolStripMenuItem,
+            this.studyPlansToolStripMenuItem,
+            this.workProgramsToolStripMenuItem,
+            this.specialityToolStripMenuItem,
             this.educationLevelsToolStripMenuItem});
-            this.EditToolStripMenuItem.Name = "EditToolStripMenuItem";
-            this.EditToolStripMenuItem.Size = new System.Drawing.Size(87, 20);
-            this.EditToolStripMenuItem.Text = "Редагування";
+            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(87, 20);
+            this.editToolStripMenuItem.Text = "Редагування";
             // 
-            // DisciplinesToolStripMenuItem1
+            // disciplinesToolStripMenuItem
             // 
-            this.DisciplinesToolStripMenuItem1.Name = "DisciplinesToolStripMenuItem1";
-            this.DisciplinesToolStripMenuItem1.Size = new System.Drawing.Size(236, 22);
-            this.DisciplinesToolStripMenuItem1.Text = "Дисципліни";
-            this.DisciplinesToolStripMenuItem1.Click += new System.EventHandler(this.дисципліниToolStripMenuItem1_Click);
+            this.disciplinesToolStripMenuItem.Name = "disciplinesToolStripMenuItem";
+            this.disciplinesToolStripMenuItem.Size = new System.Drawing.Size(236, 22);
+            this.disciplinesToolStripMenuItem.Text = "Дисципліни";
+            this.disciplinesToolStripMenuItem.Click += new System.EventHandler(this.DisciplinesToolStripMenuItem_Click);
             // 
-            // EntryBasesToolStripMenuItem1
+            // entryBasesToolStripMenuItem
             // 
-            this.EntryBasesToolStripMenuItem1.Name = "EntryBasesToolStripMenuItem1";
-            this.EntryBasesToolStripMenuItem1.Size = new System.Drawing.Size(236, 22);
-            this.EntryBasesToolStripMenuItem1.Text = "Бази вступу";
-            this.EntryBasesToolStripMenuItem1.Click += new System.EventHandler(this.базиВступуToolStripMenuItem1_Click);
+            this.entryBasesToolStripMenuItem.Name = "entryBasesToolStripMenuItem";
+            this.entryBasesToolStripMenuItem.Size = new System.Drawing.Size(236, 22);
+            this.entryBasesToolStripMenuItem.Text = "Бази вступу";
+            this.entryBasesToolStripMenuItem.Click += new System.EventHandler(this.EntryBasesToolStripMenuItem_Click);
             // 
-            // GroupsToolStripMenuItem1
+            // groupsToolStripMenuItem
             // 
-            this.GroupsToolStripMenuItem1.Name = "GroupsToolStripMenuItem1";
-            this.GroupsToolStripMenuItem1.Size = new System.Drawing.Size(236, 22);
-            this.GroupsToolStripMenuItem1.Text = "Групи";
-            this.GroupsToolStripMenuItem1.Click += new System.EventHandler(this.групиToolStripMenuItem1_Click);
+            this.groupsToolStripMenuItem.Name = "groupsToolStripMenuItem";
+            this.groupsToolStripMenuItem.Size = new System.Drawing.Size(236, 22);
+            this.groupsToolStripMenuItem.Text = "Групи";
+            this.groupsToolStripMenuItem.Click += new System.EventHandler(this.GroupsToolStripMenuItem_Click);
             // 
-            // StudyPlansToolStripMenuItem1
+            // studyPlansToolStripMenuItem
             // 
-            this.StudyPlansToolStripMenuItem1.Name = "StudyPlansToolStripMenuItem1";
-            this.StudyPlansToolStripMenuItem1.Size = new System.Drawing.Size(236, 22);
-            this.StudyPlansToolStripMenuItem1.Text = "Навчальні плани";
+            this.studyPlansToolStripMenuItem.Name = "studyPlansToolStripMenuItem";
+            this.studyPlansToolStripMenuItem.Size = new System.Drawing.Size(236, 22);
+            this.studyPlansToolStripMenuItem.Text = "Навчальні плани";
             // 
-            // WorkProgramsToolStripMenuItem
+            // workProgramsToolStripMenuItem
             // 
-            this.WorkProgramsToolStripMenuItem.Name = "WorkProgramsToolStripMenuItem";
-            this.WorkProgramsToolStripMenuItem.Size = new System.Drawing.Size(236, 22);
-            this.WorkProgramsToolStripMenuItem.Text = "Робочі програми";
+            this.workProgramsToolStripMenuItem.Name = "workProgramsToolStripMenuItem";
+            this.workProgramsToolStripMenuItem.Size = new System.Drawing.Size(236, 22);
+            this.workProgramsToolStripMenuItem.Text = "Робочі програми";
             // 
-            // SpecialityToolStripMenuItem
+            // specialityToolStripMenuItem
             // 
-            this.SpecialityToolStripMenuItem.Name = "SpecialityToolStripMenuItem";
-            this.SpecialityToolStripMenuItem.Size = new System.Drawing.Size(236, 22);
-            this.SpecialityToolStripMenuItem.Text = "Освітні професійні програми";
+            this.specialityToolStripMenuItem.Name = "specialityToolStripMenuItem";
+            this.specialityToolStripMenuItem.Size = new System.Drawing.Size(236, 22);
+            this.specialityToolStripMenuItem.Text = "Освітні професійні програми";
             // 
             // educationLevelsToolStripMenuItem
             // 
@@ -321,12 +321,12 @@ namespace StudyPlan
             this.Controls.Add(this.entryBaseLb);
             this.Controls.Add(this.courseCb);
             this.Controls.Add(this.entryBaseCb);
-            this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.menuStrip);
             this.Name = "MainForm";
             this.Text = "Навчальний план";
             this.Load += new System.EventHandler(this.Form1_Load);
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
+            this.menuStrip.ResumeLayout(false);
+            this.menuStrip.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -349,16 +349,16 @@ namespace StudyPlan
         private Button previewBt;
         private Button editBt;
         private Button removeBt;
-        private MenuStrip menuStrip1;
-        private ToolStripMenuItem FileToolStripMenuItem;
-        private ToolStripMenuItem ExitToolStripMenuItem1;
-        private ToolStripMenuItem EditToolStripMenuItem;
-        private ToolStripMenuItem DisciplinesToolStripMenuItem1;
-        private ToolStripMenuItem EntryBasesToolStripMenuItem1;
-        private ToolStripMenuItem GroupsToolStripMenuItem1;
-        private ToolStripMenuItem StudyPlansToolStripMenuItem1;
-        private ToolStripMenuItem WorkProgramsToolStripMenuItem;
-        private ToolStripMenuItem SpecialityToolStripMenuItem;
+        private MenuStrip menuStrip;
+        private ToolStripMenuItem fileToolStripMenuItem;
+        private ToolStripMenuItem exitToolStripMenuItem;
+        private ToolStripMenuItem editToolStripMenuItem;
+        private ToolStripMenuItem disciplinesToolStripMenuItem;
+        private ToolStripMenuItem entryBasesToolStripMenuItem;
+        private ToolStripMenuItem groupsToolStripMenuItem;
+        private ToolStripMenuItem studyPlansToolStripMenuItem;
+        private ToolStripMenuItem workProgramsToolStripMenuItem;
+        private ToolStripMenuItem specialityToolStripMenuItem;
         private ToolStripMenuItem educationLevelsToolStripMenuItem;
     }
 }

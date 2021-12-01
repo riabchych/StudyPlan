@@ -420,19 +420,19 @@ namespace StudyPlan
             }
         }
 
-        private void дисципліниToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void DisciplinesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             DisciplineForm disciplineForm = new DisciplineForm();
             disciplineForm.ShowDialog();
         }
 
-        private void групиToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void GroupsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             GroupForm groupForm = new GroupForm();
             groupForm.ShowDialog();
         }
 
-        private void базиВступуToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void EntryBasesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             EntryBaseForm entryBaseForm = new EntryBaseForm();
             entryBaseForm.ShowDialog();

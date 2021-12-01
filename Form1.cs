@@ -12,6 +12,8 @@ namespace StudyPlan
         private readonly SearchData searchData;
         private List<EntryBase> entryBases;
         private List<Group> groups;
+        private List<int> semesters;
+
 
         private WorkProgram workProgram;
         private Plan plan;
@@ -24,6 +26,7 @@ namespace StudyPlan
             workProgram = new WorkProgram();
             entryBases = new List<EntryBase>();
             groups = new List<Group>();
+            semesters = new List<int>();
             plan = new Plan();
             InitializeComponent();
         }
@@ -74,7 +77,10 @@ namespace StudyPlan
             semesterCb.DataSource = null;
             semesterCb.Items.Clear();
             semesterCb.Items.Add("---Оберіть---");
-            semesterCb.Items.Add(workProgram.Semester);
+            foreach (int semester in semesters)
+            {
+                semesterCb.Items.Add(semester);
+            }
             semesterCb.SelectedIndex = 0;
             semesterCb.Enabled = true;
             semesterLb.Enabled = true;
@@ -330,8 +336,9 @@ namespace StudyPlan
             if (entryBaseCb.SelectedIndex > 0)
             {
                 searchData.EntryBase = entryBaseCb.SelectedValue == null ? 0 : (int)entryBaseCb.SelectedValue;
+                semesters = db.GetSemesters(searchData.EntryYear, searchData.Group, searchData.EntryBase);
 
-                if (semesterCb.Items.Count > 1 && searchData.EntryBase > 0)
+                if (semesters != null && semesters.Count > 0)
                 {
                     FillSemesterCb();
                 }
@@ -348,7 +355,6 @@ namespace StudyPlan
             if (semesterCb.SelectedIndex > 0)
             {
                 searchData.Semester = semesterCb.SelectedItem == null ? 0 : int.Parse((string)semesterCb.SelectedItem);
-
                 if (semesterCb.Items.Count > 1)
                 {
                     db.GetDisciplines(workProgram.Discipline);

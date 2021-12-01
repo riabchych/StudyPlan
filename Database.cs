@@ -135,17 +135,18 @@ WHERE ((([Навчальні плани].[Рік вступу])={entryYear}) AND
         }
 
         /*
-         * Метод отримання робочої програми за ідентифікатором
+         * Метод отримання списку семестрів за роком вступу, ідентификітором групи та ідентификітором бази вступу
          */
-        public WorkProgram GetWorkProgram(int id)
+        public List<int> GetSemesters(int entryYear, int groupId, int entryBase)
         {
             using (OleDbConnection connection = new OleDbConnection(CnnString))
             {
                 OleDbCommand command = new OleDbCommand();
-                string commText = $"SELECT [ID],[Семестр],[Дисципліна] FROM [Робочі програми] WHERE [ID]={id}";
+                string commText = $@"SELECT DISTINCT [Робочі програми].Семестр
+FROM [Робочі програми] INNER JOIN ((([Бази вступу] INNER JOIN [Навчальні плани] ON [Бази вступу].ID = [Навчальні плани].[База вступу]) INNER JOIN Групи ON [Навчальні плани].ID = Групи.[Навчальний план]) INNER JOIN [Облік робочих програм] ON [Навчальні плани].ID = [Облік робочих програм].[ID навчального плану]) ON [Робочі програми].ID = [Облік робочих програм].[ID робочої програми]
+WHERE ((([Навчальні плани].[Рік вступу])={entryYear}) AND ((Групи.ID)={groupId}) AND (([Навчальні плани].[База вступу])={entryBase}))";
                 command.CommandText = commText;
                 command.Connection = connection;
-                WorkProgram program = new WorkProgram();
                 try
                 {
                     connection.Open();
@@ -153,11 +154,12 @@ WHERE ((([Навчальні плани].[Рік вступу])={entryYear}) AND
                     {
                         if (reader.HasRows)
                         {
-                            reader.Read();
-                            program.Id = (int)reader["ID"];
-                            program.Semester = (string)reader["Семестр"];
-                            program.Discipline = (int)reader["Дисципліна"];
-                            return program;
+                            List<int> semesters = new List<int>();
+                            while (reader.Read())
+                            {
+                                semesters.Add(int.Parse((string)reader["Семестр"]));
+                            }
+                            return semesters;
                         }
                     }
 
@@ -170,7 +172,7 @@ WHERE ((([Навчальні плани].[Рік вступу])={entryYear}) AND
                 {
                     connection.Close();
                 }
-                return program;
+                return null;
             }
         }
 
@@ -194,7 +196,7 @@ WHERE [Навчальні плани].[Рік вступу]={entryYear}";
                     {
                         if (reader.HasRows)
                         {
-                            List <Group> groups = new List<Group>();
+                            List<Group> groups = new List<Group>();
                             List<EntryBase> entryBases = new List<EntryBase>();
                             while (reader.Read())
                             {

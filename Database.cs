@@ -177,12 +177,14 @@ namespace StudyPlan
         /*
          * Метод отримання списку груп за номером курсу
          */
-        public void GetGroups(int cource)
+        public void GetGroups(int entryYear)
         {
             using (OleDbConnection connection = new OleDbConnection(CnnString))
             {
                 OleDbCommand command = new OleDbCommand();
-                string commText = $"SELECT * FROM [Групи] WHERE [Курс]={cource}";
+                string commText = $@"SELECT [Групи].*
+                                     FROM[Навчальні плани] INNER JOIN Групи ON[Навчальні плани].ID = Групи.[Навчальний план]
+                                     WHERE[Навчальні плани].[Рік вступу] = {entryYear}";
                 command.CommandText = commText;
                 command.Connection = connection;
                 try

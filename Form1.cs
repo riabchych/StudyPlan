@@ -33,11 +33,12 @@ namespace StudyPlan
         {
             courseCb.DataSource = null;
             courseCb.Items.Clear();
-            db.Cources.Insert(0, new Item(0, "---Оберіть---"));
             courseCb.DisplayMember = "Description";
             courseCb.ValueMember = "Id";
             db.GetCources();
-            courseCb.DataSource = db.Cources.OrderBy(u => u.Description).ToList();
+            db.Cources = db.Cources.OrderBy(u => u.Description).ToList();
+            db.Cources.Insert(0, new Item(0, "---Оберіть---"));
+            courseCb.DataSource = db.Cources;
             courseCb.SelectedIndex = 0;
             courseCb.Enabled = true;
             courseLb.Enabled = true;
@@ -283,11 +284,11 @@ namespace StudyPlan
 
             if (courseCb.SelectedIndex > 0)
             {
-                searchData.Course = courseCb.SelectedItem == null ? 0 : int.Parse((string)courseCb.SelectedItem);
-                if (courseCb.Items.Count > 1 && searchData.Course > 0)
+                int entryYear = courseCb.SelectedItem == null ? 0 : int.Parse(courseCb.SelectedValue.ToString());
+                if (courseCb.Items.Count > 1 && entryYear > 0)
                 {
                     db.Groups.Clear();
-                    db.GetGroups(searchData.Course);
+                    db.GetGroups(entryYear);
 
                     if (db.Groups.Count > 0)
                     {

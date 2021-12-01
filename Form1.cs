@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Windows.Forms;
@@ -9,6 +10,9 @@ namespace StudyPlan
     {
         private readonly Database db;
         private readonly SearchData searchData;
+        private List<EntryBase> entryBases;
+        private List<Group> groups;
+
         private WorkProgram workProgram;
         private Plan plan;
 
@@ -18,6 +22,8 @@ namespace StudyPlan
             db = new Database();
             searchData = new SearchData();
             workProgram = new WorkProgram();
+            entryBases = new List<EntryBase>();
+            groups = new List<Group>();
             plan = new Plan();
             InitializeComponent();
         }
@@ -51,10 +57,10 @@ namespace StudyPlan
         {
             entryBaseCb.DataSource = null;
             entryBaseCb.Items.Clear();
-            db.EntryBases.Insert(0, new EntryBase() { Id = 0, Name = "---Оберіть---" });
             entryBaseCb.DisplayMember = "Name";
             entryBaseCb.ValueMember = "Id";
-            entryBaseCb.DataSource = db.EntryBases;
+            entryBases.Insert(0, new EntryBase(0, "---Оберіть---"));
+            entryBaseCb.DataSource = entryBases;
             entryBaseCb.SelectedIndex = 0;
             entryBaseLb.Enabled = true;
             entryBaseCb.Enabled = true;
@@ -81,10 +87,10 @@ namespace StudyPlan
         {
             groupCb.DataSource = null;
             groupCb.Items.Clear();
-            db.Groups.Insert(0, new Group() { Id = 0, Name = "---Оберіть---" });
+            groups.Insert(0, new Group() { Id = 0, Name = "---Оберіть---" });
             groupCb.DisplayMember = "Name";
             groupCb.ValueMember = "Id";
-            groupCb.DataSource = db.Groups;
+            groupCb.DataSource = groups;
             groupCb.SelectedIndex = 0;
             groupLb.Enabled = true;
             groupCb.Enabled = true;
@@ -171,7 +177,7 @@ namespace StudyPlan
                     removeBt.Enabled = false;
                     break;
                 default:
-                    searchData.Course = 0;
+                    searchData.EntryYear = 0;
                     groupCb.SelectedIndex = -1;
                     groupCb.Enabled = false;
                     groupLb.Enabled = false;
@@ -281,16 +287,13 @@ namespace StudyPlan
         {
 
             DisableControls();
-
             if (courseCb.SelectedIndex > 0)
             {
-                int entryYear = courseCb.SelectedItem == null ? 0 : int.Parse(courseCb.SelectedValue.ToString());
-                if (courseCb.Items.Count > 1 && entryYear > 0)
+                searchData.EntryYear = courseCb.SelectedValue == null ? 0 : int.Parse(courseCb.SelectedValue.ToString());
+                if (courseCb.Items.Count > 1 && searchData.EntryYear > 0)
                 {
-                    db.Groups.Clear();
-                    db.GetGroups(entryYear);
-
-                    if (db.Groups.Count > 0)
+                    groups = db.GetGroups(searchData.EntryYear);
+                    if (groups != null && groups.Count > 0)
                     {
                         FillGroupCb();
                     }
@@ -308,12 +311,9 @@ namespace StudyPlan
             if (groupCb.SelectedIndex > 0)
             {
                 searchData.Group = groupCb.SelectedValue == null ? 0 : (int)groupCb.SelectedValue;
-                if (groupCb.Items.Count > 1 && searchData.Group > 0)
+                entryBases = db.GetEntryBases(searchData.Group, searchData.EntryYear);
+                if (entryBases != null && entryBases.Count > 0)
                 {
-                    int id = db.Groups.Find(item => item.Id == searchData.Group).Plan;
-                    plan = db.GetPlan(id);
-                    workProgram = db.GetWorkProgram(plan.Program);
-                    db.GetEntryBase(plan.EntryBase);
                     FillEntryBaseCb();
                 }
             }

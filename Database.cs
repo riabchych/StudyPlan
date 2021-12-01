@@ -13,25 +13,21 @@ namespace StudyPlan
     public class Database
     {
         private List<Plan> _plans;
-        private List<Group> _groups;
         private List<WorkProgram> _workPrograms;
         private List<Discipline> _disciplines;
-        private List<EntryBase> _entryBases;
         private List<Item> _cources;
         private string _cnnString;
 
         /*
          * Конструктор з параметрами
          */
-        public Database(List<Plan> plans, List<Group> groups, List<WorkProgram> workPrograms,
-            List<Discipline> disciplines, string cnnString, List<EntryBase> entryBases, List<Item> cources)
+        public Database(List<Plan> plans, List<WorkProgram> workPrograms,
+            List<Discipline> disciplines, string cnnString, List<Item> cources)
         {
             _plans = plans;
-            _groups = groups;
             _workPrograms = workPrograms;
             _disciplines = disciplines;
             _cnnString = cnnString;
-            _entryBases = entryBases;
             _cources = cources;
         }
 
@@ -41,10 +37,8 @@ namespace StudyPlan
         public Database()
         {
             _plans = new List<Plan>();
-            _groups = new List<Group>();
             _workPrograms = new List<WorkProgram>();
             _disciplines = new List<Discipline>();
-            _entryBases = new List<EntryBase>();
             _cources = new List<Item>();
             _cnnString = $@"Provider=Microsoft.ACE.OLEDB.12.0;
                             Data Source={Properties.Settings.Default.StudyPlanDbConnectionString}; 
@@ -52,14 +46,16 @@ namespace StudyPlan
         }
 
         /*
-         * Метод отримання баз вступу за ідентифікатором
+         * Метод отримання баз вступу за ідентифікатором групи та роком вступу
          */
-        public void GetEntryBase(int id)
+        public List<EntryBase> GetEntryBases(int groupId, int entryYear)
         {
             using (OleDbConnection connection = new OleDbConnection(CnnString))
             {
                 OleDbCommand command = new OleDbCommand();
-                string commText = $"SELECT * FROM [Бази вступу] WHERE [ID]={id}";
+                string commText = $@"SELECT DISTINCT [Бази вступу].ID, [Бази вступу].Назва
+FROM ([Бази вступу] INNER JOIN [Навчальні плани] ON [Бази вступу].ID = [Навчальні плани].[База вступу]) INNER JOIN Групи ON [Навчальні плани].ID = Групи.[Навчальний план]
+WHERE ((([Навчальні плани].[Рік вступу])={entryYear}) AND ((Групи.ID)={groupId}))";
                 command.CommandText = commText;
                 command.Connection = connection;
                 try
@@ -69,14 +65,17 @@ namespace StudyPlan
                     {
                         if (reader.HasRows)
                         {
-                            EntryBases.Clear();
+                            List<EntryBase> entryBases = new List<EntryBase>();
                             while (reader.Read())
                             {
-                                EntryBase entryBase = new EntryBase();
-                                entryBase.Id = (int)reader["ID"];
-                                entryBase.Name = (string)reader["Назва бази вступу"];
-                                EntryBases.Add(entryBase);
+                                EntryBase entryBase = new EntryBase
+                                {
+                                    Id = (int)reader["ID"],
+                                    Name = (string)reader["Назва"]
+                                };
+                                entryBases.Add(entryBase);
                             }
+                            return entryBases;
                         }
                     }
                 }
@@ -88,6 +87,7 @@ namespace StudyPlan
                 {
                     connection.Close();
                 }
+                return null;
             }
         }
 
@@ -177,14 +177,14 @@ namespace StudyPlan
         /*
          * Метод отримання списку груп за номером курсу
          */
-        public void GetGroups(int entryYear)
+        public List<Group> GetGroups(int entryYear)
         {
             using (OleDbConnection connection = new OleDbConnection(CnnString))
             {
                 OleDbCommand command = new OleDbCommand();
-                string commText = $@"SELECT [Групи].*
-                                     FROM[Навчальні плани] INNER JOIN Групи ON[Навчальні плани].ID = Групи.[Навчальний план]
-                                     WHERE[Навчальні плани].[Рік вступу] = {entryYear}";
+                string commText = $@"SELECT DISTINCT Групи.*
+FROM [Навчальні плани] INNER JOIN Групи ON [Навчальні плани].ID = Групи.[Навчальний план]
+WHERE [Навчальні плани].[Рік вступу]={entryYear}";
                 command.CommandText = commText;
                 command.Connection = connection;
                 try
@@ -194,7 +194,8 @@ namespace StudyPlan
                     {
                         if (reader.HasRows)
                         {
-                            Groups.Clear();
+                            List <Group> groups = new List<Group>();
+                            List<EntryBase> entryBases = new List<EntryBase>();
                             while (reader.Read())
                             {
                                 Group group = new Group
@@ -203,8 +204,10 @@ namespace StudyPlan
                                     Plan = (int)reader["Навчальний план"],
                                     Name = (string)reader["Назва групи"]
                                 };
-                                Groups.Add(group);
+                                groups.Add(group);
                             }
+
+                            return groups;
                         }
                     }
                 }
@@ -216,6 +219,7 @@ namespace StudyPlan
                 {
                     connection.Close();
                 }
+                return null;
             }
         }
 
@@ -331,10 +335,8 @@ namespace StudyPlan
 
         public List<Plan> Plans { get => _plans; set => _plans = value; }
         public string CnnString { get => _cnnString; set => _cnnString = value; }
-        public List<Group> Groups { get => _groups; set => _groups = value; }
         public List<WorkProgram> WorkPrograms { get => _workPrograms; set => _workPrograms = value; }
         public List<Discipline> Disciplines { get => _disciplines; set => _disciplines = value; }
-        public List<EntryBase> EntryBases { get => _entryBases; set => _entryBases = value; }
         public List<Item> Cources { get => _cources; set => _cources = value; }
     }
 }

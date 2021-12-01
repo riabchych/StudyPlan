@@ -313,14 +313,14 @@ WHERE((([Облік робочих програм].[ID навчального п
             {
                 using (OleDbCommand command = new OleDbCommand())
                 {
-                    string commText = $"UPDATE [Навчальний план] SET [Посилання на навчальний план]='{link}' WHERE [ID]={id}";
+                    string commText = $"UPDATE [Навчальні плани] SET [Посилання на навчальний план]='{link}' WHERE [ID]={id}";
                     command.CommandType = CommandType.Text;
                     command.CommandText = commText;
                     command.Connection = connection;
                     connection.Open();
                     try
                     {
-                        command.ExecuteNonQuery();
+                        _ = command.ExecuteNonQuery();
                     }
                     catch (Exception ex)
                     {

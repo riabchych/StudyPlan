@@ -225,6 +225,11 @@ namespace StudyPlan
             }
         }
 
+        private string BeautyfyUrl(string url)
+        {
+            return url.Trim('#');
+        }
+
         /*
          * Метод який змінює елементи редагування навчального плану, а також 
          * редагує, додає та видаляє  його.
@@ -378,6 +383,7 @@ namespace StudyPlan
                     if (Plan != null)
                     {
                         editBt.Text = "Внести зміни";
+                        Plan.Link = BeautyfyUrl(Plan.Link);
                         ChangeEditPlanCtrls(false, Plan.Link);
                     }
                 }

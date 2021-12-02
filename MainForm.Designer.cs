@@ -241,6 +241,7 @@ namespace StudyPlan
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
             this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.exitToolStripMenuItem.Text = "Вихід";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
             // 
             // editToolStripMenuItem
             // 
@@ -282,24 +283,28 @@ namespace StudyPlan
             this.studyPlansToolStripMenuItem.Name = "studyPlansToolStripMenuItem";
             this.studyPlansToolStripMenuItem.Size = new System.Drawing.Size(236, 22);
             this.studyPlansToolStripMenuItem.Text = "Навчальні плани";
+            this.studyPlansToolStripMenuItem.Click += new System.EventHandler(this.StudyPlansToolStripMenuItem_Click);
             // 
             // workProgramsToolStripMenuItem
             // 
             this.workProgramsToolStripMenuItem.Name = "workProgramsToolStripMenuItem";
             this.workProgramsToolStripMenuItem.Size = new System.Drawing.Size(236, 22);
             this.workProgramsToolStripMenuItem.Text = "Робочі програми";
+            this.workProgramsToolStripMenuItem.Click += new System.EventHandler(this.WorkProgramsToolStripMenuItem_Click);
             // 
             // specialityToolStripMenuItem
             // 
             this.specialityToolStripMenuItem.Name = "specialityToolStripMenuItem";
             this.specialityToolStripMenuItem.Size = new System.Drawing.Size(236, 22);
             this.specialityToolStripMenuItem.Text = "Освітні професійні програми";
+            this.specialityToolStripMenuItem.Click += new System.EventHandler(this.SpecialityToolStripMenuItem_Click);
             // 
             // educationLevelsToolStripMenuItem
             // 
             this.educationLevelsToolStripMenuItem.Name = "educationLevelsToolStripMenuItem";
             this.educationLevelsToolStripMenuItem.Size = new System.Drawing.Size(236, 22);
             this.educationLevelsToolStripMenuItem.Text = "Освітні рівні";
+            this.educationLevelsToolStripMenuItem.Click += new System.EventHandler(this.EducationLevelsToolStripMenuItem_Click);
             // 
             // MainForm
             // 

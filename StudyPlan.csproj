@@ -48,18 +48,6 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup>
-    <ManifestCertificateThumbprint>1C10BEAFFC1865946E19CAFB0E56A113F56A6A17</ManifestCertificateThumbprint>
-  </PropertyGroup>
-  <PropertyGroup>
-    <ManifestKeyFile>StudyPlan_TemporaryKey.pfx</ManifestKeyFile>
-  </PropertyGroup>
-  <PropertyGroup>
-    <GenerateManifests>true</GenerateManifests>
-  </PropertyGroup>
-  <PropertyGroup>
-    <SignManifests>true</SignManifests>
-  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System">
       <HintPath>..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.dll</HintPath>
@@ -79,22 +67,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DisciplineForm.cs">
+    <Compile Include="EditForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DisciplineForm.Designer.cs">
-      <DependentUpon>DisciplineForm.cs</DependentUpon>
+    <Compile Include="EditForm.Designer.cs">
+      <DependentUpon>EditForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Entities\BaseEntity.cs" />
     <Compile Include="Database.cs" />
     <Compile Include="Entities\Discipline.cs" />
     <Compile Include="Entities\EntryBase.cs" />
-    <Compile Include="EntryBaseForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="EntryBaseForm.Designer.cs">
-      <DependentUpon>EntryBaseForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -103,12 +85,6 @@
     </Compile>
     <Compile Include="Entities\Group.cs" />
     <Compile Include="Entities\Plan.cs" />
-    <Compile Include="GroupForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GroupForm.Designer.cs">
-      <DependentUpon>GroupForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Item.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -119,17 +95,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>StudyPlanDbDataSet.xsd</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="DisciplineForm.resx">
-      <DependentUpon>DisciplineForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="EntryBaseForm.resx">
-      <DependentUpon>EntryBaseForm.cs</DependentUpon>
+    <Compile Include="Table.cs" />
+    <EmbeddedResource Include="EditForm.resx">
+      <DependentUpon>EditForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GroupForm.resx">
-      <DependentUpon>GroupForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

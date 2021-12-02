@@ -461,6 +461,11 @@ namespace StudyPlan
 
         }
 
+        private void AccountingWorkProgramToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            _ = new EditForm(Table.AccountingWorkPrograms).ShowDialog();
+        }
+
         private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Close();

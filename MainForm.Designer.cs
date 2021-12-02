@@ -57,6 +57,7 @@ namespace StudyPlan
             this.specialityToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.educationLevelsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.назвиГрупToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.облікРобочихПрограмToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -254,7 +255,8 @@ namespace StudyPlan
             this.educationLevelsToolStripMenuItem,
             this.groupsToolStripMenuItem,
             this.studyPlansToolStripMenuItem,
-            this.workProgramsToolStripMenuItem});
+            this.workProgramsToolStripMenuItem,
+            this.облікРобочихПрограмToolStripMenuItem});
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
             this.editToolStripMenuItem.Size = new System.Drawing.Size(87, 20);
             this.editToolStripMenuItem.Text = "Редагування";
@@ -314,6 +316,13 @@ namespace StudyPlan
             this.назвиГрупToolStripMenuItem.Size = new System.Drawing.Size(236, 22);
             this.назвиГрупToolStripMenuItem.Text = "Назви груп";
             this.назвиГрупToolStripMenuItem.Click += new System.EventHandler(this.GroupNamesToolStripMenuItem_Click);
+            // 
+            // облікРобочихПрограмToolStripMenuItem
+            // 
+            this.облікРобочихПрограмToolStripMenuItem.Name = "облікРобочихПрограмToolStripMenuItem";
+            this.облікРобочихПрограмToolStripMenuItem.Size = new System.Drawing.Size(236, 22);
+            this.облікРобочихПрограмToolStripMenuItem.Text = "Облік робочих програм";
+            this.облікРобочихПрограмToolStripMenuItem.Click += new System.EventHandler(this.AccountingWorkProgramToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -375,6 +384,7 @@ namespace StudyPlan
         private ToolStripMenuItem specialityToolStripMenuItem;
         private ToolStripMenuItem educationLevelsToolStripMenuItem;
         private ToolStripMenuItem назвиГрупToolStripMenuItem;
+        private ToolStripMenuItem облікРобочихПрограмToolStripMenuItem;
     }
 }
 

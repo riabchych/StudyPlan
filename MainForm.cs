@@ -455,6 +455,12 @@ namespace StudyPlan
             _ = new EditForm(Table.EducationLevels).ShowDialog();
         }
 
+        private void GroupNamesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            _ = new EditForm(Table.GroupNames).ShowDialog();
+
+        }
+
         private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Close();

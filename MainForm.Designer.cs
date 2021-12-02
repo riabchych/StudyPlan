@@ -56,6 +56,7 @@ namespace StudyPlan
             this.workProgramsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.specialityToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.educationLevelsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.назвиГрупToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -239,7 +240,7 @@ namespace StudyPlan
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
             this.exitToolStripMenuItem.Text = "Вихід";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
             // 
@@ -248,11 +249,12 @@ namespace StudyPlan
             this.editToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.disciplinesToolStripMenuItem,
             this.entryBasesToolStripMenuItem,
+            this.назвиГрупToolStripMenuItem,
+            this.specialityToolStripMenuItem,
+            this.educationLevelsToolStripMenuItem,
             this.groupsToolStripMenuItem,
             this.studyPlansToolStripMenuItem,
-            this.workProgramsToolStripMenuItem,
-            this.specialityToolStripMenuItem,
-            this.educationLevelsToolStripMenuItem});
+            this.workProgramsToolStripMenuItem});
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
             this.editToolStripMenuItem.Size = new System.Drawing.Size(87, 20);
             this.editToolStripMenuItem.Text = "Редагування";
@@ -305,6 +307,13 @@ namespace StudyPlan
             this.educationLevelsToolStripMenuItem.Size = new System.Drawing.Size(236, 22);
             this.educationLevelsToolStripMenuItem.Text = "Освітні рівні";
             this.educationLevelsToolStripMenuItem.Click += new System.EventHandler(this.EducationLevelsToolStripMenuItem_Click);
+            // 
+            // назвиГрупToolStripMenuItem
+            // 
+            this.назвиГрупToolStripMenuItem.Name = "назвиГрупToolStripMenuItem";
+            this.назвиГрупToolStripMenuItem.Size = new System.Drawing.Size(236, 22);
+            this.назвиГрупToolStripMenuItem.Text = "Назви груп";
+            this.назвиГрупToolStripMenuItem.Click += new System.EventHandler(this.GroupNamesToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -365,6 +374,7 @@ namespace StudyPlan
         private ToolStripMenuItem workProgramsToolStripMenuItem;
         private ToolStripMenuItem specialityToolStripMenuItem;
         private ToolStripMenuItem educationLevelsToolStripMenuItem;
+        private ToolStripMenuItem назвиГрупToolStripMenuItem;
     }
 }
 

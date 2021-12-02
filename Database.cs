@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.OleDb;
-using System.Linq;
 using System.Windows.Forms;
 
 namespace StudyPlan
@@ -237,7 +236,7 @@ WHERE ((([Навчальні плани].[Рік вступу])={entryYear}))";
                             while (reader.Read())
                             {
                                 Item cource = new Item(
-                                    reader.GetInt32(reader.GetOrdinal("Рік вступу")), 
+                                    reader.GetInt32(reader.GetOrdinal("Рік вступу")),
                                     reader.GetInt32(reader.GetOrdinal("Курс")).ToString());
                                 cources.Add(cource);
                             }

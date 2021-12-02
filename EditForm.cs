@@ -217,7 +217,7 @@ namespace StudyPlan
             // 
             // bindingSource
             // 
-            bindingSource.DataMember = "AccountingWorkPrograms";
+            dataGridView.DataMember = "AccountingWorkPrograms";
             bindingSource.DataMember = "AccountingWorkPrograms";
             bindingSource.Position = 0;
             // 
@@ -254,7 +254,7 @@ namespace StudyPlan
             // 
             // bindingSource
             // 
-            bindingSource.DataMember = "Specialities";
+            dataGridView.DataMember = "Specialities";
             bindingSource.DataMember = "Specialities";
             bindingSource.Position = 0;
             // 
@@ -285,7 +285,7 @@ namespace StudyPlan
             // 
             // bindingSource
             // 
-            bindingSource.DataMember = "EntryBases";
+            dataGridView.DataMember = "EntryBases";
             bindingSource.DataMember = "EntryBases";
             bindingSource.Position = 0;
             // 
@@ -316,7 +316,7 @@ namespace StudyPlan
             // 
             // bindingSource
             // 
-            bindingSource.DataMember = "EducationLevels";
+            dataGridView.DataMember = "EducationLevels";
             bindingSource.DataMember = "EducationLevels";
             bindingSource.Position = 0;
             // 
@@ -347,7 +347,7 @@ namespace StudyPlan
             // 
             // bindingSource
             // 
-            bindingSource.DataMember = "GroupNames";
+            dataGridView.DataMember = "GroupNames";
             bindingSource.DataMember = "GroupNames";
             bindingSource.Position = 0;
             // 

@@ -474,6 +474,7 @@ namespace StudyPlan
                 case Table.Specialities:
                     Text = "Редагування освітніх професійних програм";
                     FillSpecialityTable();
+
                     break;
                 case Table.AccountingWorkPrograms:
                     Text = "Редагування обліків робочих програм";

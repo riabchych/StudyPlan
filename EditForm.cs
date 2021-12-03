@@ -444,30 +444,39 @@ namespace StudyPlan
             switch (ActiveTable)
             {
                 case Table.StudyPlans:
+                    Text = "Редагування навчальних планів";
                     FillStudyPlanTable();
                     break;
                 case Table.WorkPrograms:
+                    Text = "Редагування робочих програм";
                     FillWorkProgramTable();
                     break;
                 case Table.Disciplines:
+                    Text = "Редагування дисциплін";
                     FillDisciplineTable();
                     break;
                 case Table.Groups:
+                    Text = "Редагування груп";
                     FillGroupTable();
                     break;
                 case Table.GroupNames:
+                    Text = "Редагування назв груп";
                     FillGroupNameTable();
                     break;
                 case Table.EducationLevels:
+                    Text = "Редагування освітніх рівнів";
                     FillEducationLevelTable();
                     break;
                 case Table.EntryBases:
+                    Text = "Редагування баз вступу";
                     FillEntryBaseTable();
                     break;
                 case Table.Specialities:
+                    Text = "Редагування освітніх професійних програм";
                     FillSpecialityTable();
                     break;
                 case Table.AccountingWorkPrograms:
+                    Text = "Редагування обліків робочих програм";
                     FillAccountingWorkProgramTable();
                     break;
                 default:

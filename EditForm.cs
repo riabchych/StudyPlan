@@ -62,104 +62,147 @@ namespace StudyPlan
 
         public void FillStudyPlanTable()
         {
-            DataGridViewTextBoxColumn iDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            DataGridViewTextBoxColumn specialityDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            DataGridViewTextBoxColumn educationLevelDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            DataGridViewTextBoxColumn entryBaseDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            DataGridViewTextBoxColumn studyPlanLinkDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            DataGridViewTextBoxColumn entryYearDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+
+            bindingSource.DataMember = "StudyPlans";
+            BindingSource bindingSourceSpecialities = new BindingSource
+            {
+                DataSource = studyPlanDbDataSet,
+                DataMember = "Specialities"
+            };
+            BindingSource bindingSourceEducationLevels = new BindingSource
+            {
+                DataSource = studyPlanDbDataSet,
+                DataMember = "EducationLevels"
+            };
+            BindingSource bindingSourceEntryBases = new BindingSource
+            {
+                DataSource = studyPlanDbDataSet,
+                DataMember = "EntryBases"
+            };
+            // 
+            // iDDataGridViewTextBoxColumn
+            // 
+            DataGridViewTextBoxColumn iDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = "ID",
+                HeaderText = "ID",
+                Name = "iDDataGridViewTextBoxColumn"
+            };
+            // 
+            // specialityDataGridViewTextBoxColumn
+            // 
+            DataGridViewComboBoxColumn specialityDataGridViewComboBoxColumn = new DataGridViewComboBoxColumn
+            {
+                DataPropertyName = "Освітня професійна програма",
+                HeaderText = "Освітня професійна програма",
+                Name = "specialityDataGridViewComboBoxColumn",
+                DataSource = bindingSourceSpecialities,
+                ValueMember = "ID",
+                DisplayMember = "Назва"
+
+            };
+            // 
+            // educationLevelDataGridViewTextBoxColumn
+            // 
+            DataGridViewComboBoxColumn educationLevelDataGridViewComboBoxColumn = new DataGridViewComboBoxColumn
+            {
+                DataPropertyName = "Освітній рівень",
+                HeaderText = "Освітній рівень",
+                Name = "educationLevelDataGridViewComboBoxColumn",
+                DataSource = bindingSourceEducationLevels,
+                ValueMember = "ID",
+                DisplayMember = "Назва"
+            };
+            // 
+            // entryBaseDataGridViewTextBoxColumn
+            // 
+            DataGridViewComboBoxColumn entryBaseDataGridViewComboBoxColumn = new DataGridViewComboBoxColumn
+            {
+                DataPropertyName = "База вступу",
+                HeaderText = "База вступу",
+                Name = "entryBaseDataGridViewComboBoxColumn",
+                DataSource = bindingSourceEntryBases,
+                ValueMember = "ID",
+                DisplayMember = "Назва"
+            };
+            // 
+            // studyPlanLinkDataGridViewTextBoxColumn
+            // 
+            DataGridViewTextBoxColumn studyPlanLinkDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = "Посилання на навчальний план",
+                HeaderText = "Посилання на навчальний план",
+                Name = "studyPlanLinkDataGridViewTextBoxColumn"
+            };
+            // 
+            // entryYearDataGridViewTextBoxColumn
+            // 
+            DataGridViewTextBoxColumn entryYearDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = "Рік вступу",
+                HeaderText = "Рік вступу",
+                Name = "entryYearDataGridViewTextBoxColumn"
+            };
             // 
             // dataGridView
             // 
             dataGridView.Columns.AddRange(new DataGridViewColumn[] {
                 iDDataGridViewTextBoxColumn,
-                specialityDataGridViewTextBoxColumn,
-                educationLevelDataGridViewTextBoxColumn,
-                entryBaseDataGridViewTextBoxColumn,
+                specialityDataGridViewComboBoxColumn,
+                educationLevelDataGridViewComboBoxColumn,
+                entryBaseDataGridViewComboBoxColumn,
                 studyPlanLinkDataGridViewTextBoxColumn,
                 entryYearDataGridViewTextBoxColumn
             });
-            // 
-            // bindingSource
-            // 
-            dataGridView.DataMember = "StudyPlans";
-            bindingSource.DataMember = "StudyPlans";
-            bindingSource.Position = 0;
-            // 
-            // iDDataGridViewTextBoxColumn
-            // 
-            iDDataGridViewTextBoxColumn.DataPropertyName = "ID";
-            iDDataGridViewTextBoxColumn.HeaderText = "ID";
-            iDDataGridViewTextBoxColumn.Name = "iDDataGridViewTextBoxColumn";
-            // 
-            // specialityDataGridViewTextBoxColumn
-            // 
-            specialityDataGridViewTextBoxColumn.DataPropertyName = "Освітня професійна програма";
-            specialityDataGridViewTextBoxColumn.HeaderText = "Освітня професійна програма";
-            specialityDataGridViewTextBoxColumn.Name = "specialityDataGridViewTextBoxColumn";
-            // 
-            // educationLevelDataGridViewTextBoxColumn
-            // 
-            educationLevelDataGridViewTextBoxColumn.DataPropertyName = "Освітній рівень";
-            educationLevelDataGridViewTextBoxColumn.HeaderText = "Освітній рівень";
-            educationLevelDataGridViewTextBoxColumn.Name = "educationLevelDataGridViewTextBoxColumn";
-            // 
-            // entryBaseDataGridViewTextBoxColumn
-            // 
-            entryBaseDataGridViewTextBoxColumn.DataPropertyName = "База вступу";
-            entryBaseDataGridViewTextBoxColumn.HeaderText = "База вступу";
-            entryBaseDataGridViewTextBoxColumn.Name = "entryBaseDataGridViewTextBoxColumn";
-            // 
-            // studyPlanLinkDataGridViewTextBoxColumn
-            // 
-            studyPlanLinkDataGridViewTextBoxColumn.DataPropertyName = "Посилання на навчальний план";
-            studyPlanLinkDataGridViewTextBoxColumn.HeaderText = "Посилання на навчальний план";
-            studyPlanLinkDataGridViewTextBoxColumn.Name = "studyPlanLinkDataGridViewTextBoxColumn";
-            // 
-            // entryYearDataGridViewTextBoxColumn
-            // 
-            entryYearDataGridViewTextBoxColumn.DataPropertyName = "Рік вступу";
-            entryYearDataGridViewTextBoxColumn.HeaderText = "Рік вступу";
-            entryYearDataGridViewTextBoxColumn.Name = "entryYearDataGridViewTextBoxColumn";
         }
 
         public void FillWorkProgramTable()
         {
-            DataGridViewTextBoxColumn iDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            DataGridViewTextBoxColumn semesterDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            DataGridViewTextBoxColumn disciplinaDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+    
+            bindingSource.DataMember = "WorkPrograms";
+            //Discipline Data Source
+            BindingSource bindingSourceDisciplines = new BindingSource
+            {
+                DataSource = studyPlanDbDataSet,
+                DataMember = "Disciplines"
+            };
+            // 
+            // iDDataGridViewTextBoxColumn
+            // 
+            DataGridViewTextBoxColumn iDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = "ID",
+                HeaderText = "ID",
+                Name = "iDDataGridViewTextBoxColumn"
+            };
+            // 
+            // semesterDataGridViewTextBoxColumn
+            // 
+            DataGridViewTextBoxColumn semesterDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = "Семестр",
+                HeaderText = "Семестр",
+                Name = "semesterDataGridViewTextBoxColumn"
+            };
+            // 
+            // disciplinaDataGridViewComboBoxColumn
+            // 
+            DataGridViewComboBoxColumn disciplinaDataGridViewComboBoxColumn = new DataGridViewComboBoxColumn
+            {
+                DataPropertyName = "Дисципліна",
+                HeaderText = "Дисципліна",
+                DataSource = bindingSourceDisciplines,
+                ValueMember = "ID",
+                DisplayMember = "Назва дисципліни"
+            };
             // 
             // dataGridView
             // 
             dataGridView.Columns.AddRange(new DataGridViewColumn[] {
                 iDDataGridViewTextBoxColumn,
                 semesterDataGridViewTextBoxColumn,
-                disciplinaDataGridViewTextBoxColumn
+                disciplinaDataGridViewComboBoxColumn
             });
-            // 
-            // bindingSource
-            // 
-            dataGridView.DataMember = "WorkPrograms";
-            bindingSource.DataMember = "WorkPrograms";
-            bindingSource.Position = 0;
-            // 
-            // iDDataGridViewTextBoxColumn
-            // 
-            iDDataGridViewTextBoxColumn.DataPropertyName = "ID";
-            iDDataGridViewTextBoxColumn.HeaderText = "ID";
-            iDDataGridViewTextBoxColumn.Name = "iDDataGridViewTextBoxColumn";
-            // 
-            // semesterDataGridViewTextBoxColumn
-            // 
-            semesterDataGridViewTextBoxColumn.DataPropertyName = "Семестр";
-            semesterDataGridViewTextBoxColumn.HeaderText = "Семестр";
-            semesterDataGridViewTextBoxColumn.Name = "semesterDataGridViewTextBoxColumn";
-            // 
-            // disciplinaDataGridViewTextBoxColumn
-            // 
-            disciplinaDataGridViewTextBoxColumn.DataPropertyName = "Дисципліна";
-            disciplinaDataGridViewTextBoxColumn.HeaderText = "Дисципліна";
-            disciplinaDataGridViewTextBoxColumn.Name = "disciplinaDataGridViewTextBoxColumn";
         }
 
         private void FillGroupTable()
@@ -220,41 +263,56 @@ namespace StudyPlan
 
         private void FillAccountingWorkProgramTable()
         {
-            DataGridViewTextBoxColumn iDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            DataGridViewTextBoxColumn iDWorkProgramDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            DataGridViewTextBoxColumn iDStudyPlanDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            bindingSource.DataMember = "AccountingWorkPrograms";
+            BindingSource bindingSourceStudyPlan = new BindingSource
+            {
+                DataSource = studyPlanDbDataSet,
+                DataMember = "StudyPlans"
+            };
+            BindingSource bindingSourceWorkProgram = new BindingSource
+            {
+                DataSource = studyPlanDbDataSet,
+                DataMember = "WorkPrograms"
+            };
+            // 
+            // iDDataGridViewTextBoxColumn
+            // 
+            DataGridViewTextBoxColumn iDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = "ID",
+                HeaderText = "ID",
+                Name = "iDDataGridViewTextBoxColumn"
+            };
+            // 
+            // iDWorkProgramDataGridViewTextBoxColumn
+            // 
+            DataGridViewComboBoxColumn iDWorkProgramDataGridViewComboBoxColumn = new DataGridViewComboBoxColumn
+            {
+                DataPropertyName = "ID робочої програми",
+                HeaderText = "ID робочої програми",
+                DataSource = bindingSourceWorkProgram,
+                ValueMember = "ID",
+                DisplayMember = "ID"
+            };
+            // 
+            // studyPlanDataGridViewTextBoxColumn
+            // 
+            DataGridViewComboBoxColumn iDStudyPlanDataGridViewComboBoxColumn = new DataGridViewComboBoxColumn
+            {
+                DataPropertyName = "ID навчального плану",
+                HeaderText = "ID навчального плану",
+                DataSource = bindingSourceStudyPlan,
+                ValueMember = "ID",
+                DisplayMember = "ID"
+            };
             // 
             // dataGridView
             // 
             dataGridView.Columns.AddRange(new DataGridViewColumn[] {
                 iDDataGridViewTextBoxColumn,
-                iDWorkProgramDataGridViewTextBoxColumn,
-                iDStudyPlanDataGridViewTextBoxColumn
+                iDWorkProgramDataGridViewComboBoxColumn,
+                iDStudyPlanDataGridViewComboBoxColumn
             });
-            // 
-            // bindingSource
-            // 
-            dataGridView.DataMember = "AccountingWorkPrograms";
-            bindingSource.DataMember = "AccountingWorkPrograms";
-            bindingSource.Position = 0;
-            // 
-            // iDDataGridViewTextBoxColumn
-            // 
-            iDDataGridViewTextBoxColumn.DataPropertyName = "ID";
-            iDDataGridViewTextBoxColumn.HeaderText = "ID";
-            iDDataGridViewTextBoxColumn.Name = "iDDataGridViewTextBoxColumn";
-            // 
-            // iDWorkProgramDataGridViewTextBoxColumn
-            // 
-            iDWorkProgramDataGridViewTextBoxColumn.DataPropertyName = "ID робочої програми";
-            iDWorkProgramDataGridViewTextBoxColumn.HeaderText = "ID робочої програми";
-            iDWorkProgramDataGridViewTextBoxColumn.Name = "iDWorkProgramDataGridViewTextBoxColumn";
-            // 
-            // iDStudyPlanDataGridViewTextBoxColumn
-            // 
-            iDStudyPlanDataGridViewTextBoxColumn.DataPropertyName = "ID навчального плану";
-            iDStudyPlanDataGridViewTextBoxColumn.HeaderText = "ID навчального плану";
-            iDStudyPlanDataGridViewTextBoxColumn.Name = "iDStudyPlanDataGridViewTextBoxColumn";
         }
 
         private void FillSpecialityTable()
@@ -462,9 +520,9 @@ namespace StudyPlan
                 UpdateTable();
                 MessageBox.Show("Дані успішно оновлено!");
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                MessageBox.Show("Помилка при оновленні даних!");
+                MessageBox.Show($"Помилка при оновленні даних: {Environment.NewLine}{ex}");
             }
         }
     }

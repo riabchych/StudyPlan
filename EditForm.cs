@@ -158,7 +158,7 @@ namespace StudyPlan
 
         public void FillWorkProgramTable()
         {
-    
+
             bindingSource.DataMember = "WorkPrograms";
             //Discipline Data Source
             BindingSource bindingSourceDisciplines = new BindingSource

@@ -164,41 +164,58 @@ namespace StudyPlan
 
         private void FillGroupTable()
         {
-            DataGridViewTextBoxColumn iDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            DataGridViewTextBoxColumn studyPlanDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            DataGridViewTextBoxColumn groupNameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            bindingSource.DataMember = "Groups";
+            //GroupNames Data Source
+            BindingSource bindingSourceGroupName = new BindingSource
+            {
+                DataSource = studyPlanDbDataSet,
+                DataMember = "GroupNames"
+            };
+            //StudyPlan Data Source
+            BindingSource bindingSourceStudyPlan = new BindingSource
+            {
+                DataSource = studyPlanDbDataSet,
+                DataMember = "StudyPlans"
+            };
+            // 
+            // iDDataGridViewTextBoxColumn
+            // 
+            DataGridViewTextBoxColumn iDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = "ID",
+                HeaderText = "ID",
+                Name = "iDDataGridViewTextBoxColumn"
+            };
+            // 
+            // studyPlanDataGridViewTextBoxColumn
+            // 
+            DataGridViewComboBoxColumn studyPlanDataGridViewComboBoxColumn = new DataGridViewComboBoxColumn
+            {
+                DataPropertyName = "Навчальний план",
+                HeaderText = "Навчальний план",
+                DataSource = bindingSourceStudyPlan,
+                ValueMember = "ID",
+                DisplayMember = "ID"
+            };
+            // 
+            // groupNameDataGridViewTextBoxColumn
+            // 
+            DataGridViewComboBoxColumn groupNameDataGridViewComboBoxColumn = new DataGridViewComboBoxColumn
+            {
+                DataPropertyName = "Назва групи",
+                HeaderText = "Назва групи",
+                DataSource = bindingSourceGroupName,
+                ValueMember = "ID",
+                DisplayMember = "Назва групи"
+            };
             // 
             // dataGridView
             // 
             dataGridView.Columns.AddRange(new DataGridViewColumn[] {
                 iDDataGridViewTextBoxColumn,
-                studyPlanDataGridViewTextBoxColumn,
-                groupNameDataGridViewTextBoxColumn
+                studyPlanDataGridViewComboBoxColumn,
+                groupNameDataGridViewComboBoxColumn
             });
-            // 
-            // bindingSource
-            // 
-            dataGridView.DataMember = "Groups";
-            bindingSource.DataMember = "Groups";
-            bindingSource.Position = 0;
-            // 
-            // iDDataGridViewTextBoxColumn
-            // 
-            iDDataGridViewTextBoxColumn.DataPropertyName = "ID";
-            iDDataGridViewTextBoxColumn.HeaderText = "ID";
-            iDDataGridViewTextBoxColumn.Name = "iDDataGridViewTextBoxColumn";
-            // 
-            // studyPlanDataGridViewTextBoxColumn
-            // 
-            studyPlanDataGridViewTextBoxColumn.DataPropertyName = "Навчальний план";
-            studyPlanDataGridViewTextBoxColumn.HeaderText = "Навчальний план";
-            studyPlanDataGridViewTextBoxColumn.Name = "studyPlanDataGridViewTextBoxColumn";
-            // 
-            // groupNameDataGridViewTextBoxColumn
-            // 
-            groupNameDataGridViewTextBoxColumn.DataPropertyName = "Назва групи";
-            groupNameDataGridViewTextBoxColumn.HeaderText = "Назва групи";
-            groupNameDataGridViewTextBoxColumn.Name = "groupNameDataGridViewTextBoxColumn";
         }
 
         private void FillAccountingWorkProgramTable()

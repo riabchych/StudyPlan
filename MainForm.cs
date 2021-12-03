@@ -310,7 +310,6 @@ namespace StudyPlan
                         FillGroupCb();
                     }
                 }
-
             }
         }
 

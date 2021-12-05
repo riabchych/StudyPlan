@@ -227,7 +227,7 @@ namespace StudyPlan
 
         private string BeautyfyUrl(string url)
         {
-            return url.Trim('#');
+            return url == string.Empty ? url : url.Trim('#');
         }
 
         /*

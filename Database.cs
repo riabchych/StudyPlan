@@ -41,8 +41,9 @@ namespace StudyPlan
                 try
                 {
                     connection.Open();
-                    DataTable dt = connection.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, new object[] { null, null, null, "TABLE" });
-                    
+                    DataTable dt = connection.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, 
+                        new object[] { null, null, null, "TABLE" });
+
                     foreach (DataRow item in dt.Rows)
                     {
                         tables.Add((string)item["TABLE_NAME"]);
@@ -70,9 +71,15 @@ namespace StudyPlan
             using (OleDbConnection connection = new OleDbConnection(CnnString))
             {
                 OleDbCommand command = new OleDbCommand();
-                string commText = $@"SELECT DISTINCT [Бази вступу].ID, [Бази вступу].Назва
-FROM ([Бази вступу] INNER JOIN [Навчальні плани] ON [Бази вступу].ID = [Навчальні плани].[База вступу]) INNER JOIN Групи ON [Навчальні плани].ID = Групи.[Навчальний план]
-WHERE ((([Навчальні плани].[Рік вступу])={entryYear}) AND ((Групи.ID)={groupId}))";
+                string commText = $@"
+                    SELECT DISTINCT [{Table.EntryBases}].ID, [{Table.EntryBases}].Назва
+                    FROM ([{Table.EntryBases}] 
+                    INNER JOIN [{Table.StudyPlans}] 
+                        ON [{Table.EntryBases}].ID = [{Table.StudyPlans}].[База вступу]) 
+                    INNER JOIN {Table.Groups} 
+                        ON [{Table.StudyPlans}].ID = {Table.Groups}.[Навчальний план]
+                    WHERE ((([{Table.StudyPlans}].[Рік вступу])={entryYear}) 
+                        AND (({Table.Groups}.ID)={groupId}))";
                 command.CommandText = commText;
                 command.Connection = connection;
                 try
@@ -116,7 +123,7 @@ WHERE ((([Навчальні плани].[Рік вступу])={entryYear}) AND
             using (OleDbConnection connection = new OleDbConnection(CnnString))
             {
                 OleDbCommand command = new OleDbCommand();
-                string commText = $"SELECT * FROM [Навчальні плани] WHERE [ID]={id}";
+                string commText = $"SELECT * FROM [{Table.StudyPlans}] WHERE ID={id}";
                 command.CommandText = commText;
                 command.Connection = connection;
                 try
@@ -129,7 +136,7 @@ WHERE ((([Навчальні плани].[Рік вступу])={entryYear}) AND
                             reader.Read();
                             Plan plan = new Plan
                             {
-                                Id = (int)reader["ID"],
+                                Id = reader.GetInt32(reader.GetOrdinal("ID")),
                                 EntryYear = reader.GetInt32(reader.GetOrdinal("Рік вступу")),
                                 EntryBase = reader.GetInt32(reader.GetOrdinal("База вступу")),
                                 Link = reader.GetString(reader.GetOrdinal("Посилання на навчальний план")),
@@ -160,9 +167,20 @@ WHERE ((([Навчальні плани].[Рік вступу])={entryYear}) AND
             using (OleDbConnection connection = new OleDbConnection(CnnString))
             {
                 OleDbCommand command = new OleDbCommand();
-                string commText = $@"SELECT DISTINCT [Робочі програми].Семестр
-FROM [Робочі програми] INNER JOIN ((([Бази вступу] INNER JOIN [Навчальні плани] ON [Бази вступу].ID = [Навчальні плани].[База вступу]) INNER JOIN Групи ON [Навчальні плани].ID = Групи.[Навчальний план]) INNER JOIN [Облік робочих програм] ON [Навчальні плани].ID = [Облік робочих програм].[ID навчального плану]) ON [Робочі програми].ID = [Облік робочих програм].[ID робочої програми]
-WHERE ((([Навчальні плани].[Рік вступу])={entryYear}) AND ((Групи.ID)={groupId}) AND (([Навчальні плани].[База вступу])={entryBase}))";
+                string commText = $@"
+                    SELECT DISTINCT [{Table.WorkPrograms}].Семестр
+                    FROM [{Table.WorkPrograms}] 
+                        INNER JOIN ((([{Table.EntryBases}] 
+                        INNER JOIN [{Table.StudyPlans}] 
+                            ON [{Table.EntryBases}].ID = [{Table.StudyPlans}].[База вступу]) 
+                        INNER JOIN {Table.Groups} 
+                            ON [{Table.StudyPlans}].ID = {Table.Groups}.[Навчальний план]) 
+                        INNER JOIN [{Table.AccountingWorkPrograms}] 
+                            ON [{Table.StudyPlans}].ID = [{Table.AccountingWorkPrograms}].[ID навчального плану]) 
+                            ON [{Table.WorkPrograms}].ID = [{Table.AccountingWorkPrograms}].[ID робочої програми]
+                        WHERE ((([{Table.StudyPlans}].[Рік вступу])={entryYear}) 
+                            AND (({Table.Groups}.ID)={groupId}) 
+                            AND (([{Table.StudyPlans}].[База вступу])={entryBase}))";
                 command.CommandText = commText;
                 command.Connection = connection;
                 try
@@ -201,9 +219,15 @@ WHERE ((([Навчальні плани].[Рік вступу])={entryYear}) AND
             using (OleDbConnection connection = new OleDbConnection(CnnString))
             {
                 OleDbCommand command = new OleDbCommand();
-                string commText = $@"SELECT DISTINCT [Групи].[ID], [Групи].[Навчальний план], [Назви груп].[Назва групи]
-FROM [Назви груп] INNER JOIN ([Навчальні плани] INNER JOIN Групи ON [Навчальні плани].ID = Групи.[Навчальний план]) ON [Назви груп].ID = Групи.[Назва групи]
-WHERE ((([Навчальні плани].[Рік вступу])={entryYear}))";
+                string commText = $@"
+                    SELECT DISTINCT [{Table.Groups}].[ID], [{Table.Groups}].[Навчальний план], 
+                        [{Table.GroupNames}].[Назва групи]
+                    FROM [{Table.GroupNames}] 
+                    INNER JOIN ([{Table.StudyPlans}] 
+                    INNER JOIN {Table.Groups} 
+                        ON [{Table.StudyPlans}].ID = {Table.Groups}.[Навчальний план]) 
+                        ON [{Table.GroupNames}].ID = {Table.Groups}.[Назва групи]
+                    WHERE ((([{Table.StudyPlans}].[Рік вступу])={entryYear}))";
                 command.CommandText = commText;
                 command.Connection = connection;
                 try
@@ -249,9 +273,10 @@ WHERE ((([Навчальні плани].[Рік вступу])={entryYear}))";
             using (OleDbConnection connection = new OleDbConnection(CnnString))
             {
                 OleDbCommand command = new OleDbCommand();
-                string commText = $@"SELECT DISTINCT [Рік вступу],(Year(Now())-[Рік вступу]) AS [Курс]
-                                     FROM[Навчальні плани]
-                                     WHERE([Рік вступу] <= Year(Now())) AND(Year(Now()) - [Рік вступу]) > 0";
+                string commText = $@"
+                    SELECT DISTINCT [Рік вступу],(Year(Now())-[Рік вступу]) AS [Курс]
+                    FROM[{Table.StudyPlans}]
+                    WHERE([Рік вступу] <= Year(Now())) AND(Year(Now()) - [Рік вступу]) > 0";
                 command.CommandText = commText;
                 command.Connection = connection;
                 try
@@ -294,9 +319,15 @@ WHERE ((([Навчальні плани].[Рік вступу])={entryYear}))";
             using (OleDbConnection connection = new OleDbConnection(CnnString))
             {
                 OleDbCommand command = new OleDbCommand();
-                string commText = $@"SELECT DISTINCT Дисципліни.*
-FROM Дисципліни INNER JOIN([Робочі програми] INNER JOIN [Облік робочих програм] ON[Робочі програми].ID = [Облік робочих програм].[ID робочої програми]) ON Дисципліни.ID = [Робочі програми].Дисципліна
-WHERE((([Облік робочих програм].[ID навчального плану]) = {planId}) AND(([Робочі програми].Семестр) = {semester}))";
+                string commText = $@"
+                    SELECT DISTINCT {Table.Disciplines}.*
+                    FROM {Table.Disciplines} 
+                    INNER JOIN([{Table.WorkPrograms}] 
+                    INNER JOIN [{Table.AccountingWorkPrograms}] 
+                    ON[{Table.WorkPrograms}].ID = [{Table.AccountingWorkPrograms}].[ID робочої програми]) 
+                    ON {Table.Disciplines}.ID = [{Table.WorkPrograms}].Дисципліна
+                    WHERE((([{Table.AccountingWorkPrograms}].[ID навчального плану]) = {planId}) 
+                    AND(([{Table.WorkPrograms}].Семестр) = {semester}))";
                 command.CommandText = commText;
                 command.Connection = connection;
                 try
@@ -341,7 +372,10 @@ WHERE((([Облік робочих програм].[ID навчального п
             {
                 using (OleDbCommand command = new OleDbCommand())
                 {
-                    string commText = $"UPDATE [Навчальні плани] SET [Посилання на навчальний план]='{link}' WHERE [ID]={id}";
+                    string commText = $@"
+                        UPDATE [{Table.StudyPlans}]
+                        SET [Посилання на навчальний план]='{link}'
+                        WHERE [ID]={id}";
                     command.CommandType = CommandType.Text;
                     command.CommandText = commText;
                     command.Connection = connection;

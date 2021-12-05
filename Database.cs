@@ -53,7 +53,8 @@ namespace StudyPlan
                 }
                 catch (Exception ex)
                 {
-                    _ = MessageBox.Show($"Помилка отримання даних: {Environment.NewLine}{ex}");
+                    _ = MessageBox.Show($"Помилка отримання даних: {Environment.NewLine}{ex}", "Помилка",
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 finally
                 {
@@ -105,7 +106,8 @@ namespace StudyPlan
                 }
                 catch (Exception ex)
                 {
-                    _ = MessageBox.Show($"Помилка отримання даних: {Environment.NewLine}{ex}");
+                    _ = MessageBox.Show($"Помилка отримання даних: {Environment.NewLine}{ex}", "Помилка",
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 finally
                 {
@@ -149,7 +151,8 @@ namespace StudyPlan
                 }
                 catch (Exception ex)
                 {
-                    _ = MessageBox.Show($"Помилка отримання даних: {Environment.NewLine}{ex}");
+                    _ = MessageBox.Show($"Помилка отримання даних: {Environment.NewLine}{ex}", "Помилка",
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 finally
                 {
@@ -201,7 +204,8 @@ namespace StudyPlan
                 }
                 catch (Exception ex)
                 {
-                    _ = MessageBox.Show($"Помилка отримання даних: {Environment.NewLine}{ex}");
+                    _ = MessageBox.Show($"Помилка отримання даних: {Environment.NewLine}{ex}", "Помилка",
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 finally
                 {
@@ -255,7 +259,8 @@ namespace StudyPlan
                 }
                 catch (Exception ex)
                 {
-                    _ = MessageBox.Show($"Помилка отримання даних: {Environment.NewLine}{ex}");
+                    _ = MessageBox.Show($"Помилка отримання даних: {Environment.NewLine}{ex}", "Помилка",
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 finally
                 {
@@ -300,7 +305,8 @@ namespace StudyPlan
                 }
                 catch (Exception ex)
                 {
-                    _ = MessageBox.Show($"Помилка отримання даних: {Environment.NewLine}{ex}");
+                    _ = MessageBox.Show($"Помилка отримання даних: {Environment.NewLine}{ex}", "Помилка",
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 finally
                 {
@@ -353,7 +359,8 @@ namespace StudyPlan
                 }
                 catch (Exception ex)
                 {
-                    _ = MessageBox.Show($"Помилка отримання даних: {Environment.NewLine}{ex}");
+                    _ = MessageBox.Show($"Помилка отримання даних: {Environment.NewLine}{ex}", "Помилка",
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 finally
                 {
@@ -386,7 +393,8 @@ namespace StudyPlan
                     }
                     catch (Exception ex)
                     {
-                        _ = MessageBox.Show($"Помилка отримання даних: {Environment.NewLine}{ex}");
+                        _ = MessageBox.Show($"Помилка оновлення даних: {Environment.NewLine}{ex}", "Помилка", 
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     finally
                     {

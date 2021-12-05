@@ -218,7 +218,8 @@ namespace StudyPlan
          */
         private static void OpenUrl(string url)
         {
-            DialogResult dr = MessageBox.Show("Ви дійсно бажаєте перейти за посиланням в браузері?", "Навчальний план", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult dr = MessageBox.Show("Ви дійсно бажаєте перейти за посиланням в браузері?", 
+                "Підтвердження дії", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (dr == DialogResult.Yes)
             {
                 Process.Start(url);
@@ -410,7 +411,8 @@ namespace StudyPlan
          */
         private void RemoveBt_Click(object sender, EventArgs e)
         {
-            DialogResult dr = MessageBox.Show("Ви дійсно бажаєте видалити навчальний план?", "Навчальний план", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult dr = MessageBox.Show("Ви дійсно бажаєте видалити навчальний план?", 
+                "Підьвердження дії", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (dr == DialogResult.Yes)
             {

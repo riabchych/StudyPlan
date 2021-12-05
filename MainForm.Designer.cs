@@ -49,15 +49,7 @@ namespace StudyPlan
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.disciplinesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.entryBasesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.groupsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.studyPlansToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.workProgramsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.specialityToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.educationLevelsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.назвиГрупToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.облікРобочихПрограмToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editTablesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -248,81 +240,17 @@ namespace StudyPlan
             // editToolStripMenuItem
             // 
             this.editToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.disciplinesToolStripMenuItem,
-            this.entryBasesToolStripMenuItem,
-            this.назвиГрупToolStripMenuItem,
-            this.specialityToolStripMenuItem,
-            this.educationLevelsToolStripMenuItem,
-            this.groupsToolStripMenuItem,
-            this.studyPlansToolStripMenuItem,
-            this.workProgramsToolStripMenuItem,
-            this.облікРобочихПрограмToolStripMenuItem});
+            this.editTablesToolStripMenuItem});
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
             this.editToolStripMenuItem.Size = new System.Drawing.Size(87, 20);
             this.editToolStripMenuItem.Text = "Редагування";
             // 
-            // disciplinesToolStripMenuItem
+            // editTablesToolStripMenuItem
             // 
-            this.disciplinesToolStripMenuItem.Name = "disciplinesToolStripMenuItem";
-            this.disciplinesToolStripMenuItem.Size = new System.Drawing.Size(236, 22);
-            this.disciplinesToolStripMenuItem.Text = "Дисципліни";
-            this.disciplinesToolStripMenuItem.Click += new System.EventHandler(this.DisciplinesToolStripMenuItem_Click);
-            // 
-            // entryBasesToolStripMenuItem
-            // 
-            this.entryBasesToolStripMenuItem.Name = "entryBasesToolStripMenuItem";
-            this.entryBasesToolStripMenuItem.Size = new System.Drawing.Size(236, 22);
-            this.entryBasesToolStripMenuItem.Text = "Бази вступу";
-            this.entryBasesToolStripMenuItem.Click += new System.EventHandler(this.EntryBasesToolStripMenuItem_Click);
-            // 
-            // groupsToolStripMenuItem
-            // 
-            this.groupsToolStripMenuItem.Name = "groupsToolStripMenuItem";
-            this.groupsToolStripMenuItem.Size = new System.Drawing.Size(236, 22);
-            this.groupsToolStripMenuItem.Text = "Групи";
-            this.groupsToolStripMenuItem.Click += new System.EventHandler(this.GroupsToolStripMenuItem_Click);
-            // 
-            // studyPlansToolStripMenuItem
-            // 
-            this.studyPlansToolStripMenuItem.Name = "studyPlansToolStripMenuItem";
-            this.studyPlansToolStripMenuItem.Size = new System.Drawing.Size(236, 22);
-            this.studyPlansToolStripMenuItem.Text = "Навчальні плани";
-            this.studyPlansToolStripMenuItem.Click += new System.EventHandler(this.StudyPlansToolStripMenuItem_Click);
-            // 
-            // workProgramsToolStripMenuItem
-            // 
-            this.workProgramsToolStripMenuItem.Name = "workProgramsToolStripMenuItem";
-            this.workProgramsToolStripMenuItem.Size = new System.Drawing.Size(236, 22);
-            this.workProgramsToolStripMenuItem.Text = "Робочі програми";
-            this.workProgramsToolStripMenuItem.Click += new System.EventHandler(this.WorkProgramsToolStripMenuItem_Click);
-            // 
-            // specialityToolStripMenuItem
-            // 
-            this.specialityToolStripMenuItem.Name = "specialityToolStripMenuItem";
-            this.specialityToolStripMenuItem.Size = new System.Drawing.Size(236, 22);
-            this.specialityToolStripMenuItem.Text = "Освітні професійні програми";
-            this.specialityToolStripMenuItem.Click += new System.EventHandler(this.SpecialityToolStripMenuItem_Click);
-            // 
-            // educationLevelsToolStripMenuItem
-            // 
-            this.educationLevelsToolStripMenuItem.Name = "educationLevelsToolStripMenuItem";
-            this.educationLevelsToolStripMenuItem.Size = new System.Drawing.Size(236, 22);
-            this.educationLevelsToolStripMenuItem.Text = "Освітні рівні";
-            this.educationLevelsToolStripMenuItem.Click += new System.EventHandler(this.EducationLevelsToolStripMenuItem_Click);
-            // 
-            // назвиГрупToolStripMenuItem
-            // 
-            this.назвиГрупToolStripMenuItem.Name = "назвиГрупToolStripMenuItem";
-            this.назвиГрупToolStripMenuItem.Size = new System.Drawing.Size(236, 22);
-            this.назвиГрупToolStripMenuItem.Text = "Назви груп";
-            this.назвиГрупToolStripMenuItem.Click += new System.EventHandler(this.GroupNamesToolStripMenuItem_Click);
-            // 
-            // облікРобочихПрограмToolStripMenuItem
-            // 
-            this.облікРобочихПрограмToolStripMenuItem.Name = "облікРобочихПрограмToolStripMenuItem";
-            this.облікРобочихПрограмToolStripMenuItem.Size = new System.Drawing.Size(236, 22);
-            this.облікРобочихПрограмToolStripMenuItem.Text = "Облік робочих програм";
-            this.облікРобочихПрограмToolStripMenuItem.Click += new System.EventHandler(this.AccountingWorkProgramToolStripMenuItem_Click);
+            this.editTablesToolStripMenuItem.Name = "editTablesToolStripMenuItem";
+            this.editTablesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.editTablesToolStripMenuItem.Text = "Таблиці";
+            this.editTablesToolStripMenuItem.Click += new System.EventHandler(this.EditTablesToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -376,15 +304,7 @@ namespace StudyPlan
         private ToolStripMenuItem fileToolStripMenuItem;
         private ToolStripMenuItem exitToolStripMenuItem;
         private ToolStripMenuItem editToolStripMenuItem;
-        private ToolStripMenuItem disciplinesToolStripMenuItem;
-        private ToolStripMenuItem entryBasesToolStripMenuItem;
-        private ToolStripMenuItem groupsToolStripMenuItem;
-        private ToolStripMenuItem studyPlansToolStripMenuItem;
-        private ToolStripMenuItem workProgramsToolStripMenuItem;
-        private ToolStripMenuItem specialityToolStripMenuItem;
-        private ToolStripMenuItem educationLevelsToolStripMenuItem;
-        private ToolStripMenuItem назвиГрупToolStripMenuItem;
-        private ToolStripMenuItem облікРобочихПрограмToolStripMenuItem;
+        private ToolStripMenuItem editTablesToolStripMenuItem;
     }
 }
 

@@ -1,15 +1,15 @@
 ﻿namespace StudyPlan
 {
-    public enum Table
+    public static class Table
     {
-        StudyPlans = 1,
-        WorkPrograms = 2,
-        Disciplines = 3,
-        Groups = 4,
-        GroupNames = 5,
-        EducationLevels = 6,
-        EntryBases = 7,
-        Specialities = 8,
-        AccountingWorkPrograms = 9,
+        public const string StudyPlans = "Навчальні плани";
+        public const string WorkPrograms = "Робочі програми";
+        public const string Disciplines = "Дисципліни";
+        public const string Groups = "Групи";
+        public const string GroupNames = "Назви груп";
+        public const string EducationLevels = "Освітні рівні";
+        public const string EntryBases = "Бази вступу";
+        public const string Specialities = "Освітня професійна програма";
+        public const string AccountingWorkPrograms = "Облік робочих програм";
     }
 }

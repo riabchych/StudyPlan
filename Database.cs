@@ -33,6 +33,35 @@ namespace StudyPlan
                             Persist Security Info=False;";
         }
 
+        public List<string> GetTables()
+        {
+            List<string> tables = new List<string>();
+            using (OleDbConnection connection = new OleDbConnection(CnnString))
+            {
+                try
+                {
+                    connection.Open();
+                    DataTable dt = connection.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, new object[] { null, null, null, "TABLE" });
+                    
+                    foreach (DataRow item in dt.Rows)
+                    {
+                        tables.Add((string)item["TABLE_NAME"]);
+                    }
+                    connection.Close();
+                    return tables;
+                }
+                catch (Exception ex)
+                {
+                    _ = MessageBox.Show($"Помилка отримання даних: {Environment.NewLine}{ex}");
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+            return tables;
+        }
+
         /*
          * Метод отримання баз вступу за ідентифікатором групи та роком вступу
          */

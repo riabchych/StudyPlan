@@ -41,7 +41,7 @@ namespace StudyPlan
                 try
                 {
                     connection.Open();
-                    DataTable dt = connection.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, 
+                    DataTable dt = connection.GetOleDbSchemaTable(OleDbSchemaGuid.Tables,
                         new object[] { null, null, null, "TABLE" });
 
                     foreach (DataRow item in dt.Rows)
@@ -393,7 +393,7 @@ namespace StudyPlan
                     }
                     catch (Exception ex)
                     {
-                        _ = MessageBox.Show($"Помилка оновлення даних: {Environment.NewLine}{ex}", "Помилка", 
+                        _ = MessageBox.Show($"Помилка оновлення даних: {Environment.NewLine}{ex}", "Помилка",
                                 MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     finally

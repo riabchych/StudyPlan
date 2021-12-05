@@ -540,11 +540,13 @@ namespace StudyPlan
                 UpdateTable();
                 dataIsChanged = false;
                 saveToolStripButton.Enabled = false;
-                MessageBox.Show("Дані успішно оновлено!");
+                _ = MessageBox.Show($"Дані успішно оновлено", "Повідомлення",
+                                MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Помилка при оновленні даних: {Environment.NewLine}{ex}");
+                _ = MessageBox.Show($"Помилка оновлення даних: {Environment.NewLine}{ex}", "Помилка",
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
                 FillDataSet();
             }
         }
@@ -606,13 +608,13 @@ namespace StudyPlan
             }
         }
 
-        private void dataGridView_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+        private void DataGridView_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
             e.Control.PreviewKeyDown -= Control_PreviewKeyDown;
             e.Control.PreviewKeyDown += new PreviewKeyDownEventHandler(Control_PreviewKeyDown);
         }
 
-        private void dataGridView_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        private void DataGridView_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             if (!escapePressed)
             {

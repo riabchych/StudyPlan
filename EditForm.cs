@@ -319,7 +319,7 @@ namespace StudyPlan
             // dataGridView
             // 
             dataGridView.Columns.AddRange(new DataGridViewColumn[] {
-                iDDataGridViewTextBoxColumn,
+                //iDDataGridViewTextBoxColumn,
                 iDWorkProgramDataGridViewComboBoxColumn,
                 iDStudyPlanDataGridViewComboBoxColumn
             });

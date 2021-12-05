@@ -52,11 +52,11 @@ namespace StudyPlan {
         
         private global::System.Data.DataRelation relationОсвітня_професійна_програмаНавчальні_плани;
         
-        private global::System.Data.DataRelation relationНавчальні_планиОблік_робочих_програм;
-        
         private global::System.Data.DataRelation relationРобочі_програмиОблік_робочих_програм;
         
         private global::System.Data.DataRelation relationДисципліниРобочі_програми;
+        
+        private global::System.Data.DataRelation relationНавчальні_планиТаблица1;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
@@ -407,9 +407,9 @@ namespace StudyPlan {
             this.relationБази_вступуНавчальні_плани = this.Relations["Бази вступуНавчальні плани"];
             this.relationОсвітні_рівніНавчальні_плани = this.Relations["Освітні рівніНавчальні плани"];
             this.relationОсвітня_професійна_програмаНавчальні_плани = this.Relations["Освітня професійна програмаНавчальні плани"];
-            this.relationНавчальні_планиОблік_робочих_програм = this.Relations["Навчальні планиОблік робочих програм"];
             this.relationРобочі_програмиОблік_робочих_програм = this.Relations["Робочі програмиОблік робочих програм"];
             this.relationДисципліниРобочі_програми = this.Relations["ДисципліниРобочі програми"];
+            this.relationНавчальні_планиТаблица1 = this.Relations["Навчальні планиТаблица1"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -458,10 +458,6 @@ namespace StudyPlan {
                         this.tableSpecialities.IDColumn}, new global::System.Data.DataColumn[] {
                         this.tableStudyPlans.Освітня_професійна_програмаColumn}, false);
             this.Relations.Add(this.relationОсвітня_професійна_програмаНавчальні_плани);
-            this.relationНавчальні_планиОблік_робочих_програм = new global::System.Data.DataRelation("Навчальні планиОблік робочих програм", new global::System.Data.DataColumn[] {
-                        this.tableStudyPlans.IDColumn}, new global::System.Data.DataColumn[] {
-                        this.tableAccountingWorkPrograms.ID_навчального_плануColumn}, false);
-            this.Relations.Add(this.relationНавчальні_планиОблік_робочих_програм);
             this.relationРобочі_програмиОблік_робочих_програм = new global::System.Data.DataRelation("Робочі програмиОблік робочих програм", new global::System.Data.DataColumn[] {
                         this.tableWorkPrograms.IDColumn}, new global::System.Data.DataColumn[] {
                         this.tableAccountingWorkPrograms.ID_робочої_програмиColumn}, false);
@@ -470,6 +466,10 @@ namespace StudyPlan {
                         this.tableDisciplines.IDColumn}, new global::System.Data.DataColumn[] {
                         this.tableWorkPrograms.ДисциплінаColumn}, false);
             this.Relations.Add(this.relationДисципліниРобочі_програми);
+            this.relationНавчальні_планиТаблица1 = new global::System.Data.DataRelation("Навчальні планиТаблица1", new global::System.Data.DataColumn[] {
+                        this.tableStudyPlans.IDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableAccountingWorkPrograms.ID_навчального_плануColumn}, false);
+            this.Relations.Add(this.relationНавчальні_планиТаблица1);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2179,7 +2179,7 @@ namespace StudyPlan {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public AccountingWorkProgramsRow AddAccountingWorkProgramsRow(int ID, WorkProgramsRow parentWorkProgramsRowByРобочі_програмиОблік_робочих_програм, StudyPlansRow parentStudyPlansRowByНавчальні_планиОблік_робочих_програм) {
+            public AccountingWorkProgramsRow AddAccountingWorkProgramsRow(int ID, WorkProgramsRow parentWorkProgramsRowByРобочі_програмиОблік_робочих_програм, StudyPlansRow parentStudyPlansRowByНавчальні_планиТаблица1) {
                 AccountingWorkProgramsRow rowAccountingWorkProgramsRow = ((AccountingWorkProgramsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         ID,
@@ -2188,8 +2188,8 @@ namespace StudyPlan {
                 if ((parentWorkProgramsRowByРобочі_програмиОблік_робочих_програм != null)) {
                     columnValuesArray[1] = parentWorkProgramsRowByРобочі_програмиОблік_робочих_програм[0];
                 }
-                if ((parentStudyPlansRowByНавчальні_планиОблік_робочих_програм != null)) {
-                    columnValuesArray[2] = parentStudyPlansRowByНавчальні_планиОблік_робочих_програм[0];
+                if ((parentStudyPlansRowByНавчальні_планиТаблица1 != null)) {
+                    columnValuesArray[2] = parentStudyPlansRowByНавчальні_планиТаблица1[0];
                 }
                 rowAccountingWorkProgramsRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowAccountingWorkProgramsRow);
@@ -3658,11 +3658,11 @@ namespace StudyPlan {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public AccountingWorkProgramsRow[] GetAccountingWorkProgramsRows() {
-                if ((this.Table.ChildRelations["Навчальні планиОблік робочих програм"] == null)) {
+                if ((this.Table.ChildRelations["Навчальні планиТаблица1"] == null)) {
                     return new AccountingWorkProgramsRow[0];
                 }
                 else {
-                    return ((AccountingWorkProgramsRow[])(base.GetChildRows(this.Table.ChildRelations["Навчальні планиОблік робочих програм"])));
+                    return ((AccountingWorkProgramsRow[])(base.GetChildRows(this.Table.ChildRelations["Навчальні планиТаблица1"])));
                 }
             }
         }
@@ -3787,23 +3787,23 @@ namespace StudyPlan {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public StudyPlansRow Навчальні_планиRow {
-                get {
-                    return ((StudyPlansRow)(this.GetParentRow(this.Table.ParentRelations["Навчальні планиОблік робочих програм"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["Навчальні планиОблік робочих програм"]);
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public WorkProgramsRow WorkProgramsRow {
                 get {
                     return ((WorkProgramsRow)(this.GetParentRow(this.Table.ParentRelations["Робочі програмиОблік робочих програм"])));
                 }
                 set {
                     this.SetParentRow(value, this.Table.ParentRelations["Робочі програмиОблік робочих програм"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public StudyPlansRow StudyPlansRow {
+                get {
+                    return ((StudyPlansRow)(this.GetParentRow(this.Table.ParentRelations["Навчальні планиТаблица1"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["Навчальні планиТаблица1"]);
                 }
             }
             
@@ -6209,32 +6209,30 @@ namespace StudyPlan.StudyPlanDbDataSetTableAdapters {
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.OleDb.OleDbCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM `Облік робочих програм` WHERE ((`ID` = ?) AND (`ID робочої програми` " +
-                "= ?) AND ((? = 1 AND `ID навчального плану` IS NULL) OR (`ID навчального плану` " +
-                "= ?)))";
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM `Облік робочих програм` WHERE ((`ID` = ?) AND ((? = 1 AND `ID робочої" +
+                " програми` IS NULL) OR (`ID робочої програми` = ?)) AND ((? = 1 AND `ID навчальн" +
+                "ого плану` IS NULL) OR (`ID навчального плану` = ?)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_ID", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ID", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_ID_робочої_програми", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ID робочої програми", global::System.Data.DataRowVersion.Original, true, null));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_ID_робочої_програми", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ID робочої програми", global::System.Data.DataRowVersion.Original, false, null));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_ID_навчального_плану", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ID навчального плану", global::System.Data.DataRowVersion.Original, true, null));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_ID_навчального_плану", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ID навчального плану", global::System.Data.DataRowVersion.Original, false, null));
             this._adapter.InsertCommand = new global::System.Data.OleDb.OleDbCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO `Облік робочих програм` (`ID`, `ID робочої програми`, `ID навчального" +
-                " плану`) VALUES (?, ?, ?)";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO `Облік робочих програм` (`ID робочої програми`, `ID навчального плану" +
+                "`) VALUES (?, ?)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("ID", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ID", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("ID_робочої_програми", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ID робочої програми", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("ID_навчального_плану", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ID навчального плану", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.UpdateCommand = new global::System.Data.OleDb.OleDbCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = "UPDATE `Облік робочих програм` SET `ID` = ?, `ID робочої програми` = ?, `ID навча" +
-                "льного плану` = ? WHERE ((`ID` = ?) AND (`ID робочої програми` = ?) AND ((? = 1 " +
-                "AND `ID навчального плану` IS NULL) OR (`ID навчального плану` = ?)))";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE `Облік робочих програм` SET `ID робочої програми` = ?, `ID навчального плану` = ? WHERE ((`ID` = ?) AND ((? = 1 AND `ID робочої програми` IS NULL) OR (`ID робочої програми` = ?)) AND ((? = 1 AND `ID навчального плану` IS NULL) OR (`ID навчального плану` = ?)))";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("ID", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ID", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("ID_робочої_програми", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ID робочої програми", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("ID_навчального_плану", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ID навчального плану", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_ID", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ID", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_ID_робочої_програми", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ID робочої програми", global::System.Data.DataRowVersion.Original, true, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_ID_робочої_програми", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ID робочої програми", global::System.Data.DataRowVersion.Original, false, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_ID_навчального_плану", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ID навчального плану", global::System.Data.DataRowVersion.Original, true, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_ID_навчального_плану", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ID навчального плану", global::System.Data.DataRowVersion.Original, false, null));
@@ -6253,8 +6251,8 @@ namespace StudyPlan.StudyPlanDbDataSetTableAdapters {
             this._commandCollection = new global::System.Data.OleDb.OleDbCommand[1];
             this._commandCollection[0] = new global::System.Data.OleDb.OleDbCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT ID, [ID робочої програми], [ID навчального плану] FROM [Облік робочих прог" +
-                "рам]";
+            this._commandCollection[0].CommandText = "SELECT        ID, [ID робочої програми], [ID навчального плану]\r\nFROM            " +
+                "[Облік робочих програм]";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -6315,16 +6313,23 @@ namespace StudyPlan.StudyPlanDbDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_ID, int Original_ID_робочої_програми, global::System.Nullable<int> Original_ID_навчального_плану) {
+        public virtual int Delete(int Original_ID, global::System.Nullable<int> Original_ID_робочої_програми, global::System.Nullable<int> Original_ID_навчального_плану) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_ID));
-            this.Adapter.DeleteCommand.Parameters[1].Value = ((int)(Original_ID_робочої_програми));
-            if ((Original_ID_навчального_плану.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[2].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[3].Value = ((int)(Original_ID_навчального_плану.Value));
+            if ((Original_ID_робочої_програми.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[2].Value = ((int)(Original_ID_робочої_програми.Value));
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[2].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[3].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            if ((Original_ID_навчального_плану.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[4].Value = ((int)(Original_ID_навчального_плану.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -6346,14 +6351,18 @@ namespace StudyPlan.StudyPlanDbDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(int ID, int ID_робочої_програми, global::System.Nullable<int> ID_навчального_плану) {
-            this.Adapter.InsertCommand.Parameters[0].Value = ((int)(ID));
-            this.Adapter.InsertCommand.Parameters[1].Value = ((int)(ID_робочої_програми));
-            if ((ID_навчального_плану.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[2].Value = ((int)(ID_навчального_плану.Value));
+        public virtual int Insert(global::System.Nullable<int> ID_робочої_програми, global::System.Nullable<int> ID_навчального_плану) {
+            if ((ID_робочої_програми.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[0].Value = ((int)(ID_робочої_програми.Value));
             }
             else {
-                this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
+                this.Adapter.InsertCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            if ((ID_навчального_плану.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[1].Value = ((int)(ID_навчального_плану.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -6375,17 +6384,28 @@ namespace StudyPlan.StudyPlanDbDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int ID, int ID_робочої_програми, global::System.Nullable<int> ID_навчального_плану, int Original_ID, int Original_ID_робочої_програми, global::System.Nullable<int> Original_ID_навчального_плану) {
-            this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(ID));
-            this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(ID_робочої_програми));
-            if ((ID_навчального_плану.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(ID_навчального_плану.Value));
+        public virtual int Update(global::System.Nullable<int> ID_робочої_програми, global::System.Nullable<int> ID_навчального_плану, int Original_ID, global::System.Nullable<int> Original_ID_робочої_програми, global::System.Nullable<int> Original_ID_навчального_плану) {
+            if ((ID_робочої_програми.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(ID_робочої_програми.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[2].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
-            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(Original_ID));
-            this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(Original_ID_робочої_програми));
+            if ((ID_навчального_плану.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(ID_навчального_плану.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(Original_ID));
+            if ((Original_ID_робочої_програми.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(Original_ID_робочої_програми.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
+            }
             if ((Original_ID_навчального_плану.HasValue == true)) {
                 this.Adapter.UpdateCommand.Parameters[5].Value = ((object)(0));
                 this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(Original_ID_навчального_плану.Value));
@@ -6414,8 +6434,8 @@ namespace StudyPlan.StudyPlanDbDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(global::System.Nullable<int> ID_навчального_плану, int Original_ID, int Original_ID_робочої_програми, global::System.Nullable<int> Original_ID_навчального_плану) {
-            return this.Update(Original_ID, Original_ID_робочої_програми, ID_навчального_плану, Original_ID, Original_ID_робочої_програми, Original_ID_навчального_плану);
+        public virtual int Update(global::System.Nullable<int> ID_навчального_плану, int Original_ID, global::System.Nullable<int> Original_ID_робочої_програми, global::System.Nullable<int> Original_ID_навчального_плану) {
+            return this.Update(Original_ID_робочої_програми, ID_навчального_плану, Original_ID, Original_ID_робочої_програми, Original_ID_навчального_плану);
         }
     }
     

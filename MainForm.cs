@@ -218,7 +218,8 @@ namespace StudyPlan
          */
         private static void OpenUrl(string url)
         {
-            DialogResult dr = MessageBox.Show("Ви дійсно бажаєте перейти за посиланням в браузері?", "Навчальний план", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult dr = MessageBox.Show("Ви дійсно бажаєте перейти за посиланням в браузері?",
+                "Підтвердження дії", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (dr == DialogResult.Yes)
             {
                 Process.Start(url);
@@ -227,7 +228,7 @@ namespace StudyPlan
 
         private string BeautyfyUrl(string url)
         {
-            return url.Trim('#');
+            return url == string.Empty ? url : url.Trim('#');
         }
 
         /*
@@ -410,7 +411,8 @@ namespace StudyPlan
          */
         private void RemoveBt_Click(object sender, EventArgs e)
         {
-            DialogResult dr = MessageBox.Show("Ви дійсно бажаєте видалити навчальний план?", "Навчальний план", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult dr = MessageBox.Show("Ви дійсно бажаєте видалити навчальний план?",
+                "Підьвердження дії", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (dr == DialogResult.Yes)
             {
@@ -419,50 +421,9 @@ namespace StudyPlan
             }
         }
 
-        private void DisciplinesToolStripMenuItem_Click(object sender, EventArgs e)
+        private void EditTablesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            _ = new EditForm(Table.Disciplines).ShowDialog();
-        }
-
-        private void GroupsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            _ = new EditForm(Table.Groups).ShowDialog();
-        }
-
-        private void EntryBasesToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            _ = new EditForm(Table.EntryBases).ShowDialog();
-        }
-
-        private void StudyPlansToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            _ = new EditForm(Table.StudyPlans).ShowDialog();
-        }
-
-        private void WorkProgramsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            _ = new EditForm(Table.WorkPrograms).ShowDialog();
-        }
-
-        private void SpecialityToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            _ = new EditForm(Table.Specialities).ShowDialog();
-        }
-
-        private void EducationLevelsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            _ = new EditForm(Table.EducationLevels).ShowDialog();
-        }
-
-        private void GroupNamesToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            _ = new EditForm(Table.GroupNames).ShowDialog();
-
-        }
-
-        private void AccountingWorkProgramToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            _ = new EditForm(Table.AccountingWorkPrograms).ShowDialog();
+            _ = new EditForm().ShowDialog();
         }
 
         private void ExitToolStripMenuItem_Click(object sender, EventArgs e)

@@ -5,18 +5,25 @@ namespace StudyPlan
 {
     public partial class EditForm : Form
     {
-        private Table _activeTable;
+        private string activeTable;
+        private bool escapePressed;
+        public bool dataIsChanged;
 
-        public Table ActiveTable { get => _activeTable; set => _activeTable = value; }
-
-        public EditForm(Table activeTable)
+        public EditForm()
         {
-            _activeTable = activeTable;
             InitializeComponent();
-            ShowTable();
+            dataGridView.UserDeletingRow += UserDeletingRow;
+            bindingNavigatorDeleteItem.Click += UserDeletingRow;
         }
 
         private void BaseForm_Load(object sender, EventArgs e)
+        {
+            FillDataSet();
+            // Отримання списку таблиць
+            listTablesListBox.DataSource = new Database().GetTables();
+        }
+
+        private void FillDataSet()
         {
             // TODO: данная строка кода позволяет загрузить данные в таблицу "studyPlanDbDataSet1.WorkPrograms". При необходимости она может быть перемещена или удалена.
             workProgramsTableAdapter.Fill(studyPlanDbDataSet.WorkPrograms);
@@ -36,17 +43,18 @@ namespace StudyPlan
             entryBasesTableAdapter.Fill(studyPlanDbDataSet.EntryBases);
             // TODO: данная строка кода позволяет загрузить данные в таблицу "studyPlanDbDataSet1.Disciplines". При необходимости она может быть перемещена или удалена.
             disciplinesTableAdapter.Fill(studyPlanDbDataSet.Disciplines);
+
         }
 
         public void FillDisciplineTable()
         {
-            dataGridView.DataMember = "Disciplines";
+            dataGridView.Columns.Clear();
             bindingSource.DataMember = "Disciplines";
             bindingSource.Position = 0;
             DataGridViewTextBoxColumn iDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             DataGridViewTextBoxColumn disciplneNameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             dataGridView.Columns.AddRange(new DataGridViewColumn[] {
-                iDDataGridViewTextBoxColumn,
+                //iDDataGridViewTextBoxColumn,
                 disciplneNameDataGridViewTextBoxColumn
             });
             // 
@@ -62,7 +70,7 @@ namespace StudyPlan
 
         public void FillStudyPlanTable()
         {
-
+            dataGridView.Columns.Clear();
             bindingSource.DataMember = "StudyPlans";
             BindingSource bindingSourceSpecialities = new BindingSource
             {
@@ -147,7 +155,7 @@ namespace StudyPlan
             // dataGridView
             // 
             dataGridView.Columns.AddRange(new DataGridViewColumn[] {
-                iDDataGridViewTextBoxColumn,
+                //iDDataGridViewTextBoxColumn,
                 specialityDataGridViewComboBoxColumn,
                 educationLevelDataGridViewComboBoxColumn,
                 entryBaseDataGridViewComboBoxColumn,
@@ -158,7 +166,7 @@ namespace StudyPlan
 
         public void FillWorkProgramTable()
         {
-
+            dataGridView.Columns.Clear();
             bindingSource.DataMember = "WorkPrograms";
             //Discipline Data Source
             BindingSource bindingSourceDisciplines = new BindingSource
@@ -199,7 +207,7 @@ namespace StudyPlan
             // dataGridView
             // 
             dataGridView.Columns.AddRange(new DataGridViewColumn[] {
-                iDDataGridViewTextBoxColumn,
+                //iDDataGridViewTextBoxColumn,
                 semesterDataGridViewTextBoxColumn,
                 disciplinaDataGridViewComboBoxColumn
             });
@@ -207,6 +215,7 @@ namespace StudyPlan
 
         private void FillGroupTable()
         {
+            dataGridView.Columns.Clear();
             bindingSource.DataMember = "Groups";
             //GroupNames Data Source
             BindingSource bindingSourceGroupName = new BindingSource
@@ -255,7 +264,7 @@ namespace StudyPlan
             // dataGridView
             // 
             dataGridView.Columns.AddRange(new DataGridViewColumn[] {
-                iDDataGridViewTextBoxColumn,
+                //iDDataGridViewTextBoxColumn,
                 studyPlanDataGridViewComboBoxColumn,
                 groupNameDataGridViewComboBoxColumn
             });
@@ -263,6 +272,7 @@ namespace StudyPlan
 
         private void FillAccountingWorkProgramTable()
         {
+            dataGridView.Columns.Clear();
             bindingSource.DataMember = "AccountingWorkPrograms";
             BindingSource bindingSourceStudyPlan = new BindingSource
             {
@@ -309,7 +319,7 @@ namespace StudyPlan
             // dataGridView
             // 
             dataGridView.Columns.AddRange(new DataGridViewColumn[] {
-                iDDataGridViewTextBoxColumn,
+                //iDDataGridViewTextBoxColumn,
                 iDWorkProgramDataGridViewComboBoxColumn,
                 iDStudyPlanDataGridViewComboBoxColumn
             });
@@ -317,19 +327,19 @@ namespace StudyPlan
 
         private void FillSpecialityTable()
         {
+            dataGridView.Columns.Clear();
             DataGridViewTextBoxColumn iDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             // 
             // dataGridView
             // 
             dataGridView.Columns.AddRange(new DataGridViewColumn[] {
-                iDDataGridViewTextBoxColumn,
+                //iDDataGridViewTextBoxColumn,
                 nameDataGridViewTextBoxColumn
             });
             // 
             // bindingSource
             // 
-            dataGridView.DataMember = "Specialities";
             bindingSource.DataMember = "Specialities";
             bindingSource.Position = 0;
             // 
@@ -348,19 +358,19 @@ namespace StudyPlan
 
         private void FillEntryBaseTable()
         {
+            dataGridView.Columns.Clear();
             DataGridViewTextBoxColumn iDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             // 
             // dataGridView
             // 
             dataGridView.Columns.AddRange(new DataGridViewColumn[] {
-                iDDataGridViewTextBoxColumn,
+                //iDDataGridViewTextBoxColumn,
                 nameDataGridViewTextBoxColumn
             });
             // 
             // bindingSource
             // 
-            dataGridView.DataMember = "EntryBases";
             bindingSource.DataMember = "EntryBases";
             bindingSource.Position = 0;
             // 
@@ -379,19 +389,19 @@ namespace StudyPlan
 
         private void FillEducationLevelTable()
         {
+            dataGridView.Columns.Clear();
             DataGridViewTextBoxColumn iDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             // 
             // dataGridView
             // 
             dataGridView.Columns.AddRange(new DataGridViewColumn[] {
-                iDDataGridViewTextBoxColumn,
+                //iDDataGridViewTextBoxColumn,
                 nameDataGridViewTextBoxColumn
             });
             // 
             // bindingSource
             // 
-            dataGridView.DataMember = "EducationLevels";
             bindingSource.DataMember = "EducationLevels";
             bindingSource.Position = 0;
             // 
@@ -410,19 +420,19 @@ namespace StudyPlan
 
         private void FillGroupNameTable()
         {
+            dataGridView.Columns.Clear();
             DataGridViewTextBoxColumn iDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             DataGridViewTextBoxColumn groupNameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             // 
             // dataGridView
             // 
             dataGridView.Columns.AddRange(new DataGridViewColumn[] {
-                iDDataGridViewTextBoxColumn,
+                //iDDataGridViewTextBoxColumn,
                 groupNameDataGridViewTextBoxColumn
             });
             // 
             // bindingSource
             // 
-            dataGridView.DataMember = "GroupNames";
             bindingSource.DataMember = "GroupNames";
             bindingSource.Position = 0;
             // 
@@ -441,53 +451,53 @@ namespace StudyPlan
 
         private void ShowTable()
         {
-            switch (ActiveTable)
+            switch (activeTable)
             {
                 case Table.StudyPlans:
-                    Text = "Редагування навчальних планів";
+                    editTablesGroupBox.Text = "Редагування навчальних планів";
                     FillStudyPlanTable();
                     break;
                 case Table.WorkPrograms:
-                    Text = "Редагування робочих програм";
+                    editTablesGroupBox.Text = "Редагування робочих програм";
                     FillWorkProgramTable();
                     break;
                 case Table.Disciplines:
-                    Text = "Редагування дисциплін";
+                    editTablesGroupBox.Text = "Редагування дисциплін";
                     FillDisciplineTable();
                     break;
                 case Table.Groups:
-                    Text = "Редагування груп";
+                    editTablesGroupBox.Text = "Редагування груп";
                     FillGroupTable();
                     break;
                 case Table.GroupNames:
-                    Text = "Редагування назв груп";
+                    editTablesGroupBox.Text = "Редагування назв груп";
                     FillGroupNameTable();
                     break;
                 case Table.EducationLevels:
-                    Text = "Редагування освітніх рівнів";
+                    editTablesGroupBox.Text = "Редагування освітніх рівнів";
                     FillEducationLevelTable();
                     break;
                 case Table.EntryBases:
-                    Text = "Редагування баз вступу";
+                    editTablesGroupBox.Text = "Редагування баз вступу";
                     FillEntryBaseTable();
                     break;
                 case Table.Specialities:
-                    Text = "Редагування освітніх професійних програм";
+                    editTablesGroupBox.Text = "Редагування освітніх професійних програм";
                     FillSpecialityTable();
-
                     break;
                 case Table.AccountingWorkPrograms:
-                    Text = "Редагування обліків робочих програм";
+                    editTablesGroupBox.Text = "Редагування обліків робочих програм";
                     FillAccountingWorkProgramTable();
                     break;
                 default:
+                    editTablesGroupBox.Text = "";
                     break;
             }
         }
 
         private void UpdateTable()
         {
-            switch (ActiveTable)
+            switch (activeTable)
             {
                 case Table.StudyPlans:
                     studyPlansTableAdapter.Update(studyPlanDbDataSet.StudyPlans);
@@ -521,19 +531,97 @@ namespace StudyPlan
             }
         }
 
-        private void SaveButton_Click(object sender, EventArgs e)
+        private void UpdateData()
         {
             try
             {
                 Validate();
                 bindingSource.EndEdit();
                 UpdateTable();
-                MessageBox.Show("Дані успішно оновлено!");
+                dataIsChanged = false;
+                saveToolStripButton.Enabled = false;
+                _ = MessageBox.Show($"Дані успішно оновлено", "Повідомлення",
+                                MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Помилка при оновленні даних: {Environment.NewLine}{ex}");
+                _ = MessageBox.Show($"Помилка оновлення даних: {Environment.NewLine}{ex}", "Помилка",
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+                FillDataSet();
             }
+        }
+
+        private void ListTablesListBox_SelectedValueChanged(object sender, EventArgs e)
+        {
+            if (listTablesListBox.SelectedIndex != -1)
+            {
+                if (dataIsChanged)
+                {
+                    if (MessageBox.Show("Ви не зберегли зміни, бажаєте зберегти?", "Підтвердження дії",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        UpdateData();
+                    }
+                    else
+                    {
+                        FillDataSet();
+                    }
+
+                }
+                activeTable = listTablesListBox.SelectedValue.ToString();
+                ShowTable();
+                dataIsChanged = false;
+                saveToolStripButton.Enabled = false;
+            }
+        }
+
+        private void UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
+        {
+            if (MessageBox.Show("Ви дійсно бажаєте видалити рядок?", "Підтвердження дії",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes)
+            {
+                e.Cancel = true;
+            }
+        }
+
+        private void UserDeletingRow(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Ви дійсно бажаєте видалити рядок?", "Підтвердження дії",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                bindingSource.RemoveCurrent();
+                dataIsChanged = true;
+                saveToolStripButton.Enabled = true;
+            }
+        }
+
+        private void SaveToolStripButton_Click(object sender, EventArgs e)
+        {
+            UpdateData();
+        }
+
+        void Control_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                escapePressed = true;
+            }
+        }
+
+        private void DataGridView_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+        {
+            e.Control.PreviewKeyDown -= Control_PreviewKeyDown;
+            e.Control.PreviewKeyDown += new PreviewKeyDownEventHandler(Control_PreviewKeyDown);
+        }
+
+        private void DataGridView_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            if (!escapePressed)
+            {
+                dataIsChanged = true;
+                saveToolStripButton.Enabled = true;
+            }
+            else escapePressed = false;
         }
     }
 }

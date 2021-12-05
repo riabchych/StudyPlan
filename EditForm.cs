@@ -43,7 +43,7 @@ namespace StudyPlan
             entryBasesTableAdapter.Fill(studyPlanDbDataSet.EntryBases);
             // TODO: данная строка кода позволяет загрузить данные в таблицу "studyPlanDbDataSet1.Disciplines". При необходимости она может быть перемещена или удалена.
             disciplinesTableAdapter.Fill(studyPlanDbDataSet.Disciplines);
-            
+
         }
 
         public void FillDisciplineTable()

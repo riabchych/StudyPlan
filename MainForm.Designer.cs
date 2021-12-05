@@ -248,7 +248,7 @@ namespace StudyPlan
             // editTablesToolStripMenuItem
             // 
             this.editTablesToolStripMenuItem.Name = "editTablesToolStripMenuItem";
-            this.editTablesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.editTablesToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
             this.editTablesToolStripMenuItem.Text = "Таблиці";
             this.editTablesToolStripMenuItem.Click += new System.EventHandler(this.EditTablesToolStripMenuItem_Click);
             // 
@@ -273,6 +273,8 @@ namespace StudyPlan
             this.Controls.Add(this.courseCb);
             this.Controls.Add(this.entryBaseCb);
             this.Controls.Add(this.menuStrip);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "MainForm";
             this.Text = "Навчальний план";
             this.Load += new System.EventHandler(this.Form1_Load);

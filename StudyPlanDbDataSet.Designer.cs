@@ -4516,7 +4516,7 @@ namespace StudyPlan.StudyPlanDbDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.OleDb.OleDbConnection();
-            this._connection.ConnectionString = global::StudyPlan.Properties.Settings.Default.StudyPlanDbConnectionString;
+            this._connection.ConnectionString = global::StudyPlan.Properties.Settings.Default.DbConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4828,7 +4828,7 @@ namespace StudyPlan.StudyPlanDbDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.OleDb.OleDbConnection();
-            this._connection.ConnectionString = global::StudyPlan.Properties.Settings.Default.StudyPlanDbConnectionString;
+            this._connection.ConnectionString = global::StudyPlan.Properties.Settings.Default.DbConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5149,7 +5149,7 @@ namespace StudyPlan.StudyPlanDbDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.OleDb.OleDbConnection();
-            this._connection.ConnectionString = global::StudyPlan.Properties.Settings.Default.StudyPlanDbConnectionString;
+            this._connection.ConnectionString = global::StudyPlan.Properties.Settings.Default.DbConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5513,7 +5513,7 @@ namespace StudyPlan.StudyPlanDbDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.OleDb.OleDbConnection();
-            this._connection.ConnectionString = global::StudyPlan.Properties.Settings.Default.StudyPlanDbConnectionString;
+            this._connection.ConnectionString = global::StudyPlan.Properties.Settings.Default.DbConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5922,7 +5922,7 @@ namespace StudyPlan.StudyPlanDbDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.OleDb.OleDbConnection();
-            this._connection.ConnectionString = global::StudyPlan.Properties.Settings.Default.StudyPlanDbConnectionString;
+            this._connection.ConnectionString = global::StudyPlan.Properties.Settings.Default.DbConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6242,7 +6242,7 @@ namespace StudyPlan.StudyPlanDbDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.OleDb.OleDbConnection();
-            this._connection.ConnectionString = global::StudyPlan.Properties.Settings.Default.StudyPlanDbConnectionString;
+            this._connection.ConnectionString = global::StudyPlan.Properties.Settings.Default.DbConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6591,7 +6591,7 @@ namespace StudyPlan.StudyPlanDbDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.OleDb.OleDbConnection();
-            this._connection.ConnectionString = global::StudyPlan.Properties.Settings.Default.StudyPlanDbConnectionString;
+            this._connection.ConnectionString = global::StudyPlan.Properties.Settings.Default.DbConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6903,7 +6903,7 @@ namespace StudyPlan.StudyPlanDbDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.OleDb.OleDbConnection();
-            this._connection.ConnectionString = global::StudyPlan.Properties.Settings.Default.StudyPlanDbConnectionString;
+            this._connection.ConnectionString = global::StudyPlan.Properties.Settings.Default.DbConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -7224,7 +7224,7 @@ namespace StudyPlan.StudyPlanDbDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.OleDb.OleDbConnection();
-            this._connection.ConnectionString = global::StudyPlan.Properties.Settings.Default.StudyPlanDbConnectionString;
+            this._connection.ConnectionString = global::StudyPlan.Properties.Settings.Default.DbConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

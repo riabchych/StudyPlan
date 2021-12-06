@@ -1,33 +1,28 @@
 ﻿namespace StudyPlan
 {
-    /*
-     * Структура яка служить для збереження даних під час вибору
-     * значень у випадаючих списках (ComboBox)
-     */
+    /// <summary>
+    /// Клас для збереження даних під час вибору значень у випадаючих списках
+    /// </summary>
     public class SearchData
     {
-        private int _group;
-        private int _entryBase;
-        private int _semester;
-        private int _entryYear;
-        private int _plan;
-        private int _discipline;
-
+        /// <summary>
+        /// Конструктор за замовчуванням
+        /// </summary>
         public SearchData()
         {
-            _group = 0;
-            _entryBase = 0;
-            _semester = 0;
-            _entryYear = 0;
-            _plan = 0;
-            _discipline = 0;
+            Group = 0;
+            EntryBase = 0;
+            Semester = 0;
+            EntryYear = 0;
+            Plan = 0;
+            Discipline = 0;
         }
 
-        public int Group { get => _group; set => _group = value; }
-        public int EntryBase { get => _entryBase; set => _entryBase = value; }
-        public int Semester { get => _semester; set => _semester = value; }
-        public int EntryYear { get => _entryYear; set => _entryYear = value; }
-        public int Plan { get => _plan; set => _plan = value; }
-        public int Discipline { get => _discipline; set => _discipline = value; }
+        public int Group { get; set; }
+        public int EntryBase { get; set; }
+        public int Semester { get; set; }
+        public int EntryYear { get; set; }
+        public int Plan { get; set; }
+        public int Discipline { get; set; }
     }
 }

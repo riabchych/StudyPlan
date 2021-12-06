@@ -343,7 +343,7 @@
             this.Controls.Add(this.splitContainer1);
             this.Name = "EditForm";
             this.Text = "Редагування даних";
-            this.Load += new System.EventHandler(this.BaseForm_Load);
+            this.Load += new System.EventHandler(this.EditForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.studyPlanDbDataSet)).EndInit();
             this.splitContainer1.Panel1.ResumeLayout(false);

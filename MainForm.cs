@@ -6,41 +6,49 @@ using System.Windows.Forms;
 
 namespace StudyPlan
 {
+    /// <summary>
+    /// Клас головної форми
+    /// </summary>
     public partial class MainForm : Form
     {
-        private readonly Database db;
-        private readonly SearchData searchData;
-        private List<EntryBase> entryBases;
-        private List<Group> groups;
-        private List<int> semesters;
-        private List<Discipline> disciplines;
-        private List<Item> cources;
-        private Plan plan;
-        public List<EntryBase> EntryBases { get => entryBases; set => entryBases = value; }
-        public List<Group> Groups { get => groups; set => groups = value; }
-        public List<int> Semesters { get => semesters; set => semesters = value; }
-        public List<Discipline> Disciplines { get => disciplines; set => disciplines = value; }
-        public List<Item> Cources { get => cources; set => cources = value; }
-        public Plan Plan { get => plan; set => plan = value; }
+        private readonly Database Db;
+        private readonly SearchData SearchData;
+        private readonly EditForm EditForm;
+        public List<EntryBase> EntryBases { get; set; }
+        public List<Group> Groups { get; set; }
+        public List<int> Semesters { get; set; }
+        public List<Discipline> Disciplines { get; set; }
+        public List<Item> Cources { get; set; }
+        public Plan Plan { get; set; }
 
+        /// <summary>
+        /// Конструктор за замовчуванням
+        /// </summary>
         public MainForm()
         {
-            db = new Database();
-            searchData = new SearchData();
+            Db = new Database();
+            SearchData = new SearchData();
             InitializeComponent();
+            EditForm = new EditForm();
         }
+
+        /// <summary>
+        /// Подія при завантаженні форми
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Form1_Load(object sender, EventArgs e)
         {
-            Cources = db.GetCources();
+            Cources = Db.GetCources();
             if (Cources != null && Cources.Count > 0)
             {
                 FillCourseCb();
             }
         }
 
-        /*
-         * Метод заповнення списку курсів для елемента ComboBox
-         */
+        /// <summary>
+        /// Метод заповнення списку курсів в ComboBox
+        /// </summary>
         private void FillCourseCb()
         {
             courseCb.DataSource = null;
@@ -55,9 +63,9 @@ namespace StudyPlan
             courseLb.Enabled = true;
         }
 
-        /*
-         * Метод заповнення списку Бази вступу для елемента ComboBox
-        */
+        /// <summary>
+        /// Метод заповнення списку Баз вступу в ComboBox
+        /// </summary>
         private void FillEntryBaseCb()
         {
             entryBaseCb.DataSource = null;
@@ -71,26 +79,26 @@ namespace StudyPlan
             entryBaseCb.Enabled = true;
         }
 
-        /*
-         * Метод заповнення списку семестрів елемента ComboBox
-        */
+        /// <summary>
+        /// Метод заповнення списку семестрів в ComboBox
+        /// </summary>
         private void FillSemesterCb()
         {
             semesterCb.DataSource = null;
             semesterCb.Items.Clear();
-            semesterCb.Items.Add("---Оберіть---");
+            _ = semesterCb.Items.Add("---Оберіть---");
             foreach (int semester in Semesters)
             {
-                semesterCb.Items.Add(semester);
+                _ = semesterCb.Items.Add(semester);
             }
             semesterCb.SelectedIndex = 0;
             semesterCb.Enabled = true;
             semesterLb.Enabled = true;
         }
 
-        /*
-         * Метод заповнення списку груп елемента ComboBox
-        */
+        /// <summary>
+        /// Метод заповнення списку груп в ComboBox
+        /// </summary>
         private void FillGroupCb()
         {
             groupCb.DataSource = null;
@@ -104,9 +112,9 @@ namespace StudyPlan
             groupCb.Enabled = true;
         }
 
-        /*
-         * Метод заповнення списку дисциплін елемента ComboBox
-        */
+        /// <summary>
+        /// Метод заповнення списку дисциплін елемента ComboBox
+        /// </summary>
         private void FillDisciplineCb()
         {
             disciplineCb.DataSource = null;
@@ -120,18 +128,20 @@ namespace StudyPlan
             disciplineCb.Enabled = true;
         }
 
-        /*
-         * Метод для відключення елементів інтерфейсу користувача 
-         * якщо не вибраний жодний пункт у випадаючому списку(ComboBox).
-         * Тобто якщо на активному випадаючому списку(ComboBox) не вибране значення
-         * то наступні елементи інтерфейсу користувача будуть відключені.
-         */
+        /// <summary>
+        /// Метод для відключення елементів інтерфейсу користувача
+        /// </summary>
+        /// <param name="step">Номер кроку фільтрації</param>
+        /// <remarks>
+        /// Якщо на активному випадаючому списку(ComboBox) не вибране значення
+        /// то наступні елементи інтерфейсу користувача будуть відключені.
+        /// </remarks>
         private void DisableControls(int step = 0)
         {
             switch (step)
             {
                 case 1:
-                    searchData.Group = 0;
+                    SearchData.Group = 0;
                     entryBaseCb.SelectedIndex = -1;
                     entryBaseCb.Enabled = false;
                     entryBaseLb.Enabled = false;
@@ -149,7 +159,7 @@ namespace StudyPlan
                     removeBt.Enabled = false;
                     break;
                 case 2:
-                    searchData.EntryBase = 0;
+                    SearchData.EntryBase = 0;
                     semesterCb.SelectedIndex = -1;
                     semesterCb.Enabled = false;
                     semesterLb.Enabled = false;
@@ -164,7 +174,7 @@ namespace StudyPlan
                     removeBt.Enabled = false;
                     break;
                 case 3:
-                    searchData.Semester = 0;
+                    SearchData.Semester = 0;
                     disciplineCb.SelectedIndex = -1;
                     disciplineCb.Enabled = false;
                     disciplineLb.Enabled = false;
@@ -176,7 +186,7 @@ namespace StudyPlan
                     removeBt.Enabled = false;
                     break;
                 case 4:
-                    searchData.Discipline = 0;
+                    SearchData.Discipline = 0;
                     linkTb.Text = "";
                     linkTb.Enabled = false;
                     linkLb.Enabled = false;
@@ -185,7 +195,7 @@ namespace StudyPlan
                     removeBt.Enabled = false;
                     break;
                 default:
-                    searchData.EntryYear = 0;
+                    SearchData.EntryYear = 0;
                     groupCb.SelectedIndex = -1;
                     groupCb.Enabled = false;
                     groupLb.Enabled = false;
@@ -210,34 +220,40 @@ namespace StudyPlan
                     removeBt.Enabled = false;
                     break;
             }
-
         }
 
-        /*
-         * Метод для відкриття посилання на навчальний план у Веб-браузері
-         */
+        /// <summary>
+        /// Метод для відкриття посилання на навчальний план у Веб-браузері
+        /// </summary>
+        /// <param name="url">Посилання на навчальний план</param>
         private static void OpenUrl(string url)
         {
             DialogResult dr = MessageBox.Show("Ви дійсно бажаєте перейти за посиланням в браузері?",
                 "Підтвердження дії", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (dr == DialogResult.Yes)
             {
-                Process.Start(url);
+                _ = Process.Start(url);
             }
         }
 
+        /// <summary>
+        /// Нормалізація рядка посилання на навчальний план
+        /// </summary>
+        /// <param name="url">Посилання на навчальний план</param>
+        /// <returns>Посилання на навчальний план</returns>
         private string BeautyfyUrl(string url)
         {
             return url == string.Empty ? url : url.Trim('#');
         }
 
-        /*
-         * Метод який змінює елементи редагування навчального плану, а також 
-         * редагує, додає та видаляє  його.
-         */
-        private void ChangeEditPlanCtrls(bool isUpdating = false, string link = "")
+        /// <summary>
+        /// Метод який змінює елементи редагування навчального плану
+        /// </summary>
+        /// <param name="isClicked">Чи була натиснута кнопка збереження або зміни навчального плану</param>
+        /// <param name="link">Посилання на навчальний план</param>
+        private void ChangeEditPlanCtrls(bool isClicked = false, string link = "")
         {
-            if (isUpdating && editBt.Text == "Зберегти")
+            if (isClicked && editBt.Text == "Зберегти")
             {
                 linkTb.Enabled = true;
                 linkLb.Enabled = true;
@@ -247,11 +263,10 @@ namespace StudyPlan
                 previewBt.Enabled = true;
                 removeBt.Enabled = true;
                 Plan.Link = linkTb.Text;
-                db.UpdateStudyPlan(Plan.Id, linkTb.Text);
+                Db.UpdateStudyPlan(Plan.Id, linkTb.Text);
                 return;
             }
-
-            if (isUpdating && editBt.Text == "Внести зміни" || editBt.Text == "Додати")
+            if ((isClicked && editBt.Text == "Внести зміни") || editBt.Text == "Додати")
             {
                 linkTb.Enabled = true;
                 linkLb.Enabled = true;
@@ -264,7 +279,6 @@ namespace StudyPlan
                 Plan.Link = link;
                 return;
             }
-
             if (link == "")
             {
                 linkLb.Enabled = false;
@@ -293,19 +307,22 @@ namespace StudyPlan
             }
         }
 
-        /*
-         * Подія яка виконується при зміні значення у випадаючому списку курсів 
-         */
+
+        /// <summary>
+        /// Подія при зміні обраного значення у випадаючому списку курсів 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void CourseCb_SelectedValueChanged(object sender, EventArgs e)
         {
 
             DisableControls();
             if (courseCb.SelectedIndex > 0)
             {
-                searchData.EntryYear = courseCb.SelectedValue == null ? 0 : int.Parse(courseCb.SelectedValue.ToString());
-                if (courseCb.Items.Count > 1 && searchData.EntryYear > 0)
+                SearchData.EntryYear = courseCb.SelectedValue == null ? 0 : int.Parse(courseCb.SelectedValue.ToString());
+                if (courseCb.Items.Count > 1 && SearchData.EntryYear > 0)
                 {
-                    Groups = db.GetGroups(searchData.EntryYear);
+                    Groups = Db.GetGroups(SearchData.EntryYear);
                     if (Groups != null && Groups.Count > 0)
                     {
                         FillGroupCb();
@@ -314,35 +331,39 @@ namespace StudyPlan
             }
         }
 
-        /*
-         * Подія яка виконується при зміні значення у випадаючому списку груп 
-         */
+        /// <summary>
+        /// Подія при зміні обраного значення у випадаючому списку груп
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void GroupCb_SelectedValueChanged(object sender, EventArgs e)
         {
             DisableControls(1);
             if (groupCb.SelectedIndex > 0)
             {
-                searchData.Group = groupCb.SelectedValue == null ? 0 : (int)groupCb.SelectedValue;
-                EntryBases = db.GetEntryBases(searchData.Group, searchData.EntryYear);
+                SearchData.Group = groupCb.SelectedValue == null ? 0 : (int)groupCb.SelectedValue;
+                EntryBases = Db.GetEntryBases(SearchData.Group, SearchData.EntryYear);
                 if (EntryBases != null && EntryBases.Count > 0)
                 {
-                    searchData.Plan = Groups.Find(item => item.Id == searchData.Group).Plan;
+                    SearchData.Plan = Groups.Find(item => item.Id == SearchData.Group).Plan;
                     FillEntryBaseCb();
                 }
             }
 
         }
 
-        /*
-         * Подія яка виконується при зміні значення у випадаючому списку бази вступу 
-         */
+        /// <summary>
+        /// Подія при зміні значення у випадаючому списку бази вступу 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void EntryBaseCb_SelectedValueChanged(object sender, EventArgs e)
         {
             DisableControls(2);
             if (entryBaseCb.SelectedIndex > 0)
             {
-                searchData.EntryBase = entryBaseCb.SelectedValue == null ? 0 : (int)entryBaseCb.SelectedValue;
-                Semesters = db.GetSemesters(searchData.EntryYear, searchData.Group, searchData.EntryBase);
+                SearchData.EntryBase = entryBaseCb.SelectedValue == null ? 0 : (int)entryBaseCb.SelectedValue;
+                Semesters = Db.GetSemesters(SearchData.EntryYear, SearchData.Group, SearchData.EntryBase);
                 if (Semesters != null && Semesters.Count > 0)
                 {
                     FillSemesterCb();
@@ -350,16 +371,18 @@ namespace StudyPlan
             }
         }
 
-        /*
-         * Подія яка виконується при зміні значення у випадаючому списку семестрів 
-         */
+        /// <summary>
+        /// Подія при зміні значення у випадаючому списку семестрів 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void SemesterCb_SelectedValueChanged(object sender, EventArgs e)
         {
             DisableControls(3);
             if (semesterCb.SelectedIndex > 0)
             {
-                searchData.Semester = semesterCb.SelectedItem == null ? 0 : int.Parse(semesterCb.SelectedItem.ToString());
-                Disciplines = db.GetDisciplines(searchData.Plan, searchData.Semester);
+                SearchData.Semester = semesterCb.SelectedItem == null ? 0 : int.Parse(semesterCb.SelectedItem.ToString());
+                Disciplines = Db.GetDisciplines(SearchData.Plan, SearchData.Semester);
                 if (Disciplines != null && Disciplines.Count > 0)
                 {
                     FillDisciplineCb();
@@ -367,17 +390,18 @@ namespace StudyPlan
             }
         }
 
-        /*
-         * Подія яка виконується при зміні значення у випадаючому списку дисциплін 
-         */
+        /// <summary>
+        /// Подія при зміні значення у випадаючому списку дисциплін 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void DisciplineCb_SelectedValueChanged(object sender, EventArgs e)
         {
             DisableControls(4);
-
             if (disciplineCb.SelectedIndex > 0)
             {
-                searchData.Discipline = disciplineCb.SelectedValue == null ? 0 : (int)disciplineCb.SelectedValue;
-                Plan = db.GetPlan(searchData.Plan);
+                SearchData.Discipline = disciplineCb.SelectedValue == null ? 0 : (int)disciplineCb.SelectedValue;
+                Plan = Db.GetPlan(SearchData.Plan);
                 if (linkTb.Text == "")
                 {
                     if (Plan != null)
@@ -390,42 +414,57 @@ namespace StudyPlan
             }
         }
 
-        /*
-         * Подія яка виконується при натисненні на кнопку "Переглянути"
-         */
+        /// <summary>
+        /// Подія при натисненні на кнопку перегляду навчального плану
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void PreviewBt_Click(object sender, EventArgs e)
         {
             OpenUrl(Plan.Link);
         }
 
-        /*
-         * Подія яка виконується при натисненні на кнопку "Редагувати", "Внести зміни" та "Зберегти"
-         */
+        /// <summary>
+        /// Подія при натисненні на кнопку редагування та збереження посилання на навчальний план
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void EditBt_Click(object sender, EventArgs e)
         {
             ChangeEditPlanCtrls(true);
         }
 
-        /*
-         * Подія яка виконується при натисненні на кнопку "Видалили"
-         */
+        /// <summary>
+        /// Подія при натисненні на кнопку видалення посилання на навчальний план
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void RemoveBt_Click(object sender, EventArgs e)
         {
             DialogResult dr = MessageBox.Show("Ви дійсно бажаєте видалити навчальний план?",
-                "Підьвердження дії", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
+                "Підтвердження дії", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (dr == DialogResult.Yes)
             {
-                db.UpdateStudyPlan(Plan.Id, "");
+                Db.UpdateStudyPlan(Plan.Id, "");
                 ChangeEditPlanCtrls(false);
             }
         }
 
+        /// <summary>
+        /// Подія при натисненні на пункт меню редагування таблиць
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void EditTablesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            _ = new EditForm().ShowDialog();
+            _ = EditForm.ShowDialog();
         }
 
+        /// <summary>
+        /// Подія при натисненні на на пункт меню виходу з програми 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Close();

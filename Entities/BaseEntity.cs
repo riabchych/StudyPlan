@@ -1,10 +1,11 @@
 ﻿namespace StudyPlan
 {
+    /// <summary>
+    /// Базовий клас сутності
+    /// </summary>
     public abstract class BaseEntity
     {
-        private int _id;
-        private string _name;
-        public int Id { get => _id; set => _id = value; }
-        public string Name { get => _name; set => _name = value; }
+        public int Id { get; set; }
+        public string Name { get; set; }
     }
 }

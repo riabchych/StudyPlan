@@ -1,43 +1,50 @@
 ﻿namespace StudyPlan
 {
-    /*
-     * Сутність "Навчальний план"
-     */
+    /// <summary>
+    /// Сутність Навчальний план
+    /// </summary>
     public class Plan
     {
-        private int _id;
-        private int _entryYear;
-        private int _discipline;
-        private int _entryBase;
-        private int _speciality;
-        private int _educationLevel;
-        private string _link;
-
+        /// <summary>
+        /// Конструктор за замовчуванням
+        /// </summary>
         public Plan()
         {
-            _id = 0;
-            _entryYear = 0;
-            _discipline = 0;
-            _entryBase = 0;
-            _speciality = 0;
-            _educationLevel = 0;
+            Id = 0;
+            EntryYear = 0;
+            Discipline = 0;
+            EntryBase = 0;
+            Speciality = 0;
+            EducationLevel = 0;
+            Link = "";
         }
-        public Plan(int id, int entryYear, int discipline, int entryBase, int speciality, int educationLevel, string link)
+
+        /// <summary>
+        /// Конструктор з параметрами
+        /// </summary>
+        /// <param name="id">Ідентифікатор</param>
+        /// <param name="entryYear">Рік вступу</param>
+        /// <param name="disciplineId">Ідентифікатор дисципліни</param>
+        /// <param name="entryBaseId">Ідентифікатор бази вступу</param>
+        /// <param name="specialityId">Ідентифікатор освітньої професійної програми</param>
+        /// <param name="educationLevelId">Ідентифікатор освітнього рівня</param>
+        /// <param name="link">Посилання на навчальний план</param>
+        public Plan(int id, int entryYear, int disciplineId, int entryBaseId, int specialityId, int educationLevelId, string link)
         {
-            _id = id;
-            _entryYear = entryYear;
-            _discipline = discipline;
-            _entryBase = entryBase;
-            _speciality = speciality;
-            _educationLevel = educationLevel;
-            _link = link;
+            Id = id;
+            EntryYear = entryYear;
+            Discipline = disciplineId;
+            EntryBase = entryBaseId;
+            Speciality = specialityId;
+            EducationLevel = educationLevelId;
+            Link = link;
         }
-        public int Id { get => _id; set => _id = value; }
-        public int EntryYear { get => _entryYear; set => _entryYear = value; }
-        public int Discipline { get => _discipline; set => _discipline = value; }
-        public int EntryBase { get => _entryBase; set => _entryBase = value; }
-        public int Speciality { get => _speciality; set => _speciality = value; }
-        public int EducationLevel { get => _educationLevel; set => _educationLevel = value; }
-        public string Link { get => _link; set => _link = value; }
+        public int Id { get; set; }
+        public int EntryYear { get; set; }
+        public int Discipline { get; set; }
+        public int EntryBase { get; set; }
+        public int Speciality { get; set; }
+        public int EducationLevel { get; set; }
+        public string Link { get; set; }
     }
 }

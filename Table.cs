@@ -1,5 +1,8 @@
 ﻿namespace StudyPlan
 {
+    /// <summary>
+    /// Клас назв таблиці
+    /// </summary>
     public static class Table
     {
         public const string StudyPlans = "Навчальні плани";

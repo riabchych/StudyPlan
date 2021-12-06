@@ -1,24 +1,32 @@
 ﻿namespace StudyPlan
 {
-    /*
-     * Сутність "База вступу"
-     */
+    /// <summary>
+    /// Сутність База вступу
+    /// </summary>
     public class EntryBase
     {
-        private int _id;
-        private string _name;
+        public int Id { get; set; }
+        public string Name { get; set; }
 
+        /// <summary>
+        /// Конструктор за замовчуванням
+        /// </summary>
         public EntryBase()
         {
-            _id = 0;
-            _name = "";
+            Id = 0;
+            Name = "";
         }
+
+        /// <summary>
+        /// Конструктор з параметрами
+        /// </summary>
+        /// <param name="id">Ідентифікатор</param>
+        /// <param name="name">Назва</param>
         public EntryBase(int id, string name)
         {
-            _id = id;
-            _name = name;
+            Id = id;
+            Name = name;
         }
-        public int Id { get => _id; set => _id = value; }
-        public string Name { get => _name; set => _name = value; }
+
     }
 }

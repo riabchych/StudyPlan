@@ -5,10 +5,13 @@ namespace StudyPlan
 {
     public partial class EditForm : Form
     {
-        private string activeTable;
-        private bool escapePressed;
-        public bool dataIsChanged;
+        public string ActiveTable { get; set; }
+        public bool EscapePressed { get; set; }
+        public bool DataIsChanged { get; set; }
 
+        /// <summary>
+        /// Конструктор за замовчуванням
+        /// </summary>
         public EditForm()
         {
             InitializeComponent();
@@ -16,36 +19,39 @@ namespace StudyPlan
             bindingNavigatorDeleteItem.Click += UserDeletingRow;
         }
 
-        private void BaseForm_Load(object sender, EventArgs e)
+        /// <summary>
+        /// Подія при завантаженні форми
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void EditForm_Load(object sender, EventArgs e)
         {
             FillDataSet();
-            // Отримання списку таблиць
-            listTablesListBox.DataSource = new Database().GetTables();
+            Database db = new Database();
+            listTablesListBox.DataSource = db.GetTables();
         }
 
+        /// <summary>
+        /// Заповнення таблиць даними
+        /// </summary>
         private void FillDataSet()
         {
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "studyPlanDbDataSet1.WorkPrograms". При необходимости она может быть перемещена или удалена.
-            workProgramsTableAdapter.Fill(studyPlanDbDataSet.WorkPrograms);
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "studyPlanDbDataSet1.Specialities". При необходимости она может быть перемещена или удалена.
-            specialitiesTableAdapter.Fill(studyPlanDbDataSet.Specialities);
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "studyPlanDbDataSet1.EducationLevels". При необходимости она может быть перемещена или удалена.
-            educatioLevelsTableAdapter.Fill(studyPlanDbDataSet.EducationLevels);
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "studyPlanDbDataSet1.AccountingWorkPrograms". При необходимости она может быть перемещена или удалена.
-            accountingWorkProgramsTableAdapter.Fill(studyPlanDbDataSet.AccountingWorkPrograms);
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "studyPlanDbDataSet1.GroupNames". При необходимости она может быть перемещена или удалена.
-            groupNamesTableAdapter.Fill(studyPlanDbDataSet.GroupNames);
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "studyPlanDbDataSet1.StudyPlans". При необходимости она может быть перемещена или удалена.
-            studyPlansTableAdapter.Fill(studyPlanDbDataSet.StudyPlans);
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "studyPlanDbDataSet1.Groups". При необходимости она может быть перемещена или удалена.
-            groupsTableAdapter.Fill(studyPlanDbDataSet.Groups);
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "studyPlanDbDataSet1.EntryBases". При необходимости она может быть перемещена или удалена.
-            entryBasesTableAdapter.Fill(studyPlanDbDataSet.EntryBases);
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "studyPlanDbDataSet1.Disciplines". При необходимости она может быть перемещена или удалена.
-            disciplinesTableAdapter.Fill(studyPlanDbDataSet.Disciplines);
-
+            _ = workProgramsTableAdapter.Fill(studyPlanDbDataSet.WorkPrograms);
+            _ = specialitiesTableAdapter.Fill(studyPlanDbDataSet.Specialities);
+            _ = educatioLevelsTableAdapter.Fill(studyPlanDbDataSet.EducationLevels);
+            _ = accountingWorkProgramsTableAdapter.Fill(studyPlanDbDataSet.AccountingWorkPrograms);
+            _ = groupNamesTableAdapter.Fill(studyPlanDbDataSet.GroupNames);
+            _ = studyPlansTableAdapter.Fill(studyPlanDbDataSet.StudyPlans);
+            _ = groupsTableAdapter.Fill(studyPlanDbDataSet.Groups);
+            _ = entryBasesTableAdapter.Fill(studyPlanDbDataSet.EntryBases);
+            _ = disciplinesTableAdapter.Fill(studyPlanDbDataSet.Disciplines);
+            DataIsChanged = false;
+            saveToolStripButton.Enabled = false;
         }
 
+        /// <summary>
+        /// Відображення таблиці дисциплін
+        /// </summary>
         public void FillDisciplineTable()
         {
             dataGridView.Columns.Clear();
@@ -68,6 +74,9 @@ namespace StudyPlan
             disciplneNameDataGridViewTextBoxColumn.Name = "disciplneNameDataGridViewTextBoxColumn";
         }
 
+        /// <summary>
+        /// Відображення таблиці навчальних планів
+        /// </summary>
         public void FillStudyPlanTable()
         {
             dataGridView.Columns.Clear();
@@ -90,12 +99,12 @@ namespace StudyPlan
             // 
             // iDDataGridViewTextBoxColumn
             // 
-            DataGridViewTextBoxColumn iDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn
+            /*_ = new DataGridViewTextBoxColumn
             {
                 DataPropertyName = "ID",
                 HeaderText = "ID",
                 Name = "iDDataGridViewTextBoxColumn"
-            };
+            };*/
             // 
             // specialityDataGridViewTextBoxColumn
             // 
@@ -164,6 +173,9 @@ namespace StudyPlan
             });
         }
 
+        /// <summary>
+        /// Відображення таблиці робочих програм
+        /// </summary>
         public void FillWorkProgramTable()
         {
             dataGridView.Columns.Clear();
@@ -177,12 +189,12 @@ namespace StudyPlan
             // 
             // iDDataGridViewTextBoxColumn
             // 
-            DataGridViewTextBoxColumn iDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn
+            /*_ = new DataGridViewTextBoxColumn
             {
                 DataPropertyName = "ID",
                 HeaderText = "ID",
                 Name = "iDDataGridViewTextBoxColumn"
-            };
+            };*/
             // 
             // semesterDataGridViewTextBoxColumn
             // 
@@ -213,6 +225,9 @@ namespace StudyPlan
             });
         }
 
+        /// <summary>
+        /// Відображення таблиці груп
+        /// </summary>
         private void FillGroupTable()
         {
             dataGridView.Columns.Clear();
@@ -232,12 +247,12 @@ namespace StudyPlan
             // 
             // iDDataGridViewTextBoxColumn
             // 
-            DataGridViewTextBoxColumn iDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn
+            /*_ = new DataGridViewTextBoxColumn
             {
                 DataPropertyName = "ID",
                 HeaderText = "ID",
                 Name = "iDDataGridViewTextBoxColumn"
-            };
+            };*/
             // 
             // studyPlanDataGridViewTextBoxColumn
             // 
@@ -270,6 +285,9 @@ namespace StudyPlan
             });
         }
 
+        /// <summary>
+        /// Відображення таблиці обліку робочих програм
+        /// </summary>
         private void FillAccountingWorkProgramTable()
         {
             dataGridView.Columns.Clear();
@@ -287,12 +305,12 @@ namespace StudyPlan
             // 
             // iDDataGridViewTextBoxColumn
             // 
-            DataGridViewTextBoxColumn iDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn
+            /*_ = new DataGridViewTextBoxColumn
             {
                 DataPropertyName = "ID",
                 HeaderText = "ID",
                 Name = "iDDataGridViewTextBoxColumn"
-            };
+            };*/
             // 
             // iDWorkProgramDataGridViewTextBoxColumn
             // 
@@ -325,18 +343,12 @@ namespace StudyPlan
             });
         }
 
+        /// <summary>
+        /// Відображення теблиці освітніх професійних програм
+        /// </summary>
         private void FillSpecialityTable()
         {
             dataGridView.Columns.Clear();
-            DataGridViewTextBoxColumn iDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            // 
-            // dataGridView
-            // 
-            dataGridView.Columns.AddRange(new DataGridViewColumn[] {
-                //iDDataGridViewTextBoxColumn,
-                nameDataGridViewTextBoxColumn
-            });
             // 
             // bindingSource
             // 
@@ -345,22 +357,21 @@ namespace StudyPlan
             // 
             // iDDataGridViewTextBoxColumn
             // 
-            iDDataGridViewTextBoxColumn.DataPropertyName = "ID";
-            iDDataGridViewTextBoxColumn.HeaderText = "ID";
-            iDDataGridViewTextBoxColumn.Name = "iDDataGridViewTextBoxColumn";
+            /*_ = new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = "ID",
+                HeaderText = "ID",
+                Name = "iDDataGridViewTextBoxColumn"
+            };*/
             // 
             // nameDataGridViewTextBoxColumn
             // 
-            nameDataGridViewTextBoxColumn.DataPropertyName = "Назва";
-            nameDataGridViewTextBoxColumn.HeaderText = "Назва";
-            nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
-        }
-
-        private void FillEntryBaseTable()
-        {
-            dataGridView.Columns.Clear();
-            DataGridViewTextBoxColumn iDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = "Назва",
+                HeaderText = "Назва",
+                Name = "nameDataGridViewTextBoxColumn"
+            };
             // 
             // dataGridView
             // 
@@ -368,6 +379,14 @@ namespace StudyPlan
                 //iDDataGridViewTextBoxColumn,
                 nameDataGridViewTextBoxColumn
             });
+        }
+
+        /// <summary>
+        /// Відображення таблиці баз вступу
+        /// </summary>
+        private void FillEntryBaseTable()
+        {
+            dataGridView.Columns.Clear();
             // 
             // bindingSource
             // 
@@ -376,22 +395,21 @@ namespace StudyPlan
             // 
             // iDDataGridViewTextBoxColumn
             // 
-            iDDataGridViewTextBoxColumn.DataPropertyName = "ID";
-            iDDataGridViewTextBoxColumn.HeaderText = "ID";
-            iDDataGridViewTextBoxColumn.Name = "iDDataGridViewTextBoxColumn";
+            /*_ = new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = "ID",
+                HeaderText = "ID",
+                Name = "iDDataGridViewTextBoxColumn"
+            };*/
             // 
             // nameDataGridViewTextBoxColumn
             // 
-            nameDataGridViewTextBoxColumn.DataPropertyName = "Назва";
-            nameDataGridViewTextBoxColumn.HeaderText = "Назва";
-            nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
-        }
-
-        private void FillEducationLevelTable()
-        {
-            dataGridView.Columns.Clear();
-            DataGridViewTextBoxColumn iDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = "Назва",
+                HeaderText = "Назва",
+                Name = "nameDataGridViewTextBoxColumn"
+            };
             // 
             // dataGridView
             // 
@@ -399,6 +417,14 @@ namespace StudyPlan
                 //iDDataGridViewTextBoxColumn,
                 nameDataGridViewTextBoxColumn
             });
+        }
+
+        /// <summary>
+        /// Відображення таблиці навчальних рівнів
+        /// </summary>
+        private void FillEducationLevelTable()
+        {
+            dataGridView.Columns.Clear();
             // 
             // bindingSource
             // 
@@ -407,29 +433,36 @@ namespace StudyPlan
             // 
             // iDDataGridViewTextBoxColumn
             // 
-            iDDataGridViewTextBoxColumn.DataPropertyName = "ID";
-            iDDataGridViewTextBoxColumn.HeaderText = "ID";
-            iDDataGridViewTextBoxColumn.Name = "iDDataGridViewTextBoxColumn";
+            /*_ = new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = "ID",
+                HeaderText = "ID",
+                Name = "iDDataGridViewTextBoxColumn"
+            };*/
             // 
             // nameDataGridViewTextBoxColumn
             // 
-            nameDataGridViewTextBoxColumn.DataPropertyName = "Назва";
-            nameDataGridViewTextBoxColumn.HeaderText = "Назва";
-            nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
-        }
-
-        private void FillGroupNameTable()
-        {
-            dataGridView.Columns.Clear();
-            DataGridViewTextBoxColumn iDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            DataGridViewTextBoxColumn groupNameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = "Назва",
+                HeaderText = "Назва",
+                Name = "nameDataGridViewTextBoxColumn"
+            };
             // 
             // dataGridView
             // 
             dataGridView.Columns.AddRange(new DataGridViewColumn[] {
                 //iDDataGridViewTextBoxColumn,
-                groupNameDataGridViewTextBoxColumn
+                nameDataGridViewTextBoxColumn
             });
+        }
+
+        /// <summary>
+        /// Відображення таблиці назв груп
+        /// </summary>
+        private void FillGroupNameTable()
+        {
+            dataGridView.Columns.Clear();
             // 
             // bindingSource
             // 
@@ -438,20 +471,36 @@ namespace StudyPlan
             // 
             // iDDataGridViewTextBoxColumn
             // 
-            iDDataGridViewTextBoxColumn.DataPropertyName = "ID";
-            iDDataGridViewTextBoxColumn.HeaderText = "ID";
-            iDDataGridViewTextBoxColumn.Name = "iDDataGridViewTextBoxColumn";
+            /*_ = new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = "ID",
+                HeaderText = "ID",
+                Name = "iDDataGridViewTextBoxColumn"
+            };*/
             // 
             // groupNameDataGridViewTextBoxColumn
             // 
-            groupNameDataGridViewTextBoxColumn.DataPropertyName = "Назва групи";
-            groupNameDataGridViewTextBoxColumn.HeaderText = "Назва групи";
-            groupNameDataGridViewTextBoxColumn.Name = "groupNameDataGridViewTextBoxColumn";
+            DataGridViewTextBoxColumn groupNameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = "Назва групи",
+                HeaderText = "Назва групи",
+                Name = "groupNameDataGridViewTextBoxColumn"
+            };
+            // 
+            // dataGridView
+            // 
+            dataGridView.Columns.AddRange(new DataGridViewColumn[] {
+                //iDDataGridViewTextBoxColumn,
+                groupNameDataGridViewTextBoxColumn
+            });
         }
 
+        /// <summary>
+        /// Відображення обраної таблиці
+        /// </summary>
         private void ShowTable()
         {
-            switch (activeTable)
+            switch (ActiveTable)
             {
                 case Table.StudyPlans:
                     editTablesGroupBox.Text = "Редагування навчальних планів";
@@ -495,50 +544,48 @@ namespace StudyPlan
             }
         }
 
-        private void UpdateTable()
-        {
-            switch (activeTable)
-            {
-                case Table.StudyPlans:
-                    studyPlansTableAdapter.Update(studyPlanDbDataSet.StudyPlans);
-                    break;
-                case Table.WorkPrograms:
-                    workProgramsTableAdapter.Update(studyPlanDbDataSet.WorkPrograms);
-                    break;
-                case Table.Disciplines:
-                    disciplinesTableAdapter.Update(studyPlanDbDataSet.Disciplines);
-                    break;
-                case Table.Groups:
-                    groupsTableAdapter.Update(studyPlanDbDataSet.Groups);
-                    break;
-                case Table.GroupNames:
-                    groupNamesTableAdapter.Update(studyPlanDbDataSet.GroupNames);
-                    break;
-                case Table.EducationLevels:
-                    educatioLevelsTableAdapter.Update(studyPlanDbDataSet.EducationLevels);
-                    break;
-                case Table.EntryBases:
-                    entryBasesTableAdapter.Update(studyPlanDbDataSet.EntryBases);
-                    break;
-                case Table.Specialities:
-                    specialitiesTableAdapter.Update(studyPlanDbDataSet.Specialities);
-                    break;
-                case Table.AccountingWorkPrograms:
-                    accountingWorkProgramsTableAdapter.Update(studyPlanDbDataSet.AccountingWorkPrograms);
-                    break;
-                default:
-                    break;
-            }
-        }
-
+        /// <summary>
+        /// Оновлення даних обраної таблиці в базі даних
+        /// </summary>
         private void UpdateData()
         {
             try
             {
-                Validate();
+                _ = Validate();
                 bindingSource.EndEdit();
-                UpdateTable();
-                dataIsChanged = false;
+                switch (ActiveTable)
+                {
+                    case Table.StudyPlans:
+                        _ = studyPlansTableAdapter.Update(studyPlanDbDataSet.StudyPlans);
+                        break;
+                    case Table.WorkPrograms:
+                        _ = workProgramsTableAdapter.Update(studyPlanDbDataSet.WorkPrograms);
+                        break;
+                    case Table.Disciplines:
+                        _ = disciplinesTableAdapter.Update(studyPlanDbDataSet.Disciplines);
+                        break;
+                    case Table.Groups:
+                        _ = groupsTableAdapter.Update(studyPlanDbDataSet.Groups);
+                        break;
+                    case Table.GroupNames:
+                        _ = groupNamesTableAdapter.Update(studyPlanDbDataSet.GroupNames);
+                        break;
+                    case Table.EducationLevels:
+                        _ = educatioLevelsTableAdapter.Update(studyPlanDbDataSet.EducationLevels);
+                        break;
+                    case Table.EntryBases:
+                        _ = entryBasesTableAdapter.Update(studyPlanDbDataSet.EntryBases);
+                        break;
+                    case Table.Specialities:
+                        _ = specialitiesTableAdapter.Update(studyPlanDbDataSet.Specialities);
+                        break;
+                    case Table.AccountingWorkPrograms:
+                        _ = accountingWorkProgramsTableAdapter.Update(studyPlanDbDataSet.AccountingWorkPrograms);
+                        break;
+                    default:
+                        break;
+                }
+                DataIsChanged = false;
                 saveToolStripButton.Enabled = false;
                 _ = MessageBox.Show($"Дані успішно оновлено", "Повідомлення",
                                 MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -551,11 +598,16 @@ namespace StudyPlan
             }
         }
 
+        /// <summary>
+        /// Подія при зміні таблиці
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ListTablesListBox_SelectedValueChanged(object sender, EventArgs e)
         {
             if (listTablesListBox.SelectedIndex != -1)
             {
-                if (dataIsChanged)
+                if (DataIsChanged)
                 {
                     if (MessageBox.Show("Ви не зберегли зміни, бажаєте зберегти?", "Підтвердження дії",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
@@ -566,15 +618,18 @@ namespace StudyPlan
                     {
                         FillDataSet();
                     }
-
                 }
-                activeTable = listTablesListBox.SelectedValue.ToString();
-                ShowTable();
-                dataIsChanged = false;
+                ActiveTable = listTablesListBox.SelectedValue.ToString();
                 saveToolStripButton.Enabled = false;
+                ShowTable();
             }
         }
 
+        /// <summary>
+        /// Подія при видаленні рядку в таблиці
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
         {
             if (MessageBox.Show("Ви дійсно бажаєте видалити рядок?", "Підтвердження дії",
@@ -584,44 +639,66 @@ namespace StudyPlan
             }
         }
 
+        /// <summary>
+        /// Подія при видаленні рядку в таблиці натисненням кнопки видалення
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void UserDeletingRow(object sender, EventArgs e)
         {
             if (MessageBox.Show("Ви дійсно бажаєте видалити рядок?", "Підтвердження дії",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 bindingSource.RemoveCurrent();
-                dataIsChanged = true;
+                DataIsChanged = true;
                 saveToolStripButton.Enabled = true;
             }
         }
 
+        /// <summary>
+        /// Подія при натисненні кнопки збереження даних
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void SaveToolStripButton_Click(object sender, EventArgs e)
         {
             UpdateData();
         }
 
+        /// <summary>
+        /// Подія при натисненні будь якої кнопки в таблиці
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         void Control_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
         {
             if (e.KeyCode == Keys.Escape)
             {
-                escapePressed = true;
+                EscapePressed = true;
             }
         }
-
         private void DataGridView_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
             e.Control.PreviewKeyDown -= Control_PreviewKeyDown;
             e.Control.PreviewKeyDown += new PreviewKeyDownEventHandler(Control_PreviewKeyDown);
         }
 
+        /// <summary>
+        /// Подія при закінченні редагування в таблиці
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void DataGridView_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            if (!escapePressed)
+            if (!EscapePressed)
             {
-                dataIsChanged = true;
+                DataIsChanged = true;
                 saveToolStripButton.Enabled = true;
             }
-            else escapePressed = false;
+            else
+            {
+                EscapePressed = false;
+            }
         }
     }
 }

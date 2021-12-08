@@ -11,9 +11,10 @@ namespace StudyPlan
     /// </summary>
     public partial class MainForm : Form
     {
-        private readonly Database Db;
+        private readonly StudyPlanDatabaseAdapter StudyPlanDbAdapter;
         private readonly SearchData SearchData;
-        private readonly EditForm EditForm;
+        private readonly EditTableForm EditForm;
+        private Database DbAdapter;
         public List<EntryBase> EntryBases { get; set; }
         public List<Group> Groups { get; set; }
         public List<int> Semesters { get; set; }
@@ -26,10 +27,10 @@ namespace StudyPlan
         /// </summary>
         public MainForm()
         {
-            Db = new Database();
             SearchData = new SearchData();
+            StudyPlanDbAdapter = new StudyPlanDatabaseAdapter();
+            EditForm = new EditTableForm(GetTableNames());
             InitializeComponent();
-            EditForm = new EditForm();
         }
 
         /// <summary>
@@ -39,7 +40,7 @@ namespace StudyPlan
         /// <param name="e"></param>
         private void Form1_Load(object sender, EventArgs e)
         {
-            Cources = Db.GetCources();
+            Cources = StudyPlanDbAdapter.GetCources();
             if (Cources != null && Cources.Count > 0)
             {
                 FillCourseCb();
@@ -245,6 +246,16 @@ namespace StudyPlan
         {
             return url == string.Empty ? url : url.Trim('#');
         }
+        
+        /// <summary>
+        /// Метод отримання списку таблиць
+        /// </summary>
+        /// <returns></returns>
+        private List<string> GetTableNames()
+        {
+            DbAdapter = DbAdapter ?? new Database();
+            return DbAdapter.GetTables();
+        }
 
         /// <summary>
         /// Метод який змінює елементи редагування навчального плану
@@ -263,7 +274,7 @@ namespace StudyPlan
                 previewBt.Enabled = true;
                 removeBt.Enabled = true;
                 Plan.Link = linkTb.Text;
-                Db.UpdateStudyPlan(Plan.Id, linkTb.Text);
+                StudyPlanDbAdapter.UpdateStudyPlan(Plan.Id, linkTb.Text);
                 return;
             }
             if ((isClicked && editBt.Text == "Внести зміни") || editBt.Text == "Додати")
@@ -322,7 +333,7 @@ namespace StudyPlan
                 SearchData.EntryYear = courseCb.SelectedValue == null ? 0 : int.Parse(courseCb.SelectedValue.ToString());
                 if (courseCb.Items.Count > 1 && SearchData.EntryYear > 0)
                 {
-                    Groups = Db.GetGroups(SearchData.EntryYear);
+                    Groups = StudyPlanDbAdapter.GetGroups(SearchData.EntryYear);
                     if (Groups != null && Groups.Count > 0)
                     {
                         FillGroupCb();
@@ -342,7 +353,7 @@ namespace StudyPlan
             if (groupCb.SelectedIndex > 0)
             {
                 SearchData.Group = groupCb.SelectedValue == null ? 0 : (int)groupCb.SelectedValue;
-                EntryBases = Db.GetEntryBases(SearchData.Group, SearchData.EntryYear);
+                EntryBases = StudyPlanDbAdapter.GetEntryBases(SearchData.Group, SearchData.EntryYear);
                 if (EntryBases != null && EntryBases.Count > 0)
                 {
                     SearchData.Plan = Groups.Find(item => item.Id == SearchData.Group).Plan;
@@ -363,7 +374,7 @@ namespace StudyPlan
             if (entryBaseCb.SelectedIndex > 0)
             {
                 SearchData.EntryBase = entryBaseCb.SelectedValue == null ? 0 : (int)entryBaseCb.SelectedValue;
-                Semesters = Db.GetSemesters(SearchData.EntryYear, SearchData.Group, SearchData.EntryBase);
+                Semesters = StudyPlanDbAdapter.GetSemesters(SearchData.EntryYear, SearchData.Group, SearchData.EntryBase);
                 if (Semesters != null && Semesters.Count > 0)
                 {
                     FillSemesterCb();
@@ -382,7 +393,7 @@ namespace StudyPlan
             if (semesterCb.SelectedIndex > 0)
             {
                 SearchData.Semester = semesterCb.SelectedItem == null ? 0 : int.Parse(semesterCb.SelectedItem.ToString());
-                Disciplines = Db.GetDisciplines(SearchData.Plan, SearchData.Semester);
+                Disciplines = StudyPlanDbAdapter.GetDisciplines(SearchData.Plan, SearchData.Semester);
                 if (Disciplines != null && Disciplines.Count > 0)
                 {
                     FillDisciplineCb();
@@ -401,7 +412,7 @@ namespace StudyPlan
             if (disciplineCb.SelectedIndex > 0)
             {
                 SearchData.Discipline = disciplineCb.SelectedValue == null ? 0 : (int)disciplineCb.SelectedValue;
-                Plan = Db.GetPlan(SearchData.Plan);
+                Plan = StudyPlanDbAdapter.GetPlan(SearchData.Plan);
                 if (linkTb.Text == "")
                 {
                     if (Plan != null)
@@ -445,7 +456,7 @@ namespace StudyPlan
                 "Підтвердження дії", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (dr == DialogResult.Yes)
             {
-                Db.UpdateStudyPlan(Plan.Id, "");
+                StudyPlanDbAdapter.UpdateStudyPlan(Plan.Id, "");
                 ChangeEditPlanCtrls(false);
             }
         }

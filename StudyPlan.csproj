@@ -67,6 +67,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Database.cs" />
     <Compile Include="EditForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -74,9 +75,11 @@
       <DependentUpon>EditForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Entities\BaseEntity.cs" />
-    <Compile Include="Database.cs" />
+    <Compile Include="StudyPlanDatabaseAdapter.cs" />
     <Compile Include="Entities\Discipline.cs" />
     <Compile Include="Entities\EntryBase.cs" />
+    <Compile Include="IDatabase.cs" />
+    <Compile Include="IStudyPlanDatabaseAdapter.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -90,6 +93,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SearchData.cs" />
     <Compile Include="Entities\Speciality.cs" />
+    <Compile Include="StudyPlanDbDataSet.cs">
+      <DependentUpon>StudyPlanDbDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="StudyPlanDbDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

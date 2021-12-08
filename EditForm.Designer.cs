@@ -1,6 +1,6 @@
 ﻿namespace StudyPlan
 {
-    partial class EditForm
+    partial class EditTableForm
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditTableForm));
             this.bindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.studyPlanDbDataSet = new StudyPlan.StudyPlanDbDataSet();
             this.tableAdapterManager = new StudyPlan.StudyPlanDbDataSetTableAdapters.TableAdapterManager();
@@ -335,13 +335,13 @@
             this.dataGridView.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView_CellEndEdit);
             this.dataGridView.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.DataGridView_EditingControlShowing);
             // 
-            // EditForm
+            // EditTableForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(834, 442);
             this.Controls.Add(this.splitContainer1);
-            this.Name = "EditForm";
+            this.Name = "EditTableForm";
             this.Text = "Редагування даних";
             this.Load += new System.EventHandler(this.EditForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource)).EndInit();

@@ -1,9 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace StudyPlan
 {
-    public partial class EditForm : Form
+    public partial class EditTableForm : Form
     {
         public string ActiveTable { get; set; }
         public bool EscapePressed { get; set; }
@@ -12,9 +13,21 @@ namespace StudyPlan
         /// <summary>
         /// Конструктор за замовчуванням
         /// </summary>
-        public EditForm()
+        public EditTableForm()
         {
             InitializeComponent();
+            dataGridView.UserDeletingRow += UserDeletingRow;
+            bindingNavigatorDeleteItem.Click += UserDeletingRow;
+        }
+
+        /// <summary>
+        /// Конструктор з параметрами
+        /// </summary>
+        /// <param name="tables">Список назв таблиць</param>
+        public EditTableForm(List<string> tables)
+        {
+            InitializeComponent();
+            listTablesListBox.DataSource = tables;
             dataGridView.UserDeletingRow += UserDeletingRow;
             bindingNavigatorDeleteItem.Click += UserDeletingRow;
         }
@@ -27,8 +40,6 @@ namespace StudyPlan
         private void EditForm_Load(object sender, EventArgs e)
         {
             FillDataSet();
-            Database db = new Database();
-            listTablesListBox.DataSource = db.GetTables();
         }
 
         /// <summary>
@@ -57,21 +68,15 @@ namespace StudyPlan
             dataGridView.Columns.Clear();
             bindingSource.DataMember = "Disciplines";
             bindingSource.Position = 0;
-            DataGridViewTextBoxColumn iDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            DataGridViewTextBoxColumn disciplneNameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            DataGridViewTextBoxColumn disciplneNameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = "Назва дисципліни",
+                HeaderText = "Назва дисципліни",
+                Name = "disciplneNameDataGridViewTextBoxColumn"
+            };
             dataGridView.Columns.AddRange(new DataGridViewColumn[] {
-                //iDDataGridViewTextBoxColumn,
                 disciplneNameDataGridViewTextBoxColumn
             });
-            // 
-            // iDDataGridViewTextBoxColumn
-            // 
-            iDDataGridViewTextBoxColumn.DataPropertyName = "ID";
-            iDDataGridViewTextBoxColumn.HeaderText = "ID";
-            iDDataGridViewTextBoxColumn.Name = "iDDataGridViewTextBoxColumn";
-            disciplneNameDataGridViewTextBoxColumn.DataPropertyName = "Назва дисципліни";
-            disciplneNameDataGridViewTextBoxColumn.HeaderText = "Назва дисципліни";
-            disciplneNameDataGridViewTextBoxColumn.Name = "disciplneNameDataGridViewTextBoxColumn";
         }
 
         /// <summary>
@@ -96,15 +101,6 @@ namespace StudyPlan
                 DataSource = studyPlanDbDataSet,
                 DataMember = "EntryBases"
             };
-            // 
-            // iDDataGridViewTextBoxColumn
-            // 
-            /*_ = new DataGridViewTextBoxColumn
-            {
-                DataPropertyName = "ID",
-                HeaderText = "ID",
-                Name = "iDDataGridViewTextBoxColumn"
-            };*/
             // 
             // specialityDataGridViewTextBoxColumn
             // 
@@ -164,7 +160,6 @@ namespace StudyPlan
             // dataGridView
             // 
             dataGridView.Columns.AddRange(new DataGridViewColumn[] {
-                //iDDataGridViewTextBoxColumn,
                 specialityDataGridViewComboBoxColumn,
                 educationLevelDataGridViewComboBoxColumn,
                 entryBaseDataGridViewComboBoxColumn,
@@ -186,15 +181,6 @@ namespace StudyPlan
                 DataSource = studyPlanDbDataSet,
                 DataMember = "Disciplines"
             };
-            // 
-            // iDDataGridViewTextBoxColumn
-            // 
-            /*_ = new DataGridViewTextBoxColumn
-            {
-                DataPropertyName = "ID",
-                HeaderText = "ID",
-                Name = "iDDataGridViewTextBoxColumn"
-            };*/
             // 
             // semesterDataGridViewTextBoxColumn
             // 
@@ -219,7 +205,6 @@ namespace StudyPlan
             // dataGridView
             // 
             dataGridView.Columns.AddRange(new DataGridViewColumn[] {
-                //iDDataGridViewTextBoxColumn,
                 semesterDataGridViewTextBoxColumn,
                 disciplinaDataGridViewComboBoxColumn
             });
@@ -244,15 +229,6 @@ namespace StudyPlan
                 DataSource = studyPlanDbDataSet,
                 DataMember = "StudyPlans"
             };
-            // 
-            // iDDataGridViewTextBoxColumn
-            // 
-            /*_ = new DataGridViewTextBoxColumn
-            {
-                DataPropertyName = "ID",
-                HeaderText = "ID",
-                Name = "iDDataGridViewTextBoxColumn"
-            };*/
             // 
             // studyPlanDataGridViewTextBoxColumn
             // 
@@ -279,7 +255,6 @@ namespace StudyPlan
             // dataGridView
             // 
             dataGridView.Columns.AddRange(new DataGridViewColumn[] {
-                //iDDataGridViewTextBoxColumn,
                 studyPlanDataGridViewComboBoxColumn,
                 groupNameDataGridViewComboBoxColumn
             });
@@ -303,15 +278,6 @@ namespace StudyPlan
                 DataMember = "WorkPrograms"
             };
             // 
-            // iDDataGridViewTextBoxColumn
-            // 
-            /*_ = new DataGridViewTextBoxColumn
-            {
-                DataPropertyName = "ID",
-                HeaderText = "ID",
-                Name = "iDDataGridViewTextBoxColumn"
-            };*/
-            // 
             // iDWorkProgramDataGridViewTextBoxColumn
             // 
             DataGridViewComboBoxColumn iDWorkProgramDataGridViewComboBoxColumn = new DataGridViewComboBoxColumn
@@ -334,10 +300,19 @@ namespace StudyPlan
                 DisplayMember = "ID"
             };
             // 
+            // workProgramLinkDataGridViewTextBoxColumn
+            // 
+            DataGridViewTextBoxColumn workProgramLinkDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = "Посилання на робочу програму",
+                HeaderText = "Посилання на робочу програму",
+                Name = "workProgramLinkDataGridViewTextBoxColumn"
+            };
+            // 
             // dataGridView
             // 
             dataGridView.Columns.AddRange(new DataGridViewColumn[] {
-                //iDDataGridViewTextBoxColumn,
+                workProgramLinkDataGridViewTextBoxColumn,
                 iDWorkProgramDataGridViewComboBoxColumn,
                 iDStudyPlanDataGridViewComboBoxColumn
             });
@@ -354,15 +329,6 @@ namespace StudyPlan
             // 
             bindingSource.DataMember = "Specialities";
             bindingSource.Position = 0;
-            // 
-            // iDDataGridViewTextBoxColumn
-            // 
-            /*_ = new DataGridViewTextBoxColumn
-            {
-                DataPropertyName = "ID",
-                HeaderText = "ID",
-                Name = "iDDataGridViewTextBoxColumn"
-            };*/
             // 
             // nameDataGridViewTextBoxColumn
             // 
@@ -393,15 +359,6 @@ namespace StudyPlan
             bindingSource.DataMember = "EntryBases";
             bindingSource.Position = 0;
             // 
-            // iDDataGridViewTextBoxColumn
-            // 
-            /*_ = new DataGridViewTextBoxColumn
-            {
-                DataPropertyName = "ID",
-                HeaderText = "ID",
-                Name = "iDDataGridViewTextBoxColumn"
-            };*/
-            // 
             // nameDataGridViewTextBoxColumn
             // 
             DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn
@@ -414,7 +371,6 @@ namespace StudyPlan
             // dataGridView
             // 
             dataGridView.Columns.AddRange(new DataGridViewColumn[] {
-                //iDDataGridViewTextBoxColumn,
                 nameDataGridViewTextBoxColumn
             });
         }
@@ -431,15 +387,6 @@ namespace StudyPlan
             bindingSource.DataMember = "EducationLevels";
             bindingSource.Position = 0;
             // 
-            // iDDataGridViewTextBoxColumn
-            // 
-            /*_ = new DataGridViewTextBoxColumn
-            {
-                DataPropertyName = "ID",
-                HeaderText = "ID",
-                Name = "iDDataGridViewTextBoxColumn"
-            };*/
-            // 
             // nameDataGridViewTextBoxColumn
             // 
             DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn
@@ -452,7 +399,6 @@ namespace StudyPlan
             // dataGridView
             // 
             dataGridView.Columns.AddRange(new DataGridViewColumn[] {
-                //iDDataGridViewTextBoxColumn,
                 nameDataGridViewTextBoxColumn
             });
         }
@@ -468,15 +414,6 @@ namespace StudyPlan
             // 
             bindingSource.DataMember = "GroupNames";
             bindingSource.Position = 0;
-            // 
-            // iDDataGridViewTextBoxColumn
-            // 
-            /*_ = new DataGridViewTextBoxColumn
-            {
-                DataPropertyName = "ID",
-                HeaderText = "ID",
-                Name = "iDDataGridViewTextBoxColumn"
-            };*/
             // 
             // groupNameDataGridViewTextBoxColumn
             // 

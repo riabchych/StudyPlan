@@ -6,6 +6,7 @@ namespace StudyPlan
 {
     public partial class EditTableForm : Form
     {
+        public bool IsShowedUnusedDisciplines { get; private set; }
         public string ActiveTable { get; set; }
         public bool EscapePressed { get; set; }
         public bool DataIsChanged { get; set; }
@@ -556,6 +557,12 @@ namespace StudyPlan
                         FillDataSet();
                     }
                 }
+
+                if(IsShowedUnusedDisciplines)
+                {
+                    _ = disciplinesTableAdapter.Fill(studyPlanDbDataSet.Disciplines);
+                    IsShowedUnusedDisciplines = false;
+                }
                 ActiveTable = listTablesListBox.SelectedValue.ToString();
                 saveToolStripButton.Enabled = false;
                 ShowTable();
@@ -636,6 +643,16 @@ namespace StudyPlan
             {
                 EscapePressed = false;
             }
+        }
+
+        private void UnusedDisciplinesToolStripButton_Click(object sender, EventArgs e)
+        {
+            listTablesListBox.SelectedIndex = -1;
+            IsShowedUnusedDisciplines = true;
+            ActiveTable = Table.Disciplines;
+            _ = disciplinesTableAdapter.FillByUnusedDisciplines(studyPlanDbDataSet.Disciplines);
+            ShowTable();
+            editTablesGroupBox.Text = "Список дисциплін які не закріплені за жодною робочою програмою";
         }
     }
 }

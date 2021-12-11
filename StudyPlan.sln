@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31912.275
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudyPlanApp", "StudyPlanApp\StudyPlanApp.csproj", "{5572459F-A1AA-4C49-9A27-7FBBB6E4C139}"
+	ProjectSection(ProjectDependencies) = postProject
+		{6D15DEE0-E6FF-4533-B7DA-D0F48D0AD3F5} = {6D15DEE0-E6FF-4533-B7DA-D0F48D0AD3F5}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudyPlan.Controls", "StudyPlan.Controls\StudyPlan.Controls.csproj", "{6D15DEE0-E6FF-4533-B7DA-D0F48D0AD3F5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5572459F-A1AA-4C49-9A27-7FBBB6E4C139}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5572459F-A1AA-4C49-9A27-7FBBB6E4C139}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5572459F-A1AA-4C49-9A27-7FBBB6E4C139}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5572459F-A1AA-4C49-9A27-7FBBB6E4C139}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6D15DEE0-E6FF-4533-B7DA-D0F48D0AD3F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D15DEE0-E6FF-4533-B7DA-D0F48D0AD3F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6D15DEE0-E6FF-4533-B7DA-D0F48D0AD3F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6D15DEE0-E6FF-4533-B7DA-D0F48D0AD3F5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {91DD8B3D-AFE1-4D04-ADE8-2186E619CCD3}
+	EndGlobalSection
+EndGlobal

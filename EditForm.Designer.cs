@@ -59,10 +59,8 @@
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
             this.saveToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.UnusedDisciplinesToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.dataGridView = new System.Windows.Forms.DataGridView();
-            this.workProgramsSimpleTableAdapter = new StudyPlan.StudyPlanDbDataSetTableAdapters.WorkProgramsSimpleTableAdapter();
-            this.studyPlansSimpleTableAdapter = new StudyPlan.StudyPlanDbDataSetTableAdapters.StudyPlansSimpleTableAdapter();
+            this.UnusedDisciplinesToolStripButton = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.studyPlanDbDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -321,16 +319,6 @@
             this.saveToolStripButton.Text = "Зберегти зміни";
             this.saveToolStripButton.Click += new System.EventHandler(this.SaveToolStripButton_Click);
             // 
-            // UnusedDisciplinesToolStripButton
-            // 
-            this.UnusedDisciplinesToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.UnusedDisciplinesToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("UnusedDisciplinesToolStripButton.Image")));
-            this.UnusedDisciplinesToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.UnusedDisciplinesToolStripButton.Name = "UnusedDisciplinesToolStripButton";
-            this.UnusedDisciplinesToolStripButton.Size = new System.Drawing.Size(23, 22);
-            this.UnusedDisciplinesToolStripButton.Text = "Перевірити дисципліни";
-            this.UnusedDisciplinesToolStripButton.Click += new System.EventHandler(this.UnusedDisciplinesToolStripButton_Click);
-            // 
             // dataGridView
             // 
             this.dataGridView.AllowDrop = true;
@@ -350,13 +338,15 @@
             this.dataGridView.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView_CellEndEdit);
             this.dataGridView.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.DataGridView_EditingControlShowing);
             // 
-            // workProgramsSimpleTableAdapter
+            // UnusedDisciplinesToolStripButton
             // 
-            this.workProgramsSimpleTableAdapter.ClearBeforeFill = true;
-            // 
-            // studyPlansSimpleTableAdapter
-            // 
-            this.studyPlansSimpleTableAdapter.ClearBeforeFill = true;
+            this.UnusedDisciplinesToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.UnusedDisciplinesToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("UnusedDisciplinesToolStripButton.Image")));
+            this.UnusedDisciplinesToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.UnusedDisciplinesToolStripButton.Name = "UnusedDisciplinesToolStripButton";
+            this.UnusedDisciplinesToolStripButton.Size = new System.Drawing.Size(23, 22);
+            this.UnusedDisciplinesToolStripButton.Text = "Перевірити дисципліни";
+            this.UnusedDisciplinesToolStripButton.Click += new System.EventHandler(this.UnusedDisciplinesToolStripButton_Click);
             // 
             // EditTableForm
             // 
@@ -416,7 +406,5 @@
         private System.Windows.Forms.ToolStripButton bindingNavigatorDeleteItem;
         private System.Windows.Forms.ToolStripButton saveToolStripButton;
         private System.Windows.Forms.ToolStripButton UnusedDisciplinesToolStripButton;
-        private StudyPlanDbDataSetTableAdapters.WorkProgramsSimpleTableAdapter workProgramsSimpleTableAdapter;
-        private StudyPlanDbDataSetTableAdapters.StudyPlansSimpleTableAdapter studyPlansSimpleTableAdapter;
     }
 }

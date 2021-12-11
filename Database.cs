@@ -15,7 +15,7 @@ namespace StudyPlan
         /// <returns>Повертає список таблиць або значення null</returns>
         public List<string> GetTables()
         {
-            using (OleDbConnection connection = new OleDbConnection(Properties.Settings.Default.StudyPlanDbConnectionString))
+            using (OleDbConnection connection = new OleDbConnection(Properties.Settings.Default.DbConnectionString))
             {
                 try
                 {

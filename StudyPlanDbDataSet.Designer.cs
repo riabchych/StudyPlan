@@ -42,10 +42,6 @@ namespace StudyPlan {
         
         private WorkProgramsDataTable tableWorkPrograms;
         
-        private WorkProgramsSimpleDataTable tableWorkProgramsSimple;
-        
-        private StudyPlansSimpleDataTable tableStudyPlansSimple;
-        
         private global::System.Data.DataRelation relationНавчальні_планиГрупи;
         
         private global::System.Data.DataRelation relationНазви_групГрупи;
@@ -61,10 +57,6 @@ namespace StudyPlan {
         private global::System.Data.DataRelation relationДисципліниРобочі_програми;
         
         private global::System.Data.DataRelation relationНавчальні_планиТаблица1;
-        
-        private global::System.Data.DataRelation relationДисципліниРобочі_програми1;
-        
-        private global::System.Data.DataRelation relationБази_вступуНавчальні_плани1;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
@@ -120,12 +112,6 @@ namespace StudyPlan {
                 }
                 if ((ds.Tables["WorkPrograms"] != null)) {
                     base.Tables.Add(new WorkProgramsDataTable(ds.Tables["WorkPrograms"]));
-                }
-                if ((ds.Tables["WorkProgramsSimple"] != null)) {
-                    base.Tables.Add(new WorkProgramsSimpleDataTable(ds.Tables["WorkProgramsSimple"]));
-                }
-                if ((ds.Tables["StudyPlansSimple"] != null)) {
-                    base.Tables.Add(new StudyPlansSimpleDataTable(ds.Tables["StudyPlansSimple"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -237,26 +223,6 @@ namespace StudyPlan {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Browsable(false)]
-        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public WorkProgramsSimpleDataTable WorkProgramsSimple {
-            get {
-                return this.tableWorkProgramsSimple;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Browsable(false)]
-        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public StudyPlansSimpleDataTable StudyPlansSimple {
-            get {
-                return this.tableStudyPlansSimple;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.BrowsableAttribute(true)]
         [global::System.ComponentModel.DesignerSerializationVisibilityAttribute(global::System.ComponentModel.DesignerSerializationVisibility.Visible)]
         public override global::System.Data.SchemaSerializationMode SchemaSerializationMode {
@@ -349,12 +315,6 @@ namespace StudyPlan {
                 if ((ds.Tables["WorkPrograms"] != null)) {
                     base.Tables.Add(new WorkProgramsDataTable(ds.Tables["WorkPrograms"]));
                 }
-                if ((ds.Tables["WorkProgramsSimple"] != null)) {
-                    base.Tables.Add(new WorkProgramsSimpleDataTable(ds.Tables["WorkProgramsSimple"]));
-                }
-                if ((ds.Tables["StudyPlansSimple"] != null)) {
-                    base.Tables.Add(new StudyPlansSimpleDataTable(ds.Tables["StudyPlansSimple"]));
-                }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
                 this.Namespace = ds.Namespace;
@@ -442,18 +402,6 @@ namespace StudyPlan {
                     this.tableWorkPrograms.InitVars();
                 }
             }
-            this.tableWorkProgramsSimple = ((WorkProgramsSimpleDataTable)(base.Tables["WorkProgramsSimple"]));
-            if ((initTable == true)) {
-                if ((this.tableWorkProgramsSimple != null)) {
-                    this.tableWorkProgramsSimple.InitVars();
-                }
-            }
-            this.tableStudyPlansSimple = ((StudyPlansSimpleDataTable)(base.Tables["StudyPlansSimple"]));
-            if ((initTable == true)) {
-                if ((this.tableStudyPlansSimple != null)) {
-                    this.tableStudyPlansSimple.InitVars();
-                }
-            }
             this.relationНавчальні_планиГрупи = this.Relations["Навчальні планиГрупи"];
             this.relationНазви_групГрупи = this.Relations["Назви групГрупи"];
             this.relationБази_вступуНавчальні_плани = this.Relations["Бази вступуНавчальні плани"];
@@ -462,8 +410,6 @@ namespace StudyPlan {
             this.relationРобочі_програмиОблік_робочих_програм = this.Relations["Робочі програмиОблік робочих програм"];
             this.relationДисципліниРобочі_програми = this.Relations["ДисципліниРобочі програми"];
             this.relationНавчальні_планиТаблица1 = this.Relations["Навчальні планиТаблица1"];
-            this.relationДисципліниРобочі_програми1 = this.Relations["ДисципліниРобочі програми1"];
-            this.relationБази_вступуНавчальні_плани1 = this.Relations["Бази вступуНавчальні плани1"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -492,10 +438,6 @@ namespace StudyPlan {
             base.Tables.Add(this.tableSpecialities);
             this.tableWorkPrograms = new WorkProgramsDataTable();
             base.Tables.Add(this.tableWorkPrograms);
-            this.tableWorkProgramsSimple = new WorkProgramsSimpleDataTable();
-            base.Tables.Add(this.tableWorkProgramsSimple);
-            this.tableStudyPlansSimple = new StudyPlansSimpleDataTable();
-            base.Tables.Add(this.tableStudyPlansSimple);
             this.relationНавчальні_планиГрупи = new global::System.Data.DataRelation("Навчальні планиГрупи", new global::System.Data.DataColumn[] {
                         this.tableStudyPlans.IDColumn}, new global::System.Data.DataColumn[] {
                         this.tableGroups.Навчальний_планColumn}, false);
@@ -528,14 +470,6 @@ namespace StudyPlan {
                         this.tableStudyPlans.IDColumn}, new global::System.Data.DataColumn[] {
                         this.tableAccountingWorkPrograms.ID_навчального_плануColumn}, false);
             this.Relations.Add(this.relationНавчальні_планиТаблица1);
-            this.relationДисципліниРобочі_програми1 = new global::System.Data.DataRelation("ДисципліниРобочі програми1", new global::System.Data.DataColumn[] {
-                        this.tableWorkProgramsSimple.IDColumn}, new global::System.Data.DataColumn[] {
-                        this.tableWorkPrograms.ДисциплінаColumn}, false);
-            this.Relations.Add(this.relationДисципліниРобочі_програми1);
-            this.relationБази_вступуНавчальні_плани1 = new global::System.Data.DataRelation("Бази вступуНавчальні плани1", new global::System.Data.DataColumn[] {
-                        this.tableStudyPlansSimple.IDColumn}, new global::System.Data.DataColumn[] {
-                        this.tableStudyPlans.База_вступуColumn}, false);
-            this.Relations.Add(this.relationБази_вступуНавчальні_плани1);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -589,18 +523,6 @@ namespace StudyPlan {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private bool ShouldSerializeWorkPrograms() {
-            return false;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private bool ShouldSerializeWorkProgramsSimple() {
-            return false;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private bool ShouldSerializeStudyPlansSimple() {
             return false;
         }
         
@@ -685,12 +607,6 @@ namespace StudyPlan {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         public delegate void WorkProgramsRowChangeEventHandler(object sender, WorkProgramsRowChangeEvent e);
-        
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public delegate void WorkProgramsSimpleRowChangeEventHandler(object sender, WorkProgramsSimpleRowChangeEvent e);
-        
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public delegate void StudyPlansSimpleRowChangeEventHandler(object sender, StudyPlansSimpleRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -2169,6 +2085,8 @@ namespace StudyPlan {
             
             private global::System.Data.DataColumn columnID_навчального_плану;
             
+            private global::System.Data.DataColumn columnПосилання_на_робочу_програму;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public AccountingWorkProgramsDataTable() {
@@ -2228,6 +2146,14 @@ namespace StudyPlan {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn Посилання_на_робочу_програмуColumn {
+                get {
+                    return this.columnПосилання_на_робочу_програму;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -2263,12 +2189,13 @@ namespace StudyPlan {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public AccountingWorkProgramsRow AddAccountingWorkProgramsRow(WorkProgramsRow parentWorkProgramsRowByРобочі_програмиОблік_робочих_програм, StudyPlansRow parentStudyPlansRowByНавчальні_планиТаблица1) {
+            public AccountingWorkProgramsRow AddAccountingWorkProgramsRow(WorkProgramsRow parentWorkProgramsRowByРобочі_програмиОблік_робочих_програм, StudyPlansRow parentStudyPlansRowByНавчальні_планиТаблица1, string Посилання_на_робочу_програму) {
                 AccountingWorkProgramsRow rowAccountingWorkProgramsRow = ((AccountingWorkProgramsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         null,
-                        null};
+                        null,
+                        Посилання_на_робочу_програму};
                 if ((parentWorkProgramsRowByРобочі_програмиОблік_робочих_програм != null)) {
                     columnValuesArray[1] = parentWorkProgramsRowByРобочі_програмиОблік_робочих_програм[0];
                 }
@@ -2307,6 +2234,7 @@ namespace StudyPlan {
                 this.columnID = base.Columns["ID"];
                 this.columnID_робочої_програми = base.Columns["ID робочої програми"];
                 this.columnID_навчального_плану = base.Columns["ID навчального плану"];
+                this.columnПосилання_на_робочу_програму = base.Columns["Посилання на робочу програму"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2318,6 +2246,8 @@ namespace StudyPlan {
                 base.Columns.Add(this.columnID_робочої_програми);
                 this.columnID_навчального_плану = new global::System.Data.DataColumn("ID навчального плану", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnID_навчального_плану);
+                this.columnПосилання_на_робочу_програму = new global::System.Data.DataColumn("Посилання на робочу програму", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnПосилання_на_робочу_програму);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnID}, true));
                 this.columnID.AutoIncrement = true;
@@ -2325,6 +2255,7 @@ namespace StudyPlan {
                 this.columnID.AutoIncrementStep = -1;
                 this.columnID.AllowDBNull = false;
                 this.columnID.Unique = true;
+                this.columnПосилання_на_робочу_програму.MaxLength = 536870910;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3016,8 +2947,6 @@ namespace StudyPlan {
             
             private global::System.Data.DataColumn columnДисципліна;
             
-            private global::System.Data.DataColumn columnПосилання_на_робочу_програму;
-            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public WorkProgramsDataTable() {
@@ -3077,14 +3006,6 @@ namespace StudyPlan {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn Посилання_на_робочу_програмуColumn {
-                get {
-                    return this.columnПосилання_на_робочу_програму;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -3120,13 +3041,12 @@ namespace StudyPlan {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public WorkProgramsRow AddWorkProgramsRow(int Семестр, DisciplinesRow parentDisciplinesRowByДисципліниРобочі_програми, string Посилання_на_робочу_програму) {
+            public WorkProgramsRow AddWorkProgramsRow(int Семестр, DisciplinesRow parentDisciplinesRowByДисципліниРобочі_програми) {
                 WorkProgramsRow rowWorkProgramsRow = ((WorkProgramsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         Семестр,
-                        null,
-                        Посилання_на_робочу_програму};
+                        null};
                 if ((parentDisciplinesRowByДисципліниРобочі_програми != null)) {
                     columnValuesArray[2] = parentDisciplinesRowByДисципліниРобочі_програми[0];
                 }
@@ -3162,7 +3082,6 @@ namespace StudyPlan {
                 this.columnID = base.Columns["ID"];
                 this.columnСеместр = base.Columns["Семестр"];
                 this.columnДисципліна = base.Columns["Дисципліна"];
-                this.columnПосилання_на_робочу_програму = base.Columns["Посилання на робочу програму"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3174,8 +3093,6 @@ namespace StudyPlan {
                 base.Columns.Add(this.columnСеместр);
                 this.columnДисципліна = new global::System.Data.DataColumn("Дисципліна", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnДисципліна);
-                this.columnПосилання_на_робочу_програму = new global::System.Data.DataColumn("Посилання на робочу програму", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnПосилання_на_робочу_програму);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnID}, true));
                 this.columnID.AutoIncrement = true;
@@ -3183,7 +3100,6 @@ namespace StudyPlan {
                 this.columnID.AutoIncrementStep = -1;
                 this.columnID.AllowDBNull = false;
                 this.columnID.Unique = true;
-                this.columnПосилання_на_робочу_програму.MaxLength = 536870910;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3270,717 +3186,6 @@ namespace StudyPlan {
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
                 attribute2.FixedValue = "WorkProgramsDataTable";
-                type.Attributes.Add(attribute2);
-                type.Particle = sequence;
-                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
-                if (xs.Contains(dsSchema.TargetNamespace)) {
-                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
-                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
-                    try {
-                        global::System.Xml.Schema.XmlSchema schema = null;
-                        dsSchema.Write(s1);
-                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
-                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
-                            s2.SetLength(0);
-                            schema.Write(s2);
-                            if ((s1.Length == s2.Length)) {
-                                s1.Position = 0;
-                                s2.Position = 0;
-                                for (; ((s1.Position != s1.Length) 
-                                            && (s1.ReadByte() == s2.ReadByte())); ) {
-                                    ;
-                                }
-                                if ((s1.Position == s1.Length)) {
-                                    return type;
-                                }
-                            }
-                        }
-                    }
-                    finally {
-                        if ((s1 != null)) {
-                            s1.Close();
-                        }
-                        if ((s2 != null)) {
-                            s2.Close();
-                        }
-                    }
-                }
-                xs.Add(dsSchema);
-                return type;
-            }
-        }
-        
-        /// <summary>
-        ///Represents the strongly named DataTable class.
-        ///</summary>
-        [global::System.Serializable()]
-        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class WorkProgramsSimpleDataTable : global::System.Data.TypedTableBase<WorkProgramsSimpleRow> {
-            
-            private global::System.Data.DataColumn columnСеместр;
-            
-            private global::System.Data.DataColumn columnНазва_дисципліни;
-            
-            private global::System.Data.DataColumn columnПосилання_на_робочу_програму;
-            
-            private global::System.Data.DataColumn columnID;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public WorkProgramsSimpleDataTable() {
-                this.TableName = "WorkProgramsSimple";
-                this.BeginInit();
-                this.InitClass();
-                this.EndInit();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            internal WorkProgramsSimpleDataTable(global::System.Data.DataTable table) {
-                this.TableName = table.TableName;
-                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
-                    this.CaseSensitive = table.CaseSensitive;
-                }
-                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
-                    this.Locale = table.Locale;
-                }
-                if ((table.Namespace != table.DataSet.Namespace)) {
-                    this.Namespace = table.Namespace;
-                }
-                this.Prefix = table.Prefix;
-                this.MinimumCapacity = table.MinimumCapacity;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected WorkProgramsSimpleDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
-                    base(info, context) {
-                this.InitVars();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn СеместрColumn {
-                get {
-                    return this.columnСеместр;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn Назва_дисципліниColumn {
-                get {
-                    return this.columnНазва_дисципліни;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn Посилання_на_робочу_програмуColumn {
-                get {
-                    return this.columnПосилання_на_робочу_програму;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn IDColumn {
-                get {
-                    return this.columnID;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            [global::System.ComponentModel.Browsable(false)]
-            public int Count {
-                get {
-                    return this.Rows.Count;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public WorkProgramsSimpleRow this[int index] {
-                get {
-                    return ((WorkProgramsSimpleRow)(this.Rows[index]));
-                }
-            }
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event WorkProgramsSimpleRowChangeEventHandler WorkProgramsSimpleRowChanging;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event WorkProgramsSimpleRowChangeEventHandler WorkProgramsSimpleRowChanged;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event WorkProgramsSimpleRowChangeEventHandler WorkProgramsSimpleRowDeleting;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event WorkProgramsSimpleRowChangeEventHandler WorkProgramsSimpleRowDeleted;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void AddWorkProgramsSimpleRow(WorkProgramsSimpleRow row) {
-                this.Rows.Add(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public WorkProgramsSimpleRow AddWorkProgramsSimpleRow(int Семестр, string Назва_дисципліни, string Посилання_на_робочу_програму) {
-                WorkProgramsSimpleRow rowWorkProgramsSimpleRow = ((WorkProgramsSimpleRow)(this.NewRow()));
-                object[] columnValuesArray = new object[] {
-                        Семестр,
-                        Назва_дисципліни,
-                        Посилання_на_робочу_програму,
-                        null};
-                rowWorkProgramsSimpleRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowWorkProgramsSimpleRow);
-                return rowWorkProgramsSimpleRow;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public override global::System.Data.DataTable Clone() {
-                WorkProgramsSimpleDataTable cln = ((WorkProgramsSimpleDataTable)(base.Clone()));
-                cln.InitVars();
-                return cln;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected override global::System.Data.DataTable CreateInstance() {
-                return new WorkProgramsSimpleDataTable();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            internal void InitVars() {
-                this.columnСеместр = base.Columns["Семестр"];
-                this.columnНазва_дисципліни = base.Columns["Назва дисципліни"];
-                this.columnПосилання_на_робочу_програму = base.Columns["Посилання на робочу програму"];
-                this.columnID = base.Columns["ID"];
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            private void InitClass() {
-                this.columnСеместр = new global::System.Data.DataColumn("Семестр", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnСеместр);
-                this.columnНазва_дисципліни = new global::System.Data.DataColumn("Назва дисципліни", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnНазва_дисципліни);
-                this.columnПосилання_на_робочу_програму = new global::System.Data.DataColumn("Посилання на робочу програму", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnПосилання_на_робочу_програму);
-                this.columnID = new global::System.Data.DataColumn("ID", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnID);
-                this.columnНазва_дисципліни.MaxLength = 255;
-                this.columnПосилання_на_робочу_програму.MaxLength = 536870910;
-                this.columnID.AutoIncrement = true;
-                this.columnID.AutoIncrementSeed = -1;
-                this.columnID.AutoIncrementStep = -1;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public WorkProgramsSimpleRow NewWorkProgramsSimpleRow() {
-                return ((WorkProgramsSimpleRow)(this.NewRow()));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new WorkProgramsSimpleRow(builder);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected override global::System.Type GetRowType() {
-                return typeof(WorkProgramsSimpleRow);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanged(e);
-                if ((this.WorkProgramsSimpleRowChanged != null)) {
-                    this.WorkProgramsSimpleRowChanged(this, new WorkProgramsSimpleRowChangeEvent(((WorkProgramsSimpleRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanging(e);
-                if ((this.WorkProgramsSimpleRowChanging != null)) {
-                    this.WorkProgramsSimpleRowChanging(this, new WorkProgramsSimpleRowChangeEvent(((WorkProgramsSimpleRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleted(e);
-                if ((this.WorkProgramsSimpleRowDeleted != null)) {
-                    this.WorkProgramsSimpleRowDeleted(this, new WorkProgramsSimpleRowChangeEvent(((WorkProgramsSimpleRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleting(e);
-                if ((this.WorkProgramsSimpleRowDeleting != null)) {
-                    this.WorkProgramsSimpleRowDeleting(this, new WorkProgramsSimpleRowChangeEvent(((WorkProgramsSimpleRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void RemoveWorkProgramsSimpleRow(WorkProgramsSimpleRow row) {
-                this.Rows.Remove(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
-                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                StudyPlanDbDataSet ds = new StudyPlanDbDataSet();
-                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
-                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
-                any1.MinOccurs = new decimal(0);
-                any1.MaxOccurs = decimal.MaxValue;
-                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any1);
-                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
-                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
-                any2.MinOccurs = new decimal(1);
-                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any2);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute1.Name = "namespace";
-                attribute1.FixedValue = ds.Namespace;
-                type.Attributes.Add(attribute1);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "WorkProgramsSimpleDataTable";
-                type.Attributes.Add(attribute2);
-                type.Particle = sequence;
-                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
-                if (xs.Contains(dsSchema.TargetNamespace)) {
-                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
-                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
-                    try {
-                        global::System.Xml.Schema.XmlSchema schema = null;
-                        dsSchema.Write(s1);
-                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
-                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
-                            s2.SetLength(0);
-                            schema.Write(s2);
-                            if ((s1.Length == s2.Length)) {
-                                s1.Position = 0;
-                                s2.Position = 0;
-                                for (; ((s1.Position != s1.Length) 
-                                            && (s1.ReadByte() == s2.ReadByte())); ) {
-                                    ;
-                                }
-                                if ((s1.Position == s1.Length)) {
-                                    return type;
-                                }
-                            }
-                        }
-                    }
-                    finally {
-                        if ((s1 != null)) {
-                            s1.Close();
-                        }
-                        if ((s2 != null)) {
-                            s2.Close();
-                        }
-                    }
-                }
-                xs.Add(dsSchema);
-                return type;
-            }
-        }
-        
-        /// <summary>
-        ///Represents the strongly named DataTable class.
-        ///</summary>
-        [global::System.Serializable()]
-        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class StudyPlansSimpleDataTable : global::System.Data.TypedTableBase<StudyPlansSimpleRow> {
-            
-            private global::System.Data.DataColumn columnID;
-            
-            private global::System.Data.DataColumn columnОсвітня_професійна_програма;
-            
-            private global::System.Data.DataColumn columnОсвітній_рівень;
-            
-            private global::System.Data.DataColumn columnБаза_вступу;
-            
-            private global::System.Data.DataColumn columnПосилання_на_навчальний_план;
-            
-            private global::System.Data.DataColumn columnРік_вступу;
-            
-            private global::System.Data.DataColumn columnEbName;
-            
-            private global::System.Data.DataColumn columnElName;
-            
-            private global::System.Data.DataColumn columnSpecName;
-            
-            private global::System.Data.DataColumn columnSpecID;
-            
-            private global::System.Data.DataColumn columnElID;
-            
-            private global::System.Data.DataColumn columnEbID;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public StudyPlansSimpleDataTable() {
-                this.TableName = "StudyPlansSimple";
-                this.BeginInit();
-                this.InitClass();
-                this.EndInit();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            internal StudyPlansSimpleDataTable(global::System.Data.DataTable table) {
-                this.TableName = table.TableName;
-                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
-                    this.CaseSensitive = table.CaseSensitive;
-                }
-                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
-                    this.Locale = table.Locale;
-                }
-                if ((table.Namespace != table.DataSet.Namespace)) {
-                    this.Namespace = table.Namespace;
-                }
-                this.Prefix = table.Prefix;
-                this.MinimumCapacity = table.MinimumCapacity;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected StudyPlansSimpleDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
-                    base(info, context) {
-                this.InitVars();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn IDColumn {
-                get {
-                    return this.columnID;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn Освітня_професійна_програмаColumn {
-                get {
-                    return this.columnОсвітня_професійна_програма;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn Освітній_рівеньColumn {
-                get {
-                    return this.columnОсвітній_рівень;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn База_вступуColumn {
-                get {
-                    return this.columnБаза_вступу;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn Посилання_на_навчальний_планColumn {
-                get {
-                    return this.columnПосилання_на_навчальний_план;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn Рік_вступуColumn {
-                get {
-                    return this.columnРік_вступу;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn EbNameColumn {
-                get {
-                    return this.columnEbName;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn ElNameColumn {
-                get {
-                    return this.columnElName;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn SpecNameColumn {
-                get {
-                    return this.columnSpecName;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn SpecIDColumn {
-                get {
-                    return this.columnSpecID;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn ElIDColumn {
-                get {
-                    return this.columnElID;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn EbIDColumn {
-                get {
-                    return this.columnEbID;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            [global::System.ComponentModel.Browsable(false)]
-            public int Count {
-                get {
-                    return this.Rows.Count;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public StudyPlansSimpleRow this[int index] {
-                get {
-                    return ((StudyPlansSimpleRow)(this.Rows[index]));
-                }
-            }
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event StudyPlansSimpleRowChangeEventHandler StudyPlansSimpleRowChanging;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event StudyPlansSimpleRowChangeEventHandler StudyPlansSimpleRowChanged;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event StudyPlansSimpleRowChangeEventHandler StudyPlansSimpleRowDeleting;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event StudyPlansSimpleRowChangeEventHandler StudyPlansSimpleRowDeleted;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void AddStudyPlansSimpleRow(StudyPlansSimpleRow row) {
-                this.Rows.Add(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public StudyPlansSimpleRow AddStudyPlansSimpleRow(int Освітня_професійна_програма, int Освітній_рівень, int База_вступу, string Посилання_на_навчальний_план, int Рік_вступу, string EbName, string ElName, string SpecName) {
-                StudyPlansSimpleRow rowStudyPlansSimpleRow = ((StudyPlansSimpleRow)(this.NewRow()));
-                object[] columnValuesArray = new object[] {
-                        null,
-                        Освітня_професійна_програма,
-                        Освітній_рівень,
-                        База_вступу,
-                        Посилання_на_навчальний_план,
-                        Рік_вступу,
-                        EbName,
-                        ElName,
-                        SpecName,
-                        null,
-                        null,
-                        null};
-                rowStudyPlansSimpleRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowStudyPlansSimpleRow);
-                return rowStudyPlansSimpleRow;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public override global::System.Data.DataTable Clone() {
-                StudyPlansSimpleDataTable cln = ((StudyPlansSimpleDataTable)(base.Clone()));
-                cln.InitVars();
-                return cln;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected override global::System.Data.DataTable CreateInstance() {
-                return new StudyPlansSimpleDataTable();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            internal void InitVars() {
-                this.columnID = base.Columns["ID"];
-                this.columnОсвітня_професійна_програма = base.Columns["Освітня професійна програма"];
-                this.columnОсвітній_рівень = base.Columns["Освітній рівень"];
-                this.columnБаза_вступу = base.Columns["База вступу"];
-                this.columnПосилання_на_навчальний_план = base.Columns["Посилання на навчальний план"];
-                this.columnРік_вступу = base.Columns["Рік вступу"];
-                this.columnEbName = base.Columns["EbName"];
-                this.columnElName = base.Columns["ElName"];
-                this.columnSpecName = base.Columns["SpecName"];
-                this.columnSpecID = base.Columns["SpecID"];
-                this.columnElID = base.Columns["ElID"];
-                this.columnEbID = base.Columns["EbID"];
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            private void InitClass() {
-                this.columnID = new global::System.Data.DataColumn("ID", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnID);
-                this.columnОсвітня_професійна_програма = new global::System.Data.DataColumn("Освітня професійна програма", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnОсвітня_професійна_програма);
-                this.columnОсвітній_рівень = new global::System.Data.DataColumn("Освітній рівень", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnОсвітній_рівень);
-                this.columnБаза_вступу = new global::System.Data.DataColumn("База вступу", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnБаза_вступу);
-                this.columnПосилання_на_навчальний_план = new global::System.Data.DataColumn("Посилання на навчальний план", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnПосилання_на_навчальний_план);
-                this.columnРік_вступу = new global::System.Data.DataColumn("Рік вступу", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnРік_вступу);
-                this.columnEbName = new global::System.Data.DataColumn("EbName", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnEbName);
-                this.columnElName = new global::System.Data.DataColumn("ElName", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnElName);
-                this.columnSpecName = new global::System.Data.DataColumn("SpecName", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnSpecName);
-                this.columnSpecID = new global::System.Data.DataColumn("SpecID", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnSpecID);
-                this.columnElID = new global::System.Data.DataColumn("ElID", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnElID);
-                this.columnEbID = new global::System.Data.DataColumn("EbID", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnEbID);
-                this.columnID.AutoIncrement = true;
-                this.columnID.AutoIncrementSeed = -1;
-                this.columnID.AutoIncrementStep = -1;
-                this.columnПосилання_на_навчальний_план.MaxLength = 536870910;
-                this.columnEbName.MaxLength = 255;
-                this.columnElName.MaxLength = 255;
-                this.columnSpecName.MaxLength = 255;
-                this.columnSpecID.AutoIncrement = true;
-                this.columnSpecID.AutoIncrementSeed = -1;
-                this.columnSpecID.AutoIncrementStep = -1;
-                this.columnElID.AutoIncrement = true;
-                this.columnElID.AutoIncrementSeed = -1;
-                this.columnElID.AutoIncrementStep = -1;
-                this.columnEbID.AutoIncrement = true;
-                this.columnEbID.AutoIncrementSeed = -1;
-                this.columnEbID.AutoIncrementStep = -1;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public StudyPlansSimpleRow NewStudyPlansSimpleRow() {
-                return ((StudyPlansSimpleRow)(this.NewRow()));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new StudyPlansSimpleRow(builder);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected override global::System.Type GetRowType() {
-                return typeof(StudyPlansSimpleRow);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanged(e);
-                if ((this.StudyPlansSimpleRowChanged != null)) {
-                    this.StudyPlansSimpleRowChanged(this, new StudyPlansSimpleRowChangeEvent(((StudyPlansSimpleRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanging(e);
-                if ((this.StudyPlansSimpleRowChanging != null)) {
-                    this.StudyPlansSimpleRowChanging(this, new StudyPlansSimpleRowChangeEvent(((StudyPlansSimpleRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleted(e);
-                if ((this.StudyPlansSimpleRowDeleted != null)) {
-                    this.StudyPlansSimpleRowDeleted(this, new StudyPlansSimpleRowChangeEvent(((StudyPlansSimpleRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleting(e);
-                if ((this.StudyPlansSimpleRowDeleting != null)) {
-                    this.StudyPlansSimpleRowDeleting(this, new StudyPlansSimpleRowChangeEvent(((StudyPlansSimpleRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void RemoveStudyPlansSimpleRow(StudyPlansSimpleRow row) {
-                this.Rows.Remove(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
-                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                StudyPlanDbDataSet ds = new StudyPlanDbDataSet();
-                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
-                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
-                any1.MinOccurs = new decimal(0);
-                any1.MaxOccurs = decimal.MaxValue;
-                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any1);
-                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
-                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
-                any2.MinOccurs = new decimal(1);
-                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any2);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute1.Name = "namespace";
-                attribute1.FixedValue = ds.Namespace;
-                type.Attributes.Add(attribute1);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "StudyPlansSimpleDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -4397,17 +3602,6 @@ namespace StudyPlan {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public StudyPlansSimpleRow StudyPlansSimpleRow {
-                get {
-                    return ((StudyPlansSimpleRow)(this.GetParentRow(this.Table.ParentRelations["Бази вступуНавчальні плани1"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["Бази вступуНавчальні плани1"]);
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsОсвітня_професійна_програмаNull() {
                 return this.IsNull(this.tableStudyPlans.Освітня_професійна_програмаColumn);
             }
@@ -4615,6 +3809,23 @@ namespace StudyPlan {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string Посилання_на_робочу_програму {
+                get {
+                    try {
+                        return ((string)(this[this.tableAccountingWorkPrograms.Посилання_на_робочу_програмуColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Посилання на робочу програму\' в таблице \'AccountingWorkProg" +
+                                "rams\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableAccountingWorkPrograms.Посилання_на_робочу_програмуColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public WorkProgramsRow WorkProgramsRow {
                 get {
                     return ((WorkProgramsRow)(this.GetParentRow(this.Table.ParentRelations["Робочі програмиОблік робочих програм"])));
@@ -4657,6 +3868,18 @@ namespace StudyPlan {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetID_навчального_плануNull() {
                 this[this.tableAccountingWorkPrograms.ID_навчального_плануColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsПосилання_на_робочу_програмуNull() {
+                return this.IsNull(this.tableAccountingWorkPrograms.Посилання_на_робочу_програмуColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetПосилання_на_робочу_програмуNull() {
+                this[this.tableAccountingWorkPrograms.Посилання_на_робочу_програмуColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -4849,40 +4072,12 @@ namespace StudyPlan {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string Посилання_на_робочу_програму {
-                get {
-                    try {
-                        return ((string)(this[this.tableWorkPrograms.Посилання_на_робочу_програмуColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Посилання на робочу програму\' в таблице \'WorkPrograms\' равн" +
-                                "о DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableWorkPrograms.Посилання_на_робочу_програмуColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public DisciplinesRow ДисципліниRow {
                 get {
                     return ((DisciplinesRow)(this.GetParentRow(this.Table.ParentRelations["ДисципліниРобочі програми"])));
                 }
                 set {
                     this.SetParentRow(value, this.Table.ParentRelations["ДисципліниРобочі програми"]);
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public WorkProgramsSimpleRow WorkProgramsSimpleRow {
-                get {
-                    return ((WorkProgramsSimpleRow)(this.GetParentRow(this.Table.ParentRelations["ДисципліниРобочі програми1"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["ДисципліниРобочі програми1"]);
                 }
             }
             
@@ -4912,529 +4107,12 @@ namespace StudyPlan {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsПосилання_на_робочу_програмуNull() {
-                return this.IsNull(this.tableWorkPrograms.Посилання_на_робочу_програмуColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetПосилання_на_робочу_програмуNull() {
-                this[this.tableWorkPrograms.Посилання_на_робочу_програмуColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public AccountingWorkProgramsRow[] GetОблік_робочих_програмRows() {
                 if ((this.Table.ChildRelations["Робочі програмиОблік робочих програм"] == null)) {
                     return new AccountingWorkProgramsRow[0];
                 }
                 else {
                     return ((AccountingWorkProgramsRow[])(base.GetChildRows(this.Table.ChildRelations["Робочі програмиОблік робочих програм"])));
-                }
-            }
-        }
-        
-        /// <summary>
-        ///Represents strongly named DataRow class.
-        ///</summary>
-        public partial class WorkProgramsSimpleRow : global::System.Data.DataRow {
-            
-            private WorkProgramsSimpleDataTable tableWorkProgramsSimple;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            internal WorkProgramsSimpleRow(global::System.Data.DataRowBuilder rb) : 
-                    base(rb) {
-                this.tableWorkProgramsSimple = ((WorkProgramsSimpleDataTable)(this.Table));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public int Семестр {
-                get {
-                    try {
-                        return ((int)(this[this.tableWorkProgramsSimple.СеместрColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Семестр\' в таблице \'WorkProgramsSimple\' равно DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableWorkProgramsSimple.СеместрColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string Назва_дисципліни {
-                get {
-                    try {
-                        return ((string)(this[this.tableWorkProgramsSimple.Назва_дисципліниColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Назва дисципліни\' в таблице \'WorkProgramsSimple\' равно DBNu" +
-                                "ll.", e);
-                    }
-                }
-                set {
-                    this[this.tableWorkProgramsSimple.Назва_дисципліниColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string Посилання_на_робочу_програму {
-                get {
-                    try {
-                        return ((string)(this[this.tableWorkProgramsSimple.Посилання_на_робочу_програмуColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Посилання на робочу програму\' в таблице \'WorkProgramsSimple" +
-                                "\' равно DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableWorkProgramsSimple.Посилання_на_робочу_програмуColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public int ID {
-                get {
-                    try {
-                        return ((int)(this[this.tableWorkProgramsSimple.IDColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'ID\' в таблице \'WorkProgramsSimple\' равно DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableWorkProgramsSimple.IDColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsСеместрNull() {
-                return this.IsNull(this.tableWorkProgramsSimple.СеместрColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetСеместрNull() {
-                this[this.tableWorkProgramsSimple.СеместрColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsНазва_дисципліниNull() {
-                return this.IsNull(this.tableWorkProgramsSimple.Назва_дисципліниColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetНазва_дисципліниNull() {
-                this[this.tableWorkProgramsSimple.Назва_дисципліниColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsПосилання_на_робочу_програмуNull() {
-                return this.IsNull(this.tableWorkProgramsSimple.Посилання_на_робочу_програмуColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetПосилання_на_робочу_програмуNull() {
-                this[this.tableWorkProgramsSimple.Посилання_на_робочу_програмуColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsIDNull() {
-                return this.IsNull(this.tableWorkProgramsSimple.IDColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetIDNull() {
-                this[this.tableWorkProgramsSimple.IDColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public WorkProgramsRow[] GetWorkProgramsRows() {
-                if ((this.Table.ChildRelations["ДисципліниРобочі програми1"] == null)) {
-                    return new WorkProgramsRow[0];
-                }
-                else {
-                    return ((WorkProgramsRow[])(base.GetChildRows(this.Table.ChildRelations["ДисципліниРобочі програми1"])));
-                }
-            }
-        }
-        
-        /// <summary>
-        ///Represents strongly named DataRow class.
-        ///</summary>
-        public partial class StudyPlansSimpleRow : global::System.Data.DataRow {
-            
-            private StudyPlansSimpleDataTable tableStudyPlansSimple;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            internal StudyPlansSimpleRow(global::System.Data.DataRowBuilder rb) : 
-                    base(rb) {
-                this.tableStudyPlansSimple = ((StudyPlansSimpleDataTable)(this.Table));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public int ID {
-                get {
-                    try {
-                        return ((int)(this[this.tableStudyPlansSimple.IDColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'ID\' в таблице \'StudyPlansSimple\' равно DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableStudyPlansSimple.IDColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public int Освітня_професійна_програма {
-                get {
-                    try {
-                        return ((int)(this[this.tableStudyPlansSimple.Освітня_професійна_програмаColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Освітня професійна програма\' в таблице \'StudyPlansSimple\' р" +
-                                "авно DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableStudyPlansSimple.Освітня_професійна_програмаColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public int Освітній_рівень {
-                get {
-                    try {
-                        return ((int)(this[this.tableStudyPlansSimple.Освітній_рівеньColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Освітній рівень\' в таблице \'StudyPlansSimple\' равно DBNull." +
-                                "", e);
-                    }
-                }
-                set {
-                    this[this.tableStudyPlansSimple.Освітній_рівеньColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public int База_вступу {
-                get {
-                    try {
-                        return ((int)(this[this.tableStudyPlansSimple.База_вступуColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'База вступу\' в таблице \'StudyPlansSimple\' равно DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableStudyPlansSimple.База_вступуColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string Посилання_на_навчальний_план {
-                get {
-                    try {
-                        return ((string)(this[this.tableStudyPlansSimple.Посилання_на_навчальний_планColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Посилання на навчальний план\' в таблице \'StudyPlansSimple\' " +
-                                "равно DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableStudyPlansSimple.Посилання_на_навчальний_планColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public int Рік_вступу {
-                get {
-                    try {
-                        return ((int)(this[this.tableStudyPlansSimple.Рік_вступуColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Рік вступу\' в таблице \'StudyPlansSimple\' равно DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableStudyPlansSimple.Рік_вступуColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string EbName {
-                get {
-                    try {
-                        return ((string)(this[this.tableStudyPlansSimple.EbNameColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'EbName\' в таблице \'StudyPlansSimple\' равно DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableStudyPlansSimple.EbNameColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string ElName {
-                get {
-                    try {
-                        return ((string)(this[this.tableStudyPlansSimple.ElNameColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'ElName\' в таблице \'StudyPlansSimple\' равно DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableStudyPlansSimple.ElNameColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string SpecName {
-                get {
-                    try {
-                        return ((string)(this[this.tableStudyPlansSimple.SpecNameColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'SpecName\' в таблице \'StudyPlansSimple\' равно DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableStudyPlansSimple.SpecNameColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public int SpecID {
-                get {
-                    try {
-                        return ((int)(this[this.tableStudyPlansSimple.SpecIDColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'SpecID\' в таблице \'StudyPlansSimple\' равно DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableStudyPlansSimple.SpecIDColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public int ElID {
-                get {
-                    try {
-                        return ((int)(this[this.tableStudyPlansSimple.ElIDColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'ElID\' в таблице \'StudyPlansSimple\' равно DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableStudyPlansSimple.ElIDColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public int EbID {
-                get {
-                    try {
-                        return ((int)(this[this.tableStudyPlansSimple.EbIDColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'EbID\' в таблице \'StudyPlansSimple\' равно DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableStudyPlansSimple.EbIDColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsIDNull() {
-                return this.IsNull(this.tableStudyPlansSimple.IDColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetIDNull() {
-                this[this.tableStudyPlansSimple.IDColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsОсвітня_професійна_програмаNull() {
-                return this.IsNull(this.tableStudyPlansSimple.Освітня_професійна_програмаColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetОсвітня_професійна_програмаNull() {
-                this[this.tableStudyPlansSimple.Освітня_професійна_програмаColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsОсвітній_рівеньNull() {
-                return this.IsNull(this.tableStudyPlansSimple.Освітній_рівеньColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetОсвітній_рівеньNull() {
-                this[this.tableStudyPlansSimple.Освітній_рівеньColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsБаза_вступуNull() {
-                return this.IsNull(this.tableStudyPlansSimple.База_вступуColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetБаза_вступуNull() {
-                this[this.tableStudyPlansSimple.База_вступуColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsПосилання_на_навчальний_планNull() {
-                return this.IsNull(this.tableStudyPlansSimple.Посилання_на_навчальний_планColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetПосилання_на_навчальний_планNull() {
-                this[this.tableStudyPlansSimple.Посилання_на_навчальний_планColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsРік_вступуNull() {
-                return this.IsNull(this.tableStudyPlansSimple.Рік_вступуColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetРік_вступуNull() {
-                this[this.tableStudyPlansSimple.Рік_вступуColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsEbNameNull() {
-                return this.IsNull(this.tableStudyPlansSimple.EbNameColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetEbNameNull() {
-                this[this.tableStudyPlansSimple.EbNameColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsElNameNull() {
-                return this.IsNull(this.tableStudyPlansSimple.ElNameColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetElNameNull() {
-                this[this.tableStudyPlansSimple.ElNameColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsSpecNameNull() {
-                return this.IsNull(this.tableStudyPlansSimple.SpecNameColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetSpecNameNull() {
-                this[this.tableStudyPlansSimple.SpecNameColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsSpecIDNull() {
-                return this.IsNull(this.tableStudyPlansSimple.SpecIDColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetSpecIDNull() {
-                this[this.tableStudyPlansSimple.SpecIDColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsElIDNull() {
-                return this.IsNull(this.tableStudyPlansSimple.ElIDColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetElIDNull() {
-                this[this.tableStudyPlansSimple.ElIDColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsEbIDNull() {
-                return this.IsNull(this.tableStudyPlansSimple.EbIDColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetEbIDNull() {
-                this[this.tableStudyPlansSimple.EbIDColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public StudyPlansRow[] GetStudyPlansRows() {
-                if ((this.Table.ChildRelations["Бази вступуНавчальні плани1"] == null)) {
-                    return new StudyPlansRow[0];
-                }
-                else {
-                    return ((StudyPlansRow[])(base.GetChildRows(this.Table.ChildRelations["Бази вступуНавчальні плани1"])));
                 }
             }
         }
@@ -5744,74 +4422,6 @@ namespace StudyPlan {
                 }
             }
         }
-        
-        /// <summary>
-        ///Row event argument class
-        ///</summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public class WorkProgramsSimpleRowChangeEvent : global::System.EventArgs {
-            
-            private WorkProgramsSimpleRow eventRow;
-            
-            private global::System.Data.DataRowAction eventAction;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public WorkProgramsSimpleRowChangeEvent(WorkProgramsSimpleRow row, global::System.Data.DataRowAction action) {
-                this.eventRow = row;
-                this.eventAction = action;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public WorkProgramsSimpleRow Row {
-                get {
-                    return this.eventRow;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataRowAction Action {
-                get {
-                    return this.eventAction;
-                }
-            }
-        }
-        
-        /// <summary>
-        ///Row event argument class
-        ///</summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public class StudyPlansSimpleRowChangeEvent : global::System.EventArgs {
-            
-            private StudyPlansSimpleRow eventRow;
-            
-            private global::System.Data.DataRowAction eventAction;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public StudyPlansSimpleRowChangeEvent(StudyPlansSimpleRow row, global::System.Data.DataRowAction action) {
-                this.eventRow = row;
-                this.eventAction = action;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public StudyPlansSimpleRow Row {
-                get {
-                    return this.eventRow;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataRowAction Action {
-                get {
-                    return this.eventAction;
-                }
-            }
-        }
     }
 }
 namespace StudyPlan.StudyPlanDbDataSetTableAdapters {
@@ -5969,7 +4579,7 @@ namespace StudyPlan.StudyPlanDbDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.OleDb.OleDbConnection();
-            this._connection.ConnectionString = global::StudyPlan.Properties.Settings.Default.StudyPlanDbConnectionString;
+            this._connection.ConnectionString = global::StudyPlan.Properties.Settings.Default.DbConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6311,7 +4921,7 @@ namespace StudyPlan.StudyPlanDbDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.OleDb.OleDbConnection();
-            this._connection.ConnectionString = global::StudyPlan.Properties.Settings.Default.StudyPlanDbConnectionString;
+            this._connection.ConnectionString = global::StudyPlan.Properties.Settings.Default.DbConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6632,7 +5242,7 @@ namespace StudyPlan.StudyPlanDbDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.OleDb.OleDbConnection();
-            this._connection.ConnectionString = global::StudyPlan.Properties.Settings.Default.StudyPlanDbConnectionString;
+            this._connection.ConnectionString = global::StudyPlan.Properties.Settings.Default.DbConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6996,7 +5606,7 @@ namespace StudyPlan.StudyPlanDbDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.OleDb.OleDbConnection();
-            this._connection.ConnectionString = global::StudyPlan.Properties.Settings.Default.StudyPlanDbConnectionString;
+            this._connection.ConnectionString = global::StudyPlan.Properties.Settings.Default.DbConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -7405,7 +6015,7 @@ namespace StudyPlan.StudyPlanDbDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.OleDb.OleDbConnection();
-            this._connection.ConnectionString = global::StudyPlan.Properties.Settings.Default.StudyPlanDbConnectionString;
+            this._connection.ConnectionString = global::StudyPlan.Properties.Settings.Default.DbConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -7689,6 +6299,7 @@ namespace StudyPlan.StudyPlanDbDataSetTableAdapters {
             tableMapping.ColumnMappings.Add("ID", "ID");
             tableMapping.ColumnMappings.Add("ID робочої програми", "ID робочої програми");
             tableMapping.ColumnMappings.Add("ID навчального плану", "ID навчального плану");
+            tableMapping.ColumnMappings.Add("Посилання на робочу програму", "Посилання на робочу програму");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.OleDb.OleDbCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
@@ -7727,7 +6338,7 @@ namespace StudyPlan.StudyPlanDbDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.OleDb.OleDbConnection();
-            this._connection.ConnectionString = global::StudyPlan.Properties.Settings.Default.StudyPlanDbConnectionString;
+            this._connection.ConnectionString = global::StudyPlan.Properties.Settings.Default.DbConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -7736,8 +6347,7 @@ namespace StudyPlan.StudyPlanDbDataSetTableAdapters {
             this._commandCollection = new global::System.Data.OleDb.OleDbCommand[1];
             this._commandCollection[0] = new global::System.Data.OleDb.OleDbCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT ID, [ID робочої програми], [ID навчального плану] FROM [Облік робочих прог" +
-                "рам]";
+            this._commandCollection[0].CommandText = "SELECT        [Облік робочих програм].*\r\nFROM            [Облік робочих програм]";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -8080,7 +6690,7 @@ namespace StudyPlan.StudyPlanDbDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.OleDb.OleDbConnection();
-            this._connection.ConnectionString = global::StudyPlan.Properties.Settings.Default.StudyPlanDbConnectionString;
+            this._connection.ConnectionString = global::StudyPlan.Properties.Settings.Default.DbConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -8392,7 +7002,7 @@ namespace StudyPlan.StudyPlanDbDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.OleDb.OleDbConnection();
-            this._connection.ConnectionString = global::StudyPlan.Properties.Settings.Default.StudyPlanDbConnectionString;
+            this._connection.ConnectionString = global::StudyPlan.Properties.Settings.Default.DbConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -8676,7 +7286,6 @@ namespace StudyPlan.StudyPlanDbDataSetTableAdapters {
             tableMapping.ColumnMappings.Add("ID", "ID");
             tableMapping.ColumnMappings.Add("Семестр", "Семестр");
             tableMapping.ColumnMappings.Add("Дисципліна", "Дисципліна");
-            tableMapping.ColumnMappings.Add("Посилання на робочу програму", "Посилання на робочу програму");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.OleDb.OleDbCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
@@ -8691,21 +7300,18 @@ namespace StudyPlan.StudyPlanDbDataSetTableAdapters {
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Дисципліна", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Дисципліна", global::System.Data.DataRowVersion.Original, false, null));
             this._adapter.InsertCommand = new global::System.Data.OleDb.OleDbCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO `Робочі програми` (`Семестр`, `Дисципліна`, `Посилання на робочу прог" +
-                "раму`) VALUES (?, ?, ?)";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO `Робочі програми` (`Семестр`, `Дисципліна`) VALUES (?, ?)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Семестр", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Семестр", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Дисципліна", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Дисципліна", global::System.Data.DataRowVersion.Current, false, null));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Посилання_на_робочу_програму", global::System.Data.OleDb.OleDbType.LongVarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Посилання на робочу програму", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.UpdateCommand = new global::System.Data.OleDb.OleDbCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = "UPDATE `Робочі програми` SET `Семестр` = ?, `Дисципліна` = ?, `Посилання на робоч" +
-                "у програму` = ? WHERE ((`ID` = ?) AND ((? = 1 AND `Семестр` IS NULL) OR (`Семест" +
-                "р` = ?)) AND ((? = 1 AND `Дисципліна` IS NULL) OR (`Дисципліна` = ?)))";
+            this._adapter.UpdateCommand.CommandText = "UPDATE `Робочі програми` SET `Семестр` = ?, `Дисципліна` = ? WHERE ((`ID` = ?) AN" +
+                "D ((? = 1 AND `Семестр` IS NULL) OR (`Семестр` = ?)) AND ((? = 1 AND `Дисципліна" +
+                "` IS NULL) OR (`Дисципліна` = ?)))";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Семестр", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Семестр", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Дисципліна", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Дисципліна", global::System.Data.DataRowVersion.Current, false, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Посилання_на_робочу_програму", global::System.Data.OleDb.OleDbType.LongVarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Посилання на робочу програму", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_ID", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ID", global::System.Data.DataRowVersion.Original, false, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_Семестр", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Семестр", global::System.Data.DataRowVersion.Original, true, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Семестр", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Семестр", global::System.Data.DataRowVersion.Original, false, null));
@@ -8717,7 +7323,7 @@ namespace StudyPlan.StudyPlanDbDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.OleDb.OleDbConnection();
-            this._connection.ConnectionString = global::StudyPlan.Properties.Settings.Default.StudyPlanDbConnectionString;
+            this._connection.ConnectionString = global::StudyPlan.Properties.Settings.Default.DbConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -8726,8 +7332,7 @@ namespace StudyPlan.StudyPlanDbDataSetTableAdapters {
             this._commandCollection = new global::System.Data.OleDb.OleDbCommand[1];
             this._commandCollection[0] = new global::System.Data.OleDb.OleDbCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT        ID, Семестр, Дисципліна, [Посилання на робочу програму]\r\nFROM      " +
-                "      [Робочі програми]";
+            this._commandCollection[0].CommandText = "SELECT ID, Семестр, Дисципліна FROM [Робочі програми]";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -8826,7 +7431,7 @@ namespace StudyPlan.StudyPlanDbDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(global::System.Nullable<int> Семестр, global::System.Nullable<int> Дисципліна, string Посилання_на_робочу_програму) {
+        public virtual int Insert(global::System.Nullable<int> Семестр, global::System.Nullable<int> Дисципліна) {
             if ((Семестр.HasValue == true)) {
                 this.Adapter.InsertCommand.Parameters[0].Value = ((int)(Семестр.Value));
             }
@@ -8838,12 +7443,6 @@ namespace StudyPlan.StudyPlanDbDataSetTableAdapters {
             }
             else {
                 this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
-            }
-            if ((Посилання_на_робочу_програму == null)) {
-                this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(Посилання_на_робочу_програму));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -8865,7 +7464,7 @@ namespace StudyPlan.StudyPlanDbDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(global::System.Nullable<int> Семестр, global::System.Nullable<int> Дисципліна, string Посилання_на_робочу_програму, int Original_ID, global::System.Nullable<int> Original_Семестр, global::System.Nullable<int> Original_Дисципліна) {
+        public virtual int Update(global::System.Nullable<int> Семестр, global::System.Nullable<int> Дисципліна, int Original_ID, global::System.Nullable<int> Original_Семестр, global::System.Nullable<int> Original_Дисципліна) {
             if ((Семестр.HasValue == true)) {
                 this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(Семестр.Value));
             }
@@ -8878,28 +7477,22 @@ namespace StudyPlan.StudyPlanDbDataSetTableAdapters {
             else {
                 this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
-            if ((Посилання_на_робочу_програму == null)) {
-                this.Adapter.UpdateCommand.Parameters[2].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(Посилання_на_робочу_програму));
-            }
-            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(Original_ID));
+            this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(Original_ID));
             if ((Original_Семестр.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[4].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(Original_Семестр.Value));
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(Original_Семестр.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[4].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[5].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
             if ((Original_Дисципліна.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(Original_Дисципліна.Value));
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(Original_Дисципліна.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[7].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -8915,362 +7508,6 @@ namespace StudyPlan.StudyPlanDbDataSetTableAdapters {
                     this.Adapter.UpdateCommand.Connection.Close();
                 }
             }
-        }
-    }
-    
-    /// <summary>
-    ///Represents the connection and commands used to retrieve and save data.
-    ///</summary>
-    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
-    [global::System.ComponentModel.ToolboxItem(true)]
-    [global::System.ComponentModel.DataObjectAttribute(true)]
-    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
-        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
-    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class WorkProgramsSimpleTableAdapter : global::System.ComponentModel.Component {
-        
-        private global::System.Data.OleDb.OleDbDataAdapter _adapter;
-        
-        private global::System.Data.OleDb.OleDbConnection _connection;
-        
-        private global::System.Data.OleDb.OleDbTransaction _transaction;
-        
-        private global::System.Data.OleDb.OleDbCommand[] _commandCollection;
-        
-        private bool _clearBeforeFill;
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public WorkProgramsSimpleTableAdapter() {
-            this.ClearBeforeFill = true;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        protected internal global::System.Data.OleDb.OleDbDataAdapter Adapter {
-            get {
-                if ((this._adapter == null)) {
-                    this.InitAdapter();
-                }
-                return this._adapter;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        internal global::System.Data.OleDb.OleDbConnection Connection {
-            get {
-                if ((this._connection == null)) {
-                    this.InitConnection();
-                }
-                return this._connection;
-            }
-            set {
-                this._connection = value;
-                if ((this.Adapter.InsertCommand != null)) {
-                    this.Adapter.InsertCommand.Connection = value;
-                }
-                if ((this.Adapter.DeleteCommand != null)) {
-                    this.Adapter.DeleteCommand.Connection = value;
-                }
-                if ((this.Adapter.UpdateCommand != null)) {
-                    this.Adapter.UpdateCommand.Connection = value;
-                }
-                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
-                    if ((this.CommandCollection[i] != null)) {
-                        ((global::System.Data.OleDb.OleDbCommand)(this.CommandCollection[i])).Connection = value;
-                    }
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        internal global::System.Data.OleDb.OleDbTransaction Transaction {
-            get {
-                return this._transaction;
-            }
-            set {
-                this._transaction = value;
-                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
-                    this.CommandCollection[i].Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.DeleteCommand != null))) {
-                    this.Adapter.DeleteCommand.Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.InsertCommand != null))) {
-                    this.Adapter.InsertCommand.Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.UpdateCommand != null))) {
-                    this.Adapter.UpdateCommand.Transaction = this._transaction;
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        protected global::System.Data.OleDb.OleDbCommand[] CommandCollection {
-            get {
-                if ((this._commandCollection == null)) {
-                    this.InitCommandCollection();
-                }
-                return this._commandCollection;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public bool ClearBeforeFill {
-            get {
-                return this._clearBeforeFill;
-            }
-            set {
-                this._clearBeforeFill = value;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private void InitAdapter() {
-            this._adapter = new global::System.Data.OleDb.OleDbDataAdapter();
-            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
-            tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "WorkProgramsSimple";
-            tableMapping.ColumnMappings.Add("Семестр", "Семестр");
-            tableMapping.ColumnMappings.Add("Назва дисципліни", "Назва дисципліни");
-            tableMapping.ColumnMappings.Add("Посилання на робочу програму", "Посилання на робочу програму");
-            tableMapping.ColumnMappings.Add("ID", "ID");
-            this._adapter.TableMappings.Add(tableMapping);
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private void InitConnection() {
-            this._connection = new global::System.Data.OleDb.OleDbConnection();
-            this._connection.ConnectionString = global::StudyPlan.Properties.Settings.Default.StudyPlanDbConnectionString;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.OleDb.OleDbCommand[1];
-            this._commandCollection[0] = new global::System.Data.OleDb.OleDbCommand();
-            this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = @"SELECT        [Робочі програми].Семестр, Дисципліни.[Назва дисципліни], [Робочі програми].[Посилання на робочу програму], [Робочі програми].ID
-FROM            ([Робочі програми] INNER JOIN
-                         Дисципліни ON [Робочі програми].Дисципліна = Дисципліни.ID)";
-            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(StudyPlanDbDataSet.WorkProgramsSimpleDataTable dataTable) {
-            this.Adapter.SelectCommand = this.CommandCollection[0];
-            if ((this.ClearBeforeFill == true)) {
-                dataTable.Clear();
-            }
-            int returnValue = this.Adapter.Fill(dataTable);
-            return returnValue;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual StudyPlanDbDataSet.WorkProgramsSimpleDataTable GetData() {
-            this.Adapter.SelectCommand = this.CommandCollection[0];
-            StudyPlanDbDataSet.WorkProgramsSimpleDataTable dataTable = new StudyPlanDbDataSet.WorkProgramsSimpleDataTable();
-            this.Adapter.Fill(dataTable);
-            return dataTable;
-        }
-    }
-    
-    /// <summary>
-    ///Represents the connection and commands used to retrieve and save data.
-    ///</summary>
-    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
-    [global::System.ComponentModel.ToolboxItem(true)]
-    [global::System.ComponentModel.DataObjectAttribute(true)]
-    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
-        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
-    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class StudyPlansSimpleTableAdapter : global::System.ComponentModel.Component {
-        
-        private global::System.Data.OleDb.OleDbDataAdapter _adapter;
-        
-        private global::System.Data.OleDb.OleDbConnection _connection;
-        
-        private global::System.Data.OleDb.OleDbTransaction _transaction;
-        
-        private global::System.Data.OleDb.OleDbCommand[] _commandCollection;
-        
-        private bool _clearBeforeFill;
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public StudyPlansSimpleTableAdapter() {
-            this.ClearBeforeFill = true;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        protected internal global::System.Data.OleDb.OleDbDataAdapter Adapter {
-            get {
-                if ((this._adapter == null)) {
-                    this.InitAdapter();
-                }
-                return this._adapter;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        internal global::System.Data.OleDb.OleDbConnection Connection {
-            get {
-                if ((this._connection == null)) {
-                    this.InitConnection();
-                }
-                return this._connection;
-            }
-            set {
-                this._connection = value;
-                if ((this.Adapter.InsertCommand != null)) {
-                    this.Adapter.InsertCommand.Connection = value;
-                }
-                if ((this.Adapter.DeleteCommand != null)) {
-                    this.Adapter.DeleteCommand.Connection = value;
-                }
-                if ((this.Adapter.UpdateCommand != null)) {
-                    this.Adapter.UpdateCommand.Connection = value;
-                }
-                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
-                    if ((this.CommandCollection[i] != null)) {
-                        ((global::System.Data.OleDb.OleDbCommand)(this.CommandCollection[i])).Connection = value;
-                    }
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        internal global::System.Data.OleDb.OleDbTransaction Transaction {
-            get {
-                return this._transaction;
-            }
-            set {
-                this._transaction = value;
-                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
-                    this.CommandCollection[i].Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.DeleteCommand != null))) {
-                    this.Adapter.DeleteCommand.Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.InsertCommand != null))) {
-                    this.Adapter.InsertCommand.Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.UpdateCommand != null))) {
-                    this.Adapter.UpdateCommand.Transaction = this._transaction;
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        protected global::System.Data.OleDb.OleDbCommand[] CommandCollection {
-            get {
-                if ((this._commandCollection == null)) {
-                    this.InitCommandCollection();
-                }
-                return this._commandCollection;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public bool ClearBeforeFill {
-            get {
-                return this._clearBeforeFill;
-            }
-            set {
-                this._clearBeforeFill = value;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private void InitAdapter() {
-            this._adapter = new global::System.Data.OleDb.OleDbDataAdapter();
-            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
-            tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "StudyPlansSimple";
-            tableMapping.ColumnMappings.Add("ID", "ID");
-            tableMapping.ColumnMappings.Add("Освітня професійна програма", "Освітня професійна програма");
-            tableMapping.ColumnMappings.Add("Освітній рівень", "Освітній рівень");
-            tableMapping.ColumnMappings.Add("База вступу", "База вступу");
-            tableMapping.ColumnMappings.Add("Посилання на навчальний план", "Посилання на навчальний план");
-            tableMapping.ColumnMappings.Add("Рік вступу", "Рік вступу");
-            tableMapping.ColumnMappings.Add("EbName", "EbName");
-            tableMapping.ColumnMappings.Add("ElName", "ElName");
-            tableMapping.ColumnMappings.Add("SpecName", "SpecName");
-            tableMapping.ColumnMappings.Add("SpecID", "SpecID");
-            tableMapping.ColumnMappings.Add("ElID", "ElID");
-            tableMapping.ColumnMappings.Add("EbID", "EbID");
-            this._adapter.TableMappings.Add(tableMapping);
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private void InitConnection() {
-            this._connection = new global::System.Data.OleDb.OleDbConnection();
-            this._connection.ConnectionString = global::StudyPlan.Properties.Settings.Default.StudyPlanDbConnectionString;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.OleDb.OleDbCommand[1];
-            this._commandCollection[0] = new global::System.Data.OleDb.OleDbCommand();
-            this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = @"SELECT        [Навчальні плани].ID, [Навчальні плани].[Освітня професійна програма], [Навчальні плани].[Освітній рівень], [Навчальні плани].[База вступу], [Навчальні плани].[Посилання на навчальний план], 
-                         [Навчальні плани].[Рік вступу], [Бази вступу].Назва AS EbName, [Освітні рівні].Назва AS ElName, [Освітня професійна програма].Назва AS SpecName, [Освітня професійна програма].ID AS SpecID, 
-                         [Освітні рівні].ID AS ElID, [Бази вступу].ID AS EbID
-FROM            ((([Навчальні плани] INNER JOIN
-                         [Бази вступу] ON [Навчальні плани].[База вступу] = [Бази вступу].ID) INNER JOIN
-                         [Освітня професійна програма] ON [Навчальні плани].[Освітня професійна програма] = [Освітня професійна програма].ID) INNER JOIN
-                         [Освітні рівні] ON [Навчальні плани].[Освітній рівень] = [Освітні рівні].ID)";
-            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(StudyPlanDbDataSet.StudyPlansSimpleDataTable dataTable) {
-            this.Adapter.SelectCommand = this.CommandCollection[0];
-            if ((this.ClearBeforeFill == true)) {
-                dataTable.Clear();
-            }
-            int returnValue = this.Adapter.Fill(dataTable);
-            return returnValue;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual StudyPlanDbDataSet.StudyPlansSimpleDataTable GetData() {
-            this.Adapter.SelectCommand = this.CommandCollection[0];
-            StudyPlanDbDataSet.StudyPlansSimpleDataTable dataTable = new StudyPlanDbDataSet.StudyPlansSimpleDataTable();
-            this.Adapter.Fill(dataTable);
-            return dataTable;
         }
     }
     

@@ -118,43 +118,46 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <metadata name="bindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>221, 95</value>
+    <value>358, 17</value>
   </metadata>
   <metadata name="studyPlanDbDataSet.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
+    <value>188, 17</value>
+  </metadata>
+  <metadata name="studyPlanDbDataSet.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>188, 17</value>
   </metadata>
   <metadata name="tableAdapterManager.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>180, 17</value>
+    <value>17, 17</value>
   </metadata>
   <metadata name="accountingWorkProgramsTableAdapter.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>351, 17</value>
-  </metadata>
-  <metadata name="disciplinesTableAdapter.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>618, 17</value>
-  </metadata>
-  <metadata name="educatioLevelsTableAdapter.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>799, 17</value>
-  </metadata>
-  <metadata name="entryBasesTableAdapter.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 56</value>
-  </metadata>
-  <metadata name="groupNamesTableAdapter.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>200, 56</value>
-  </metadata>
-  <metadata name="groupsTableAdapter.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>396, 56</value>
-  </metadata>
-  <metadata name="specialitiesTableAdapter.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>559, 56</value>
   </metadata>
-  <metadata name="studyPlansTableAdapter.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>743, 56</value>
+  <metadata name="disciplinesTableAdapter.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>489, 17</value>
   </metadata>
-  <metadata name="workProgramsTableAdapter.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  <metadata name="educatioLevelsTableAdapter.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 95</value>
   </metadata>
+  <metadata name="entryBasesTableAdapter.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>670, 17</value>
+  </metadata>
+  <metadata name="groupNamesTableAdapter.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>363, 56</value>
+  </metadata>
+  <metadata name="groupsTableAdapter.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 56</value>
+  </metadata>
+  <metadata name="specialitiesTableAdapter.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>222, 95</value>
+  </metadata>
+  <metadata name="studyPlansTableAdapter.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>180, 56</value>
+  </metadata>
+  <metadata name="workProgramsTableAdapter.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>406, 95</value>
+  </metadata>
   <metadata name="bindingNavigator1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>352, 95</value>
+    <value>764, 95</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="bindingNavigatorAddNewItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
@@ -224,46 +227,40 @@
   <data name="saveToolStripButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADlSURBVDhPYxg8QLtu63yTGef+Fm599P/Nh49wfPXxq/+r
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADlSURBVDhPYxg8QLtu63yTGZf/Fm599P/Nh49wfPXxq/+r
         Tt37f+Dak/8gOZW8efVQLagApNlkxm2wImQD1p5/+t9gwvn/eetvgeVAarAaApLAZsC6Sy/h4jADQBiq
         DQFgEgmr7/5/+e4D3IDrz96BDTl4+zVYjqABRlOu/dfpOIIVg+QIGkAshmpDAJDg3FPPUfyPDYPU4DQA
-        5NeHT5//P3PpKlYMkoMFKlQbAsAMePbqzf87Dx5jxSA5Whpw7i9IEpu/kTHEgHN/odoQQLt26/xZ+079
-        xeZ3ZAxSA0r2UG0DDhgYAHJtxQrh6S3YAAAAAElFTkSuQmCC
+        5NeHT5//P3PpKlYMkoMFKlQbAsAMePbqzf87Dx5jxSA5Whpw+S9IEpu/kTHEgMt/odoQQLt26/xZ+87/
+        xeZ3ZAxSA0r2UG0DDhgYAKNkxSiH6N9PAAAAAElFTkSuQmCC
 </value>
   </data>
   <data name="UnusedDisciplinesToolStripButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         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
-        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
+        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
 </value>
   </data>
-  <metadata name="workProgramsSimpleTableAdapter.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>506, 95</value>
-  </metadata>
-  <metadata name="studyPlansSimpleTableAdapter.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>746, 95</value>
-  </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>238</value>
+    <value>97</value>
   </metadata>
 </root>

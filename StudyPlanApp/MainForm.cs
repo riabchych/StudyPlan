@@ -158,6 +158,9 @@ namespace StudyPlan
                     editBt.Enabled = false;
                     previewBt.Enabled = false;
                     removeBt.Enabled = false;
+                    linkWorkProgramLabel.Enabled = false;
+                    linkWorkProgram.Text = "";
+                    linkWorkProgram.Enabled = false;
                     break;
                 case 2:
                     SearchData.EntryBase = 0;
@@ -173,6 +176,9 @@ namespace StudyPlan
                     editBt.Enabled = false;
                     previewBt.Enabled = false;
                     removeBt.Enabled = false;
+                    linkWorkProgramLabel.Enabled = false;
+                    linkWorkProgram.Enabled = false;
+                    linkWorkProgram.Text = "";
                     break;
                 case 3:
                     SearchData.Semester = 0;
@@ -185,6 +191,9 @@ namespace StudyPlan
                     editBt.Enabled = false;
                     previewBt.Enabled = false;
                     removeBt.Enabled = false;
+                    linkWorkProgramLabel.Enabled = false;
+                    linkWorkProgram.Enabled = false;
+                    linkWorkProgram.Text = "";
                     break;
                 case 4:
                     SearchData.Discipline = 0;
@@ -194,31 +203,33 @@ namespace StudyPlan
                     editBt.Enabled = false;
                     previewBt.Enabled = false;
                     removeBt.Enabled = false;
+                    linkWorkProgramLabel.Enabled = false;
+                    linkWorkProgram.Enabled = false;
+                    linkWorkProgram.Text = "";
                     break;
                 default:
-                    SearchData.EntryYear = 0;
+                    SearchData.Cource = 0;
                     groupCb.SelectedIndex = -1;
                     groupCb.Enabled = false;
                     groupLb.Enabled = false;
-
                     entryBaseCb.SelectedIndex = -1;
                     entryBaseCb.Enabled = false;
                     entryBaseLb.Enabled = false;
-
                     semesterCb.SelectedIndex = -1;
                     semesterCb.Enabled = false;
                     semesterLb.Enabled = false;
-
                     disciplineCb.SelectedIndex = -1;
                     disciplineCb.Enabled = false;
                     disciplineLb.Enabled = false;
-
                     linkTb.Text = "";
                     linkTb.Enabled = false;
                     linkLb.Enabled = false;
                     editBt.Enabled = false;
                     previewBt.Enabled = false;
                     removeBt.Enabled = false;
+                    linkWorkProgramLabel.Enabled = false;
+                    linkWorkProgram.Enabled = false;
+                    linkWorkProgram.Text = "";
                     break;
             }
         }
@@ -330,10 +341,10 @@ namespace StudyPlan
             DisableControls();
             if (courseCb.SelectedIndex > 0)
             {
-                SearchData.EntryYear = courseCb.SelectedValue == null ? 0 : int.Parse(courseCb.SelectedValue.ToString());
-                if (courseCb.Items.Count > 1 && SearchData.EntryYear > 0)
+                SearchData.Cource = courseCb.SelectedValue == null ? 0 : int.Parse(courseCb.SelectedValue.ToString());
+                if (courseCb.Items.Count > 1 && SearchData.Cource > 0)
                 {
-                    Groups = StudyPlanDbAdapter.GetGroups(SearchData.EntryYear);
+                    Groups = StudyPlanDbAdapter.GetGroups(SearchData.Cource);
                     if (Groups != null && Groups.Count > 0)
                     {
                         FillGroupCb();
@@ -353,7 +364,7 @@ namespace StudyPlan
             if (groupCb.SelectedIndex > 0)
             {
                 SearchData.Group = groupCb.SelectedValue == null ? 0 : (int)groupCb.SelectedValue;
-                EntryBases = StudyPlanDbAdapter.GetEntryBases(SearchData.Group, SearchData.EntryYear);
+                EntryBases = StudyPlanDbAdapter.GetEntryBases(SearchData.Group);
                 if (EntryBases != null && EntryBases.Count > 0)
                 {
                     SearchData.Plan = Groups.Find(item => item.Id == SearchData.Group).Plan;
@@ -374,7 +385,7 @@ namespace StudyPlan
             if (entryBaseCb.SelectedIndex > 0)
             {
                 SearchData.EntryBase = entryBaseCb.SelectedValue == null ? 0 : (int)entryBaseCb.SelectedValue;
-                Semesters = StudyPlanDbAdapter.GetSemesters(SearchData.EntryYear, SearchData.Group, SearchData.EntryBase);
+                Semesters = StudyPlanDbAdapter.GetSemesters(SearchData.Group, SearchData.EntryBase);
                 if (Semesters != null && Semesters.Count > 0)
                 {
                     FillSemesterCb();
@@ -413,6 +424,14 @@ namespace StudyPlan
             {
                 SearchData.Discipline = disciplineCb.SelectedValue == null ? 0 : (int)disciplineCb.SelectedValue;
                 Plan = StudyPlanDbAdapter.GetPlan(SearchData.Plan);
+                string link = StudyPlanDbAdapter.GetWorkProgramLink(SearchData.Plan);
+
+                if (link != null)
+                {
+                    linkWorkProgramLabel.Enabled = true;
+                    linkWorkProgram.Enabled = true;
+                    linkWorkProgram.Text = BeautyfyUrl(link);
+                }
                 if (linkTb.Text == "")
                 {
                     if (Plan != null)
@@ -479,6 +498,14 @@ namespace StudyPlan
         private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void LinkWorkProgram_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(linkWorkProgram.Text))
+            {
+                OpenUrl(linkWorkProgram.Text);
+            }
         }
     }
 }

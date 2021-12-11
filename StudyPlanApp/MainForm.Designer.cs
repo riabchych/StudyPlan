@@ -50,6 +50,8 @@ namespace StudyPlan
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editTablesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.linkWorkProgramLabel = new System.Windows.Forms.Label();
+            this.linkWorkProgram = new System.Windows.Forms.LinkLabel();
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -161,7 +163,7 @@ namespace StudyPlan
             // linkTb
             // 
             this.linkTb.Enabled = false;
-            this.linkTb.Location = new System.Drawing.Point(10, 197);
+            this.linkTb.Location = new System.Drawing.Point(10, 242);
             this.linkTb.Name = "linkTb";
             this.linkTb.ReadOnly = true;
             this.linkTb.Size = new System.Drawing.Size(359, 20);
@@ -172,7 +174,7 @@ namespace StudyPlan
             // 
             this.linkLb.AutoSize = true;
             this.linkLb.Enabled = false;
-            this.linkLb.Location = new System.Drawing.Point(10, 181);
+            this.linkLb.Location = new System.Drawing.Point(10, 226);
             this.linkLb.Name = "linkLb";
             this.linkLb.Size = new System.Drawing.Size(167, 13);
             this.linkLb.TabIndex = 13;
@@ -181,7 +183,7 @@ namespace StudyPlan
             // previewBt
             // 
             this.previewBt.Enabled = false;
-            this.previewBt.Location = new System.Drawing.Point(10, 222);
+            this.previewBt.Location = new System.Drawing.Point(10, 267);
             this.previewBt.Name = "previewBt";
             this.previewBt.Size = new System.Drawing.Size(81, 27);
             this.previewBt.TabIndex = 14;
@@ -192,7 +194,7 @@ namespace StudyPlan
             // editBt
             // 
             this.editBt.Enabled = false;
-            this.editBt.Location = new System.Drawing.Point(144, 223);
+            this.editBt.Location = new System.Drawing.Point(144, 268);
             this.editBt.Name = "editBt";
             this.editBt.Size = new System.Drawing.Size(87, 27);
             this.editBt.TabIndex = 15;
@@ -203,7 +205,7 @@ namespace StudyPlan
             // removeBt
             // 
             this.removeBt.Enabled = false;
-            this.removeBt.Location = new System.Drawing.Point(287, 222);
+            this.removeBt.Location = new System.Drawing.Point(287, 267);
             this.removeBt.Name = "removeBt";
             this.removeBt.Size = new System.Drawing.Size(81, 27);
             this.removeBt.TabIndex = 16;
@@ -252,11 +254,31 @@ namespace StudyPlan
             this.editTablesToolStripMenuItem.Text = "Таблиці";
             this.editTablesToolStripMenuItem.Click += new System.EventHandler(this.EditTablesToolStripMenuItem_Click);
             // 
+            // linkWorkProgramLabel
+            // 
+            this.linkWorkProgramLabel.AutoSize = true;
+            this.linkWorkProgramLabel.Enabled = false;
+            this.linkWorkProgramLabel.Location = new System.Drawing.Point(10, 179);
+            this.linkWorkProgramLabel.Name = "linkWorkProgramLabel";
+            this.linkWorkProgramLabel.Size = new System.Drawing.Size(169, 13);
+            this.linkWorkProgramLabel.TabIndex = 19;
+            this.linkWorkProgramLabel.Text = "Посилання на робочу програму:";
+            // 
+            // linkWorkProgram
+            // 
+            this.linkWorkProgram.Location = new System.Drawing.Point(12, 195);
+            this.linkWorkProgram.Name = "linkWorkProgram";
+            this.linkWorkProgram.Size = new System.Drawing.Size(357, 13);
+            this.linkWorkProgram.TabIndex = 18;
+            this.linkWorkProgram.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkWorkProgram_LinkClicked);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(381, 277);
+            this.ClientSize = new System.Drawing.Size(381, 316);
+            this.Controls.Add(this.linkWorkProgramLabel);
+            this.Controls.Add(this.linkWorkProgram);
             this.Controls.Add(this.removeBt);
             this.Controls.Add(this.editBt);
             this.Controls.Add(this.previewBt);
@@ -307,6 +329,8 @@ namespace StudyPlan
         private ToolStripMenuItem exitToolStripMenuItem;
         private ToolStripMenuItem editToolStripMenuItem;
         private ToolStripMenuItem editTablesToolStripMenuItem;
+        private Label linkWorkProgramLabel;
+        private LinkLabel linkWorkProgram;
     }
 }
 

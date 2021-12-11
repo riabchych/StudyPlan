@@ -13,7 +13,7 @@
             Group = 0;
             EntryBase = 0;
             Semester = 0;
-            EntryYear = 0;
+            Cource = 0;
             Plan = 0;
             Discipline = 0;
         }
@@ -21,7 +21,7 @@
         public int Group { get; set; }
         public int EntryBase { get; set; }
         public int Semester { get; set; }
-        public int EntryYear { get; set; }
+        public int Cource { get; set; }
         public int Plan { get; set; }
         public int Discipline { get; set; }
     }

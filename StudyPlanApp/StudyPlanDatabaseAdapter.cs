@@ -24,9 +24,8 @@ namespace StudyPlan
         /// Метод отримання баз вступу
         /// </summary>
         /// <param name="groupId">Ідентифікатор групи</param>
-        /// <param name="entryYear">Ідентифікатор року вступу</param>
         /// <returns>Список баз вступу</returns>
-        public List<EntryBase> GetEntryBases(int groupId, int entryYear)
+        public List<EntryBase> GetEntryBases(int groupId)
         {
             using (OleDbConnection connection = new OleDbConnection(Properties.Settings.Default.StudyPlanDbConnectionString))
             {
@@ -40,8 +39,7 @@ namespace StudyPlan
                         ON [{Table.EntryBases}].ID = [{Table.StudyPlans}].[База вступу]) 
                     INNER JOIN {Table.Groups} 
                         ON [{Table.StudyPlans}].ID = {Table.Groups}.[Навчальний план]
-                    WHERE ((([{Table.StudyPlans}].[Рік вступу])={entryYear}) 
-                        AND (({Table.Groups}.ID)={groupId}))";
+                    WHERE {Table.Groups}.ID={groupId}";
                     try
                     {
                         connection.Open();
@@ -128,11 +126,10 @@ namespace StudyPlan
         /// <summary>
         /// Метод отримання списку семестрів
         /// </summary>
-        /// <param name="entryYear">Рік вступу</param>
         /// <param name="groupId">Ідентифікатор групи</param>
         /// <param  name="entryBaseId">Ідентифікатор бази вступу</param>
         /// <returns>Список семестрів</returns>
-        public List<int> GetSemesters(int entryYear, int groupId, int entryBaseId)
+        public List<int> GetSemesters(int groupId, int entryBaseId)
         {
             using (OleDbConnection connection = new OleDbConnection(Properties.Settings.Default.StudyPlanDbConnectionString))
             {
@@ -150,8 +147,7 @@ namespace StudyPlan
                         INNER JOIN [{Table.AccountingWorkPrograms}] 
                             ON [{Table.StudyPlans}].ID = [{Table.AccountingWorkPrograms}].[ID навчального плану]) 
                             ON [{Table.WorkPrograms}].ID = [{Table.AccountingWorkPrograms}].[ID робочої програми]
-                        WHERE ((([{Table.StudyPlans}].[Рік вступу])={entryYear}) 
-                            AND (({Table.Groups}.ID)={groupId}) 
+                        WHERE ((({Table.Groups}.ID)={groupId}) 
                             AND (([{Table.StudyPlans}].[База вступу])={entryBaseId}))";
                     try
                     {
@@ -314,10 +310,10 @@ namespace StudyPlan
                     FROM {Table.Disciplines} 
                     INNER JOIN([{Table.WorkPrograms}] 
                     INNER JOIN [{Table.AccountingWorkPrograms}] 
-                    ON[{Table.WorkPrograms}].ID = [{Table.AccountingWorkPrograms}].[ID робочої програми]) 
-                    ON {Table.Disciplines}.ID = [{Table.WorkPrograms}].Дисципліна
-                    WHERE((([{Table.AccountingWorkPrograms}].[ID навчального плану]) = {planId}) 
-                    AND(([{Table.WorkPrograms}].Семестр) = {semester}))";
+                        ON[{Table.WorkPrograms}].ID = [{Table.AccountingWorkPrograms}].[ID робочої програми]) 
+                        ON {Table.Disciplines}.ID = [{Table.WorkPrograms}].Дисципліна
+                    WHERE [{Table.AccountingWorkPrograms}].[ID навчального плану] = {planId} 
+                        AND [{Table.WorkPrograms}].Семестр = {semester}";
                     try
                     {
                         connection.Open();
@@ -385,6 +381,53 @@ namespace StudyPlan
                         connection.Close();
                     }
                 }
+            }
+        }
+
+        /// <summary>
+        /// Метод отримання посилання на робочу програму
+        /// </summary>
+        /// <param name="id">Ідентифікатор навчального плану</param>
+        /// <returns>Поислання на робочу програму</returns>
+        public string GetWorkProgramLink(int id)
+        {
+            using (OleDbConnection connection = new OleDbConnection(Properties.Settings.Default.StudyPlanDbConnectionString))
+            {
+                using (OleDbCommand command = new OleDbCommand())
+                {
+                    command.Connection = connection;
+                    command.CommandText = $@"
+                        SELECT DISTINCT[Робочі програми].[Посилання на робочу програму]
+                        FROM[Робочі програми]
+                        INNER JOIN([Навчальні плани]
+                        INNER JOIN [Облік робочих програм]
+                            ON [Навчальні плани].ID = [Облік робочих програм].[ID навчального плану])
+                            ON[Робочі програми].ID = [Облік робочих програм].[ID робочої програми]
+                        WHERE [Навчальні плани].ID = {id};
+                    ";
+                    try
+                    {
+                        connection.Open();
+                        using (OleDbDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.HasRows)
+                            {
+                                _ = reader.Read();
+                                return reader.GetString(reader.GetOrdinal("Посилання на робочу програму"));
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        _ = MessageBox.Show($"Помилка отримання даних: {Environment.NewLine}{ex}", "Помилка",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    finally
+                    {
+                        connection.Close();
+                    }
+                }
+                return null;
             }
         }
     }

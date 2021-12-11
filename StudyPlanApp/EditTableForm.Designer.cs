@@ -1,6 +1,4 @@
-﻿using Zuby.ADGV;
-
-namespace StudyPlan
+﻿namespace StudyPlan
 {
     partial class EditTableForm
     {
@@ -37,7 +35,7 @@ namespace StudyPlan
             this.tableAdapterManager = new StudyPlan.StudyPlanDbDataSetTableAdapters.TableAdapterManager();
             this.accountingWorkProgramsTableAdapter = new StudyPlan.StudyPlanDbDataSetTableAdapters.AccountingWorkProgramsTableAdapter();
             this.disciplinesTableAdapter = new StudyPlan.StudyPlanDbDataSetTableAdapters.DisciplinesTableAdapter();
-            this.educationLevelsTableAdapter = new StudyPlan.StudyPlanDbDataSetTableAdapters.EducatioLevelsTableAdapter();
+            this.educatioLevelsTableAdapter = new StudyPlan.StudyPlanDbDataSetTableAdapters.EducatioLevelsTableAdapter();
             this.entryBasesTableAdapter = new StudyPlan.StudyPlanDbDataSetTableAdapters.EntryBasesTableAdapter();
             this.groupNamesTableAdapter = new StudyPlan.StudyPlanDbDataSetTableAdapters.GroupNamesTableAdapter();
             this.groupsTableAdapter = new StudyPlan.StudyPlanDbDataSetTableAdapters.GroupsTableAdapter();
@@ -62,7 +60,7 @@ namespace StudyPlan
             this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
             this.saveToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.UnusedDisciplinesToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.dataGridView = new Zuby.ADGV.AdvancedDataGridView();
+            this.dataGridView = new System.Windows.Forms.DataGridView();
             this.workProgramsViewTableAdapter = new StudyPlan.StudyPlanDbDataSetTableAdapters.WorkProgramsViewTableAdapter();
             this.studyPlansViewTableAdapter = new StudyPlan.StudyPlanDbDataSetTableAdapters.StudyPlansViewTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource)).BeginInit();
@@ -93,7 +91,7 @@ namespace StudyPlan
             this.tableAdapterManager.AccountingWorkProgramsTableAdapter = this.accountingWorkProgramsTableAdapter;
             this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
             this.tableAdapterManager.DisciplinesTableAdapter = this.disciplinesTableAdapter;
-            this.tableAdapterManager.EducatioLevelsTableAdapter = this.educationLevelsTableAdapter;
+            this.tableAdapterManager.EducatioLevelsTableAdapter = this.educatioLevelsTableAdapter;
             this.tableAdapterManager.EntryBasesTableAdapter = this.entryBasesTableAdapter;
             this.tableAdapterManager.GroupNamesTableAdapter = this.groupNamesTableAdapter;
             this.tableAdapterManager.GroupsTableAdapter = this.groupsTableAdapter;
@@ -110,9 +108,9 @@ namespace StudyPlan
             // 
             this.disciplinesTableAdapter.ClearBeforeFill = true;
             // 
-            // educationLevelsTableAdapter
+            // educatioLevelsTableAdapter
             // 
-            this.educationLevelsTableAdapter.ClearBeforeFill = true;
+            this.educatioLevelsTableAdapter.ClearBeforeFill = true;
             // 
             // entryBasesTableAdapter
             // 
@@ -343,11 +341,9 @@ namespace StudyPlan
             this.dataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView.DataSource = this.bindingSource;
-            this.dataGridView.FilterAndSortEnabled = true;
             this.dataGridView.Location = new System.Drawing.Point(3, 16);
             this.dataGridView.MultiSelect = false;
             this.dataGridView.Name = "dataGridView";
-            this.dataGridView.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.dataGridView.Size = new System.Drawing.Size(543, 386);
             this.dataGridView.TabIndex = 2;
             this.dataGridView.VirtualMode = true;
@@ -398,14 +394,14 @@ namespace StudyPlan
         public StudyPlanDbDataSetTableAdapters.StudyPlansTableAdapter studyPlansTableAdapter;
         public StudyPlanDbDataSetTableAdapters.GroupNamesTableAdapter groupNamesTableAdapter;
         public StudyPlanDbDataSetTableAdapters.AccountingWorkProgramsTableAdapter accountingWorkProgramsTableAdapter;
-        public StudyPlanDbDataSetTableAdapters.EducatioLevelsTableAdapter educationLevelsTableAdapter;
+        public StudyPlanDbDataSetTableAdapters.EducatioLevelsTableAdapter educatioLevelsTableAdapter;
         public StudyPlanDbDataSetTableAdapters.SpecialitiesTableAdapter specialitiesTableAdapter;
         public StudyPlanDbDataSetTableAdapters.WorkProgramsTableAdapter workProgramsTableAdapter;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.GroupBox listTablesGroupBox;
         private System.Windows.Forms.ListBox listTablesListBox;
         private System.Windows.Forms.GroupBox editTablesGroupBox;
-        private AdvancedDataGridView dataGridView;
+        private System.Windows.Forms.DataGridView dataGridView;
         private System.Windows.Forms.BindingNavigator bindingNavigator1;
         private System.Windows.Forms.ToolStripButton bindingNavigatorAddNewItem;
         private System.Windows.Forms.ToolStripLabel bindingNavigatorCountItem;

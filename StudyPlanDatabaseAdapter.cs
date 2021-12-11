@@ -28,7 +28,7 @@ namespace StudyPlan
         /// <returns>Список баз вступу</returns>
         public List<EntryBase> GetEntryBases(int groupId, int entryYear)
         {
-            using (OleDbConnection connection = new OleDbConnection(Properties.Settings.Default.StudyPlanDbConnectionString))
+            using (OleDbConnection connection = new OleDbConnection(Properties.Settings.Default.DbConnectionString))
             {
                 using (OleDbCommand command = new OleDbCommand())
                 {
@@ -84,7 +84,7 @@ namespace StudyPlan
         /// <returns>Навчальний план</returns>
         public Plan GetPlan(int id)
         {
-            using (OleDbConnection connection = new OleDbConnection(Properties.Settings.Default.StudyPlanDbConnectionString))
+            using (OleDbConnection connection = new OleDbConnection(Properties.Settings.Default.DbConnectionString))
             {
                 using (OleDbCommand command = new OleDbCommand())
                 {
@@ -134,7 +134,7 @@ namespace StudyPlan
         /// <returns>Список семестрів</returns>
         public List<int> GetSemesters(int entryYear, int groupId, int entryBaseId)
         {
-            using (OleDbConnection connection = new OleDbConnection(Properties.Settings.Default.StudyPlanDbConnectionString))
+            using (OleDbConnection connection = new OleDbConnection(Properties.Settings.Default.DbConnectionString))
             {
                 using (OleDbCommand command = new OleDbCommand())
                 {
@@ -190,7 +190,7 @@ namespace StudyPlan
         /// <returns>Список груп</returns>
         public List<Group> GetGroups(int entryYear)
         {
-            using (OleDbConnection connection = new OleDbConnection(Properties.Settings.Default.StudyPlanDbConnectionString))
+            using (OleDbConnection connection = new OleDbConnection(Properties.Settings.Default.DbConnectionString))
             {
                 using (OleDbCommand command = new OleDbCommand())
                 {
@@ -246,7 +246,7 @@ namespace StudyPlan
         /// <returns>Список семестрів</returns>
         public List<Item> GetCources()
         {
-            using (OleDbConnection connection = new OleDbConnection(Properties.Settings.Default.StudyPlanDbConnectionString))
+            using (OleDbConnection connection = new OleDbConnection(Properties.Settings.Default.DbConnectionString))
             {
                 using (OleDbCommand command = new OleDbCommand())
                 {
@@ -296,7 +296,7 @@ namespace StudyPlan
         /// <returns>Список дисциплін</returns>
         public List<Discipline> GetDisciplines(int planId, int semester)
         {
-            using (OleDbConnection connection = new OleDbConnection(Properties.Settings.Default.StudyPlanDbConnectionString))
+            using (OleDbConnection connection = new OleDbConnection(Properties.Settings.Default.DbConnectionString))
             {
                 using (OleDbCommand command = new OleDbCommand())
                 {
@@ -352,7 +352,7 @@ namespace StudyPlan
         /// <param name="link">Посилання на навчальний план</param>
         public void UpdateStudyPlan(int id, string link)
         {
-            using (OleDbConnection connection = new OleDbConnection(Properties.Settings.Default.StudyPlanDbConnectionString))
+            using (OleDbConnection connection = new OleDbConnection(Properties.Settings.Default.DbConnectionString))
             {
                 using (OleDbCommand command = new OleDbCommand())
                 {

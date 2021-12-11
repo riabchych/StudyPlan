@@ -75,7 +75,6 @@
       <DependentUpon>EditForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Entities\BaseEntity.cs" />
-    <Compile Include="StringList.cs" />
     <Compile Include="StudyPlanDatabaseAdapter.cs" />
     <Compile Include="Entities\Discipline.cs" />
     <Compile Include="Entities\EntryBase.cs" />
@@ -105,7 +104,6 @@
     <Compile Include="Table.cs" />
     <EmbeddedResource Include="EditForm.resx">
       <DependentUpon>EditForm.cs</DependentUpon>
-      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
@@ -160,12 +158,6 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\StudyPlan.Controls\StudyPlan.Controls.csproj">
-      <Project>{6d15dee0-e6ff-4533-b7da-d0f48d0ad3f5}</Project>
-      <Name>StudyPlan.Controls</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

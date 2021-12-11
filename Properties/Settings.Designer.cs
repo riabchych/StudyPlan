@@ -27,9 +27,9 @@ namespace StudyPlan.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
         [global::System.Configuration.DefaultSettingValueAttribute("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=|DataDirectory|\\StudyPlanDb.accdb")]
-        public string DbConnectionString {
+        public string StudyPlanDbConnectionString {
             get {
-                return ((string)(this["DbConnectionString"]));
+                return ((string)(this["StudyPlanDbConnectionString"]));
             }
         }
     }

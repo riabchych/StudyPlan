@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using StudyPlan.Controls;
 
 namespace StudyPlan
 {
@@ -49,11 +50,13 @@ namespace StudyPlan
         private void FillDataSet()
         {
             _ = workProgramsTableAdapter.Fill(studyPlanDbDataSet.WorkPrograms);
+            _ = workProgramsSimpleTableAdapter.Fill(studyPlanDbDataSet.WorkProgramsSimple);
             _ = specialitiesTableAdapter.Fill(studyPlanDbDataSet.Specialities);
             _ = educatioLevelsTableAdapter.Fill(studyPlanDbDataSet.EducationLevels);
             _ = accountingWorkProgramsTableAdapter.Fill(studyPlanDbDataSet.AccountingWorkPrograms);
             _ = groupNamesTableAdapter.Fill(studyPlanDbDataSet.GroupNames);
             _ = studyPlansTableAdapter.Fill(studyPlanDbDataSet.StudyPlans);
+            _ = studyPlansSimpleTableAdapter.Fill(studyPlanDbDataSet.StudyPlansSimple);
             _ = groupsTableAdapter.Fill(studyPlanDbDataSet.Groups);
             _ = entryBasesTableAdapter.Fill(studyPlanDbDataSet.EntryBases);
             _ = disciplinesTableAdapter.Fill(studyPlanDbDataSet.Disciplines);
@@ -203,11 +206,21 @@ namespace StudyPlan
                 DisplayMember = "Назва дисципліни"
             };
             // 
+            // workProgramLinkDataGridViewTextBoxColumn
+            // 
+            DataGridViewTextBoxColumn workProgramLinkDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = "Посилання на робочу програму",
+                HeaderText = "Посилання на робочу програму",
+                Name = "workProgramLinkDataGridViewTextBoxColumn"
+            };
+            // 
             // dataGridView
             // 
             dataGridView.Columns.AddRange(new DataGridViewColumn[] {
                 semesterDataGridViewTextBoxColumn,
-                disciplinaDataGridViewComboBoxColumn
+                disciplinaDataGridViewComboBoxColumn,
+                workProgramLinkDataGridViewTextBoxColumn
             });
         }
 
@@ -224,23 +237,37 @@ namespace StudyPlan
                 DataSource = studyPlanDbDataSet,
                 DataMember = "GroupNames"
             };
-            //StudyPlan Data Source
-            BindingSource bindingSourceStudyPlan = new BindingSource
-            {
-                DataSource = studyPlanDbDataSet,
-                DataMember = "StudyPlans"
-            };
             // 
             // studyPlanDataGridViewTextBoxColumn
             // 
-            DataGridViewComboBoxColumn studyPlanDataGridViewComboBoxColumn = new DataGridViewComboBoxColumn
+            BindingSource bindingSourceStudyPLansSimple = new BindingSource
             {
-                DataPropertyName = "Навчальний план",
-                HeaderText = "Навчальний план",
-                DataSource = bindingSourceStudyPlan,
-                ValueMember = "ID",
-                DisplayMember = "ID"
+                DataSource = studyPlanDbDataSet,
+                DataMember = "StudyPLansSimple"
             };
+            DataGridViewMultiColumnComboBoxColumn studyPlansSimpleDataGridViewMultiColumnComboBoxColumn = new DataGridViewMultiColumnComboBoxColumn();
+            studyPlansSimpleDataGridViewMultiColumnComboBoxColumn.ColumnNames.Add("ID");
+            studyPlansSimpleDataGridViewMultiColumnComboBoxColumn.ColumnNames.Add("Рік вступу");
+            studyPlansSimpleDataGridViewMultiColumnComboBoxColumn.ColumnNames.Add("EbName");
+            studyPlansSimpleDataGridViewMultiColumnComboBoxColumn.ColumnNames.Add("ElName");
+            studyPlansSimpleDataGridViewMultiColumnComboBoxColumn.ColumnNames.Add("SpecName");
+            studyPlansSimpleDataGridViewMultiColumnComboBoxColumn.ColumnNames.Add("Посилання на навчальний план");
+            studyPlansSimpleDataGridViewMultiColumnComboBoxColumn.ColumnWidths.Add("20");
+            studyPlansSimpleDataGridViewMultiColumnComboBoxColumn.ColumnWidths.Add("35");
+            studyPlansSimpleDataGridViewMultiColumnComboBoxColumn.ColumnWidths.Add("180");
+            studyPlansSimpleDataGridViewMultiColumnComboBoxColumn.ColumnWidths.Add("180");
+            studyPlansSimpleDataGridViewMultiColumnComboBoxColumn.ColumnWidths.Add("250");
+            studyPlansSimpleDataGridViewMultiColumnComboBoxColumn.ColumnWidths.Add("200");
+            studyPlansSimpleDataGridViewMultiColumnComboBoxColumn.DataSource = bindingSourceStudyPLansSimple;
+            studyPlansSimpleDataGridViewMultiColumnComboBoxColumn.HeaderText = "Навчальний план";
+            studyPlansSimpleDataGridViewMultiColumnComboBoxColumn.DataPropertyName = "Навчальний план";
+            studyPlansSimpleDataGridViewMultiColumnComboBoxColumn.DisplayMember = "ID";
+            studyPlansSimpleDataGridViewMultiColumnComboBoxColumn.ValueMember = "ID";
+            studyPlansSimpleDataGridViewMultiColumnComboBoxColumn.EvenRowsBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            studyPlansSimpleDataGridViewMultiColumnComboBoxColumn.OddRowsBackColor = System.Drawing.SystemColors.ControlLight;
+            studyPlansSimpleDataGridViewMultiColumnComboBoxColumn.Resizable = DataGridViewTriState.True;
+            studyPlansSimpleDataGridViewMultiColumnComboBoxColumn.SortMode = DataGridViewColumnSortMode.Automatic;
+            studyPlansSimpleDataGridViewMultiColumnComboBoxColumn.Width = 100;
             // 
             // groupNameDataGridViewTextBoxColumn
             // 
@@ -256,7 +283,7 @@ namespace StudyPlan
             // dataGridView
             // 
             dataGridView.Columns.AddRange(new DataGridViewColumn[] {
-                studyPlanDataGridViewComboBoxColumn,
+                studyPlansSimpleDataGridViewMultiColumnComboBoxColumn,
                 groupNameDataGridViewComboBoxColumn
             });
         }
@@ -268,54 +295,70 @@ namespace StudyPlan
         {
             dataGridView.Columns.Clear();
             bindingSource.DataMember = "AccountingWorkPrograms";
-            BindingSource bindingSourceStudyPlan = new BindingSource
-            {
-                DataSource = studyPlanDbDataSet,
-                DataMember = "StudyPlans"
-            };
             BindingSource bindingSourceWorkProgram = new BindingSource
             {
                 DataSource = studyPlanDbDataSet,
-                DataMember = "WorkPrograms"
+                DataMember = "WorkProgramsSimple"
             };
-            // 
-            // iDWorkProgramDataGridViewTextBoxColumn
-            // 
-            DataGridViewComboBoxColumn iDWorkProgramDataGridViewComboBoxColumn = new DataGridViewComboBoxColumn
+            BindingSource bindingSourceStudyPLansSimple = new BindingSource
             {
-                DataPropertyName = "ID робочої програми",
-                HeaderText = "ID робочої програми",
-                DataSource = bindingSourceWorkProgram,
-                ValueMember = "ID",
-                DisplayMember = "ID"
+                DataSource = studyPlanDbDataSet,
+                DataMember = "StudyPLansSimple"
             };
+            // 
+            // workProgramsDataGridViewMultiColumnComboBoxColumn
+            // 
+            DataGridViewMultiColumnComboBoxColumn workProgramsDataGridViewMultiColumnComboBoxColumn = new DataGridViewMultiColumnComboBoxColumn();
+            workProgramsDataGridViewMultiColumnComboBoxColumn.ColumnNames.Add("ID");
+            workProgramsDataGridViewMultiColumnComboBoxColumn.ColumnNames.Add("Семестр");
+            workProgramsDataGridViewMultiColumnComboBoxColumn.ColumnNames.Add("Назва дисципліни");
+            workProgramsDataGridViewMultiColumnComboBoxColumn.ColumnNames.Add("Посилання на робочу програму");
+            workProgramsDataGridViewMultiColumnComboBoxColumn.ColumnWidths.Add("20");
+            workProgramsDataGridViewMultiColumnComboBoxColumn.ColumnWidths.Add("20");
+            workProgramsDataGridViewMultiColumnComboBoxColumn.ColumnWidths.Add("300");
+            workProgramsDataGridViewMultiColumnComboBoxColumn.ColumnWidths.Add("200");
+            workProgramsDataGridViewMultiColumnComboBoxColumn.DataPropertyName = "ID робочої програми";
+            workProgramsDataGridViewMultiColumnComboBoxColumn.DataSource = bindingSourceWorkProgram;
+            workProgramsDataGridViewMultiColumnComboBoxColumn.DisplayMember = "ID";
+            workProgramsDataGridViewMultiColumnComboBoxColumn.EvenRowsBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            workProgramsDataGridViewMultiColumnComboBoxColumn.HeaderText = "Робоча програма";
+            workProgramsDataGridViewMultiColumnComboBoxColumn.OddRowsBackColor = System.Drawing.SystemColors.ControlLight;
+            workProgramsDataGridViewMultiColumnComboBoxColumn.Resizable = DataGridViewTriState.True;
+            workProgramsDataGridViewMultiColumnComboBoxColumn.SortMode = DataGridViewColumnSortMode.Automatic;
+            workProgramsDataGridViewMultiColumnComboBoxColumn.ValueMember = "ID";
+            workProgramsDataGridViewMultiColumnComboBoxColumn.Width = 100;
             // 
             // studyPlanDataGridViewTextBoxColumn
             // 
-            DataGridViewComboBoxColumn iDStudyPlanDataGridViewComboBoxColumn = new DataGridViewComboBoxColumn
-            {
-                DataPropertyName = "ID навчального плану",
-                HeaderText = "ID навчального плану",
-                DataSource = bindingSourceStudyPlan,
-                ValueMember = "ID",
-                DisplayMember = "ID"
-            };
-            // 
-            // workProgramLinkDataGridViewTextBoxColumn
-            // 
-            DataGridViewTextBoxColumn workProgramLinkDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn
-            {
-                DataPropertyName = "Посилання на робочу програму",
-                HeaderText = "Посилання на робочу програму",
-                Name = "workProgramLinkDataGridViewTextBoxColumn"
-            };
+            DataGridViewMultiColumnComboBoxColumn studyPlansSimpleDataGridViewMultiColumnComboBoxColumn = new DataGridViewMultiColumnComboBoxColumn();
+            studyPlansSimpleDataGridViewMultiColumnComboBoxColumn.ColumnNames.Add("ID");
+            studyPlansSimpleDataGridViewMultiColumnComboBoxColumn.ColumnNames.Add("Рік вступу");
+            studyPlansSimpleDataGridViewMultiColumnComboBoxColumn.ColumnNames.Add("EbName");
+            studyPlansSimpleDataGridViewMultiColumnComboBoxColumn.ColumnNames.Add("ElName");
+            studyPlansSimpleDataGridViewMultiColumnComboBoxColumn.ColumnNames.Add("SpecName");
+            studyPlansSimpleDataGridViewMultiColumnComboBoxColumn.ColumnNames.Add("Посилання на навчальний план");
+            studyPlansSimpleDataGridViewMultiColumnComboBoxColumn.ColumnWidths.Add("20");
+            studyPlansSimpleDataGridViewMultiColumnComboBoxColumn.ColumnWidths.Add("35");
+            studyPlansSimpleDataGridViewMultiColumnComboBoxColumn.ColumnWidths.Add("180");
+            studyPlansSimpleDataGridViewMultiColumnComboBoxColumn.ColumnWidths.Add("180");
+            studyPlansSimpleDataGridViewMultiColumnComboBoxColumn.ColumnWidths.Add("250");
+            studyPlansSimpleDataGridViewMultiColumnComboBoxColumn.ColumnWidths.Add("200");
+            studyPlansSimpleDataGridViewMultiColumnComboBoxColumn.DataSource = bindingSourceStudyPLansSimple;
+            studyPlansSimpleDataGridViewMultiColumnComboBoxColumn.HeaderText = "Навчальний план";
+            studyPlansSimpleDataGridViewMultiColumnComboBoxColumn.DataPropertyName = "ID навчального плану";
+            studyPlansSimpleDataGridViewMultiColumnComboBoxColumn.DisplayMember = "ID";
+            studyPlansSimpleDataGridViewMultiColumnComboBoxColumn.ValueMember = "ID";
+            studyPlansSimpleDataGridViewMultiColumnComboBoxColumn.EvenRowsBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            studyPlansSimpleDataGridViewMultiColumnComboBoxColumn.OddRowsBackColor = System.Drawing.SystemColors.ControlLight;
+            studyPlansSimpleDataGridViewMultiColumnComboBoxColumn.Resizable = DataGridViewTriState.True;
+            studyPlansSimpleDataGridViewMultiColumnComboBoxColumn.SortMode = DataGridViewColumnSortMode.Automatic;
+            studyPlansSimpleDataGridViewMultiColumnComboBoxColumn.Width = 100;
             // 
             // dataGridView
             // 
             dataGridView.Columns.AddRange(new DataGridViewColumn[] {
-                workProgramLinkDataGridViewTextBoxColumn,
-                iDWorkProgramDataGridViewComboBoxColumn,
-                iDStudyPlanDataGridViewComboBoxColumn
+                studyPlansSimpleDataGridViewMultiColumnComboBoxColumn,
+                workProgramsDataGridViewMultiColumnComboBoxColumn
             });
         }
 
@@ -342,10 +385,7 @@ namespace StudyPlan
             // 
             // dataGridView
             // 
-            dataGridView.Columns.AddRange(new DataGridViewColumn[] {
-                //iDDataGridViewTextBoxColumn,
-                nameDataGridViewTextBoxColumn
-            });
+            _ = dataGridView.Columns.Add(nameDataGridViewTextBoxColumn);
         }
 
         /// <summary>
@@ -371,9 +411,7 @@ namespace StudyPlan
             // 
             // dataGridView
             // 
-            dataGridView.Columns.AddRange(new DataGridViewColumn[] {
-                nameDataGridViewTextBoxColumn
-            });
+            _ = dataGridView.Columns.Add(nameDataGridViewTextBoxColumn);
         }
 
         /// <summary>
@@ -399,9 +437,7 @@ namespace StudyPlan
             // 
             // dataGridView
             // 
-            dataGridView.Columns.AddRange(new DataGridViewColumn[] {
-                nameDataGridViewTextBoxColumn
-            });
+            _ = dataGridView.Columns.Add(nameDataGridViewTextBoxColumn);
         }
 
         /// <summary>
@@ -427,10 +463,7 @@ namespace StudyPlan
             // 
             // dataGridView
             // 
-            dataGridView.Columns.AddRange(new DataGridViewColumn[] {
-                //iDDataGridViewTextBoxColumn,
-                groupNameDataGridViewTextBoxColumn
-            });
+            _ = dataGridView.Columns.Add(groupNameDataGridViewTextBoxColumn);
         }
 
         /// <summary>

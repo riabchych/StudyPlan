@@ -3031,6 +3031,8 @@ namespace StudyPlan {
             
             private global::System.Data.DataColumn columnДисципліна;
             
+            private global::System.Data.DataColumn columnПосилання_на_робочу_програму;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public WorkProgramsDataTable() {
@@ -3090,6 +3092,14 @@ namespace StudyPlan {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn Посилання_на_робочу_програмуColumn {
+                get {
+                    return this.columnПосилання_на_робочу_програму;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -3125,12 +3135,13 @@ namespace StudyPlan {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public WorkProgramsRow AddWorkProgramsRow(int Семестр, DisciplinesRow parentDisciplinesRowByДисципліниРобочі_програми) {
+            public WorkProgramsRow AddWorkProgramsRow(int Семестр, DisciplinesRow parentDisciplinesRowByДисципліниРобочі_програми, string Посилання_на_робочу_програму) {
                 WorkProgramsRow rowWorkProgramsRow = ((WorkProgramsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         Семестр,
-                        null};
+                        null,
+                        Посилання_на_робочу_програму};
                 if ((parentDisciplinesRowByДисципліниРобочі_програми != null)) {
                     columnValuesArray[2] = parentDisciplinesRowByДисципліниРобочі_програми[0];
                 }
@@ -3166,6 +3177,7 @@ namespace StudyPlan {
                 this.columnID = base.Columns["ID"];
                 this.columnСеместр = base.Columns["Семестр"];
                 this.columnДисципліна = base.Columns["Дисципліна"];
+                this.columnПосилання_на_робочу_програму = base.Columns["Посилання на робочу програму"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3177,6 +3189,8 @@ namespace StudyPlan {
                 base.Columns.Add(this.columnСеместр);
                 this.columnДисципліна = new global::System.Data.DataColumn("Дисципліна", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnДисципліна);
+                this.columnПосилання_на_робочу_програму = new global::System.Data.DataColumn("Посилання на робочу програму", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnПосилання_на_робочу_програму);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnID}, true));
                 this.columnID.AutoIncrement = true;
@@ -3184,6 +3198,7 @@ namespace StudyPlan {
                 this.columnID.AutoIncrementStep = -1;
                 this.columnID.AllowDBNull = false;
                 this.columnID.Unique = true;
+                this.columnПосилання_на_робочу_програму.MaxLength = 536870910;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4785,6 +4800,23 @@ namespace StudyPlan {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string Посилання_на_робочу_програму {
+                get {
+                    try {
+                        return ((string)(this[this.tableWorkPrograms.Посилання_на_робочу_програмуColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Посилання на робочу програму\' в таблице \'WorkPrograms\' равн" +
+                                "о DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableWorkPrograms.Посилання_на_робочу_програмуColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public DisciplinesRow ДисципліниRow {
                 get {
                     return ((DisciplinesRow)(this.GetParentRow(this.Table.ParentRelations["ДисципліниРобочі програми"])));
@@ -4827,6 +4859,18 @@ namespace StudyPlan {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetДисциплінаNull() {
                 this[this.tableWorkPrograms.ДисциплінаColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsПосилання_на_робочу_програмуNull() {
+                return this.IsNull(this.tableWorkPrograms.Посилання_на_робочу_програмуColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetПосилання_на_робочу_програмуNull() {
+                this[this.tableWorkPrograms.Посилання_на_робочу_програмуColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -8414,6 +8458,7 @@ namespace StudyPlan.StudyPlanDbDataSetTableAdapters {
             tableMapping.ColumnMappings.Add("ID", "ID");
             tableMapping.ColumnMappings.Add("Семестр", "Семестр");
             tableMapping.ColumnMappings.Add("Дисципліна", "Дисципліна");
+            tableMapping.ColumnMappings.Add("Посилання на робочу програму", "Посилання на робочу програму");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.OleDb.OleDbCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
@@ -8428,18 +8473,21 @@ namespace StudyPlan.StudyPlanDbDataSetTableAdapters {
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Дисципліна", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Дисципліна", global::System.Data.DataRowVersion.Original, false, null));
             this._adapter.InsertCommand = new global::System.Data.OleDb.OleDbCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO `Робочі програми` (`Семестр`, `Дисципліна`) VALUES (?, ?)";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO `Робочі програми` (`Семестр`, `Дисципліна`, `Посилання на робочу прог" +
+                "раму`) VALUES (?, ?, ?)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Семестр", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Семестр", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Дисципліна", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Дисципліна", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Посилання_на_робочу_програму", global::System.Data.OleDb.OleDbType.LongVarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Посилання на робочу програму", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.UpdateCommand = new global::System.Data.OleDb.OleDbCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = "UPDATE `Робочі програми` SET `Семестр` = ?, `Дисципліна` = ? WHERE ((`ID` = ?) AN" +
-                "D ((? = 1 AND `Семестр` IS NULL) OR (`Семестр` = ?)) AND ((? = 1 AND `Дисципліна" +
-                "` IS NULL) OR (`Дисципліна` = ?)))";
+            this._adapter.UpdateCommand.CommandText = "UPDATE `Робочі програми` SET `Семестр` = ?, `Дисципліна` = ?, `Посилання на робоч" +
+                "у програму` = ? WHERE ((`ID` = ?) AND ((? = 1 AND `Семестр` IS NULL) OR (`Семест" +
+                "р` = ?)) AND ((? = 1 AND `Дисципліна` IS NULL) OR (`Дисципліна` = ?)))";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Семестр", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Семестр", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Дисципліна", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Дисципліна", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Посилання_на_робочу_програму", global::System.Data.OleDb.OleDbType.LongVarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Посилання на робочу програму", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_ID", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ID", global::System.Data.DataRowVersion.Original, false, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_Семестр", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Семестр", global::System.Data.DataRowVersion.Original, true, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Семестр", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Семестр", global::System.Data.DataRowVersion.Original, false, null));
@@ -8460,7 +8508,8 @@ namespace StudyPlan.StudyPlanDbDataSetTableAdapters {
             this._commandCollection = new global::System.Data.OleDb.OleDbCommand[1];
             this._commandCollection[0] = new global::System.Data.OleDb.OleDbCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT ID, Семестр, Дисципліна FROM [Робочі програми]";
+            this._commandCollection[0].CommandText = "SELECT        ID, Семестр, Дисципліна, [Посилання на робочу програму]\r\nFROM      " +
+                "      [Робочі програми]";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -8559,7 +8608,7 @@ namespace StudyPlan.StudyPlanDbDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(global::System.Nullable<int> Семестр, global::System.Nullable<int> Дисципліна) {
+        public virtual int Insert(global::System.Nullable<int> Семестр, global::System.Nullable<int> Дисципліна, string Посилання_на_робочу_програму) {
             if ((Семестр.HasValue == true)) {
                 this.Adapter.InsertCommand.Parameters[0].Value = ((int)(Семестр.Value));
             }
@@ -8571,6 +8620,12 @@ namespace StudyPlan.StudyPlanDbDataSetTableAdapters {
             }
             else {
                 this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            if ((Посилання_на_робочу_програму == null)) {
+                this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(Посилання_на_робочу_програму));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -8592,7 +8647,7 @@ namespace StudyPlan.StudyPlanDbDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(global::System.Nullable<int> Семестр, global::System.Nullable<int> Дисципліна, int Original_ID, global::System.Nullable<int> Original_Семестр, global::System.Nullable<int> Original_Дисципліна) {
+        public virtual int Update(global::System.Nullable<int> Семестр, global::System.Nullable<int> Дисципліна, string Посилання_на_робочу_програму, int Original_ID, global::System.Nullable<int> Original_Семестр, global::System.Nullable<int> Original_Дисципліна) {
             if ((Семестр.HasValue == true)) {
                 this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(Семестр.Value));
             }
@@ -8605,22 +8660,28 @@ namespace StudyPlan.StudyPlanDbDataSetTableAdapters {
             else {
                 this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
-            this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(Original_ID));
-            if ((Original_Семестр.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[3].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(Original_Семестр.Value));
+            if ((Посилання_на_робочу_програму == null)) {
+                this.Adapter.UpdateCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[3].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(Посилання_на_робочу_програму));
+            }
+            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(Original_ID));
+            if ((Original_Семестр.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(Original_Семестр.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[5].Value = global::System.DBNull.Value;
             }
             if ((Original_Дисципліна.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(Original_Дисципліна.Value));
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(Original_Дисципліна.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[7].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 

@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using Zuby.ADGV;
 
 namespace StudyPlan
 {
@@ -21,9 +20,6 @@ namespace StudyPlan
             InitializeComponent();
             dataGridView.UserDeletingRow += UserDeletingRow;
             bindingNavigatorDeleteItem.Click += UserDeletingRow;
-            AdvancedDataGridView.SetTranslations(AdvancedDataGridView.LoadTranslationsFromFile("lang.json"));
-            dataGridView.SetDoubleBuffered();
-            dataGridView.CleanFilterAndSort();
         }
 
         /// <summary>
@@ -36,9 +32,6 @@ namespace StudyPlan
             listTablesListBox.DataSource = tables;
             dataGridView.UserDeletingRow += UserDeletingRow;
             bindingNavigatorDeleteItem.Click += UserDeletingRow;
-            AdvancedDataGridView.SetTranslations(AdvancedDataGridView.LoadTranslationsFromFile("lang.json"));
-            dataGridView.SetDoubleBuffered();
-            dataGridView.CleanFilterAndSort();
         }
 
         /// <summary>
@@ -60,7 +53,7 @@ namespace StudyPlan
             _ = studyPlansViewTableAdapter.Fill(studyPlanDbDataSet.StudyPlansView);
             _ = workProgramsTableAdapter.Fill(studyPlanDbDataSet.WorkPrograms);
             _ = specialitiesTableAdapter.Fill(studyPlanDbDataSet.Specialities);
-            _ = educationLevelsTableAdapter.Fill(studyPlanDbDataSet.EducationLevels);
+            _ = educatioLevelsTableAdapter.Fill(studyPlanDbDataSet.EducationLevels);
             _ = accountingWorkProgramsTableAdapter.Fill(studyPlanDbDataSet.AccountingWorkPrograms);
             _ = groupNamesTableAdapter.Fill(studyPlanDbDataSet.GroupNames);
             _ = studyPlansTableAdapter.Fill(studyPlanDbDataSet.StudyPlans);
@@ -216,7 +209,7 @@ namespace StudyPlan
                 DisplayMember = "Назва дисципліни"
             };
             // 
-            // nameDataGridViewTextBoxColumn
+            // linkDataGridViewTextBoxColumn
             // 
             DataGridViewTextBoxColumn linkDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn
             {
@@ -546,7 +539,7 @@ namespace StudyPlan
                         _ = groupNamesTableAdapter.Update(studyPlanDbDataSet.GroupNames);
                         break;
                     case Table.EducationLevels:
-                        _ = educationLevelsTableAdapter.Update(studyPlanDbDataSet.EducationLevels);
+                        _ = educatioLevelsTableAdapter.Update(studyPlanDbDataSet.EducationLevels);
                         break;
                     case Table.EntryBases:
                         _ = entryBasesTableAdapter.Update(studyPlanDbDataSet.EntryBases);
@@ -582,7 +575,6 @@ namespace StudyPlan
         {
             if (listTablesListBox.SelectedIndex != -1)
             {
-                dataGridView.CleanFilterAndSort();
                 if (DataIsChanged)
                 {
                     if (MessageBox.Show("Ви не зберегли зміни, бажаєте зберегти?", "Підтвердження дії",
@@ -595,6 +587,7 @@ namespace StudyPlan
                         FillDataSet();
                     }
                 }
+
                 if (IsShowedUnusedDisciplines)
                 {
                     _ = disciplinesTableAdapter.Fill(studyPlanDbDataSet.Disciplines);

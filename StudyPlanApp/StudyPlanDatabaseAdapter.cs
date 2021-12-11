@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.OleDb;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace StudyPlan
@@ -185,24 +186,32 @@ namespace StudyPlan
         /// <summary>
         /// Метод отримання списку груп
         /// </summary>
-        /// <param name="entryYear">Рік вступу</param>
+        /// <param name="cource">Номер курсу</param>
         /// <returns>Список груп</returns>
-        public List<Group> GetGroups(int entryYear)
+        public List<Group> GetGroups(int cource)
         {
             using (OleDbConnection connection = new OleDbConnection(Properties.Settings.Default.StudyPlanDbConnectionString))
             {
                 using (OleDbCommand command = new OleDbCommand())
                 {
+                    int year = DateTime.Now.Year;
+                    string expr = $"WHERE [{Table.StudyPlans}].[Рік вступу]={year - cource}";
+                    if (cource == 1)
+                    {
+                        expr = $@"
+                            WHERE (([{Table.StudyPlans}].[Рік вступу]={year})
+                                OR ([{Table.StudyPlans}].[Рік вступу]={year-1}))";
+                    }
                     command.Connection = connection;
                     command.CommandText = $@"
-                    SELECT DISTINCT [{Table.Groups}].[ID], [{Table.Groups}].[Навчальний план], 
-                        [{Table.GroupNames}].[Назва групи]
-                    FROM [{Table.GroupNames}] 
-                    INNER JOIN ([{Table.StudyPlans}] 
-                    INNER JOIN {Table.Groups} 
-                        ON [{Table.StudyPlans}].ID = {Table.Groups}.[Навчальний план]) 
-                        ON [{Table.GroupNames}].ID = {Table.Groups}.[Назва групи]
-                    WHERE ((([{Table.StudyPlans}].[Рік вступу])={entryYear}))";
+                        SELECT DISTINCT [{Table.Groups}].[ID], [{Table.Groups}].[Навчальний план], 
+                            [{Table.GroupNames}].[Назва групи]
+                        FROM [{Table.GroupNames}] 
+                        INNER JOIN ([{Table.StudyPlans}] 
+                        INNER JOIN {Table.Groups} 
+                            ON [{Table.StudyPlans}].ID = {Table.Groups}.[Навчальний план]) 
+                            ON [{Table.GroupNames}].ID = {Table.Groups}.[Назва групи]
+                        {expr}";
                     try
                     {
                         connection.Open();
@@ -251,9 +260,9 @@ namespace StudyPlan
                 {
                     command.Connection = connection;
                     command.CommandText = $@"
-                    SELECT DISTINCT [Рік вступу],(Year(Now())-[Рік вступу]) AS [Курс]
-                    FROM[{Table.StudyPlans}]
-                    WHERE([Рік вступу] <= Year(Now())) AND(Year(Now()) - [Рік вступу]) > 0";
+                        SELECT DISTINCT [Рік вступу], IIF([Рік вступу]=Year(Now()),1,Year(Now())-[Рік вступу]) as Курс
+                        FROM [{Table.StudyPlans}]
+                        WHERE([Рік вступу] <= Year(Now()))";
                     try
                     {
                         connection.Open();
@@ -269,7 +278,7 @@ namespace StudyPlan
                                         reader.GetInt32(reader.GetOrdinal("Курс")).ToString());
                                     cources.Add(cource);
                                 }
-                                return cources;
+                                return cources.GroupBy(x => x.Description).Select(x => x.First()).ToList();
                             }
                         }
                     }

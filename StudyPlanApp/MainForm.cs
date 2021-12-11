@@ -55,7 +55,7 @@ namespace StudyPlan
             courseCb.DataSource = null;
             courseCb.Items.Clear();
             courseCb.DisplayMember = "Description";
-            courseCb.ValueMember = "Id";
+            courseCb.ValueMember = "Description";
             Cources = Cources.OrderBy(u => u.Description).ToList();
             Cources.Insert(0, new Item(0, "---Оберіть---"));
             courseCb.DataSource = Cources;

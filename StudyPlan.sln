@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31912.275
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudyPlan.App", "StudyPlan.App.csproj", "{92226E16-F032-46F9-A22E-A274D501E7DA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudyPlan", "StudyPlan.csproj", "{92226E16-F032-46F9-A22E-A274D501E7DA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudyPlan.Controls", "..\StudyPlan.Controls\StudyPlan.Controls.csproj", "{6D15DEE0-E6FF-4533-B7DA-D0F48D0AD3F5}"
 EndProject

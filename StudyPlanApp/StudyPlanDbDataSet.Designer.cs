@@ -5757,7 +5757,7 @@ namespace StudyPlan.StudyPlanDbDataSetTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.OleDb.OleDbCommand[2];
+            this._commandCollection = new global::System.Data.OleDb.OleDbCommand[3];
             this._commandCollection[0] = new global::System.Data.OleDb.OleDbCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT ID, [Назва дисципліни] FROM Дисципліни";
@@ -5768,6 +5768,12 @@ namespace StudyPlan.StudyPlanDbDataSetTableAdapters {
                 "OT EXISTS (SELECT [Робочі програми].ID FROM [Робочі програми] WHERE [Робочі прог" +
                 "рами].Дисципліна = Дисципліни.ID)";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[2] = new global::System.Data.OleDb.OleDbCommand();
+            this._commandCollection[2].Connection = this.Connection;
+            this._commandCollection[2].CommandText = "SELECT [Дисципліни].ID, [Дисципліни].[Назва дисципліни]\nFROM [Дисципліни]\nWHERE E" +
+                "XISTS (SELECT [Робочі програми].ID FROM [Робочі програми] WHERE [Робочі програми" +
+                "].Дисципліна = Дисципліни.ID)";
+            this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5813,6 +5819,30 @@ namespace StudyPlan.StudyPlanDbDataSetTableAdapters {
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
         public virtual StudyPlanDbDataSet.DisciplinesDataTable GetDataByUnusedDisciplines() {
             this.Adapter.SelectCommand = this.CommandCollection[1];
+            StudyPlanDbDataSet.DisciplinesDataTable dataTable = new StudyPlanDbDataSet.DisciplinesDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int FillByUsedDisciplines(StudyPlanDbDataSet.DisciplinesDataTable dataTable) {
+            this.Adapter.SelectCommand = this.CommandCollection[2];
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual StudyPlanDbDataSet.DisciplinesDataTable GetDataByUsedDisciplines() {
+            this.Adapter.SelectCommand = this.CommandCollection[2];
             StudyPlanDbDataSet.DisciplinesDataTable dataTable = new StudyPlanDbDataSet.DisciplinesDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;

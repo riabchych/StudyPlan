@@ -191,13 +191,7 @@ namespace StudyPlan
                 using (OleDbCommand command = new OleDbCommand())
                 {
                     int year = DateTime.Now.Year;
-                    string expr = $"WHERE [{Table.StudyPlans}].[Рік вступу]={year - cource}";
-                    if (cource == 1)
-                    {
-                        expr = $@"
-                            WHERE (([{Table.StudyPlans}].[Рік вступу]={year})
-                                OR ([{Table.StudyPlans}].[Рік вступу]={year-1}))";
-                    }
+                    string expr = $"WHERE [{Table.StudyPlans}].[Рік вступу]={(cource == 1 ? year : year - --cource)}";
                     command.Connection = connection;
                     command.CommandText = $@"
                         SELECT DISTINCT [{Table.Groups}].[ID], [{Table.Groups}].[Навчальний план], 
@@ -256,9 +250,9 @@ namespace StudyPlan
                 {
                     command.Connection = connection;
                     command.CommandText = $@"
-                        SELECT DISTINCT [Рік вступу], IIF([Рік вступу]=Year(Now()),1,Year(Now())-[Рік вступу]) as Курс
+                        SELECT DISTINCT [Рік вступу], IIF([Рік вступу]=Year(Now()),1,Year(Now())-[Рік вступу]+1) as Курс
                         FROM [{Table.StudyPlans}]
-                        WHERE([Рік вступу] <= Year(Now()))";
+                        WHERE([Рік вступу] <= Year(Now()) and [Рік вступу] >= Year(Now())-3)";
                     try
                     {
                         connection.Open();

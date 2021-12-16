@@ -2,14 +2,16 @@
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using Zuby.ADGV;
 
 namespace StudyPlan
 {
     public partial class EditTableForm : Form
     {
-        public bool IsShowedUnusedDisciplines { get; private set; }
+        public bool IsShowedCustomDisciplines { get; private set; }
         public string ActiveTable { get; set; }
         public bool EscapePressed { get; set; }
+
         public bool DataIsChanged { get; set; }
 
         /// <summary>
@@ -20,6 +22,9 @@ namespace StudyPlan
             InitializeComponent();
             dataGridView.UserDeletingRow += UserDeletingRow;
             bindingNavigatorDeleteItem.Click += UserDeletingRow;
+            AdvancedDataGridView.SetTranslations(AdvancedDataGridView.LoadTranslationsFromFile("lang.json"));
+            dataGridView.SetDoubleBuffered();
+            dataGridView.CleanFilterAndSort();
         }
 
         /// <summary>
@@ -32,6 +37,9 @@ namespace StudyPlan
             listTablesListBox.DataSource = tables;
             dataGridView.UserDeletingRow += UserDeletingRow;
             bindingNavigatorDeleteItem.Click += UserDeletingRow;
+            AdvancedDataGridView.SetTranslations(AdvancedDataGridView.LoadTranslationsFromFile("lang.json"));
+            dataGridView.SetDoubleBuffered();
+            dataGridView.CleanFilterAndSort();
         }
 
         /// <summary>
@@ -53,7 +61,7 @@ namespace StudyPlan
             _ = studyPlansViewTableAdapter.Fill(studyPlanDbDataSet.StudyPlansView);
             _ = workProgramsTableAdapter.Fill(studyPlanDbDataSet.WorkPrograms);
             _ = specialitiesTableAdapter.Fill(studyPlanDbDataSet.Specialities);
-            _ = educatioLevelsTableAdapter.Fill(studyPlanDbDataSet.EducationLevels);
+            _ = educationLevelsTableAdapter.Fill(studyPlanDbDataSet.EducationLevels);
             _ = accountingWorkProgramsTableAdapter.Fill(studyPlanDbDataSet.AccountingWorkPrograms);
             _ = groupNamesTableAdapter.Fill(studyPlanDbDataSet.GroupNames);
             _ = studyPlansTableAdapter.Fill(studyPlanDbDataSet.StudyPlans);
@@ -173,6 +181,9 @@ namespace StudyPlan
                 studyPlanLinkDataGridViewTextBoxColumn,
                 entryYearDataGridViewTextBoxColumn
             });
+            dataGridView.DisableFilterCustom(specialityDataGridViewComboBoxColumn);
+            dataGridView.DisableFilterCustom(educationLevelDataGridViewComboBoxColumn);
+            dataGridView.DisableFilterCustom(entryBaseDataGridViewComboBoxColumn);
         }
 
         /// <summary>
@@ -209,7 +220,7 @@ namespace StudyPlan
                 DisplayMember = "Назва дисципліни"
             };
             // 
-            // linkDataGridViewTextBoxColumn
+            // nameDataGridViewTextBoxColumn
             // 
             DataGridViewTextBoxColumn linkDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn
             {
@@ -225,6 +236,7 @@ namespace StudyPlan
                 disciplinaDataGridViewComboBoxColumn,
                 linkDataGridViewTextBoxColumn
             });
+            dataGridView.DisableFilterCustom(disciplinaDataGridViewComboBoxColumn);
         }
 
         /// <summary>
@@ -253,11 +265,10 @@ namespace StudyPlan
             studyPlansDataGridViewMultiColumnComboBoxColumn.ColumnNames.Add("База вступу");
             studyPlansDataGridViewMultiColumnComboBoxColumn.ColumnNames.Add("Освітній рівень");
             studyPlansDataGridViewMultiColumnComboBoxColumn.ColumnNames.Add("Освітня професійна програма");
-            studyPlansDataGridViewMultiColumnComboBoxColumn.ColumnNames.Add("Посилання на навчальний план");
-            studyPlansDataGridViewMultiColumnComboBoxColumn.ColumnWidths.Add("20");
             studyPlansDataGridViewMultiColumnComboBoxColumn.ColumnWidths.Add("35");
             studyPlansDataGridViewMultiColumnComboBoxColumn.ColumnWidths.Add("180");
             studyPlansDataGridViewMultiColumnComboBoxColumn.ColumnWidths.Add("180");
+            studyPlansDataGridViewMultiColumnComboBoxColumn.ColumnWidths.Add("240");
             studyPlansDataGridViewMultiColumnComboBoxColumn.ColumnWidths.Add("250");
             studyPlansDataGridViewMultiColumnComboBoxColumn.DataSource = bindingSourceStudyPlansView;
             studyPlansDataGridViewMultiColumnComboBoxColumn.HeaderText = "Навчальний план";
@@ -287,6 +298,9 @@ namespace StudyPlan
                 studyPlansDataGridViewMultiColumnComboBoxColumn,
                 groupNameDataGridViewComboBoxColumn
             });
+            dataGridView.DisableFilterCustom(studyPlansDataGridViewMultiColumnComboBoxColumn);
+            dataGridView.DisableFilterCustom(groupNameDataGridViewComboBoxColumn);
+
         }
 
         /// <summary>
@@ -312,8 +326,7 @@ namespace StudyPlan
             DataGridViewMultiColumnComboBoxColumn workProgramsDataGridViewMultiColumnComboBoxColumn = new DataGridViewMultiColumnComboBoxColumn();
             workProgramsDataGridViewMultiColumnComboBoxColumn.ColumnNames.Add("Семестр");
             workProgramsDataGridViewMultiColumnComboBoxColumn.ColumnNames.Add("Назва дисципліни");
-            workProgramsDataGridViewMultiColumnComboBoxColumn.ColumnNames.Add("Посилання на робочу програму");
-            workProgramsDataGridViewMultiColumnComboBoxColumn.ColumnWidths.Add("20");
+            workProgramsDataGridViewMultiColumnComboBoxColumn.ColumnWidths.Add("25");
             workProgramsDataGridViewMultiColumnComboBoxColumn.ColumnWidths.Add("300");
             workProgramsDataGridViewMultiColumnComboBoxColumn.ColumnWidths.Add("200");
             workProgramsDataGridViewMultiColumnComboBoxColumn.DataSource = bindingSourceWorkProgramsView;
@@ -334,11 +347,10 @@ namespace StudyPlan
             studyPlansDataGridViewMultiColumnComboBoxColumn.ColumnNames.Add("База вступу");
             studyPlansDataGridViewMultiColumnComboBoxColumn.ColumnNames.Add("Освітній рівень");
             studyPlansDataGridViewMultiColumnComboBoxColumn.ColumnNames.Add("Освітня професійна програма");
-            studyPlansDataGridViewMultiColumnComboBoxColumn.ColumnNames.Add("Посилання на навчальний план");
-            studyPlansDataGridViewMultiColumnComboBoxColumn.ColumnWidths.Add("20");
             studyPlansDataGridViewMultiColumnComboBoxColumn.ColumnWidths.Add("35");
             studyPlansDataGridViewMultiColumnComboBoxColumn.ColumnWidths.Add("180");
             studyPlansDataGridViewMultiColumnComboBoxColumn.ColumnWidths.Add("180");
+            studyPlansDataGridViewMultiColumnComboBoxColumn.ColumnWidths.Add("240");
             studyPlansDataGridViewMultiColumnComboBoxColumn.ColumnWidths.Add("250");
             studyPlansDataGridViewMultiColumnComboBoxColumn.DataSource = bindingSourceStudyPlansView;
             studyPlansDataGridViewMultiColumnComboBoxColumn.HeaderText = "Навчальний план";
@@ -357,6 +369,8 @@ namespace StudyPlan
                 studyPlansDataGridViewMultiColumnComboBoxColumn,
                 workProgramsDataGridViewMultiColumnComboBoxColumn
             });
+            dataGridView.DisableFilterCustom(studyPlansDataGridViewMultiColumnComboBoxColumn);
+            dataGridView.DisableFilterCustom(workProgramsDataGridViewMultiColumnComboBoxColumn);
         }
 
         /// <summary>
@@ -539,7 +553,7 @@ namespace StudyPlan
                         _ = groupNamesTableAdapter.Update(studyPlanDbDataSet.GroupNames);
                         break;
                     case Table.EducationLevels:
-                        _ = educatioLevelsTableAdapter.Update(studyPlanDbDataSet.EducationLevels);
+                        _ = educationLevelsTableAdapter.Update(studyPlanDbDataSet.EducationLevels);
                         break;
                     case Table.EntryBases:
                         _ = entryBasesTableAdapter.Update(studyPlanDbDataSet.EntryBases);
@@ -575,6 +589,7 @@ namespace StudyPlan
         {
             if (listTablesListBox.SelectedIndex != -1)
             {
+                dataGridView.CleanFilterAndSort();
                 if (DataIsChanged)
                 {
                     if (MessageBox.Show("Ви не зберегли зміни, бажаєте зберегти?", "Підтвердження дії",
@@ -587,11 +602,10 @@ namespace StudyPlan
                         FillDataSet();
                     }
                 }
-
-                if (IsShowedUnusedDisciplines)
+                if (IsShowedCustomDisciplines)
                 {
                     _ = disciplinesTableAdapter.Fill(studyPlanDbDataSet.Disciplines);
-                    IsShowedUnusedDisciplines = false;
+                    IsShowedCustomDisciplines = false;
                 }
                 ActiveTable = listTablesListBox.SelectedValue.ToString();
                 saveToolStripButton.Enabled = false;
@@ -637,6 +651,7 @@ namespace StudyPlan
         private void SaveToolStripButton_Click(object sender, EventArgs e)
         {
             UpdateData();
+            FillDataSet();
         }
 
         /// <summary>
@@ -666,8 +681,7 @@ namespace StudyPlan
         {
             if (!EscapePressed)
             {
-                DataIsChanged = true;
-                saveToolStripButton.Enabled = true;
+                saveToolStripButton.Enabled = DataIsChanged;
             }
             else
             {
@@ -675,14 +689,61 @@ namespace StudyPlan
             }
         }
 
+        /// <summary>
+        /// Подія яка виконується при натисненні на кнопку перегляду дисциплін які не закріплені
+        /// за робочими програмами
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void UnusedDisciplinesToolStripButton_Click(object sender, EventArgs e)
         {
             listTablesListBox.SelectedIndex = -1;
-            IsShowedUnusedDisciplines = true;
+            IsShowedCustomDisciplines = true;
             ActiveTable = Table.Disciplines;
             _ = disciplinesTableAdapter.FillByUnusedDisciplines(studyPlanDbDataSet.Disciplines);
             ShowTable();
             editTablesGroupBox.Text = "Список дисциплін які не закріплені за жодною робочою програмою";
+        }
+
+        /// <summary>
+        /// Подія яка виконується при натисненні на кнопку перегляду дисциплін які закріплені
+        /// за робочими програмами
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void UsedDisciplinesToolStripButton_Click(object sender, EventArgs e)
+        {
+            listTablesListBox.SelectedIndex = -1;
+            IsShowedCustomDisciplines = true;
+            ActiveTable = Table.Disciplines;
+            _ = disciplinesTableAdapter.FillByUsedDisciplines(studyPlanDbDataSet.Disciplines);
+            ShowTable();
+            editTablesGroupBox.Text = "Список дисциплін які закріплені за робочими програмами";
+        }
+
+
+        /// <summary>
+        /// Подія яка виконується при натисненні на кнопку експорту в файл
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ExportToolStripButton_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog
+            {
+                Filter = "Excel Таблиці|*.xlsx|Всі файли (*.*)|*.*",
+                Title = "Експорт в файл",
+                FileName = editTablesGroupBox.Text + " (" + DateTime.Now.ToString("yyyy-MM-dd") + ")"
+            };
+            if (saveFileDialog.ShowDialog() == DialogResult.OK && ExportExcel.ExportWithFormatting(saveFileDialog.FileName, ActiveTable, dataGridView))
+            {
+                _ = System.Diagnostics.Process.Start(saveFileDialog.FileName);
+            }
+        }
+
+        private void DataGridView_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            DataIsChanged = true;
         }
     }
 }

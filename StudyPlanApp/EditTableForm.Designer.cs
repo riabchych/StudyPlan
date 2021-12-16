@@ -1,4 +1,6 @@
-﻿namespace StudyPlan
+﻿using Zuby.ADGV;
+
+namespace StudyPlan
 {
     partial class EditTableForm
     {
@@ -30,24 +32,14 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditTableForm));
-            this.bindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.studyPlanDbDataSet = new StudyPlan.StudyPlanDbDataSet();
-            this.tableAdapterManager = new StudyPlan.StudyPlanDbDataSetTableAdapters.TableAdapterManager();
-            this.accountingWorkProgramsTableAdapter = new StudyPlan.StudyPlanDbDataSetTableAdapters.AccountingWorkProgramsTableAdapter();
-            this.disciplinesTableAdapter = new StudyPlan.StudyPlanDbDataSetTableAdapters.DisciplinesTableAdapter();
-            this.educatioLevelsTableAdapter = new StudyPlan.StudyPlanDbDataSetTableAdapters.EducatioLevelsTableAdapter();
-            this.entryBasesTableAdapter = new StudyPlan.StudyPlanDbDataSetTableAdapters.EntryBasesTableAdapter();
-            this.groupNamesTableAdapter = new StudyPlan.StudyPlanDbDataSetTableAdapters.GroupNamesTableAdapter();
-            this.groupsTableAdapter = new StudyPlan.StudyPlanDbDataSetTableAdapters.GroupsTableAdapter();
-            this.specialitiesTableAdapter = new StudyPlan.StudyPlanDbDataSetTableAdapters.SpecialitiesTableAdapter();
-            this.studyPlansTableAdapter = new StudyPlan.StudyPlanDbDataSetTableAdapters.StudyPlansTableAdapter();
-            this.workProgramsTableAdapter = new StudyPlan.StudyPlanDbDataSetTableAdapters.WorkProgramsTableAdapter();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.listTablesGroupBox = new System.Windows.Forms.GroupBox();
             this.listTablesListBox = new System.Windows.Forms.ListBox();
             this.editTablesGroupBox = new System.Windows.Forms.GroupBox();
             this.bindingNavigator1 = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.studyPlanDbDataSet = new StudyPlan.StudyPlanDbDataSet();
             this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
             this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMovePreviousItem = new System.Windows.Forms.ToolStripButton();
@@ -59,12 +51,23 @@
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
             this.saveToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.UnusedDisciplinesToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.dataGridView = new System.Windows.Forms.DataGridView();
+            this.unusedDisciplinesToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.usedDisciplinesToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.exportToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.dataGridView = new Zuby.ADGV.AdvancedDataGridView();
+            this.tableAdapterManager = new StudyPlan.StudyPlanDbDataSetTableAdapters.TableAdapterManager();
+            this.accountingWorkProgramsTableAdapter = new StudyPlan.StudyPlanDbDataSetTableAdapters.AccountingWorkProgramsTableAdapter();
+            this.disciplinesTableAdapter = new StudyPlan.StudyPlanDbDataSetTableAdapters.DisciplinesTableAdapter();
+            this.educationLevelsTableAdapter = new StudyPlan.StudyPlanDbDataSetTableAdapters.EducatioLevelsTableAdapter();
+            this.entryBasesTableAdapter = new StudyPlan.StudyPlanDbDataSetTableAdapters.EntryBasesTableAdapter();
+            this.groupNamesTableAdapter = new StudyPlan.StudyPlanDbDataSetTableAdapters.GroupNamesTableAdapter();
+            this.groupsTableAdapter = new StudyPlan.StudyPlanDbDataSetTableAdapters.GroupsTableAdapter();
+            this.specialitiesTableAdapter = new StudyPlan.StudyPlanDbDataSetTableAdapters.SpecialitiesTableAdapter();
+            this.studyPlansTableAdapter = new StudyPlan.StudyPlanDbDataSetTableAdapters.StudyPlansTableAdapter();
+            this.workProgramsTableAdapter = new StudyPlan.StudyPlanDbDataSetTableAdapters.WorkProgramsTableAdapter();
             this.workProgramsViewTableAdapter = new StudyPlan.StudyPlanDbDataSetTableAdapters.WorkProgramsViewTableAdapter();
             this.studyPlansViewTableAdapter = new StudyPlan.StudyPlanDbDataSetTableAdapters.StudyPlansViewTableAdapter();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.studyPlanDbDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -73,68 +76,10 @@
             this.editTablesGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).BeginInit();
             this.bindingNavigator1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.studyPlanDbDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
-            // 
-            // bindingSource
-            // 
-            this.bindingSource.DataSource = this.studyPlanDbDataSet;
-            this.bindingSource.Position = 0;
-            // 
-            // studyPlanDbDataSet
-            // 
-            this.studyPlanDbDataSet.DataSetName = "StudyPlanDbDataSet";
-            this.studyPlanDbDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // tableAdapterManager
-            // 
-            this.tableAdapterManager.AccountingWorkProgramsTableAdapter = this.accountingWorkProgramsTableAdapter;
-            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
-            this.tableAdapterManager.DisciplinesTableAdapter = this.disciplinesTableAdapter;
-            this.tableAdapterManager.EducatioLevelsTableAdapter = this.educatioLevelsTableAdapter;
-            this.tableAdapterManager.EntryBasesTableAdapter = this.entryBasesTableAdapter;
-            this.tableAdapterManager.GroupNamesTableAdapter = this.groupNamesTableAdapter;
-            this.tableAdapterManager.GroupsTableAdapter = this.groupsTableAdapter;
-            this.tableAdapterManager.SpecialitiesTableAdapter = this.specialitiesTableAdapter;
-            this.tableAdapterManager.StudyPlansTableAdapter = this.studyPlansTableAdapter;
-            this.tableAdapterManager.UpdateOrder = StudyPlan.StudyPlanDbDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
-            this.tableAdapterManager.WorkProgramsTableAdapter = this.workProgramsTableAdapter;
-            // 
-            // accountingWorkProgramsTableAdapter
-            // 
-            this.accountingWorkProgramsTableAdapter.ClearBeforeFill = true;
-            // 
-            // disciplinesTableAdapter
-            // 
-            this.disciplinesTableAdapter.ClearBeforeFill = true;
-            // 
-            // educatioLevelsTableAdapter
-            // 
-            this.educatioLevelsTableAdapter.ClearBeforeFill = true;
-            // 
-            // entryBasesTableAdapter
-            // 
-            this.entryBasesTableAdapter.ClearBeforeFill = true;
-            // 
-            // groupNamesTableAdapter
-            // 
-            this.groupNamesTableAdapter.ClearBeforeFill = true;
-            // 
-            // groupsTableAdapter
-            // 
-            this.groupsTableAdapter.ClearBeforeFill = true;
-            // 
-            // specialitiesTableAdapter
-            // 
-            this.specialitiesTableAdapter.ClearBeforeFill = true;
-            // 
-            // studyPlansTableAdapter
-            // 
-            this.studyPlansTableAdapter.ClearBeforeFill = true;
-            // 
-            // workProgramsTableAdapter
-            // 
-            this.workProgramsTableAdapter.ClearBeforeFill = true;
             // 
             // splitContainer1
             // 
@@ -150,7 +95,7 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.editTablesGroupBox);
             this.splitContainer1.Size = new System.Drawing.Size(834, 442);
-            this.splitContainer1.SplitterDistance = 278;
+            this.splitContainer1.SplitterDistance = 186;
             this.splitContainer1.TabIndex = 3;
             // 
             // listTablesGroupBox
@@ -161,7 +106,7 @@
             this.listTablesGroupBox.Controls.Add(this.listTablesListBox);
             this.listTablesGroupBox.Location = new System.Drawing.Point(3, 3);
             this.listTablesGroupBox.Name = "listTablesGroupBox";
-            this.listTablesGroupBox.Size = new System.Drawing.Size(276, 436);
+            this.listTablesGroupBox.Size = new System.Drawing.Size(184, 436);
             this.listTablesGroupBox.TabIndex = 0;
             this.listTablesGroupBox.TabStop = false;
             this.listTablesGroupBox.Text = "Список таблиць";
@@ -172,7 +117,7 @@
             this.listTablesListBox.FormattingEnabled = true;
             this.listTablesListBox.Location = new System.Drawing.Point(3, 16);
             this.listTablesListBox.Name = "listTablesListBox";
-            this.listTablesListBox.Size = new System.Drawing.Size(270, 417);
+            this.listTablesListBox.Size = new System.Drawing.Size(178, 417);
             this.listTablesListBox.Sorted = true;
             this.listTablesListBox.TabIndex = 0;
             this.listTablesListBox.SelectedValueChanged += new System.EventHandler(this.ListTablesListBox_SelectedValueChanged);
@@ -186,7 +131,7 @@
             this.editTablesGroupBox.Controls.Add(this.dataGridView);
             this.editTablesGroupBox.Location = new System.Drawing.Point(3, 3);
             this.editTablesGroupBox.Name = "editTablesGroupBox";
-            this.editTablesGroupBox.Size = new System.Drawing.Size(546, 433);
+            this.editTablesGroupBox.Size = new System.Drawing.Size(638, 433);
             this.editTablesGroupBox.TabIndex = 5;
             this.editTablesGroupBox.TabStop = false;
             this.editTablesGroupBox.Text = "Редагування таблиці";
@@ -212,7 +157,10 @@
             this.bindingNavigatorAddNewItem,
             this.bindingNavigatorDeleteItem,
             this.saveToolStripButton,
-            this.UnusedDisciplinesToolStripButton});
+            this.unusedDisciplinesToolStripButton,
+            this.usedDisciplinesToolStripButton,
+            this.toolStripSeparator1,
+            this.exportToolStripButton});
             this.bindingNavigator1.Location = new System.Drawing.Point(3, 405);
             this.bindingNavigator1.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
             this.bindingNavigator1.MoveLastItem = this.bindingNavigatorMoveLastItem;
@@ -220,7 +168,7 @@
             this.bindingNavigator1.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
             this.bindingNavigator1.Name = "bindingNavigator1";
             this.bindingNavigator1.PositionItem = this.bindingNavigatorPositionItem;
-            this.bindingNavigator1.Size = new System.Drawing.Size(540, 25);
+            this.bindingNavigator1.Size = new System.Drawing.Size(632, 25);
             this.bindingNavigator1.TabIndex = 5;
             this.bindingNavigator1.Text = "bindingNavigator1";
             // 
@@ -232,6 +180,16 @@
             this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
             this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(23, 22);
             this.bindingNavigatorAddNewItem.Text = "Додати";
+            // 
+            // bindingSource
+            // 
+            this.bindingSource.DataSource = this.studyPlanDbDataSet;
+            this.bindingSource.Position = 0;
+            // 
+            // studyPlanDbDataSet
+            // 
+            this.studyPlanDbDataSet.DataSetName = "StudyPlanDbDataSet";
+            this.studyPlanDbDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // bindingNavigatorCountItem
             // 
@@ -321,15 +279,40 @@
             this.saveToolStripButton.Text = "Зберегти зміни";
             this.saveToolStripButton.Click += new System.EventHandler(this.SaveToolStripButton_Click);
             // 
-            // UnusedDisciplinesToolStripButton
+            // unusedDisciplinesToolStripButton
             // 
-            this.UnusedDisciplinesToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.UnusedDisciplinesToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("UnusedDisciplinesToolStripButton.Image")));
-            this.UnusedDisciplinesToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.UnusedDisciplinesToolStripButton.Name = "UnusedDisciplinesToolStripButton";
-            this.UnusedDisciplinesToolStripButton.Size = new System.Drawing.Size(23, 22);
-            this.UnusedDisciplinesToolStripButton.Text = "Перевірити дисципліни";
-            this.UnusedDisciplinesToolStripButton.Click += new System.EventHandler(this.UnusedDisciplinesToolStripButton_Click);
+            this.unusedDisciplinesToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.unusedDisciplinesToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("unusedDisciplinesToolStripButton.Image")));
+            this.unusedDisciplinesToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.unusedDisciplinesToolStripButton.Name = "unusedDisciplinesToolStripButton";
+            this.unusedDisciplinesToolStripButton.Size = new System.Drawing.Size(23, 22);
+            this.unusedDisciplinesToolStripButton.Text = "Перелік не закріплених дисциплін";
+            this.unusedDisciplinesToolStripButton.Click += new System.EventHandler(this.UnusedDisciplinesToolStripButton_Click);
+            // 
+            // usedDisciplinesToolStripButton
+            // 
+            this.usedDisciplinesToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.usedDisciplinesToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("usedDisciplinesToolStripButton.Image")));
+            this.usedDisciplinesToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.usedDisciplinesToolStripButton.Name = "usedDisciplinesToolStripButton";
+            this.usedDisciplinesToolStripButton.Size = new System.Drawing.Size(23, 22);
+            this.usedDisciplinesToolStripButton.Text = "Перелік закріплених дисциплін";
+            this.usedDisciplinesToolStripButton.Click += new System.EventHandler(this.UsedDisciplinesToolStripButton_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            // 
+            // exportToolStripButton
+            // 
+            this.exportToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.exportToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("exportToolStripButton.Image")));
+            this.exportToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.exportToolStripButton.Name = "exportToolStripButton";
+            this.exportToolStripButton.Size = new System.Drawing.Size(23, 22);
+            this.exportToolStripButton.Text = "Експорт в Excel";
+            this.exportToolStripButton.Click += new System.EventHandler(this.ExportToolStripButton_Click);
             // 
             // dataGridView
             // 
@@ -341,14 +324,67 @@
             this.dataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView.DataSource = this.bindingSource;
+            this.dataGridView.FilterAndSortEnabled = true;
             this.dataGridView.Location = new System.Drawing.Point(3, 16);
             this.dataGridView.MultiSelect = false;
             this.dataGridView.Name = "dataGridView";
-            this.dataGridView.Size = new System.Drawing.Size(543, 386);
+            this.dataGridView.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.dataGridView.Size = new System.Drawing.Size(635, 386);
             this.dataGridView.TabIndex = 2;
             this.dataGridView.VirtualMode = true;
             this.dataGridView.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView_CellEndEdit);
+            this.dataGridView.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView_CellValueChanged);
             this.dataGridView.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.DataGridView_EditingControlShowing);
+            // 
+            // tableAdapterManager
+            // 
+            this.tableAdapterManager.AccountingWorkProgramsTableAdapter = this.accountingWorkProgramsTableAdapter;
+            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager.DisciplinesTableAdapter = this.disciplinesTableAdapter;
+            this.tableAdapterManager.EducatioLevelsTableAdapter = this.educationLevelsTableAdapter;
+            this.tableAdapterManager.EntryBasesTableAdapter = this.entryBasesTableAdapter;
+            this.tableAdapterManager.GroupNamesTableAdapter = this.groupNamesTableAdapter;
+            this.tableAdapterManager.GroupsTableAdapter = this.groupsTableAdapter;
+            this.tableAdapterManager.SpecialitiesTableAdapter = this.specialitiesTableAdapter;
+            this.tableAdapterManager.StudyPlansTableAdapter = this.studyPlansTableAdapter;
+            this.tableAdapterManager.UpdateOrder = StudyPlan.StudyPlanDbDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            this.tableAdapterManager.WorkProgramsTableAdapter = this.workProgramsTableAdapter;
+            // 
+            // accountingWorkProgramsTableAdapter
+            // 
+            this.accountingWorkProgramsTableAdapter.ClearBeforeFill = true;
+            // 
+            // disciplinesTableAdapter
+            // 
+            this.disciplinesTableAdapter.ClearBeforeFill = true;
+            // 
+            // educationLevelsTableAdapter
+            // 
+            this.educationLevelsTableAdapter.ClearBeforeFill = true;
+            // 
+            // entryBasesTableAdapter
+            // 
+            this.entryBasesTableAdapter.ClearBeforeFill = true;
+            // 
+            // groupNamesTableAdapter
+            // 
+            this.groupNamesTableAdapter.ClearBeforeFill = true;
+            // 
+            // groupsTableAdapter
+            // 
+            this.groupsTableAdapter.ClearBeforeFill = true;
+            // 
+            // specialitiesTableAdapter
+            // 
+            this.specialitiesTableAdapter.ClearBeforeFill = true;
+            // 
+            // studyPlansTableAdapter
+            // 
+            this.studyPlansTableAdapter.ClearBeforeFill = true;
+            // 
+            // workProgramsTableAdapter
+            // 
+            this.workProgramsTableAdapter.ClearBeforeFill = true;
             // 
             // workProgramsViewTableAdapter
             // 
@@ -367,8 +403,6 @@
             this.Name = "EditTableForm";
             this.Text = "Редагування даних";
             this.Load += new System.EventHandler(this.EditForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.studyPlanDbDataSet)).EndInit();
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
@@ -379,6 +413,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).EndInit();
             this.bindingNavigator1.ResumeLayout(false);
             this.bindingNavigator1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.studyPlanDbDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.ResumeLayout(false);
 
@@ -394,14 +430,14 @@
         public StudyPlanDbDataSetTableAdapters.StudyPlansTableAdapter studyPlansTableAdapter;
         public StudyPlanDbDataSetTableAdapters.GroupNamesTableAdapter groupNamesTableAdapter;
         public StudyPlanDbDataSetTableAdapters.AccountingWorkProgramsTableAdapter accountingWorkProgramsTableAdapter;
-        public StudyPlanDbDataSetTableAdapters.EducatioLevelsTableAdapter educatioLevelsTableAdapter;
+        public StudyPlanDbDataSetTableAdapters.EducatioLevelsTableAdapter educationLevelsTableAdapter;
         public StudyPlanDbDataSetTableAdapters.SpecialitiesTableAdapter specialitiesTableAdapter;
         public StudyPlanDbDataSetTableAdapters.WorkProgramsTableAdapter workProgramsTableAdapter;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.GroupBox listTablesGroupBox;
         private System.Windows.Forms.ListBox listTablesListBox;
         private System.Windows.Forms.GroupBox editTablesGroupBox;
-        private System.Windows.Forms.DataGridView dataGridView;
+        private AdvancedDataGridView dataGridView;
         private System.Windows.Forms.BindingNavigator bindingNavigator1;
         private System.Windows.Forms.ToolStripButton bindingNavigatorAddNewItem;
         private System.Windows.Forms.ToolStripLabel bindingNavigatorCountItem;
@@ -415,8 +451,11 @@
         private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator2;
         private System.Windows.Forms.ToolStripButton bindingNavigatorDeleteItem;
         private System.Windows.Forms.ToolStripButton saveToolStripButton;
-        private System.Windows.Forms.ToolStripButton UnusedDisciplinesToolStripButton;
+        private System.Windows.Forms.ToolStripButton unusedDisciplinesToolStripButton;
         private StudyPlanDbDataSetTableAdapters.WorkProgramsViewTableAdapter workProgramsViewTableAdapter;
         private StudyPlanDbDataSetTableAdapters.StudyPlansViewTableAdapter studyPlansViewTableAdapter;
+        private System.Windows.Forms.ToolStripButton usedDisciplinesToolStripButton;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripButton exportToolStripButton;
     }
 }

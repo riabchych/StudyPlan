@@ -89,11 +89,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Database.cs" />
-    <Compile Include="EditForm.cs">
+    <Compile Include="EditTableForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="EditForm.Designer.cs">
-      <DependentUpon>EditForm.cs</DependentUpon>
+    <Compile Include="EditTableForm.Designer.cs">
+      <DependentUpon>EditTableForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Entities\BaseEntity.cs" />
     <Compile Include="ExportExcel.cs" />
@@ -124,8 +124,8 @@
       <DependentUpon>StudyPlanDbDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="Table.cs" />
-    <EmbeddedResource Include="EditForm.resx">
-      <DependentUpon>EditForm.cs</DependentUpon>
+    <EmbeddedResource Include="EditTableForm.resx">
+      <DependentUpon>EditTableForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>

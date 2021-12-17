@@ -424,7 +424,7 @@ namespace StudyPlan
             {
                 SearchData.Discipline = disciplineCb.SelectedValue == null ? 0 : (int)disciplineCb.SelectedValue;
                 Plan = StudyPlanDbAdapter.GetPlan(SearchData.Plan);
-                string link = StudyPlanDbAdapter.GetWorkProgramLink(SearchData.Plan);
+                string link = StudyPlanDbAdapter.GetWorkProgramLink(SearchData.Plan, SearchData.Discipline, SearchData.Semester);
 
                 if (link != null)
                 {

@@ -87,7 +87,7 @@ namespace StudyPlan
                 using (OleDbCommand command = new OleDbCommand())
                 {
                     command.Connection = connection;
-                    command.CommandText = $"SELECT * FROM [{Table.StudyPlans}] WHERE ID={id}";
+                    command.CommandText = $"SELECT DISTINCT * FROM [{Table.StudyPlans}] WHERE ID={id}";
                     try
                     {
                         connection.Open();
@@ -381,9 +381,11 @@ namespace StudyPlan
         /// <summary>
         /// Метод отримання посилання на робочу програму
         /// </summary>
-        /// <param name="id">Ідентифікатор навчального плану</param>
+        /// <param name="planId">Ідентифікатор навчального плану</param>
+        /// <param name="disciplineId">Ідентифікатор дисципліни</param>
+        /// <param name="semester">Номер семестру</param>
         /// <returns>Поислання на робочу програму</returns>
-        public string GetWorkProgramLink(int id)
+        public string GetWorkProgramLink(int planId, int disciplineId, int semester)
         {
             using (OleDbConnection connection = new OleDbConnection(Properties.Settings.Default.StudyPlanDbConnectionString))
             {
@@ -391,14 +393,17 @@ namespace StudyPlan
                 {
                     command.Connection = connection;
                     command.CommandText = $@"
-                        SELECT DISTINCT[Робочі програми].[Посилання на робочу програму]
-                        FROM[Робочі програми]
-                        INNER JOIN([Навчальні плани]
-                        INNER JOIN [Облік робочих програм]
-                            ON [Навчальні плани].ID = [Облік робочих програм].[ID навчального плану])
-                            ON[Робочі програми].ID = [Облік робочих програм].[ID робочої програми]
-                        WHERE [Навчальні плани].ID = {id};
-                    ";
+                        SELECT DISTINCT [Робочі програми].[Посилання на робочу програму]
+                        FROM Дисципліни 
+                        INNER JOIN ([Робочі програми] 
+                        INNER JOIN ([Навчальні плани] 
+                        INNER JOIN [Облік робочих програм] 
+                            ON [Навчальні плани].ID = [Облік робочих програм].[ID навчального плану]) 
+                            ON [Робочі програми].ID = [Облік робочих програм].[ID робочої програми]) 
+                            ON Дисципліни.ID = [Робочі програми].Дисципліна
+                        WHERE ((([Робочі програми].Дисципліна)={disciplineId}) 
+                            AND (([Робочі програми].Семестр)={semester}) 
+                            AND (([Навчальні плани].ID)={planId}))";
                     try
                     {
                         connection.Open();

@@ -10,6 +10,7 @@ namespace StudyPlan
         List<Group> GetGroups(int cource);
         Plan GetPlan(int id);
         List<int> GetSemesters(int groupId, int entryBaseId);
+        string GetWorkProgramLink(int planId, int disciplineId, int semester);
         void UpdateStudyPlan(int id, string link);
     }
 }

@@ -15,6 +15,7 @@
             Semester = 0;
             Cource = 0;
             Plan = 0;
+            WorkProgram = 0;
             Discipline = 0;
         }
 
@@ -24,5 +25,6 @@
         public int Cource { get; set; }
         public int Plan { get; set; }
         public int Discipline { get; set; }
+        public int WorkProgram { get; set; }
     }
 }

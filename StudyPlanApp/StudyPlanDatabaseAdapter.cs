@@ -385,7 +385,7 @@ namespace StudyPlan
         /// <param name="disciplineId">Ідентифікатор дисципліни</param>
         /// <param name="semester">Номер семестру</param>
         /// <returns>Поислання на робочу програму</returns>
-        public string GetWorkProgramLink(int planId, int disciplineId, int semester)
+        public string GetWorkProgramLink(int planId, int disciplineId, int semester, ref int workProgramId)
         {
             using (OleDbConnection connection = new OleDbConnection(Properties.Settings.Default.StudyPlanDbConnectionString))
             {
@@ -393,7 +393,7 @@ namespace StudyPlan
                 {
                     command.Connection = connection;
                     command.CommandText = $@"
-                        SELECT DISTINCT [Робочі програми].[Посилання на робочу програму]
+                        SELECT DISTINCT [Робочі програми].[ID], [Робочі програми].[Посилання на робочу програму]
                         FROM Дисципліни 
                         INNER JOIN ([Робочі програми] 
                         INNER JOIN ([Навчальні плани] 
@@ -412,6 +412,7 @@ namespace StudyPlan
                             if (reader.HasRows)
                             {
                                 _ = reader.Read();
+                                workProgramId = reader.GetInt32(reader.GetOrdinal("ID"));
                                 return reader.GetString(reader.GetOrdinal("Посилання на робочу програму"));
                             }
                         }
@@ -427,6 +428,36 @@ namespace StudyPlan
                     }
                 }
                 return null;
+            }
+        }
+
+        public void UpdateWorkProgram(int id, string link)
+        {
+            using (OleDbConnection connection = new OleDbConnection(Properties.Settings.Default.StudyPlanDbConnectionString))
+            {
+                using (OleDbCommand command = new OleDbCommand())
+                {
+                    command.Connection = connection;
+                    command.CommandType = CommandType.Text;
+                    command.CommandText = $@"
+                        UPDATE [{Table.WorkPrograms}]
+                        SET [Посилання на робочу програму]='{link}'
+                        WHERE [ID]={id}";
+                    connection.Open();
+                    try
+                    {
+                        _ = command.ExecuteNonQuery();
+                    }
+                    catch (Exception ex)
+                    {
+                        _ = MessageBox.Show($"Помилка оновлення даних: {Environment.NewLine}{ex}", "Помилка",
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    finally
+                    {
+                        connection.Close();
+                    }
+                }
             }
         }
     }

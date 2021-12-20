@@ -152,15 +152,18 @@ namespace StudyPlan
                     disciplineCb.SelectedIndex = -1;
                     disciplineCb.Enabled = false;
                     disciplineLb.Enabled = false;
-                    linkTb.Text = "";
-                    linkTb.Enabled = false;
-                    linkLb.Enabled = false;
-                    editBt.Enabled = false;
-                    previewBt.Enabled = false;
-                    removeBt.Enabled = false;
-                    linkWorkProgramLabel.Enabled = false;
-                    linkWorkProgram.Text = "";
-                    linkWorkProgram.Enabled = false;
+                    linkSpTextBox.Text = "";
+                    linkSpTextBox.Enabled = false;
+                    linkSpLabel.Enabled = false;
+                    editSpButton.Enabled = false;
+                    previewSpBt.Enabled = false;
+                    removeSpButton.Enabled = false;
+                    linkWpTextBox.Text = "";
+                    linkWpTextBox.Enabled = false;
+                    linkWpLabel.Enabled = false;
+                    editWpButton.Enabled = false;
+                    previewWpBt.Enabled = false;
+                    removeWpButton.Enabled = false;
                     break;
                 case 2:
                     SearchData.EntryBase = 0;
@@ -170,42 +173,51 @@ namespace StudyPlan
                     disciplineCb.SelectedIndex = -1;
                     disciplineCb.Enabled = false;
                     disciplineLb.Enabled = false;
-                    linkTb.Text = "";
-                    linkTb.Enabled = false;
-                    linkLb.Enabled = false;
-                    editBt.Enabled = false;
-                    previewBt.Enabled = false;
-                    removeBt.Enabled = false;
-                    linkWorkProgramLabel.Enabled = false;
-                    linkWorkProgram.Enabled = false;
-                    linkWorkProgram.Text = "";
+                    linkSpTextBox.Text = "";
+                    linkSpTextBox.Enabled = false;
+                    linkSpLabel.Enabled = false;
+                    editSpButton.Enabled = false;
+                    previewSpBt.Enabled = false;
+                    removeSpButton.Enabled = false;
+                    linkWpTextBox.Text = "";
+                    linkWpTextBox.Enabled = false;
+                    linkWpLabel.Enabled = false;
+                    editWpButton.Enabled = false;
+                    previewWpBt.Enabled = false;
+                    removeWpButton.Enabled = false;
                     break;
                 case 3:
                     SearchData.Semester = 0;
                     disciplineCb.SelectedIndex = -1;
                     disciplineCb.Enabled = false;
                     disciplineLb.Enabled = false;
-                    linkTb.Text = "";
-                    linkTb.Enabled = false;
-                    linkLb.Enabled = false;
-                    editBt.Enabled = false;
-                    previewBt.Enabled = false;
-                    removeBt.Enabled = false;
-                    linkWorkProgramLabel.Enabled = false;
-                    linkWorkProgram.Enabled = false;
-                    linkWorkProgram.Text = "";
+                    linkSpTextBox.Text = "";
+                    linkSpTextBox.Enabled = false;
+                    linkSpLabel.Enabled = false;
+                    editSpButton.Enabled = false;
+                    previewSpBt.Enabled = false;
+                    removeSpButton.Enabled = false;
+                    linkWpTextBox.Text = "";
+                    linkWpTextBox.Enabled = false;
+                    linkWpLabel.Enabled = false;
+                    editWpButton.Enabled = false;
+                    previewWpBt.Enabled = false;
+                    removeWpButton.Enabled = false;
                     break;
                 case 4:
                     SearchData.Discipline = 0;
-                    linkTb.Text = "";
-                    linkTb.Enabled = false;
-                    linkLb.Enabled = false;
-                    editBt.Enabled = false;
-                    previewBt.Enabled = false;
-                    removeBt.Enabled = false;
-                    linkWorkProgramLabel.Enabled = false;
-                    linkWorkProgram.Enabled = false;
-                    linkWorkProgram.Text = "";
+                    linkSpTextBox.Text = "";
+                    linkSpTextBox.Enabled = false;
+                    linkSpLabel.Enabled = false;
+                    editSpButton.Enabled = false;
+                    previewSpBt.Enabled = false;
+                    removeSpButton.Enabled = false;
+                    linkWpTextBox.Text = "";
+                    linkWpTextBox.Enabled = false;
+                    linkWpLabel.Enabled = false;
+                    editWpButton.Enabled = false;
+                    previewWpBt.Enabled = false;
+                    removeWpButton.Enabled = false;
                     break;
                 default:
                     SearchData.Cource = 0;
@@ -221,15 +233,18 @@ namespace StudyPlan
                     disciplineCb.SelectedIndex = -1;
                     disciplineCb.Enabled = false;
                     disciplineLb.Enabled = false;
-                    linkTb.Text = "";
-                    linkTb.Enabled = false;
-                    linkLb.Enabled = false;
-                    editBt.Enabled = false;
-                    previewBt.Enabled = false;
-                    removeBt.Enabled = false;
-                    linkWorkProgramLabel.Enabled = false;
-                    linkWorkProgram.Enabled = false;
-                    linkWorkProgram.Text = "";
+                    linkSpTextBox.Text = "";
+                    linkSpTextBox.Enabled = false;
+                    linkSpLabel.Enabled = false;
+                    editSpButton.Enabled = false;
+                    previewSpBt.Enabled = false;
+                    removeSpButton.Enabled = false;
+                    linkWpTextBox.Text = "";
+                    linkWpTextBox.Enabled = false;
+                    linkWpLabel.Enabled = false;
+                    editWpButton.Enabled = false;
+                    previewWpBt.Enabled = false;
+                    removeWpButton.Enabled = false;
                     break;
             }
         }
@@ -273,60 +288,116 @@ namespace StudyPlan
         /// </summary>
         /// <param name="isClicked">Чи була натиснута кнопка збереження або зміни навчального плану</param>
         /// <param name="link">Посилання на навчальний план</param>
-        private void ChangeEditPlanCtrls(bool isClicked = false, string link = "")
+        private void ChangeEditPlanCtrls(bool isClicked = false, string link = "", bool isWoorkProgram = false)
         {
-            if (isClicked && editBt.Text == "Зберегти")
+            if(isWoorkProgram)
             {
-                linkTb.Enabled = true;
-                linkLb.Enabled = true;
-                linkTb.ReadOnly = true;
-                editBt.Text = "Внести зміни";
-                editBt.Enabled = true;
-                previewBt.Enabled = true;
-                removeBt.Enabled = true;
-                Plan.Link = linkTb.Text;
-                StudyPlanDbAdapter.UpdateStudyPlan(Plan.Id, linkTb.Text);
-                return;
-            }
-            if ((isClicked && editBt.Text == "Внести зміни") || editBt.Text == "Додати")
-            {
-                linkTb.Enabled = true;
-                linkLb.Enabled = true;
-                linkTb.ReadOnly = false;
-                linkTb.Text = link;
-                editBt.Text = "Зберегти";
-                editBt.Enabled = true;
-                previewBt.Enabled = false;
-                removeBt.Enabled = false;
-                Plan.Link = link;
-                return;
-            }
-            if (link == "")
-            {
-                linkLb.Enabled = false;
-                linkTb.Enabled = false;
-                linkTb.ReadOnly = true;
-                linkTb.Text = "";
-                editBt.Text = "Додати";
-                editBt.Enabled = true;
-                previewBt.Enabled = false;
-                removeBt.Enabled = false;
-                Plan.Link = "";
-                return;
+                if (isClicked && editWpButton.Text == "Зберегти")
+                {
+                    linkWpTextBox.Enabled = true;
+                    linkWpLabel.Enabled = true;
+                    linkWpTextBox.ReadOnly = true;
+                    editWpButton.Text = "Внести зміни";
+                    editWpButton.Enabled = true;
+                    previewWpBt.Enabled = true;
+                    removeWpButton.Enabled = true;
+                    StudyPlanDbAdapter.UpdateWorkProgram(SearchData.WorkProgram, linkWpTextBox.Text);
+                    return;
+                }
+                if ((isClicked && editWpButton.Text == "Внести зміни") || editWpButton.Text == "Додати")
+                {
+                    linkWpTextBox.Enabled = true;
+                    linkWpLabel.Enabled = true;
+                    linkWpTextBox.ReadOnly = false;
+                    linkWpTextBox.Text = link;
+                    editWpButton.Text = "Зберегти";
+                    editWpButton.Enabled = true;
+                    previewWpBt.Enabled = false;
+                    removeWpButton.Enabled = false;
+                    return;
+                }
+                if (link == "")
+                {
+                    linkWpLabel.Enabled = false;
+                    linkWpTextBox.Enabled = false;
+                    linkWpTextBox.ReadOnly = true;
+                    linkWpTextBox.Text = "";
+                    editWpButton.Text = "Додати";
+                    editWpButton.Enabled = true;
+                    previewWpBt.Enabled = false;
+                    removeWpButton.Enabled = false;
+                    return;
+                }
+                else
+                {
+                    linkWpTextBox.Enabled = true;
+                    linkWpLabel.Enabled = true;
+                    linkWpTextBox.ReadOnly = true;
+                    linkWpTextBox.Text = link;
+                    editWpButton.Text = "Внести зміни";
+                    editWpButton.Enabled = true;
+                    previewWpBt.Enabled = true;
+                    removeWpButton.Enabled = true;
+                    return;
+                }
             }
             else
             {
-                linkTb.Enabled = true;
-                linkLb.Enabled = true;
-                linkTb.ReadOnly = true;
-                linkTb.Text = link;
-                Plan.Link = link;
-                editBt.Text = "Внести зміни";
-                editBt.Enabled = true;
-                previewBt.Enabled = true;
-                removeBt.Enabled = true;
-                return;
+                if (isClicked && editSpButton.Text == "Зберегти")
+                {
+                    linkSpTextBox.Enabled = true;
+                    linkSpLabel.Enabled = true;
+                    linkSpTextBox.ReadOnly = true;
+                    editSpButton.Text = "Внести зміни";
+                    editSpButton.Enabled = true;
+                    previewSpBt.Enabled = true;
+                    removeSpButton.Enabled = true;
+                    Plan.Link = linkSpTextBox.Text;
+                    StudyPlanDbAdapter.UpdateStudyPlan(Plan.Id, linkSpTextBox.Text);
+                    return;
+                }
+                if ((isClicked && editSpButton.Text == "Внести зміни") || editSpButton.Text == "Додати")
+                {
+                    linkSpTextBox.Enabled = true;
+                    linkSpLabel.Enabled = true;
+                    linkSpTextBox.ReadOnly = false;
+                    linkSpTextBox.Text = link;
+                    editSpButton.Text = "Зберегти";
+                    editSpButton.Enabled = true;
+                    previewSpBt.Enabled = false;
+                    removeSpButton.Enabled = false;
+                    Plan.Link = link;
+                    return;
+                }
+                if (link == "")
+                {
+                    linkSpLabel.Enabled = false;
+                    linkSpTextBox.Enabled = false;
+                    linkSpTextBox.ReadOnly = true;
+                    linkSpTextBox.Text = "";
+                    editSpButton.Text = "Додати";
+                    editSpButton.Enabled = true;
+                    previewSpBt.Enabled = false;
+                    removeSpButton.Enabled = false;
+                    Plan.Link = "";
+                    return;
+                }
+                else
+                {
+                    linkSpTextBox.Enabled = true;
+                    linkSpLabel.Enabled = true;
+                    linkSpTextBox.ReadOnly = true;
+                    linkSpTextBox.Text = link;
+                    Plan.Link = link;
+                    editSpButton.Text = "Внести зміни";
+                    editSpButton.Enabled = true;
+                    previewSpBt.Enabled = true;
+                    removeSpButton.Enabled = true;
+                    return;
+                }
             }
+
+            
         }
 
 
@@ -424,19 +495,20 @@ namespace StudyPlan
             {
                 SearchData.Discipline = disciplineCb.SelectedValue == null ? 0 : (int)disciplineCb.SelectedValue;
                 Plan = StudyPlanDbAdapter.GetPlan(SearchData.Plan);
-                string link = StudyPlanDbAdapter.GetWorkProgramLink(SearchData.Plan, SearchData.Discipline, SearchData.Semester);
-
+                int wp = SearchData.WorkProgram;
+                string link = StudyPlanDbAdapter.GetWorkProgramLink(SearchData.Plan, SearchData.Discipline, SearchData.Semester, ref wp);
+                SearchData.WorkProgram = wp;
                 if (link != null)
                 {
-                    linkWorkProgramLabel.Enabled = true;
-                    linkWorkProgram.Enabled = true;
-                    linkWorkProgram.Text = BeautyfyUrl(link);
+                    editWpButton.Text = "Внести зміни";
+                    linkWpTextBox.Text = BeautyfyUrl(link);
+                    ChangeEditPlanCtrls(false, linkWpTextBox.Text, true);
                 }
-                if (linkTb.Text == "")
+                if (linkSpTextBox.Text == "")
                 {
                     if (Plan != null)
                     {
-                        editBt.Text = "Внести зміни";
+                        editSpButton.Text = "Внести зміни";
                         Plan.Link = BeautyfyUrl(Plan.Link);
                         ChangeEditPlanCtrls(false, Plan.Link);
                     }
@@ -500,11 +572,27 @@ namespace StudyPlan
             Close();
         }
 
-        private void LinkWorkProgram_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void PreviewWpButton_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(linkWorkProgram.Text))
+            if (!string.IsNullOrEmpty(linkWpTextBox.Text))
             {
-                OpenUrl(linkWorkProgram.Text);
+                OpenUrl(linkWpTextBox.Text);
+            }
+        }
+
+        private void EditWpButton_Click(object sender, EventArgs e)
+        {
+            ChangeEditPlanCtrls(true, null, true);
+        }
+
+        private void DelWpButton_Click(object sender, EventArgs e)
+        {
+            DialogResult dr = MessageBox.Show("Ви дійсно бажаєте видалити робочу програму?",
+    "Підтвердження дії", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (dr == DialogResult.Yes)
+            {
+                StudyPlanDbAdapter.UpdateWorkProgram(SearchData.WorkProgram, "");
+                ChangeEditPlanCtrls(false, null, true);
             }
         }
     }

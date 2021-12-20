@@ -40,18 +40,21 @@ namespace StudyPlan
             this.semesterLb = new System.Windows.Forms.Label();
             this.disciplineCb = new System.Windows.Forms.ComboBox();
             this.disciplineLb = new System.Windows.Forms.Label();
-            this.linkTb = new System.Windows.Forms.TextBox();
-            this.linkLb = new System.Windows.Forms.Label();
-            this.previewBt = new System.Windows.Forms.Button();
-            this.editBt = new System.Windows.Forms.Button();
-            this.removeBt = new System.Windows.Forms.Button();
+            this.linkSpTextBox = new System.Windows.Forms.TextBox();
+            this.linkSpLabel = new System.Windows.Forms.Label();
+            this.previewSpBt = new System.Windows.Forms.Button();
+            this.editSpButton = new System.Windows.Forms.Button();
+            this.removeSpButton = new System.Windows.Forms.Button();
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editTablesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.linkWorkProgramLabel = new System.Windows.Forms.Label();
-            this.linkWorkProgram = new System.Windows.Forms.LinkLabel();
+            this.linkWpLabel = new System.Windows.Forms.Label();
+            this.linkWpTextBox = new System.Windows.Forms.TextBox();
+            this.removeWpButton = new System.Windows.Forms.Button();
+            this.editWpButton = new System.Windows.Forms.Button();
+            this.previewWpBt = new System.Windows.Forms.Button();
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -160,58 +163,58 @@ namespace StudyPlan
             this.disciplineLb.TabIndex = 11;
             this.disciplineLb.Text = "Дисципліна";
             // 
-            // linkTb
+            // linkSpTextBox
             // 
-            this.linkTb.Enabled = false;
-            this.linkTb.Location = new System.Drawing.Point(10, 242);
-            this.linkTb.Name = "linkTb";
-            this.linkTb.ReadOnly = true;
-            this.linkTb.Size = new System.Drawing.Size(359, 20);
-            this.linkTb.TabIndex = 12;
-            this.linkTb.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.linkSpTextBox.Enabled = false;
+            this.linkSpTextBox.Location = new System.Drawing.Point(13, 291);
+            this.linkSpTextBox.Name = "linkSpTextBox";
+            this.linkSpTextBox.ReadOnly = true;
+            this.linkSpTextBox.Size = new System.Drawing.Size(355, 20);
+            this.linkSpTextBox.TabIndex = 12;
+            this.linkSpTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // linkLb
+            // linkSpLabel
             // 
-            this.linkLb.AutoSize = true;
-            this.linkLb.Enabled = false;
-            this.linkLb.Location = new System.Drawing.Point(10, 226);
-            this.linkLb.Name = "linkLb";
-            this.linkLb.Size = new System.Drawing.Size(167, 13);
-            this.linkLb.TabIndex = 13;
-            this.linkLb.Text = "Посилання на навчальний план";
+            this.linkSpLabel.AutoSize = true;
+            this.linkSpLabel.Enabled = false;
+            this.linkSpLabel.Location = new System.Drawing.Point(10, 275);
+            this.linkSpLabel.Name = "linkSpLabel";
+            this.linkSpLabel.Size = new System.Drawing.Size(167, 13);
+            this.linkSpLabel.TabIndex = 13;
+            this.linkSpLabel.Text = "Посилання на навчальний план";
             // 
-            // previewBt
+            // previewSpBt
             // 
-            this.previewBt.Enabled = false;
-            this.previewBt.Location = new System.Drawing.Point(10, 267);
-            this.previewBt.Name = "previewBt";
-            this.previewBt.Size = new System.Drawing.Size(81, 27);
-            this.previewBt.TabIndex = 14;
-            this.previewBt.Text = "Переглянути";
-            this.previewBt.UseVisualStyleBackColor = true;
-            this.previewBt.Click += new System.EventHandler(this.PreviewBt_Click);
+            this.previewSpBt.Enabled = false;
+            this.previewSpBt.Location = new System.Drawing.Point(10, 316);
+            this.previewSpBt.Name = "previewSpBt";
+            this.previewSpBt.Size = new System.Drawing.Size(81, 27);
+            this.previewSpBt.TabIndex = 14;
+            this.previewSpBt.Text = "Переглянути";
+            this.previewSpBt.UseVisualStyleBackColor = true;
+            this.previewSpBt.Click += new System.EventHandler(this.PreviewBt_Click);
             // 
-            // editBt
+            // editSpButton
             // 
-            this.editBt.Enabled = false;
-            this.editBt.Location = new System.Drawing.Point(144, 268);
-            this.editBt.Name = "editBt";
-            this.editBt.Size = new System.Drawing.Size(87, 27);
-            this.editBt.TabIndex = 15;
-            this.editBt.Text = "Внести зміни";
-            this.editBt.UseVisualStyleBackColor = true;
-            this.editBt.Click += new System.EventHandler(this.EditBt_Click);
+            this.editSpButton.Enabled = false;
+            this.editSpButton.Location = new System.Drawing.Point(144, 317);
+            this.editSpButton.Name = "editSpButton";
+            this.editSpButton.Size = new System.Drawing.Size(87, 27);
+            this.editSpButton.TabIndex = 15;
+            this.editSpButton.Text = "Внести зміни";
+            this.editSpButton.UseVisualStyleBackColor = true;
+            this.editSpButton.Click += new System.EventHandler(this.EditBt_Click);
             // 
-            // removeBt
+            // removeSpButton
             // 
-            this.removeBt.Enabled = false;
-            this.removeBt.Location = new System.Drawing.Point(287, 267);
-            this.removeBt.Name = "removeBt";
-            this.removeBt.Size = new System.Drawing.Size(81, 27);
-            this.removeBt.TabIndex = 16;
-            this.removeBt.Text = "Видалити";
-            this.removeBt.UseVisualStyleBackColor = true;
-            this.removeBt.Click += new System.EventHandler(this.RemoveBt_Click);
+            this.removeSpButton.Enabled = false;
+            this.removeSpButton.Location = new System.Drawing.Point(287, 316);
+            this.removeSpButton.Name = "removeSpButton";
+            this.removeSpButton.Size = new System.Drawing.Size(81, 27);
+            this.removeSpButton.TabIndex = 16;
+            this.removeSpButton.Text = "Видалити";
+            this.removeSpButton.UseVisualStyleBackColor = true;
+            this.removeSpButton.Click += new System.EventHandler(this.RemoveBt_Click);
             // 
             // menuStrip
             // 
@@ -254,36 +257,74 @@ namespace StudyPlan
             this.editTablesToolStripMenuItem.Text = "Таблиці";
             this.editTablesToolStripMenuItem.Click += new System.EventHandler(this.EditTablesToolStripMenuItem_Click);
             // 
-            // linkWorkProgramLabel
+            // linkWpLabel
             // 
-            this.linkWorkProgramLabel.AutoSize = true;
-            this.linkWorkProgramLabel.Enabled = false;
-            this.linkWorkProgramLabel.Location = new System.Drawing.Point(10, 179);
-            this.linkWorkProgramLabel.Name = "linkWorkProgramLabel";
-            this.linkWorkProgramLabel.Size = new System.Drawing.Size(169, 13);
-            this.linkWorkProgramLabel.TabIndex = 19;
-            this.linkWorkProgramLabel.Text = "Посилання на робочу програму:";
+            this.linkWpLabel.AutoSize = true;
+            this.linkWpLabel.Enabled = false;
+            this.linkWpLabel.Location = new System.Drawing.Point(10, 179);
+            this.linkWpLabel.Name = "linkWpLabel";
+            this.linkWpLabel.Size = new System.Drawing.Size(169, 13);
+            this.linkWpLabel.TabIndex = 19;
+            this.linkWpLabel.Text = "Посилання на робочу програму:";
             // 
-            // linkWorkProgram
+            // linkWpTextBox
             // 
-            this.linkWorkProgram.Location = new System.Drawing.Point(12, 195);
-            this.linkWorkProgram.Name = "linkWorkProgram";
-            this.linkWorkProgram.Size = new System.Drawing.Size(357, 13);
-            this.linkWorkProgram.TabIndex = 18;
-            this.linkWorkProgram.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkWorkProgram_LinkClicked);
+            this.linkWpTextBox.Enabled = false;
+            this.linkWpTextBox.Location = new System.Drawing.Point(13, 195);
+            this.linkWpTextBox.Name = "linkWpTextBox";
+            this.linkWpTextBox.ReadOnly = true;
+            this.linkWpTextBox.Size = new System.Drawing.Size(355, 20);
+            this.linkWpTextBox.TabIndex = 20;
+            this.linkWpTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // removeWpButton
+            // 
+            this.removeWpButton.Enabled = false;
+            this.removeWpButton.Location = new System.Drawing.Point(287, 220);
+            this.removeWpButton.Name = "removeWpButton";
+            this.removeWpButton.Size = new System.Drawing.Size(81, 27);
+            this.removeWpButton.TabIndex = 23;
+            this.removeWpButton.Text = "Видалити";
+            this.removeWpButton.UseVisualStyleBackColor = true;
+            this.removeWpButton.Click += new System.EventHandler(this.DelWpButton_Click);
+            // 
+            // editWpButton
+            // 
+            this.editWpButton.Enabled = false;
+            this.editWpButton.Location = new System.Drawing.Point(144, 221);
+            this.editWpButton.Name = "editWpButton";
+            this.editWpButton.Size = new System.Drawing.Size(87, 27);
+            this.editWpButton.TabIndex = 22;
+            this.editWpButton.Text = "Внести зміни";
+            this.editWpButton.UseVisualStyleBackColor = true;
+            this.editWpButton.Click += new System.EventHandler(this.EditWpButton_Click);
+            // 
+            // previewWpBt
+            // 
+            this.previewWpBt.Enabled = false;
+            this.previewWpBt.Location = new System.Drawing.Point(10, 220);
+            this.previewWpBt.Name = "previewWpBt";
+            this.previewWpBt.Size = new System.Drawing.Size(81, 27);
+            this.previewWpBt.TabIndex = 21;
+            this.previewWpBt.Text = "Переглянути";
+            this.previewWpBt.UseVisualStyleBackColor = true;
+            this.previewWpBt.Click += new System.EventHandler(this.PreviewWpButton_Click);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(381, 316);
-            this.Controls.Add(this.linkWorkProgramLabel);
-            this.Controls.Add(this.linkWorkProgram);
-            this.Controls.Add(this.removeBt);
-            this.Controls.Add(this.editBt);
-            this.Controls.Add(this.previewBt);
-            this.Controls.Add(this.linkLb);
-            this.Controls.Add(this.linkTb);
+            this.ClientSize = new System.Drawing.Size(381, 361);
+            this.Controls.Add(this.removeWpButton);
+            this.Controls.Add(this.editWpButton);
+            this.Controls.Add(this.previewWpBt);
+            this.Controls.Add(this.linkWpTextBox);
+            this.Controls.Add(this.linkWpLabel);
+            this.Controls.Add(this.removeSpButton);
+            this.Controls.Add(this.editSpButton);
+            this.Controls.Add(this.previewSpBt);
+            this.Controls.Add(this.linkSpLabel);
+            this.Controls.Add(this.linkSpTextBox);
             this.Controls.Add(this.disciplineLb);
             this.Controls.Add(this.disciplineCb);
             this.Controls.Add(this.groupLb);
@@ -319,18 +360,21 @@ namespace StudyPlan
         private Label semesterLb;
         private ComboBox disciplineCb;
         private Label disciplineLb;
-        private TextBox linkTb;
-        private Label linkLb;
-        private Button previewBt;
-        private Button editBt;
-        private Button removeBt;
+        private TextBox linkSpTextBox;
+        private Label linkSpLabel;
+        private Button previewSpBt;
+        private Button editSpButton;
+        private Button removeSpButton;
         private MenuStrip menuStrip;
         private ToolStripMenuItem fileToolStripMenuItem;
         private ToolStripMenuItem exitToolStripMenuItem;
         private ToolStripMenuItem editToolStripMenuItem;
         private ToolStripMenuItem editTablesToolStripMenuItem;
-        private Label linkWorkProgramLabel;
-        private LinkLabel linkWorkProgram;
+        private Label linkWpLabel;
+        private TextBox linkWpTextBox;
+        private Button removeWpButton;
+        private Button editWpButton;
+        private Button previewWpBt;
     }
 }
 
